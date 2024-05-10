@@ -1,0 +1,141 @@
+ktest file : 'klee-last/test000005.ktest'
+args       : ['klee_code.bc']
+num objects: 20
+object  0: name: '*pbuff[19]'
+object  0: size: 19
+object  0: data: b'\xeb\x90\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff'
+object  0: hex : 0xeb90ffffffffffffffffffffffffffffffffff
+object  0: text: ...................
+object  1: name: 'bComSuc'
+object  1: size: 4
+object  1: data: b'\x00\x00\x00\x00'
+object  1: hex : 0x00000000
+object  1: int : 0
+object  1: uint: 0
+object  1: text: ....
+object  2: name: 'cntCheckO'
+object  2: size: 4
+object  2: data: b'\x00\x00\x00\x00'
+object  2: hex : 0x00000000
+object  2: int : 0
+object  2: uint: 0
+object  2: text: ....
+object  3: name: 'cntCheckS'
+object  3: size: 4
+object  3: data: b'\x00\x00\x00\x00'
+object  3: hex : 0x00000000
+object  3: int : 0
+object  3: uint: 0
+object  3: text: ....
+object  4: name: 'cntHeadO'
+object  4: size: 4
+object  4: data: b'\x00\x00\x00\x00'
+object  4: hex : 0x00000000
+object  4: int : 0
+object  4: uint: 0
+object  4: text: ....
+object  5: name: 'cntHeadS'
+object  5: size: 4
+object  5: data: b'\x00\x00\x00\x00'
+object  5: hex : 0x00000000
+object  5: int : 0
+object  5: uint: 0
+object  5: text: ....
+object  6: name: 'cntLenRdO'
+object  6: size: 4
+object  6: data: b'\x00\x00\x00\x00'
+object  6: hex : 0x00000000
+object  6: int : 0
+object  6: uint: 0
+object  6: text: ....
+object  7: name: 'cntLenRdS'
+object  7: size: 4
+object  7: data: b'\x00\x00\x00\x00'
+object  7: hex : 0x00000000
+object  7: int : 0
+object  7: uint: 0
+object  7: text: ....
+object  8: name: 'cntUpdataO'
+object  8: size: 4
+object  8: data: b'\x00\x00\x00\x00'
+object  8: hex : 0x00000000
+object  8: int : 0
+object  8: uint: 0
+object  8: text: ....
+object  9: name: 'cntUpdataS'
+object  9: size: 4
+object  9: data: b'\x00\x00\x00\x00'
+object  9: hex : 0x00000000
+object  9: int : 0
+object  9: uint: 0
+object  9: text: ....
+object 10: name: 'frm'
+object 10: size: 4
+object 10: data: b'\x00\x00\x00\x00'
+object 10: hex : 0x00000000
+object 10: int : 0
+object 10: uint: 0
+object 10: text: ....
+object 11: name: 'rdLen'
+object 11: size: 4
+object 11: data: b'\x13\x00\x00\x00'
+object 11: hex : 0x13000000
+object 11: int : 19
+object 11: uint: 19
+object 11: text: ....
+object 12: name: 'totalCheckO'
+object 12: size: 4
+object 12: data: b'\x00\x00\x00\x00'
+object 12: hex : 0x00000000
+object 12: int : 0
+object 12: uint: 0
+object 12: text: ....
+object 13: name: 'totalCheckS'
+object 13: size: 4
+object 13: data: b'\x00\x00\x00\x00'
+object 13: hex : 0x00000000
+object 13: int : 0
+object 13: uint: 0
+object 13: text: ....
+object 14: name: 'totalHeadO'
+object 14: size: 4
+object 14: data: b'\x00\x00\x00\x00'
+object 14: hex : 0x00000000
+object 14: int : 0
+object 14: uint: 0
+object 14: text: ....
+object 15: name: 'totalHeadS'
+object 15: size: 4
+object 15: data: b'\x00\x00\x00\x00'
+object 15: hex : 0x00000000
+object 15: int : 0
+object 15: uint: 0
+object 15: text: ....
+object 16: name: 'totalLenRdO'
+object 16: size: 4
+object 16: data: b'\x00\x00\x00\x00'
+object 16: hex : 0x00000000
+object 16: int : 0
+object 16: uint: 0
+object 16: text: ....
+object 17: name: 'totalLenRdS'
+object 17: size: 4
+object 17: data: b'\x00\x00\x00\x00'
+object 17: hex : 0x00000000
+object 17: int : 0
+object 17: uint: 0
+object 17: text: ....
+object 18: name: 'totalUpdataO'
+object 18: size: 4
+object 18: data: b'\x00\x00\x00\x00'
+object 18: hex : 0x00000000
+object 18: int : 0
+object 18: uint: 0
+object 18: text: ....
+object 19: name: 'totalUpdataS'
+object 19: size: 4
+object 19: data: b'\x00\x00\x00\x00'
+object 19: hex : 0x00000000
+object 19: int : 0
+object 19: uint: 0
+object 19: text: ....

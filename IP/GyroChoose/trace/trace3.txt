@@ -1,0 +1,156 @@
+Breakpoint 1 at 0x11ee: file gdb_debug_code.c, line 42.
+Breakpoint 2 at 0x1145: file gdb_debug_code.c, line 10.
+Breakpoint 3 at 0x114f: file gdb_debug_code.c, line 11.
+Breakpoint 4 at 0x1198: file gdb_debug_code.c, line 17.
+Breakpoint 5 at 0x11e3: file gdb_debug_code.c, line 21.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, main () at gdb_debug_code.c:42
+42		GyroChooseFun(&GyroChoose1);
+1: /u StateFlag[0] = 1
+2: /u StateFlag[1] = 1
+3: /u StateFlag[2] = 1
+4: /u StateFlag[3] = 1
+5: /u StateFlag[4] = 1
+6: /u StateFlag[5] = 1
+7: /u StateFlag[6] = 1
+8: /u StateFlag[7] = 0
+9: /u StateFlag[8] = 1
+10: /u GyroChoose1.JoinTotal = 0
+11: /u GyroChoose1.SignFlag[0] = 0
+12: /u GyroChoose1.SignFlag[1] = 0
+13: /u GyroChoose1.SignFlag[2] = 0
+14: /u GyroChoose1.SignFlag[3] = 0
+15: /u GyroChoose1.SignFlag[4] = 0
+16: /u GyroChoose1.SignFlag[5] = 0
+17: /u GyroChoose1.SignFlag[6] = 0
+18: /u GyroChoose1.SignFlag[7] = 0
+19: /u GyroChoose1.SignFlag[8] = 0
+20: /u GyroChoose1.gyroStatus0 = 0
+1: IStateFlagI = 9
+1: ISignFlagI = 9
+
+Breakpoint 2, GyroChooseFun (pIp=0x555555558020 <GyroChoose1>) at gdb_debug_code.c:10
+10		p->gyroStatus0 = 0;								                                                        
+1: /u StateFlag[0] = 1
+2: /u StateFlag[1] = 1
+3: /u StateFlag[2] = 1
+4: /u StateFlag[3] = 1
+5: /u StateFlag[4] = 1
+6: /u StateFlag[5] = 1
+7: /u StateFlag[6] = 1
+8: /u StateFlag[7] = 0
+9: /u StateFlag[8] = 1
+10: /u GyroChoose1.JoinTotal = 0
+11: /u GyroChoose1.SignFlag[0] = 0
+12: /u GyroChoose1.SignFlag[1] = 0
+13: /u GyroChoose1.SignFlag[2] = 0
+14: /u GyroChoose1.SignFlag[3] = 0
+15: /u GyroChoose1.SignFlag[4] = 0
+16: /u GyroChoose1.SignFlag[5] = 0
+17: /u GyroChoose1.SignFlag[6] = 0
+18: /u GyroChoose1.SignFlag[7] = 0
+19: /u GyroChoose1.SignFlag[8] = 0
+20: /u GyroChoose1.gyroStatus0 = 0
+1: IStateFlagI = 9
+1: ISignFlagI = 9
+
+Breakpoint 3, GyroChooseFun (pIp=0x555555558020 <GyroChoose1>) at gdb_debug_code.c:11
+11		for (i=0; i<2; i++)								/* 9个陀螺进行判断 */
+1: /u StateFlag[0] = 1
+2: /u StateFlag[1] = 1
+3: /u StateFlag[2] = 1
+4: /u StateFlag[3] = 1
+5: /u StateFlag[4] = 1
+6: /u StateFlag[5] = 1
+7: /u StateFlag[6] = 1
+8: /u StateFlag[7] = 0
+9: /u StateFlag[8] = 1
+10: /u GyroChoose1.JoinTotal = 0
+11: /u GyroChoose1.SignFlag[0] = 0
+12: /u GyroChoose1.SignFlag[1] = 0
+13: /u GyroChoose1.SignFlag[2] = 0
+14: /u GyroChoose1.SignFlag[3] = 0
+15: /u GyroChoose1.SignFlag[4] = 0
+16: /u GyroChoose1.SignFlag[5] = 0
+17: /u GyroChoose1.SignFlag[6] = 0
+18: /u GyroChoose1.SignFlag[7] = 0
+19: /u GyroChoose1.SignFlag[8] = 0
+20: /u GyroChoose1.gyroStatus0 = 0
+1: IStateFlagI = 9
+1: ISignFlagI = 9
+
+Breakpoint 4, GyroChooseFun (pIp=0x555555558020 <GyroChoose1>) at gdb_debug_code.c:17
+17				p->JoinTotal++;						/* 统计参加定姿的陀螺个数 */	
+1: /u StateFlag[0] = 1
+2: /u StateFlag[1] = 1
+3: /u StateFlag[2] = 1
+4: /u StateFlag[3] = 1
+5: /u StateFlag[4] = 1
+6: /u StateFlag[5] = 1
+7: /u StateFlag[6] = 1
+8: /u StateFlag[7] = 0
+9: /u StateFlag[8] = 1
+10: /u GyroChoose1.JoinTotal = 0
+11: /u GyroChoose1.SignFlag[0] = 0
+12: /u GyroChoose1.SignFlag[1] = 0
+13: /u GyroChoose1.SignFlag[2] = 0
+14: /u GyroChoose1.SignFlag[3] = 0
+15: /u GyroChoose1.SignFlag[4] = 0
+16: /u GyroChoose1.SignFlag[5] = 0
+17: /u GyroChoose1.SignFlag[6] = 0
+18: /u GyroChoose1.SignFlag[7] = 0
+19: /u GyroChoose1.SignFlag[8] = 0
+20: /u GyroChoose1.gyroStatus0 = 0
+1: IStateFlagI = 9
+1: ISignFlagI = 9
+
+Breakpoint 4, GyroChooseFun (pIp=0x555555558020 <GyroChoose1>) at gdb_debug_code.c:17
+17				p->JoinTotal++;						/* 统计参加定姿的陀螺个数 */	
+1: /u StateFlag[0] = 1
+2: /u StateFlag[1] = 1
+3: /u StateFlag[2] = 1
+4: /u StateFlag[3] = 1
+5: /u StateFlag[4] = 1
+6: /u StateFlag[5] = 1
+7: /u StateFlag[6] = 1
+8: /u StateFlag[7] = 0
+9: /u StateFlag[8] = 1
+10: /u GyroChoose1.JoinTotal = 1
+11: /u GyroChoose1.SignFlag[0] = 0
+12: /u GyroChoose1.SignFlag[1] = 1
+13: /u GyroChoose1.SignFlag[2] = 0
+14: /u GyroChoose1.SignFlag[3] = 0
+15: /u GyroChoose1.SignFlag[4] = 0
+16: /u GyroChoose1.SignFlag[5] = 0
+17: /u GyroChoose1.SignFlag[6] = 0
+18: /u GyroChoose1.SignFlag[7] = 0
+19: /u GyroChoose1.SignFlag[8] = 0
+20: /u GyroChoose1.gyroStatus0 = 1
+1: IStateFlagI = 9
+1: ISignFlagI = 9
+
+Breakpoint 5, GyroChooseFun (pIp=0x555555558020 <GyroChoose1>) at gdb_debug_code.c:21
+21	    return;
+1: /u StateFlag[0] = 1
+2: /u StateFlag[1] = 1
+3: /u StateFlag[2] = 1
+4: /u StateFlag[3] = 1
+5: /u StateFlag[4] = 1
+6: /u StateFlag[5] = 1
+7: /u StateFlag[6] = 1
+8: /u StateFlag[7] = 0
+9: /u StateFlag[8] = 1
+10: /u GyroChoose1.JoinTotal = 2
+11: /u GyroChoose1.SignFlag[0] = 0
+12: /u GyroChoose1.SignFlag[1] = 1
+13: /u GyroChoose1.SignFlag[2] = 0
+14: /u GyroChoose1.SignFlag[3] = 0
+15: /u GyroChoose1.SignFlag[4] = 0
+16: /u GyroChoose1.SignFlag[5] = 0
+17: /u GyroChoose1.SignFlag[6] = 0
+18: /u GyroChoose1.SignFlag[7] = 0
+19: /u GyroChoose1.SignFlag[8] = 0
+20: /u GyroChoose1.gyroStatus0 = 3
+[Inferior 1 (process) exited normally]

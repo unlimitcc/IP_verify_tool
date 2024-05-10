@@ -1,0 +1,7 @@
+TU MILLISECONDS
+R 0 100.0 false;
+C 0 0.0 1.0 0 100.0;p1=true,p2=false,p3=false,p4=true,p5=true,p6=false,p7=true,p8=false,p9=true,p10=true,p11=true,p12=false,p13=false,p14=false,p15=false,p16=false,p17=true,p18=false,p19=false,p20=true,p21=true,p22=true,p23=true
+C 1 1.0 2.0 0 100.0;p1=true,p2=false,p3=false,p4=true,p5=true,p6=false,p7=true,p8=false,p9=true,p10=true,p11=true,p12=false,p13=false,p14=false,p15=false,p16=false,p17=true,p18=false,p19=false,p20=true,p21=true,p22=true,p23=true
+C 2 2.0 3.0 0 100.0;p1=true,p2=false,p3=false,p4=true,p5=true,p6=false,p7=true,p8=false,p9=true,p10=false,p11=true,p12=false,p13=false,p14=false,p15=false,p16=false,p17=true,p18=false,p19=false,p20=true,p21=true,p22=true,p23=true
+S 0; name = s1
+F 0 0 3.0 1.0 0.0 0.0

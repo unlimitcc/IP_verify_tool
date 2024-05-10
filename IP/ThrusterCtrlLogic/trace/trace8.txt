@@ -1,0 +1,96 @@
+Breakpoint 1 at 0x1233: file gdb_debug_code.c, line 51.
+Breakpoint 2 at 0x1145: file gdb_debug_code.c, line 8.
+Breakpoint 3 at 0x1168: file gdb_debug_code.c, line 13.
+Breakpoint 4 at 0x118b: file gdb_debug_code.c, line 18.
+Breakpoint 5 at 0x11b2: file gdb_debug_code.c, line 23.
+Breakpoint 6 at 0x11d9: file gdb_debug_code.c, line 28.
+Breakpoint 7 at 0x1200: file gdb_debug_code.c, line 33.
+Breakpoint 8 at 0x1227: file gdb_debug_code.c, line 37.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, main () at gdb_debug_code.c:51
+51		ThrusterCtrlLogicFun(&ThrusterCtrlLogic1);
+1: /u Yn[0] = 0
+2: /u Yn[1] = 255
+3: /u Yn[2] = 0
+4: /u Yp[0] = 0
+5: /u Yp[1] = 0
+6: /u Yp[2] = 0
+7: /u ThrusterCtrlLogic1.wPulse = 0
+1: IYnI = 3
+1: IYpI = 3
+
+Breakpoint 2, ThrusterCtrlLogicFun (p=0x555555558020 <ThrusterCtrlLogic1>) at gdb_debug_code.c:8
+8		if ( pIp->Yp[0] != 0)									/* 伪速率状态量 */
+1: /u Yn[0] = 0
+2: /u Yn[1] = 255
+3: /u Yn[2] = 0
+4: /u Yp[0] = 0
+5: /u Yp[1] = 0
+6: /u Yp[2] = 0
+7: /u ThrusterCtrlLogic1.wPulse = 0
+1: IYnI = 3
+1: IYpI = 3
+
+Breakpoint 3, ThrusterCtrlLogicFun (p=0x555555558020 <ThrusterCtrlLogic1>) at gdb_debug_code.c:13
+13		if ( pIp->Yn[0] != 0)									/* 伪速率状态量 */
+1: /u Yn[0] = 0
+2: /u Yn[1] = 255
+3: /u Yn[2] = 0
+4: /u Yp[0] = 0
+5: /u Yp[1] = 0
+6: /u Yp[2] = 0
+7: /u ThrusterCtrlLogic1.wPulse = 0
+1: IYnI = 3
+1: IYpI = 3
+
+Breakpoint 4, ThrusterCtrlLogicFun (p=0x555555558020 <ThrusterCtrlLogic1>) at gdb_debug_code.c:18
+18		if ( pIp->Yp[1] != 0)									/* 伪速率状态量 */
+1: /u Yn[0] = 0
+2: /u Yn[1] = 255
+3: /u Yn[2] = 0
+4: /u Yp[0] = 0
+5: /u Yp[1] = 0
+6: /u Yp[2] = 0
+7: /u ThrusterCtrlLogic1.wPulse = 0
+1: IYnI = 3
+1: IYpI = 3
+
+Breakpoint 5, ThrusterCtrlLogicFun (p=0x555555558020 <ThrusterCtrlLogic1>) at gdb_debug_code.c:23
+23		if ( pIp->Yn[1] != 0)									/* 伪速率状态量 */
+1: /u Yn[0] = 0
+2: /u Yn[1] = 255
+3: /u Yn[2] = 0
+4: /u Yp[0] = 0
+5: /u Yp[1] = 0
+6: /u Yp[2] = 0
+7: /u ThrusterCtrlLogic1.wPulse = 0
+1: IYnI = 3
+1: IYpI = 3
+
+Breakpoint 6, ThrusterCtrlLogicFun (p=0x555555558020 <ThrusterCtrlLogic1>) at gdb_debug_code.c:28
+28		if ( pIp->Yp[2] != 0)									/* 伪速率状态量 */
+1: /u Yn[0] = 0
+2: /u Yn[1] = 255
+3: /u Yn[2] = 0
+4: /u Yp[0] = 0
+5: /u Yp[1] = 0
+6: /u Yp[2] = 0
+7: /u ThrusterCtrlLogic1.wPulse = 32
+1: IYnI = 3
+1: IYpI = 3
+
+Breakpoint 7, ThrusterCtrlLogicFun (p=0x555555558020 <ThrusterCtrlLogic1>) at gdb_debug_code.c:33
+33		if ( pIp->Yn[2] != 0)									/* 伪速率状态量 */
+1: /u Yn[0] = 0
+2: /u Yn[1] = 255
+3: /u Yn[2] = 0
+4: /u Yp[0] = 0
+5: /u Yp[1] = 0
+6: /u Yp[2] = 0
+7: /u ThrusterCtrlLogic1.wPulse = 32
+1: IYnI = 3
+1: IYpI = 3
+[Inferior 1 (process 6654) exited normally]
+[Inferior 1 (process) exited normally]

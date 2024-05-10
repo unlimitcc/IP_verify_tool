@@ -1,0 +1,28 @@
+from z3 import *
+
+#variables
+IYpI = Int('IYpI')
+IYnI = Int('IYnI')
+wPulse = Int('wPulse')
+wPulse_next = Int('wPulse_next')
+Yn = Array('Yn', IntSort(), IntSort())
+Yp = Array('Yp', IntSort(), IntSort())
+x2,x3,x4,x5,x6,x7 = Ints('x2 x3 x4 x5 x6 x7')
+def judge(a):
+    m = If(a==0, 0, 1)
+    return m
+s = Solver()
+#contract
+Assumption = And(IYpI>=3, IYnI>=3)
+Guarantee1 = Exists(x2,x2==judge(Yp[0]))
+Guarantee2 = Exists(x3,x3==judge(Yn[0]))
+Guarantee3 = Exists(x4,x4==judge(Yp[1]))
+Guarantee4 = Exists(x5,x5==judge(Yn[1]))
+Guarantee5 = Exists(x6,x6==judge(Yp[2]))
+Guarantee6 = Exists(x7,x7==judge(Yn[2]))
+Guarantee7 = Exists([x2,x3,x4,x5,x6,x7],(wPulse_next==x2*(2**2)+x3*(2**3)+x4*(2**4)+x5*(2**5)+x6*(2**6)+x7*(2**7)))
+Guarantee = And(Guarantee1, Guarantee2, Guarantee3, Guarantee4, Guarantee5, Guarantee6, Guarantee7)
+s.add(And(Assumption, Implies(Assumption, Guarantee)))
+########
+
+

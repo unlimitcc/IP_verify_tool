@@ -1,0 +1,5 @@
+TU MILLISECONDS
+R 0 100.0 false;
+C 0 0.0 1.0 0 100.0;p1=true,p2=false,p3=false,p4=false,p5=false,p6=false,p7=false,p8=false,p9=false,p10=false,p11=true,p12=true,p13=true,p14=true,p15=true,p16=false
+S 0; name = s1
+F 0 0 1.0 1.0 0.0 0.0

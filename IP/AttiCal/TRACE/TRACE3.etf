@@ -1,0 +1,12 @@
+TU MILLISECONDS
+R 0 100.0 false;
+C 0 0.0 1.0 0 100.0;p1=false,p2=false,p3=false,p4=false,p5=false,p6=true,p7=true,p8=false,p9=false,p10=false,p11=false,p12=false,p13=false,p14=false,p15=true,p16=true,p17=false,p18=true,p19=true,p20=false,p21=false,p22=false
+C 1 1.0 2.0 0 100.0;p1=false,p2=false,p3=false,p4=false,p5=false,p6=true,p7=true,p8=true,p9=false,p10=false,p11=false,p12=false,p13=false,p14=false,p15=true,p16=true,p17=false,p18=false,p19=true,p20=false,p21=false,p22=false
+C 2 2.0 3.0 0 100.0;p1=false,p2=false,p3=false,p4=false,p5=false,p6=true,p7=true,p8=true,p9=true,p10=false,p11=false,p12=false,p13=false,p14=false,p15=true,p16=true,p17=false,p18=false,p19=false,p20=false,p21=false,p22=false
+C 3 3.0 4.0 0 100.0;p1=false,p2=false,p3=false,p4=false,p5=false,p6=true,p7=true,p8=true,p9=true,p10=true,p11=false,p12=false,p13=true,p14=false,p15=false,p16=true,p17=false,p18=false,p19=false,p20=false,p21=false,p22=false
+C 4 4.0 5.0 0 100.0;p1=false,p2=false,p3=false,p4=false,p5=false,p6=true,p7=true,p8=true,p9=true,p10=true,p11=true,p12=false,p13=true,p14=true,p15=true,p16=false,p17=false,p18=false,p19=false,p20=false,p21=false,p22=false
+C 5 5.0 6.0 0 100.0;p1=false,p2=false,p3=false,p4=false,p5=false,p6=true,p7=true,p8=true,p9=true,p10=true,p11=true,p12=false,p13=true,p14=true,p15=true,p16=true,p17=false,p18=false,p19=false,p20=true,p21=false,p22=false
+C 6 6.0 7.0 0 100.0;p1=false,p2=false,p3=false,p4=false,p5=false,p6=true,p7=true,p8=true,p9=true,p10=true,p11=true,p12=false,p13=true,p14=true,p15=true,p16=true,p17=false,p18=false,p19=false,p20=true,p21=true,p22=false
+C 7 7.0 8.0 0 100.0;p1=false,p2=false,p3=false,p4=false,p5=false,p6=true,p7=true,p8=true,p9=true,p10=true,p11=true,p12=false,p13=true,p14=true,p15=true,p16=true,p17=false,p18=false,p19=false,p20=true,p21=true,p22=true
+S 0; name = s1
+F 0 0 8.0 1.0 0.0 0.0

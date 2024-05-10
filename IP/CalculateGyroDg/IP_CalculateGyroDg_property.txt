@@ -1,0 +1,6 @@
+(ISignFlagI=5 & JoinTotal<=5 & FORALL(j:0~min(JoinTotal,5))(SignFlag[j]<IwaI))
+IW_nextI=3
+ItmpwaI=5
+FORALL(j:0~JoinTotal)(tmpwa[j]=wa[SignFlag[j]]) & FORALL(j:JoinTotal~5)(tmpwa[j]=0)
+(JoinTotal>=3 -> W_next[0]=Rtemp[0][0]*tmpwa[0]+Rtemp[0][1]*tmpwa[1]+Rtemp[0][2]*tmpwa[2]+Rtemp[0][3]*tmpwa[3]+Rtemp[0][4]*tmpwa[4] &  W_next[1]=Rtemp[1][0]*tmpwa[0]+Rtemp[1][1]*tmpwa[1]+Rtemp[1][2]*tmpwa[2]+Rtemp[1][3]*tmpwa[3]+Rtemp[1][4]*tmpwa[4] & W_next[2]=Rtemp[2][0]*tmpwa[0]+Rtemp[2][1]*tmpwa[1]+Rtemp[2][2]*tmpwa[2]+Rtemp[2][3]*tmpwa[3]+Rtemp[2][4]*tmpwa[4])
+(JoinTotal<3 -> (W_next[0]=0 & W_next[1]=0 & W_next[2]=0))

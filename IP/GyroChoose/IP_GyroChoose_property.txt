@@ -1,0 +1,7 @@
+Assumptions: IStateFlagI>=9
+Guarantee1: next(ISignFlagI)=9
+Guarantee2: ((StateFlag[0]=235 -> (tempFlag[0]=1)) & (StateFlag[1]=235 ->   (tempFlag[1]=1)) & (StateFlag[2]=235 ->   (tempFlag[2]=1)) & (StateFlag[3]=235 ->   (tempFlag[3]=1)) & (StateFlag[4]=235 ->  (tempFlag[4]=1)) & (StateFlag[5]=235 ->  (tempFlag[5]=1)) & (StateFlag[6]=235 ->  (tempFlag[6]=1)) & (StateFlag[7]=235 ->  (tempFlag[7]=1)) & (StateFlag[8]=235 ->  (tempFlag[8]=1)))
+Guarantee3: ((StateFlag[0]!=235 ->  (tempFlag[0]=0)) & (StateFlag[1]!=235 ->  (tempFlag[1]=0)) & (StateFlag[2]!=235 ->  (tempFlag[2]=0)) & (StateFlag[3]!=235 ->  (tempFlag[3]=0)) & (StateFlag[4]!=235 ->  (tempFlag[4]=0)) & (StateFlag[5]!=235 ->  (tempFlag[5]=0)) & (StateFlag[6]!=235 ->  (tempFlag[6]=0)) & (StateFlag[7]!=235 ->  (tempFlag[7]=0)) & (StateFlag[8]!=235 ->  (tempFlag[8]=0)))
+Guarantee4: next(JoinTotal)=(ADDSUM(i:0~8)(tempFlag[i]))
+Guarantee5: ItempFlagI=9
+Guarantee7: next(gyroStatus0)=(ADDSUM(i:0~8)(tempFlag[i]*(2^i)))

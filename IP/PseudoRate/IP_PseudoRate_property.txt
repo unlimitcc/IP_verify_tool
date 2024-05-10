@@ -1,0 +1,6 @@
+Assumptions: (IpuI>=3 & IrI=3 & Ih1I=3)
+Guarantee1: (next(IYpI)=3 & next(IYnI)=3 & next(IrI)=3 & next(Ih1I)=3)
+Guarantee2: (FORALL(i:0~3)((pu[i]-r[i]>h1[i]) -> (next(Yp[i])=0 & next(Yp[i])=15 & next(r[i])=0.9231*r[i]+0.07688)))
+Guarantee3: (FORALL(i:0~3)((pu[i]-r[i]<h1[i]) -> (next(Yp[i])=15 & next(Yp[i])=0 & next(r[i])=0.9231*r[i]-0.07688)))
+Guarantee4: (FORALL(i:0~3)((pu[i]-r[i]=h1[i]) -> (next(Yp[i])=0 & next(Yp[i])=0 & next(r[i])=0.9231*r[i])))
+Guarantee5: (next(h1[0])=h1[0] & next(h1[1])=h1[1] & next(h1[2])=h1[2])

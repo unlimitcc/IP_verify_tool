@@ -1,0 +1,187 @@
+Breakpoint 1 at 0x1240: file gdb_debug_code.c, line 51.
+Breakpoint 2 at 0x116b: file gdb_debug_code.c, line 12.
+Breakpoint 3 at 0x117d: file gdb_debug_code.c, line 15.
+Breakpoint 4 at 0x1192: file gdb_debug_code.c, line 16.
+Breakpoint 5 at 0x11ad: file gdb_debug_code.c, line 20.
+Breakpoint 6 at 0x11c2: file gdb_debug_code.c, line 21.
+Breakpoint 7 at 0x11da: file gdb_debug_code.c, line 27.
+Breakpoint 8 at 0x11e7: file gdb_debug_code.c, line 28.
+Breakpoint 9 at 0x11f4: file gdb_debug_code.c, line 31.
+Breakpoint 10 at 0x1209: file gdb_debug_code.c, line 32.
+Breakpoint 11 at 0x121f: file gdb_debug_code.c, line 33.
+Breakpoint 12 at 0x1235: file gdb_debug_code.c, line 34.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, main () at gdb_debug_code.c:51
+51		AttiCalFun(&AttiCal1);
+1: /f Gi[0] = -10.9173002
+2: /f Gi[1] = 68.3435974
+3: /f W[0] = 112.580902
+4: /f W[1] = 0.798099995
+5: /f W[2] = 5.17369986
+6: /f AttiCal1.angle[0] = 0
+7: /f AttiCal1.angle[1] = 0
+8: /f AttiCal1.angle[2] = 0
+9: /u AttiCal1.flgSP = 235
+10: /f AttiCal1.piyaw = -180
+11: /f AttiCal1.rate[0] = 0
+12: /f AttiCal1.rate[1] = 0
+13: /f AttiCal1.rate[2] = 0
+14: /f AttiCal1.royaw = -180
+15: /u AttiCal1.workmode = 51
+1: IGiI = 8
+1: IWI = 12
+1: IangleI = 12
+1: IrateI = 12
+
+Breakpoint 2, AttiCalFun (pIp=0x555555558040 <AttiCal1>) at gdb_debug_code.c:12
+12	        	p->angle[1] = p->piyaw;	/* 俯仰角用太敏 */
+1: /f Gi[0] = -10.9173002
+2: /f Gi[1] = 68.3435974
+3: /f W[0] = 112.580902
+4: /f W[1] = 0.798099995
+5: /f W[2] = 5.17369986
+6: /f AttiCal1.angle[0] = -180
+7: /f AttiCal1.angle[1] = 0
+8: /f AttiCal1.angle[2] = 0
+9: /u AttiCal1.flgSP = 235
+10: /f AttiCal1.piyaw = -180
+11: /f AttiCal1.rate[0] = 0
+12: /f AttiCal1.rate[1] = 0
+13: /f AttiCal1.rate[2] = 0
+14: /f AttiCal1.royaw = -180
+15: /u AttiCal1.workmode = 51
+1: IGiI = 8
+1: IWI = 12
+1: IangleI = 12
+1: IrateI = 12
+
+Breakpoint 3, AttiCalFun (pIp=0x555555558040 <AttiCal1>) at gdb_debug_code.c:15
+15	       		p->Gi[0] = p->royaw;	/* 滚动角陀螺积分  */
+1: /f Gi[0] = -10.9173002
+2: /f Gi[1] = 68.3435974
+3: /f W[0] = 112.580902
+4: /f W[1] = 0.798099995
+5: /f W[2] = 5.17369986
+6: /f AttiCal1.angle[0] = -180
+7: /f AttiCal1.angle[1] = -180
+8: /f AttiCal1.angle[2] = 0
+9: /u AttiCal1.flgSP = 235
+10: /f AttiCal1.piyaw = -180
+11: /f AttiCal1.rate[0] = 0
+12: /f AttiCal1.rate[1] = 0
+13: /f AttiCal1.rate[2] = 0
+14: /f AttiCal1.royaw = -180
+15: /u AttiCal1.workmode = 51
+1: IGiI = 8
+1: IWI = 12
+1: IangleI = 12
+1: IrateI = 12
+
+Breakpoint 4, AttiCalFun (pIp=0x555555558040 <AttiCal1>) at gdb_debug_code.c:16
+16	       		p->Gi[1] = p->piyaw;	/* 俯仰角陀螺积分  */
+1: /f Gi[0] = -180
+2: /f Gi[1] = 68.3435974
+3: /f W[0] = 112.580902
+4: /f W[1] = 0.798099995
+5: /f W[2] = 5.17369986
+6: /f AttiCal1.angle[0] = -180
+7: /f AttiCal1.angle[1] = -180
+8: /f AttiCal1.angle[2] = 0
+9: /u AttiCal1.flgSP = 235
+10: /f AttiCal1.piyaw = -180
+11: /f AttiCal1.rate[0] = 0
+12: /f AttiCal1.rate[1] = 0
+13: /f AttiCal1.rate[2] = 0
+14: /f AttiCal1.royaw = -180
+15: /u AttiCal1.workmode = 51
+1: IGiI = 8
+1: IWI = 12
+1: IangleI = 12
+1: IrateI = 12
+
+Breakpoint 9, AttiCalFun (pIp=0x555555558040 <AttiCal1>) at gdb_debug_code.c:31
+31		p->rate[0] = p->W[0];			/* 滚动角速度用陀螺算出的滚动角速度 */
+1: /f Gi[0] = -180
+2: /f Gi[1] = -180
+3: /f W[0] = 112.580902
+4: /f W[1] = 0.798099995
+5: /f W[2] = 5.17369986
+6: /f AttiCal1.angle[0] = -180
+7: /f AttiCal1.angle[1] = -180
+8: /f AttiCal1.angle[2] = 0
+9: /u AttiCal1.flgSP = 235
+10: /f AttiCal1.piyaw = -180
+11: /f AttiCal1.rate[0] = 0
+12: /f AttiCal1.rate[1] = 0
+13: /f AttiCal1.rate[2] = 0
+14: /f AttiCal1.royaw = -180
+15: /u AttiCal1.workmode = 51
+1: IGiI = 8
+1: IWI = 12
+1: IangleI = 12
+1: IrateI = 12
+
+Breakpoint 10, AttiCalFun (pIp=0x555555558040 <AttiCal1>) at gdb_debug_code.c:32
+32	    p->rate[1] = p->W[1];			/* 俯仰角速度用陀螺算出的俯仰角速度 */
+1: /f Gi[0] = -180
+2: /f Gi[1] = -180
+3: /f W[0] = 112.580902
+4: /f W[1] = 0.798099995
+5: /f W[2] = 5.17369986
+6: /f AttiCal1.angle[0] = -180
+7: /f AttiCal1.angle[1] = -180
+8: /f AttiCal1.angle[2] = 0
+9: /u AttiCal1.flgSP = 235
+10: /f AttiCal1.piyaw = -180
+11: /f AttiCal1.rate[0] = 112.580902
+12: /f AttiCal1.rate[1] = 0
+13: /f AttiCal1.rate[2] = 0
+14: /f AttiCal1.royaw = -180
+15: /u AttiCal1.workmode = 51
+1: IGiI = 8
+1: IWI = 12
+1: IangleI = 12
+1: IrateI = 12
+
+Breakpoint 11, AttiCalFun (pIp=0x555555558040 <AttiCal1>) at gdb_debug_code.c:33
+33		p->rate[2] = p->W[2];			/* 偏航角速度用陀螺算出的偏航角速度 */
+1: /f Gi[0] = -180
+2: /f Gi[1] = -180
+3: /f W[0] = 112.580902
+4: /f W[1] = 0.798099995
+5: /f W[2] = 5.17369986
+6: /f AttiCal1.angle[0] = -180
+7: /f AttiCal1.angle[1] = -180
+8: /f AttiCal1.angle[2] = 0
+9: /u AttiCal1.flgSP = 235
+10: /f AttiCal1.piyaw = -180
+11: /f AttiCal1.rate[0] = 112.580902
+12: /f AttiCal1.rate[1] = 0.798099995
+13: /f AttiCal1.rate[2] = 0
+14: /f AttiCal1.royaw = -180
+15: /u AttiCal1.workmode = 51
+1: IGiI = 8
+1: IWI = 12
+1: IangleI = 12
+1: IrateI = 12
+
+Breakpoint 12, AttiCalFun (pIp=0x555555558040 <AttiCal1>) at gdb_debug_code.c:34
+34	    return;
+1: /f Gi[0] = -180
+2: /f Gi[1] = -180
+3: /f W[0] = 112.580902
+4: /f W[1] = 0.798099995
+5: /f W[2] = 5.17369986
+6: /f AttiCal1.angle[0] = -180
+7: /f AttiCal1.angle[1] = -180
+8: /f AttiCal1.angle[2] = 0
+9: /u AttiCal1.flgSP = 235
+10: /f AttiCal1.piyaw = -180
+11: /f AttiCal1.rate[0] = 112.580902
+12: /f AttiCal1.rate[1] = 0.798099995
+13: /f AttiCal1.rate[2] = 5.17369986
+14: /f AttiCal1.royaw = -180
+15: /u AttiCal1.workmode = 51
+[Inferior 1 (process) exited normally]

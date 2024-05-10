@@ -1,0 +1,13 @@
+p1:IpuI>=3
+p2:IrI=3
+p3:Ih1I=3
+p4:next(IYpI)=3
+p5:next(IYnI)=3
+p6:next(IrI)=3
+p7:next(Ih1I)=3
+p8:FORALL(i:0~3)((pu[i]-r[i]>h1[i])->(next(Yp[i])=0&next(Yp[i])=15&next(r[i])=0.9231*r[i]+0.07688))
+p9:FORALL(i:0~3)((pu[i]-r[i]<h1[i])->(next(Yp[i])=15&next(Yp[i])=0&next(r[i])=0.9231*r[i]-0.07688))
+p10:FORALL(i:0~3)((pu[i]-r[i]=h1[i])->(next(Yp[i])=0&next(Yp[i])=0&next(r[i])=0.9231*r[i]))
+p11:next(h1[0])=h1[0]
+p12:next(h1[1])=h1[1]
+p13:next(h1[2])=h1[2]

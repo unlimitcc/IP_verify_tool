@@ -1,0 +1,52 @@
+ktest file : 'klee-last/test000006.ktest'
+args       : ['klee_code.bc']
+num objects: 7
+object 0: name: 'bPowerOnOk'
+object 0: size: 4
+object 0: data: b'\x00\x00\x00\x00'
+object 0: hex : 0x00000000
+object 0: int : 0
+object 0: uint: 0
+object 0: text: ....
+object 1: name: 'cntPowerOff'
+object 1: size: 4
+object 1: data: b'\x00\x00\x00\x00'
+object 1: hex : 0x00000000
+object 1: int : 0
+object 1: uint: 0
+object 1: text: ....
+object 2: name: 'cntPowerOn'
+object 2: size: 4
+object 2: data: b'\xfe\xff\xff\x7f'
+object 2: hex : 0xfeffff7f
+object 2: int : 2147483646
+object 2: uint: 2147483646
+object 2: text: ....
+object 3: name: 'numOffPeriod'
+object 3: size: 4
+object 3: data: b'\x00\x00\x00\x00'
+object 3: hex : 0x00000000
+object 3: int : 0
+object 3: uint: 0
+object 3: text: ....
+object 4: name: 'numOnPeriod'
+object 4: size: 4
+object 4: data: b'\xff\xff\xff\x7f'
+object 4: hex : 0xffffff7f
+object 4: int : 2147483647
+object 4: uint: 2147483647
+object 4: text: ....
+object 5: name: 'powerPr1'
+object 5: size: 4
+object 5: data: b'\x00\x00\x00\x00'
+object 5: hex : 0x00000000
+object 5: int : 0
+object 5: uint: 0
+object 5: text: ....
+object 6: name: 'powerState'
+object 6: size: 4
+object 6: data: b'\xff\x00\x00\x00'
+object 6: hex : 0xff000000
+object 6: int : 255
+object 6: uint: 255
+object 6: text: ....

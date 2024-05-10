@@ -1,0 +1,13 @@
+ktest file : 'klee-last/test000001.ktest'
+args       : ['klee_code.bc']
+num objects: 2
+object 0: name: 'Yn[3]'
+object 0: size: 3
+object 0: data: b'\x00\x00\x00'
+object 0: hex : 0x000000
+object 0: text: ...
+object 1: name: 'Yp[3]'
+object 1: size: 3
+object 1: data: b'\x00\x00\x00'
+object 1: hex : 0x000000
+object 1: text: ...

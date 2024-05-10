@@ -1,0 +1,7 @@
+Assumptions: (powerState=0 | powerState=255)
+Guarantee1: (powerState=0 & cntPowerOff<numOffPeriod & next(powerPr1)=0 & next(cntPowerOn)=cntPowerOn & next(cntPowerOff)=cntPowerOff+1)
+Guarantee2: (powerState=0 & cntPowerOff>=numOffPeriod & bPowerOnOk=false & next(powerPr1)=0 & next(cntPowerOn)=0 & next(cntPowerOff)=cntPowerOff)
+Guarantee3: (powerPr1=0 & powerState=255 & next(cntPowerOn)>numOnPeriod & bPowerOnOk=true & next(powerPr1)=255 & next(cntPowerOn)=cntPowerOn+1 & cntPowerOff=0)
+Guarantee4: (powerPr1=0 & powerState=255 & next(cntPowerOn)<=numOnPeriod & next(powerPr1)=0 & next(cntPowerOn)=cntPowerOn+1 & next(cntPowerOff)=cntPowerOff)
+Guarantee5: (powerState!=0 & (powerPr1!=0 | powerState!=255) & next(powerPr1)=powerState & next(cntPowerOn)=cntPowerOn & next(cntPowerOff)=cntPowerOff)
+Guarantee6: (next(numOnPeriod)=numOnPeriod & next(numOffPeriod)=numOffPeriod)

@@ -1,0 +1,16 @@
+p1:m_workMode=0
+p2:m_countPublic>280
+p3:m_countMode>800
+p4:m_workMode=17
+p5:m_countMode>4500
+p6:m_workMode=34
+p7:m_countMode>5000
+p8:m_countPublic>12
+p9:m_workMode=51
+p10:Cnt_RASM>1
+p11:m_countPublic<=280
+p12:m_countMode<=800
+p13:m_countPublic<=12
+p14:m_countMode<=4500
+p15:m_countMode<=5000
+p16:Cnt_RASM<=1

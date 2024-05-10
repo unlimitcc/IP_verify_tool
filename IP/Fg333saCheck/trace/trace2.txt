@@ -1,0 +1,139 @@
+Breakpoint 1 at 0x13d4: file gdb_debug_code.c, line 107.
+Breakpoint 2 at 0x11b0: file gdb_debug_code.c, line 29.
+Breakpoint 3 at 0x11cb: file gdb_debug_code.c, line 33.
+Breakpoint 4 at 0x11f7: file gdb_debug_code.c, line 35.
+Breakpoint 5 at 0x1202: file gdb_debug_code.c, line 36.
+Breakpoint 6 at 0x121b: file gdb_debug_code.c, line 39.
+Breakpoint 7 at 0x1250: file gdb_debug_code.c, line 41.
+Breakpoint 8 at 0x125b: file gdb_debug_code.c, line 43.
+Breakpoint 9 at 0x1273: file gdb_debug_code.c, line 46.
+Breakpoint 10 at 0x1292: file gdb_debug_code.c, line 48.
+Breakpoint 11 at 0x129d: file gdb_debug_code.c, line 49.
+Breakpoint 12 at 0x12ad: file gdb_debug_code.c, line 52.
+Breakpoint 13 at 0x13d4: file gdb_debug_code.c, line 107.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, main () at gdb_debug_code.c:107
+107		Fg333saCheckFun(&Fg333saCheck1);
+1: /u pbuff[0] = 0
+2: /u pbuff[1] = 0
+3: /u pbuff[2] = 0
+4: /u pbuff[3] = 0
+5: /u pbuff[4] = 0
+6: /u pbuff[5] = 0
+7: /u pbuff[6] = 0
+8: /u pbuff[7] = 0
+9: /u pbuff[8] = 0
+10: /u pbuff[9] = 0
+11: /u pbuff[10] = 0
+12: /u pbuff[11] = 0
+13: /u pbuff[12] = 0
+14: /u pbuff[13] = 0
+15: /u pbuff[14] = 0
+16: /u pbuff[15] = 0
+17: /u pbuff[16] = 0
+18: /u pbuff[17] = 0
+19: /u pbuff[18] = 0
+20: /u Fg333saCheck1.bComSuc = 0
+21: /d Fg333saCheck1.cntCheckO = 0
+22: /d Fg333saCheck1.cntCheckS = 0
+23: /d Fg333saCheck1.cntHeadO = 0
+24: /d Fg333saCheck1.cntHeadS = 0
+25: /d Fg333saCheck1.cntLenRdO = 0
+26: /d Fg333saCheck1.cntLenRdS = 0
+27: /d Fg333saCheck1.cntUpdataO = 0
+28: /d Fg333saCheck1.cntUpdataS = 0
+29: /u Fg333saCheck1.frm = 0
+30: /u Fg333saCheck1.rdLen = 19
+31: /d Fg333saCheck1.totalCheckO = 0
+32: /d Fg333saCheck1.totalCheckS = 0
+33: /d Fg333saCheck1.totalHeadO = 0
+34: /d Fg333saCheck1.totalHeadS = 0
+35: /d Fg333saCheck1.totalLenRdO = 0
+36: /d Fg333saCheck1.totalLenRdS = 0
+37: /d Fg333saCheck1.totalUpdataO = 0
+38: /d Fg333saCheck1.totalUpdataS = 0
+
+Breakpoint 2, Fg333saCheckFun (pIp=0x555555558020 <Fg333saCheck1>) at gdb_debug_code.c:29
+29	  if (p->rdLen == 19) {
+1: /u pbuff[0] = 0
+2: /u pbuff[1] = 0
+3: /u pbuff[2] = 0
+4: /u pbuff[3] = 0
+5: /u pbuff[4] = 0
+6: /u pbuff[5] = 0
+7: /u pbuff[6] = 0
+8: /u pbuff[7] = 0
+9: /u pbuff[8] = 0
+10: /u pbuff[9] = 0
+11: /u pbuff[10] = 0
+12: /u pbuff[11] = 0
+13: /u pbuff[12] = 0
+14: /u pbuff[13] = 0
+15: /u pbuff[14] = 0
+16: /u pbuff[15] = 0
+17: /u pbuff[16] = 0
+18: /u pbuff[17] = 0
+19: /u pbuff[18] = 0
+20: /u Fg333saCheck1.bComSuc = 0
+21: /d Fg333saCheck1.cntCheckO = 0
+22: /d Fg333saCheck1.cntCheckS = 0
+23: /d Fg333saCheck1.cntHeadO = 0
+24: /d Fg333saCheck1.cntHeadS = 0
+25: /d Fg333saCheck1.cntLenRdO = 0
+26: /d Fg333saCheck1.cntLenRdS = 0
+27: /d Fg333saCheck1.cntUpdataO = 0
+28: /d Fg333saCheck1.cntUpdataS = 0
+29: /u Fg333saCheck1.frm = 0
+30: /u Fg333saCheck1.rdLen = 19
+31: /d Fg333saCheck1.totalCheckO = 0
+32: /d Fg333saCheck1.totalCheckS = 0
+33: /d Fg333saCheck1.totalHeadO = 0
+34: /d Fg333saCheck1.totalHeadS = 0
+35: /d Fg333saCheck1.totalLenRdO = 0
+36: /d Fg333saCheck1.totalLenRdS = 0
+37: /d Fg333saCheck1.totalUpdataO = 0
+38: /d Fg333saCheck1.totalUpdataS = 0
+
+Breakpoint 3, Fg333saCheckFun (pIp=0x555555558020 <Fg333saCheck1>) at gdb_debug_code.c:33
+33	    if (p->pbuff[17] != (p->frm)) {
+1: /u pbuff[0] = 0
+2: /u pbuff[1] = 0
+3: /u pbuff[2] = 0
+4: /u pbuff[3] = 0
+5: /u pbuff[4] = 0
+6: /u pbuff[5] = 0
+7: /u pbuff[6] = 0
+8: /u pbuff[7] = 0
+9: /u pbuff[8] = 0
+10: /u pbuff[9] = 0
+11: /u pbuff[10] = 0
+12: /u pbuff[11] = 0
+13: /u pbuff[12] = 0
+14: /u pbuff[13] = 0
+15: /u pbuff[14] = 0
+16: /u pbuff[15] = 0
+17: /u pbuff[16] = 0
+18: /u pbuff[17] = 0
+19: /u pbuff[18] = 0
+20: /u Fg333saCheck1.bComSuc = 0
+21: /d Fg333saCheck1.cntCheckO = 0
+22: /d Fg333saCheck1.cntCheckS = 0
+23: /d Fg333saCheck1.cntHeadO = 0
+24: /d Fg333saCheck1.cntHeadS = 0
+25: /d Fg333saCheck1.cntLenRdO = 0
+26: /d Fg333saCheck1.cntLenRdS = 0
+27: /d Fg333saCheck1.cntUpdataO = 0
+28: /d Fg333saCheck1.cntUpdataS = 0
+29: /u Fg333saCheck1.frm = 0
+30: /u Fg333saCheck1.rdLen = 19
+31: /d Fg333saCheck1.totalCheckO = 0
+32: /d Fg333saCheck1.totalCheckS = 0
+33: /d Fg333saCheck1.totalHeadO = 0
+34: /d Fg333saCheck1.totalHeadS = 0
+35: /d Fg333saCheck1.totalLenRdO = 0
+36: /d Fg333saCheck1.totalLenRdS = 0
+37: /d Fg333saCheck1.totalUpdataO = 0
+38: /d Fg333saCheck1.totalUpdataS = 0
+[Inferior 1 (process 4304) exited normally]

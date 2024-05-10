@@ -1,0 +1,62 @@
+Breakpoint 1 at 0x120f: file gdb_debug_code.c, line 62.
+Breakpoint 2 at 0x1147: file gdb_debug_code.c, line 10.
+Breakpoint 3 at 0x1180: file gdb_debug_code.c, line 20.
+Breakpoint 4 at 0x118b: file gdb_debug_code.c, line 21.
+Breakpoint 5 at 0x1198: file gdb_debug_code.c, line 24.
+Breakpoint 6 at 0x11da: file gdb_debug_code.c, line 32.
+Breakpoint 7 at 0x11e7: file gdb_debug_code.c, line 37.
+Breakpoint 8 at 0x11f0: file gdb_debug_code.c, line 43.
+Breakpoint 9 at 0x1204: file gdb_debug_code.c, line 47.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+
+Breakpoint 1, main () at gdb_debug_code.c:62
+62		PowerOnJudgeFun(&PowerOnJudge1);
+1: /u PowerOnJudge1.bPowerOnOk = 0
+2: /d PowerOnJudge1.cntPowerOff = 0
+3: /d PowerOnJudge1.cntPowerOn = 0
+4: /d PowerOnJudge1.numOffPeriod = 0
+5: /d PowerOnJudge1.numOnPeriod = 0
+6: /u PowerOnJudge1.powerPr1 = 255
+7: /u PowerOnJudge1.powerState = 255
+
+Breakpoint 2, PowerOnJudgeFun (pIp=0x555555558020 <PowerOnJudge1>) at gdb_debug_code.c:10
+10		if(powerState == DEV_INVALID)
+1: /u PowerOnJudge1.bPowerOnOk = 0
+2: /d PowerOnJudge1.cntPowerOff = 0
+3: /d PowerOnJudge1.cntPowerOn = 0
+4: /d PowerOnJudge1.numOffPeriod = 0
+5: /d PowerOnJudge1.numOnPeriod = 0
+6: /u PowerOnJudge1.powerPr1 = 255
+7: /u PowerOnJudge1.powerState = 255
+
+Breakpoint 5, PowerOnJudgeFun (pIp=0x555555558020 <PowerOnJudge1>) at gdb_debug_code.c:24
+24		else if((p->powerPr1 == DEV_INVALID) && (powerState == DEV_POWERON))  /* 电源状态由断电变加电 */
+1: /u PowerOnJudge1.bPowerOnOk = 0
+2: /d PowerOnJudge1.cntPowerOff = 0
+3: /d PowerOnJudge1.cntPowerOn = 0
+4: /d PowerOnJudge1.numOffPeriod = 0
+5: /d PowerOnJudge1.numOnPeriod = 0
+6: /u PowerOnJudge1.powerPr1 = 255
+7: /u PowerOnJudge1.powerState = 255
+
+Breakpoint 8, PowerOnJudgeFun (pIp=0x555555558020 <PowerOnJudge1>) at gdb_debug_code.c:43
+43			NULL_STATEMENT();
+1: /u PowerOnJudge1.bPowerOnOk = 0
+2: /d PowerOnJudge1.cntPowerOff = 0
+3: /d PowerOnJudge1.cntPowerOn = 0
+4: /d PowerOnJudge1.numOffPeriod = 0
+5: /d PowerOnJudge1.numOnPeriod = 0
+6: /u PowerOnJudge1.powerPr1 = 255
+7: /u PowerOnJudge1.powerState = 255
+
+Breakpoint 9, PowerOnJudgeFun (pIp=0x555555558020 <PowerOnJudge1>) at gdb_debug_code.c:47
+47		return;
+1: /u PowerOnJudge1.bPowerOnOk = 0
+2: /d PowerOnJudge1.cntPowerOff = 0
+3: /d PowerOnJudge1.cntPowerOn = 0
+4: /d PowerOnJudge1.numOffPeriod = 0
+5: /d PowerOnJudge1.numOnPeriod = 0
+6: /u PowerOnJudge1.powerPr1 = 255
+7: /u PowerOnJudge1.powerState = 255
+[Inferior 1 (process) exited normally]
