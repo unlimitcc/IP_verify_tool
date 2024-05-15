@@ -1,0 +1,6 @@
+Assumptions: (IwaI>=9 & IwalI=9 & IcountPickI=9)
+Guarantee1: (next(Iwa_outI)=9 & next(IwalI)=9 & next(IcountPickI)=9)
+Guarantee2: (FORALL(i:0~9)(abs(wa[i]-wal[i])>waThr & countPick[i]+1<pickThr) -> (next(wa_out[i])=wal[i] & next(wal[i])=wal[i] & next(countPick[i])=countPick[i]+1))
+Guarantee3: (FORALL(i:0~9)(abs(wa[i]-wal[i])<=waThr & countPick[i]+1>=pickThr) -> (next(wa_out[i])=wal[i] & next(wal[i])=wal[i] & next(countPick[i])=0))
+Guarantee4: (next(waThr)=waThr)
+Guarantee5: (next(pickThr)=pickThr)

@@ -1,0 +1,10 @@
+p1:IwaI>=9
+p2:IwalI=9
+p3:IcountPickI=9
+p4:next(Iwa_outI)=9
+p5:next(IwalI)=9
+p6:next(IcountPickI)=9
+p7:FORALL(i:0~9)(abs(wa[i]-wal[i])>waThr&countPick[i]+1<pickThr)->(next(wa_out[i])=wal[i]&next(wal[i])=wal[i]&next(countPick[i])=countPick[i]+1)
+p8:FORALL(i:0~9)(abs(wa[i]-wal[i])<=waThr&countPick[i]+1>=pickThr)->(next(wa_out[i])=wal[i]&next(wal[i])=wal[i]&next(countPick[i])=0)
+p9:next(waThr)=waThr
+p10:next(pickThr)=pickThr

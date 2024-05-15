@@ -1,0 +1,2 @@
+p1:FORALL(i:0~9)(powerState%(2^(i+1))>=(2^i)&healthState%(2^(i+1))<(2^i))->(next(StateFlag[i])=235)
+p2:FORALL(i:0~9)(powerState%(2^(i+1))<(2^i)|healthState%(2^(i+1))>=(2^i))->(next(StateFlag[i])=0)

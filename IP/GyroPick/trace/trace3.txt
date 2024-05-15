@@ -1,0 +1,183 @@
+Breakpoint 1 at 0x1149: file gdb_debug_code.c, line 5.
+Breakpoint 2 at 0x1211: file gdb_debug_code.c, line 15.
+Breakpoint 3 at 0x128e: file gdb_debug_code.c, line 26.
+Breakpoint 4 at 0x12ba: file gdb_debug_code.c, line 27.
+Breakpoint 5 at 0x12e5: file gdb_debug_code.c, line 28.
+Breakpoint 6 at 0x12f6: file gdb_debug_code.c, line 34.
+Breakpoint 7 at 0x1322: file gdb_debug_code.c, line 35.
+Breakpoint 8 at 0x134d: file gdb_debug_code.c, line 36.
+Breakpoint 9 at 0x1370: file gdb_debug_code.c, line 39.
+Breakpoint 10 at 0x14a9: file gdb_debug_code.c, line 61.
+
+Breakpoint 1, GyroPickFun (pIp=0x0) at gdb_debug_code.c:5
+5	{
+1: /f wa[0] = -0
+2: /f wa[1] = 0
+3: /f wa[2] = 0
+4: /f wa[3] = 0
+5: /f wa[4] = 0
+6: /f wa[5] = 0
+7: /f wa[6] = 0
+8: /f wa[7] = 0
+9: /f wa[8] = 0
+10: /u GyroPick1.countPick[0] = 255
+11: /u GyroPick1.countPick[1] = 255
+12: /u GyroPick1.countPick[2] = 255
+13: /u GyroPick1.countPick[3] = 255
+14: /u GyroPick1.countPick[4] = 255
+15: /u GyroPick1.countPick[5] = 255
+16: /u GyroPick1.countPick[6] = 255
+17: /u GyroPick1.countPick[7] = 255
+18: /u GyroPick1.countPick[8] = 255
+19: /u GyroPick1.pickThr = 1
+20: /f GyroPick1.waThr = 0
+21: /f GyroPick1.wa_out[0] = 0
+22: /f GyroPick1.wa_out[1] = 0
+23: /f GyroPick1.wa_out[2] = 0
+24: /f GyroPick1.wa_out[3] = 0
+25: /f GyroPick1.wa_out[4] = 0
+26: /f GyroPick1.wa_out[5] = 0
+27: /f GyroPick1.wa_out[6] = 0
+28: /f GyroPick1.wa_out[7] = 0
+29: /f GyroPick1.wa_out[8] = 0
+30: /f GyroPick1.wal[0] = -4.04687691
+31: /f GyroPick1.wal[1] = 0
+32: /f GyroPick1.wal[2] = 0
+33: /f GyroPick1.wal[3] = 0
+34: /f GyroPick1.wal[4] = 0
+35: /f GyroPick1.wal[5] = 0
+36: /f GyroPick1.wal[6] = 0
+37: /f GyroPick1.wal[7] = 0
+38: /f GyroPick1.wal[8] = 0
+1: IwaI = 9
+1: IcountPickI = 9
+1: Iwa_outI = 9
+1: IwalI = 9
+
+Breakpoint 2, GyroPickFun (pIp=0x555555558060 <GyroPick1>) at gdb_debug_code.c:15
+15	        if (tmpgi > p->waThr)     				/* 剔野限0.08° */
+1: /f wa[0] = -0
+2: /f wa[1] = 0
+3: /f wa[2] = 0
+4: /f wa[3] = 0
+5: /f wa[4] = 0
+6: /f wa[5] = 0
+7: /f wa[6] = 0
+8: /f wa[7] = 0
+9: /f wa[8] = 0
+10: /u GyroPick1.countPick[0] = 255
+11: /u GyroPick1.countPick[1] = 255
+12: /u GyroPick1.countPick[2] = 255
+13: /u GyroPick1.countPick[3] = 255
+14: /u GyroPick1.countPick[4] = 255
+15: /u GyroPick1.countPick[5] = 255
+16: /u GyroPick1.countPick[6] = 255
+17: /u GyroPick1.countPick[7] = 255
+18: /u GyroPick1.countPick[8] = 255
+19: /u GyroPick1.pickThr = 1
+20: /f GyroPick1.waThr = 0
+21: /f GyroPick1.wa_out[0] = 0
+22: /f GyroPick1.wa_out[1] = 0
+23: /f GyroPick1.wa_out[2] = 0
+24: /f GyroPick1.wa_out[3] = 0
+25: /f GyroPick1.wa_out[4] = 0
+26: /f GyroPick1.wa_out[5] = 0
+27: /f GyroPick1.wa_out[6] = 0
+28: /f GyroPick1.wa_out[7] = 0
+29: /f GyroPick1.wa_out[8] = 0
+30: /f GyroPick1.wal[0] = -4.04687691
+31: /f GyroPick1.wal[1] = 0
+32: /f GyroPick1.wal[2] = 0
+33: /f GyroPick1.wal[3] = 0
+34: /f GyroPick1.wal[4] = 0
+35: /f GyroPick1.wal[5] = 0
+36: /f GyroPick1.wal[6] = 0
+37: /f GyroPick1.wal[7] = 0
+38: /f GyroPick1.wal[8] = 0
+1: IwaI = 9
+1: IcountPickI = 9
+1: Iwa_outI = 9
+1: IwalI = 9
+
+Breakpoint 9, GyroPickFun (pIp=0x555555558060 <GyroPick1>) at gdb_debug_code.c:39
+39	    return;
+1: /f wa[0] = -0
+2: /f wa[1] = 0
+3: /f wa[2] = 0
+4: /f wa[3] = 0
+5: /f wa[4] = 0
+6: /f wa[5] = 0
+7: /f wa[6] = 0
+8: /f wa[7] = 0
+9: /f wa[8] = 0
+10: /u GyroPick1.countPick[0] = 0
+11: /u GyroPick1.countPick[1] = 255
+12: /u GyroPick1.countPick[2] = 255
+13: /u GyroPick1.countPick[3] = 255
+14: /u GyroPick1.countPick[4] = 255
+15: /u GyroPick1.countPick[5] = 255
+16: /u GyroPick1.countPick[6] = 255
+17: /u GyroPick1.countPick[7] = 255
+18: /u GyroPick1.countPick[8] = 255
+19: /u GyroPick1.pickThr = 1
+20: /f GyroPick1.waThr = 0
+21: /f GyroPick1.wa_out[0] = -4.04687691
+22: /f GyroPick1.wa_out[1] = 0
+23: /f GyroPick1.wa_out[2] = 0
+24: /f GyroPick1.wa_out[3] = 0
+25: /f GyroPick1.wa_out[4] = 0
+26: /f GyroPick1.wa_out[5] = 0
+27: /f GyroPick1.wa_out[6] = 0
+28: /f GyroPick1.wa_out[7] = 0
+29: /f GyroPick1.wa_out[8] = 0
+30: /f GyroPick1.wal[0] = -4.04687691
+31: /f GyroPick1.wal[1] = 0
+32: /f GyroPick1.wal[2] = 0
+33: /f GyroPick1.wal[3] = 0
+34: /f GyroPick1.wal[4] = 0
+35: /f GyroPick1.wal[5] = 0
+36: /f GyroPick1.wal[6] = 0
+37: /f GyroPick1.wal[7] = 0
+38: /f GyroPick1.wal[8] = 0
+
+Breakpoint 10, main () at gdb_debug_code.c:61
+61	}
+1: /f wa[0] = -0
+2: /f wa[1] = 0
+3: /f wa[2] = 0
+4: /f wa[3] = 0
+5: /f wa[4] = 0
+6: /f wa[5] = 0
+7: /f wa[6] = 0
+8: /f wa[7] = 0
+9: /f wa[8] = 0
+10: /u GyroPick1.countPick[0] = 0
+11: /u GyroPick1.countPick[1] = 255
+12: /u GyroPick1.countPick[2] = 255
+13: /u GyroPick1.countPick[3] = 255
+14: /u GyroPick1.countPick[4] = 255
+15: /u GyroPick1.countPick[5] = 255
+16: /u GyroPick1.countPick[6] = 255
+17: /u GyroPick1.countPick[7] = 255
+18: /u GyroPick1.countPick[8] = 255
+19: /u GyroPick1.pickThr = 1
+20: /f GyroPick1.waThr = 0
+21: /f GyroPick1.wa_out[0] = -4.04687691
+22: /f GyroPick1.wa_out[1] = 0
+23: /f GyroPick1.wa_out[2] = 0
+24: /f GyroPick1.wa_out[3] = 0
+25: /f GyroPick1.wa_out[4] = 0
+26: /f GyroPick1.wa_out[5] = 0
+27: /f GyroPick1.wa_out[6] = 0
+28: /f GyroPick1.wa_out[7] = 0
+29: /f GyroPick1.wa_out[8] = 0
+30: /f GyroPick1.wal[0] = -4.04687691
+31: /f GyroPick1.wal[1] = 0
+32: /f GyroPick1.wal[2] = 0
+33: /f GyroPick1.wal[3] = 0
+34: /f GyroPick1.wal[4] = 0
+35: /f GyroPick1.wal[5] = 0
+36: /f GyroPick1.wal[6] = 0
+37: /f GyroPick1.wal[7] = 0
+38: /f GyroPick1.wal[8] = 0
+[Inferior 1 (process) exited normally]

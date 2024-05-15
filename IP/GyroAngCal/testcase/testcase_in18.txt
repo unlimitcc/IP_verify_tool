@@ -1,0 +1,20 @@
+ktest file : 'klee-last/test000018.ktest'
+args       : ['klee_code.bc']
+num objects: 3
+object 0: name: '*W[3]'
+object 0: size: 12
+object 0: data: b'B\xc8\xbd\x80B7\x00\xc0\xa0\x08\x02@'
+object 0: hex : 0x42c8bd80423700c0a0080240
+object 0: text: B...B7.....@
+object 1: name: 'Gi[3]'
+object 1: size: 12
+object 1: data: b' \x01\x90\xff\x08\x00\x80\xc3\x00\x80\x00H'
+object 1: hex : 0x200190ff080080c300800048
+object 1: text:  ..........H
+object 2: name: 'ctlPeriod'
+object 2: size: 4
+object 2: data: b'\x00\x00\x00\x00'
+object 2: hex : 0x00000000
+object 2: int : 0
+object 2: uint: 0
+object 2: text: ....

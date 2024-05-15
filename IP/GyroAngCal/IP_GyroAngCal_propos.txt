@@ -1,0 +1,8 @@
+p1:IWI>=3
+p2:IGiI=3
+p3:IGi_out_nextI=3
+p4:IGi_nextI=3
+p5:next(Gi[0])=(max(-180,min(Gi[0]+W[0]*ctlPeriod,180)))
+p6:next(Gi[1])=(max(-180,min(Gi[1]+W[1]*ctlPeriod,180)))
+p7:next(Gi[2])=(max(-90,min(Gi[2]+W[2]*ctlPeriod,90)))
+p8:next(ctlPeriod)=ctlPeriod

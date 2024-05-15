@@ -1,0 +1,156 @@
+Breakpoint 1 at 0x11e0: file gdb_debug_code.c, line 35.
+Breakpoint 2 at 0x1181: file gdb_debug_code.c, line 16.
+Breakpoint 3 at 0x119f: file gdb_debug_code.c, line 18.
+Breakpoint 4 at 0x11be: file gdb_debug_code.c, line 24.
+Breakpoint 5 at 0x11dd: file gdb_debug_code.c, line 27.
+
+Breakpoint 1, main () at gdb_debug_code.c:35
+35	int main(){
+1: /u GyroStateSet1.StateFlag[0] = 0
+2: /u GyroStateSet1.StateFlag[1] = 0
+3: /u GyroStateSet1.StateFlag[2] = 0
+4: /u GyroStateSet1.StateFlag[3] = 0
+5: /u GyroStateSet1.StateFlag[4] = 0
+6: /u GyroStateSet1.StateFlag[5] = 0
+7: /u GyroStateSet1.StateFlag[6] = 0
+8: /u GyroStateSet1.StateFlag[7] = 0
+9: /u GyroStateSet1.StateFlag[8] = 0
+10: /u GyroStateSet1.healthState = 0
+11: /u GyroStateSet1.powerState = 0
+1: IStateFlagI = 9
+
+Breakpoint 2, GyroStateSetFun (pIp=0x555555558020 <GyroStateSet1>) at gdb_debug_code.c:16
+16			tmpHTBIT = p->healthState & (1 << si) ;			/* 找健康 */
+1: /u GyroStateSet1.StateFlag[0] = 0
+2: /u GyroStateSet1.StateFlag[1] = 0
+3: /u GyroStateSet1.StateFlag[2] = 0
+4: /u GyroStateSet1.StateFlag[3] = 0
+5: /u GyroStateSet1.StateFlag[4] = 0
+6: /u GyroStateSet1.StateFlag[5] = 0
+7: /u GyroStateSet1.StateFlag[6] = 0
+8: /u GyroStateSet1.StateFlag[7] = 0
+9: /u GyroStateSet1.StateFlag[8] = 0
+10: /u GyroStateSet1.healthState = 67372036
+11: /u GyroStateSet1.powerState = 101058054
+1: IStateFlagI = 9
+
+Breakpoint 3, GyroStateSetFun (pIp=0x555555558020 <GyroStateSet1>) at gdb_debug_code.c:18
+18			if ((tmpPSBIT != 0) && (tmpHTBIT == 0))				/* 上电且健康 */
+1: /u GyroStateSet1.StateFlag[0] = 0
+2: /u GyroStateSet1.StateFlag[1] = 0
+3: /u GyroStateSet1.StateFlag[2] = 0
+4: /u GyroStateSet1.StateFlag[3] = 0
+5: /u GyroStateSet1.StateFlag[4] = 0
+6: /u GyroStateSet1.StateFlag[5] = 0
+7: /u GyroStateSet1.StateFlag[6] = 0
+8: /u GyroStateSet1.StateFlag[7] = 0
+9: /u GyroStateSet1.StateFlag[8] = 0
+10: /u GyroStateSet1.healthState = 67372036
+11: /u GyroStateSet1.powerState = 101058054
+1: IStateFlagI = 9
+
+Breakpoint 4, GyroStateSetFun (pIp=0x555555558020 <GyroStateSet1>) at gdb_debug_code.c:24
+24				p->StateFlag[si] = FALSE;				/* 陀螺状态标志为不正常 */		
+1: /u GyroStateSet1.StateFlag[0] = 0
+2: /u GyroStateSet1.StateFlag[1] = 0
+3: /u GyroStateSet1.StateFlag[2] = 0
+4: /u GyroStateSet1.StateFlag[3] = 0
+5: /u GyroStateSet1.StateFlag[4] = 0
+6: /u GyroStateSet1.StateFlag[5] = 0
+7: /u GyroStateSet1.StateFlag[6] = 0
+8: /u GyroStateSet1.StateFlag[7] = 0
+9: /u GyroStateSet1.StateFlag[8] = 0
+10: /u GyroStateSet1.healthState = 67372036
+11: /u GyroStateSet1.powerState = 101058054
+1: IStateFlagI = 9
+
+Breakpoint 2, GyroStateSetFun (pIp=0x555555558020 <GyroStateSet1>) at gdb_debug_code.c:16
+16			tmpHTBIT = p->healthState & (1 << si) ;			/* 找健康 */
+1: /u GyroStateSet1.StateFlag[0] = 0
+2: /u GyroStateSet1.StateFlag[1] = 0
+3: /u GyroStateSet1.StateFlag[2] = 0
+4: /u GyroStateSet1.StateFlag[3] = 0
+5: /u GyroStateSet1.StateFlag[4] = 0
+6: /u GyroStateSet1.StateFlag[5] = 0
+7: /u GyroStateSet1.StateFlag[6] = 0
+8: /u GyroStateSet1.StateFlag[7] = 0
+9: /u GyroStateSet1.StateFlag[8] = 0
+10: /u GyroStateSet1.healthState = 67372036
+11: /u GyroStateSet1.powerState = 101058054
+1: IStateFlagI = 9
+
+Breakpoint 3, GyroStateSetFun (pIp=0x555555558020 <GyroStateSet1>) at gdb_debug_code.c:18
+18			if ((tmpPSBIT != 0) && (tmpHTBIT == 0))				/* 上电且健康 */
+1: /u GyroStateSet1.StateFlag[0] = 0
+2: /u GyroStateSet1.StateFlag[1] = 0
+3: /u GyroStateSet1.StateFlag[2] = 0
+4: /u GyroStateSet1.StateFlag[3] = 0
+5: /u GyroStateSet1.StateFlag[4] = 0
+6: /u GyroStateSet1.StateFlag[5] = 0
+7: /u GyroStateSet1.StateFlag[6] = 0
+8: /u GyroStateSet1.StateFlag[7] = 0
+9: /u GyroStateSet1.StateFlag[8] = 0
+10: /u GyroStateSet1.healthState = 67372036
+11: /u GyroStateSet1.powerState = 101058054
+1: IStateFlagI = 9
+
+Breakpoint 2, GyroStateSetFun (pIp=0x555555558020 <GyroStateSet1>) at gdb_debug_code.c:16
+16			tmpHTBIT = p->healthState & (1 << si) ;			/* 找健康 */
+1: /u GyroStateSet1.StateFlag[0] = 0
+2: /u GyroStateSet1.StateFlag[1] = 235
+3: /u GyroStateSet1.StateFlag[2] = 0
+4: /u GyroStateSet1.StateFlag[3] = 0
+5: /u GyroStateSet1.StateFlag[4] = 0
+6: /u GyroStateSet1.StateFlag[5] = 0
+7: /u GyroStateSet1.StateFlag[6] = 0
+8: /u GyroStateSet1.StateFlag[7] = 0
+9: /u GyroStateSet1.StateFlag[8] = 0
+10: /u GyroStateSet1.healthState = 67372036
+11: /u GyroStateSet1.powerState = 101058054
+1: IStateFlagI = 9
+
+Breakpoint 3, GyroStateSetFun (pIp=0x555555558020 <GyroStateSet1>) at gdb_debug_code.c:18
+18			if ((tmpPSBIT != 0) && (tmpHTBIT == 0))				/* 上电且健康 */
+1: /u GyroStateSet1.StateFlag[0] = 0
+2: /u GyroStateSet1.StateFlag[1] = 235
+3: /u GyroStateSet1.StateFlag[2] = 0
+4: /u GyroStateSet1.StateFlag[3] = 0
+5: /u GyroStateSet1.StateFlag[4] = 0
+6: /u GyroStateSet1.StateFlag[5] = 0
+7: /u GyroStateSet1.StateFlag[6] = 0
+8: /u GyroStateSet1.StateFlag[7] = 0
+9: /u GyroStateSet1.StateFlag[8] = 0
+10: /u GyroStateSet1.healthState = 67372036
+11: /u GyroStateSet1.powerState = 101058054
+1: IStateFlagI = 9
+
+Breakpoint 4, GyroStateSetFun (pIp=0x555555558020 <GyroStateSet1>) at gdb_debug_code.c:24
+24				p->StateFlag[si] = FALSE;				/* 陀螺状态标志为不正常 */		
+1: /u GyroStateSet1.StateFlag[0] = 0
+2: /u GyroStateSet1.StateFlag[1] = 235
+3: /u GyroStateSet1.StateFlag[2] = 0
+4: /u GyroStateSet1.StateFlag[3] = 0
+5: /u GyroStateSet1.StateFlag[4] = 0
+6: /u GyroStateSet1.StateFlag[5] = 0
+7: /u GyroStateSet1.StateFlag[6] = 0
+8: /u GyroStateSet1.StateFlag[7] = 0
+9: /u GyroStateSet1.StateFlag[8] = 0
+10: /u GyroStateSet1.healthState = 67372036
+11: /u GyroStateSet1.powerState = 101058054
+1: IStateFlagI = 9
+
+Breakpoint 5, GyroStateSetFun (pIp=0x555555558020 <GyroStateSet1>) at gdb_debug_code.c:27
+27	    return;
+1: /u GyroStateSet1.StateFlag[0] = 0
+2: /u GyroStateSet1.StateFlag[1] = 235
+3: /u GyroStateSet1.StateFlag[2] = 0
+4: /u GyroStateSet1.StateFlag[3] = 0
+5: /u GyroStateSet1.StateFlag[4] = 0
+6: /u GyroStateSet1.StateFlag[5] = 0
+7: /u GyroStateSet1.StateFlag[6] = 0
+8: /u GyroStateSet1.StateFlag[7] = 0
+9: /u GyroStateSet1.StateFlag[8] = 0
+10: /u GyroStateSet1.healthState = 67372036
+11: /u GyroStateSet1.powerState = 101058054
+[Inferior 1 (process) exited normally]
+[Inferior 1 (process) exited normally]

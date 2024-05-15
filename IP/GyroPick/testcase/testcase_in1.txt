@@ -1,0 +1,37 @@
+ktest file : 'klee-last/test000001.ktest'
+args       : ['klee_code.bc']
+num objects: 6
+object 0: name: '*wa[9]'
+object 0: size: 36
+object 0: data: b'\xf9\x07\x80Q\xf9\xf9\xf9\xf9\xf9\xf9\xf9\xf9\xf9\xf9\xf9\xf9\xf9\xf9\xf9\xf9\xf9\xf9\xf9\xf9\xf9\xf9\xf9\xf9\xf9\xf9\xf9\xf9\xf9\xf9\xf9\xf9'
+object 0: hex : 0xf9078051f9f9f9f9f9f9f9f9f9f9f9f9f9f9f9f9f9f9f9f9f9f9f9f9f9f9f9f9f9f9f9f9
+object 0: text: ...Q................................
+object 1: name: 'countPick[9]'
+object 1: size: 9
+object 1: data: b'\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+object 1: hex : 0x000000000000000000
+object 1: text: .........
+object 2: name: 'pickThr'
+object 2: size: 1
+object 2: data: b'\x00'
+object 2: hex : 0x00
+object 2: int : 0
+object 2: uint: 0
+object 2: text: .
+object 3: name: 'waThr'
+object 3: size: 4
+object 3: data: b'\x00\x001l'
+object 3: hex : 0x0000316c
+object 3: int : 1815150592
+object 3: uint: 1815150592
+object 3: text: ..1l
+object 4: name: 'wa_out[9]'
+object 4: size: 36
+object 4: data: b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+object 4: hex : 0x000000000000000000000000000000000000000000000000000000000000000000000000
+object 4: text: ....................................
+object 5: name: 'wal[9]'
+object 5: size: 36
+object 5: data: b'\x00\xc0\x7fQ\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+object 5: hex : 0x00c07f510000000000000000000000000000000000000000000000000000000000000000
+object 5: text: ...Q................................

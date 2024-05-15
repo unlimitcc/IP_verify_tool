@@ -1,0 +1,7 @@
+Assumptions: (IVGI=(9,3) & ISignFlagI>=5 & FORALL(j:0~min(JoinTotal,5))SignFlag[j]<9)
+Guarantee1: IRtempI_next=(3,5)
+Guarantee2: (gyroStatus0!=gyroStatus1 -> (next(flgGyroCalc)=235 & IRgtempI=(5,3) & (FORALL(i:0~min(JoinTotal,5))FORALL(j:0~3)Rgtemp[i][j]=VG[SignFlag[i]][j]) & (FORALL(i:min(JoinTotal,5)~5)FORALL(j:0~3)Rgtemp[i][j]=0) & next(gyroStatus1)=gyroStatus0))
+Guarantee3: (min(JoinTotal,5)>=3 & rank(TRANS(Rgtemp)*Rgtemp)=3 -> next(Rtemp)=INV(TRANS(Rgtemp)*Rgtemp))
+Guarantee4: (min(JoinTotal,5)<3 | rank(TRANS(Rgtemp)*Rgtemp)!=3 -> (FORALL(i:0~3)FORALL(j:0~5)next(Rtemp[i][j])=0))
+Guarantee5: (gyroStatus0!=gyroStatus1 -> (next(flgGyroCalc)=0 & (FORALL(i:0~3)FORALL(j:0~5)next(Rtemp[i][j])=0) & next(gyroStatus1)=gyroStatus1))
+Guarantee6: IVG_nextI=(3,5) & VG_next=VG

@@ -1,0 +1,22 @@
+ktest file : 'klee-last/test000026.ktest'
+args       : ['klee_code.bc']
+num objects: 3
+object 0: name: 'StateFlag[9]'
+object 0: size: 9
+object 0: data: b'\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+object 0: hex : 0x000000000000000000
+object 0: text: .........
+object 1: name: 'healthState'
+object 1: size: 4
+object 1: data: b'\x02\x02\x02\x02'
+object 1: hex : 0x02020202
+object 1: int : 33686018
+object 1: uint: 33686018
+object 1: text: ....
+object 2: name: 'powerState'
+object 2: size: 4
+object 2: data: b'\x07\x07\x07\x07'
+object 2: hex : 0x07070707
+object 2: int : 117901063
+object 2: uint: 117901063
+object 2: text: ....
