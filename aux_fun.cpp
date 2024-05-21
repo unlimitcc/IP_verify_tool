@@ -1,8 +1,10 @@
-//该文件记录main.cpp中调用的辅助函数，其功能去整个自动化过程不直接相关
+//该文件记录main.cpp中调用的辅助函数，其功能与整个自动化过程不直接相关
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <math.h>
 #include "aux_fun.h"
+
 
 using namespace std;
 using namespace antlr4;
@@ -13,113 +15,6 @@ bool isFileExists_ifstream(std::string& name) {
     return f.good();
 }
 
-string ADDSUM(string s, map<string, string>mp){
-    int p = 1, end;//p是栈指针，用于提取整个ADDSUM表达式
-    end = s.find("ADDSUM");
-    while(p>0){
-        if(s[end]=='('){
-            p++;
-        }else if(s[end]==')'){
-            p--;
-        }
-        end++;
-    }                                                        
-    string s_add = s.substr(s.find("ADDSUM"), end-s.find("ADDSUM")-1);              //确定整个累加式的范围
-    int begin = 1;
-    while(s_add[begin]!=')') begin++;               //提取累加式的待计算表达式部分
-    string s_add_cal = s_add.substr(begin+2, s_add.length()-begin-3);
-    int range = s_add.find('~');
-    int st = range, ed = range;
-    while(s_add[st]!=':') st--;
-    while(s_add[ed]!=')') ed++;
-    siint32 top = atoi(s_add.substr(st+1, range-st-1).c_str());
-    siint32 down = atoi(s_add.substr(range+1, ed-range).c_str());
-    int be = st;
-    while(s_add[be]!='(') be--;
-    string var_name = s_add.substr(be+1,st-be-1);
-    string s_trans;                                         //记录转换后的字符串
-    string temp;                                            //记录将累加式转换后的字符串
-    smatch results;
-    string pattern(var_name);//用于匹配非数组变量名的模板
-    regex r(pattern);
-    string::const_iterator itb = s_add_cal.begin();//定义迭代器，用于访问整个字符串
-    string::const_iterator ite = s_add_cal.end();
-    for(int i=top; i<=down; i++){
-        string temp_s_add_cal = s_add_cal;
-        while(s_add_cal.find(var_name)!=string::npos && regex_search(itb, ite, results, r)){
-            s_add_cal.replace(s_add_cal.find(var_name), var_name.length(), to_string(i));
-        }
-        temp += s_add_cal;
-        if(i<down) temp += '+';
-        s_add_cal = temp_s_add_cal;
-    }
-    for(auto it=mp.begin(); it!=mp.end(); it++){
-        while(temp.find(it->first)!=string::npos){
-            temp.replace(temp.find(it->first), it->first.length(), it->second);
-        }
-    }
-    s_trans = s.replace(s.find("ADDSUM"), s_add.length(), temp);
-    return s_trans;
-}
-
-string get_filename(string path){//path表示文件所在的绝对路径
-    int st_name = path.find_last_of("/")+1; //标识文件名的起始位置
-    int ed_name = path.find_last_of('.'); //标识文件名的末尾位置
-    string filename = path.substr(st_name, ed_name-st_name);
-    return filename;
-}
-
-int extract_index(string s){
-    int r = s.find(']');
-    int l = s.find('[');
-    string index = s.substr(l+1, r-l-1);
-    return atoi(index.c_str());
-}
-
-int extract_len(string s){
-    int len;
-    smatch results;
-    string pattern("[0-9]+");//用于数字
-    regex r(pattern);
-    string::const_iterator itb = s.begin();//定义迭代器，用于访问整个字符串
-    string::const_iterator ite = s.end();
-    string temp;
-    while(regex_search(itb, ite, results, r)){
-        temp = results[0];
-        len = stoi(temp);
-        break;
-    }
-    return len;
-}
-
-void find_symbolic_var(string s, map<string, string>var_type, map<string, string> &symbolic_var, map<string, unint32> &array){
-    smatch results;
-    string pattern1("[A-Za-z0-9_]+");//用于匹配非数组变量名的模板
-    string pattern2("[A-Za-z0-9]+\\[[0-9]+\\]");//用于匹配数组变量名的模板
-    regex r1(pattern1);
-    regex r2(pattern2);
-    string::const_iterator itb = s.begin();//定义迭代器，用于访问整个字符串
-    string::const_iterator ite = s.end();
-    string temp;
-    while(regex_search(itb, ite, results, r2)){
-        temp = results[0];
-        string name = temp.substr(0, temp.find('['));
-        if(array[name]<extract_index(temp)) array[name] = extract_index(temp);
-        itb = results[0].second;
-    }
-    itb = s.begin();
-    while(regex_search(itb, ite, results, r1)){
-        temp = results[0];
-        for(auto it=var_type.begin(); it!=var_type.end(); it++){
-            if(it->first==temp){
-                symbolic_var[temp] = var_type[temp];
-                break;
-            }
-        }
-        itb = results[0].second;
-    }
-    return;
-}
 
 int get_testcasenum(const string &path){  
     int testcase_num=0;
@@ -190,50 +85,128 @@ vector<string> extractpropos(string input_file, vector<string>& assum){
     return demo.propos;
 }
 
-bool Quantifierpropos(string propos, map<string, pair<string, string>>& next, fstream& z3_contract, const string file_pos){
+//例如在命题next(countMode)=countMode+1中,计算next(countMode)和countMode+1并比较
+bool cal_propos_val(string &s){
+    //此时表达式中可能依然存在函数，例如min(0.12,0.19),这些需要在z3py中处理，此处考虑的仅为表达式中全部数字的情况
+    double val_left, val_right;//计算出的左右表达式的值
+    if(s.find("=")!=string::npos){	//left>=/<=/!=/=right
+    	int pos_op = s.find("=");
+    	if(s[pos_op-1]=='!' || s[pos_op-1]=='>' || s[pos_op-1]=='<'){
+    		val_left = Calcu(s.substr(0,pos_op-1));
+    		val_right = Calcu(s.substr(pos_op+1, s.length()-pos_op-1));
+    		switch(s[pos_op-1]){
+    			case '!': 
+    				return val_left != val_right;
+    			case '>': 
+    				return val_left >= val_right;
+    			case '<': 
+    				return val_left <= val_right;
+    			}
+    	}else{
+    		val_left = Calcu(s.substr(0,pos_op));
+    		val_right = Calcu(s.substr(pos_op+1, s.length()-pos_op-1));
+    		return val_left == val_right;
+    	}
+    }else{//只有 > or < 两种可能
+    	if(s.find(">")!=string::npos){
+    		int pos_op = s.find(">");
+    		val_left = Calcu(s.substr(0,pos_op));
+    		val_right = Calcu(s.substr(pos_op+1, s.length()-pos_op-1));
+    		return val_left > val_right;
+    	}else{
+    		int pos_op = s.find("<");
+    		val_left = Calcu(s.substr(0,pos_op));
+    		val_right = Calcu(s.substr(pos_op+1, s.length()-pos_op-1));
+    		return val_left < val_right;
+    	}
+    }
+    return true;
+}
+
+bool Z3_Prover_Propos(fstream& propos_file, 
+					  const string& propos_file_path,
+				 	  map<string, pair<string, string>>& next,
+					  fstream& z3_contract, 
+					  const string file_pos,
+					  fstream& z3_constraint)//next数组里包含所有的变量的具体值
+{
 	z3_contract.seekp(0, ios::end);//写入位置移动到contract末尾
 	streampos pos = z3_contract.tellg();//读取文件大小
     z3_contract << "\n" << endl;
-    for(auto it=next.begin(); it!=next.end(); it++){
-    	if(propos.find("next("+it->first)!=string::npos){
-    		//数组需要特殊处理
-			while(propos.find("next("+it->first)!=string::npos){
-				int st = propos.find("next("+it->first);
-				string array_name, array_index;
+    propos_file.open(propos_file_path, ios::app | ios::in | ios::out);
+    if (!propos_file.is_open())		               	//判断文件是否成功打开
+	{
+		cout<<"Error opening file: IP_propos.txt"<<endl;
+		return false;
+	}
+	//已经添加进z3的约束不用重复添加
+	vector<string> cache;
+    while(!propos_file.eof()){
+    	string line;
+    	getline(propos_file,line);
+    	for(auto it=next.begin(); it!=next.end(); it++){
+     		string propos = line;
+    		string index = it->first.find('[')!=string::npos?it->first.substr(0,it->first.find('[')+1):it->first;
+    		string array_name = it->first.find('[')!=string::npos?it->first.substr(0,it->first.find('[')):"";
+    		//if(find(cache.begin(),cache.end(),"next("+index)!=cache.end() || find(cache.begin(),cache.end(),index)!=cache.end()) continue;
+    		//浮点数中的无穷大inf，z3无法解析
+    		while(it->second.first.find("inf")!=string::npos){
+    			int st = it->second.first.find("inf");
+    			it->second.first.replace(st,3,"3.4e+38");
+    		}
+    		while(it->second.second.find("inf")!=string::npos){
+    			int st = it->second.second.find("inf");
+    			it->second.second.replace(st,3,"3.4e+38");
+    		}
+			if(propos.find("next("+index)!=string::npos && find(cache.begin(),cache.end(),"next("+index)==cache.end()){
+				cache.emplace_back("next("+index);
+				cache.emplace_back(index);
+				//数组需要特殊处理,先提取数组名
+				if(it->second.second.length()!=0){
+					if(it->first.find('[')!=string::npos) \
+						z3_contract << array_name << "_next" << "=" << it->second.second << endl;
+					else \
+						z3_contract << "s.add(" << it->first << "_next==" << it->second.second << ")" << endl;
+				}else{
+					if(it->first.find('[')!=string::npos) \
+						z3_contract << array_name << "_next" << "=" << it->second.first << endl;
+					else \
+						z3_contract << "s.add(" << it->first << "_next==" << it->second.first << ")" << endl;
+				}
+				/*在z3中将list类型转化为array类型，转换函数在python文件中定义
+				当该变量var在命题中存在next(var)时，原命题中var表达式均指代初始变量信息*/
 				if(it->first.find('[')!=string::npos){
-					array_name = it->first.substr(0,it->first.find('['));
-					array_index = it->first.substr(it->first.find('['),it->first.length()-it->first.find('['));
+					z3_contract << "VER_"+array_name+"_next, constraints" << " = List2Array(" << array_name+"_next" << ",idx=())"<< endl;
+					z3_contract << array_name << "=" << it->second.first << endl;
+					z3_contract << "VER_"+array_name+", constraints" << " = List2Array(" << array_name+",idx=())"<< endl;
 				}
+				else z3_contract << "s.add(" << it->first << "==" << it->second.first << ")" << endl;
+			}else if(propos.find(index)!=string::npos && find(cache.begin(),cache.end(),index)==cache.end()){//打印最新值
+				cache.emplace_back(index);
 				if(it->second.second.length()==0){
-					if(it->first.find('[')!=string::npos){
-						z3_contract << "s.add(" << array_name << "_next" << array_index << "==" << it->second.first << ")" << endl;
-					}else z3_contract << "s.add(" << it->first << "_next==" << it->second.first << ")" << endl;
-					propos.replace(st,st+it->first.length()+6,"");
+					if(it->first.find('[')!=string::npos) \
+						z3_contract << array_name << "=" << it->second.first << endl;
+					else \
+						z3_contract << "s.add(" << it->first << "==" << it->second.first << ")" << endl;
 				}else{
-					if(it->first.find('[')!=string::npos){
-						z3_contract << "s.add(" << array_name << "_next" << array_index << "==" << it->second.second << ")" << endl;
-					}else z3_contract << "s.add(" << it->first << "_next==" << it->second.second << ")" << endl;
-					propos.replace(st,st+it->first.length()+6,"");
+					if(it->first.find('[')!=string::npos) \
+						z3_contract << array_name << "=" << it->second.second << endl;
+					else \
+						z3_contract << "s.add(" << it->first << "==" << it->second.second << ")" << endl;
 				}
+				if(it->first.find('[')!=string::npos)
+					z3_contract << "VER_"+array_name << ", constraints = List2Array(" << array_name << ", idx=())" << endl;
 			}
-			while(propos.find(it->first)!=string::npos){
-				int st = propos.find(it->first);
-				z3_contract << "s.add(" << it->first << "==" << it->second.first << ")" << endl;
-				propos.replace(st,st+it->first.length(),"");
-			}
-    	}else{
-    		while(propos.find(it->first)!=string::npos){
-				int st = propos.find(it->first);
-				if(it->second.second.length()==0){
-					z3_contract << "s.add(" << it->first << "==" << it->second.first << ")" << endl;
-					propos.replace(st,st+it->first.length(),"");
-				}else{
-					z3_contract << "s.add(" << it->first << "==" << it->second.second << ")" << endl;
-					propos.replace(st,st+it->first.length(),"");
-				}
-			}
-    	}
+		}
     }
+    //输入使用z3的编写的contract约束，保存在constraint文件里
+    z3_constraint.open("z3_constraint.py",ios::app | ios::out | ios::in);
+    while(!z3_constraint.eof()){
+    	string line;
+    	getline(z3_constraint,line);
+    	z3_contract << line << endl;
+    }
+    z3_constraint.close();
     z3_contract << "print(s.check())" << endl;
     char buffer[100];
     string res;
@@ -249,11 +222,68 @@ bool Quantifierpropos(string propos, map<string, pair<string, string>>& next, fs
         }
 	}
 	pclose(fp);
-	z3_contract.seekp(0, ios::beg);
-    truncate(file_pos.c_str(),pos);
+	//z3_contract.seekp(0, ios::beg);
+   	//truncate(file_pos.c_str(),pos);
     z3_contract.close();
-    if(res=="unsat") return false;
-    else return true;
+    propos_file.close();
+    if(res.find("unsat")!=string::npos) return false;
+    else if(res.find("sat")!=string::npos) return true;
+    else return false;
 }
 
+float Hex32_10(unsigned char *Byte){
+    
+    return *((float*)Byte);
+}
 
+void extract_float(const string& VAL, map<string,string>& test_case, const string & NAME){
+	unsigned char ch[4];//存储16进制表示的IEEE754标准32位浮点数
+	for (size_t i = 0; i < VAL.length(); i+=2){
+		string byteString = VAL.substr(i, 2);
+		unsigned char byte = (unsigned char)strtol(byteString.c_str(), nullptr, 16);
+		ch[(i%8)/2] = byte;
+		if((i%8)/2==3){
+			string float_val = to_string(Hex32_10(ch));
+			if(float_val.find('n')!=string::npos || float_val.find('N')!=string::npos) float_val = "0.0";//出现NaN，防止程序崩溃将值修改为0
+			test_case[NAME] += float_val;
+			if(i+2<VAL.length()) test_case[NAME] += ',';
+		}
+	}
+	return;
+}
+
+double Hex64_10(unsigned char *Byte) {
+	
+    //char* pData = byteDate.data();
+    //符号位  1位
+    int sign = int(Byte[0] >> 7);
+    //指数位  11位
+    int e = int(((Byte[0] & 0x7F) << 4) & 0x0FF0 | (Byte[1] & 0xF0) >> 4) - 1023;
+    //小数位  52位
+    double  m = pow(2, -52) * 
+        (pow(256, 6) * double(Byte[1] & 0x0F) +
+         pow(256, 5) * double(Byte[2]) +
+         pow(256, 4) * double(Byte[3]) +
+         pow(256, 3) * double(Byte[4]) +
+         pow(256, 2) * double(Byte[5]) +
+         256 * double(Byte[6]) +
+         double(Byte[7])) + 1;
+    double res = pow(-1, sign) * m * pow(2, e);
+    return res;
+}
+
+void extract_double(const string& VAL, map<string,string>& test_case, const string & NAME){
+	unsigned char ch[8];//存储16进制表示的IEEE754标准64位浮点数
+	for (size_t i = 0; i < VAL.length(); i+=2){
+		string byteString = VAL.substr(i, 2);
+		unsigned char byte = (unsigned char)strtol(byteString.c_str(), nullptr, 16);
+		ch[7-(i%16)/2] = byte;
+		if((7-(i%16)/2)==0){
+			string double_val = to_string(Hex64_10(ch));
+			if(double_val.find('n')!=string::npos || double_val.find('N')!=string::npos) double_val = "0.0";//出现NaN，防止程序崩溃将值修改为0
+			test_case[NAME] += double_val;
+			if(i+2<VAL.length()) test_case[NAME] += ',';
+		}
+	}
+	return;
+}
