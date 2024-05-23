@@ -43,10 +43,10 @@ fstream src_code_h;                                            //待测IP.h头�
 fstream klee_code;                                             //用于KLEE工具生成测试用例的代码文件
 fstream init_code;                                             //使用KLEE生成的测试用例初始化后的IP 
 fstream z3_contract;										   //contract相关的变量的z3定义文件
-fstream Z3_constraint;										   //含有量词约束的contract的z3文件
+fstream z3_constraint;										   //含有量词约束的contract的z3文件
 fstream klee_constraint;									   //在使用klee符号化对应数据前人为给出的约束
 
-string IP_name = "CalculateGyroDg";
+string IP_name = "GetSSData";
 string IP_cpath = "/home/planet/Desktop/VeriHar-main/sources/" + IP_name + ".c";
 string IP_hpath = "/home/planet/Desktop/VeriHar-main/include/" + IP_name + ".h";
 string src_path = "/home/planet/Desktop/IP_verify_tool/";
@@ -81,6 +81,8 @@ void extract_var(){
     		}
     	}
     }
+    //将包含next操作符的放到起始位置
+    stable_partition(var_exp.begin(), var_exp.end(), containsNext);
    	for(string pro : var_exp){
    		propos_file<<"p"<<++count<<":"<<pro<<endl;
    	}
@@ -217,7 +219,7 @@ int KLEE_generate_testcase(){
     src_code_c.close();
     src_code_h.close();
     system("clang-9 -I ../klee/include -emit-llvm -c -g klee_code.c");//注意klee/klee.h头文件的存放位置
-    system("klee klee_code.bc");
+    system("klee --max-time=60s --only-output-states-covering-new klee_code.bc");//最长运算时间不超过60s
     int num = get_testcasenum(src_path+"klee-last");
     if(num>100) num = 100;
     //将所有的测试用例保存
@@ -397,24 +399,16 @@ void generate_GDB_script(int index){
     if(!init_code.is_open()){
         cout<<"Error opening file:"<<filename<<endl;
     }
-    //remove((src_path+"gdb_script.gdb").c_str());
     if(index==1){
 		GDB_script.open(src_path+"gdb_script.gdb",ios::app|ios::out|ios::in);
 		int count_line = 0, count_bp = 0;                         //记录程序读入的行数,设置的断点数
 		//string t_com = "set logging file GDB_trace/trace" + to_string(index) +".txt";
 		GDB_script<<"set logging on"<<endl;
+		GDB_script<<"set print repeats 1000"<<endl; //当有大量元素重复时，依然全部显示
 		GDB_script<<"b "<<"gdb_debug_code.c:"<<IP_name<<"Fun"<<endl;
 		for(auto it=var_type.begin(); it!=var_type.end(); it++){//在IP初始结构体中出现的变量使用display关键字即可，未在IP中定义，但在命题中出现的需要单独打印
 		    if(it->first.find("*")!=string::npos){//指针或数组类型变量。该类型的变量(指针一般为数组首地址)，可以根据Contract的Assumption初始化
 		        string array_name = it->first.substr(1,it->first.length()-1);
-		        /*if(array_ass[array_name].size()==1){//一维数组
-		            string len = to_string(array_ass[array_name][0]);
-		            for(int i=0; i<stoi(len); i++){
-		                if(it->second.type.find("siint")!=string::npos) GDB_script<<"\tdisplay/d "<<array_name<<"["<<i<<"]"<<endl;
-		                else if(it->second.type.find("unint")!=string::npos) GDB_script<<"\tdisplay/u "<<array_name<<"["<<i<<"]"<<endl;
-		                else if(it->second.type.find("float")!=string::npos) GDB_script<<"\tdisplay/f "<<array_name<<"["<<i<<"]"<<endl;
-		            }
-		        }*/
 		        //不管是几维数组，都使用(display 数组名)的方式打印数组的值
 		        if(it->second.type.find("siint")!=string::npos) 	 GDB_script<<"\tdisplay/d "<<array_name<<endl;
 		        else if(it->second.type.find("unint")!=string::npos) GDB_script<<"\tdisplay/u "<<array_name<<endl;
@@ -493,7 +487,7 @@ void generate_GDB_script(int index){
     system("gcc -g gdb_debug_code.c -o gdb_debug_code");
     string t_com = "gdb gdb_debug_code -batch -x gdb_script.gdb > GDB_trace/trace" + to_string(index) +".txt";
     system((t_com).c_str());
-    //remove("gdb_debug_code.c");
+    remove("gdb_debug_code.c");
     remove("gdb_debug_code");
 }
 
@@ -507,7 +501,7 @@ void judge_proposition(map<string, pair<string, string>> &next,vector<bool> &pro
 			return;
 		}
 		string propos_file_path = src_path+"IP_"+IP_name+"_propos.txt";
-		propos.push_back(Z3_Prover_Propos(propos_file,propos_file_path,next,z3_contract,IP_name+".py",Z3_constraint));
+		propos.push_back(Z3_Prover_Propos(propos_file,propos_file_path,next,z3_contract,IP_name+".py",z3_constraint));
 	}
 	else{//仅涉及值判断不调用Z3
 		for(int i=0; i<var_exp.size(); i++){
@@ -562,7 +556,7 @@ void read_trace(int index){
     while(!trace_infile.eof()){         
         getline(trace_infile, line);
         //定位断点的位置，以行开头为数字作为识别标识
-        if((line[0]-'0')<10 && (line[0]-'0')>0 && (line.find(':')==string::npos || line.find(':')>4)){      
+        if((line[0]-'0')<10 && (line[0]-'0')>0 && (line.find(':')==string::npos || line.find(':')>3)){      
             getline(trace_infile, line);
             string para_name, para_val;                         //存储参数名，参数值
             while(line.find(":")!=string::npos && line.find("exited")==string::npos){
@@ -617,14 +611,11 @@ void read_trace(int index){
 		        }
 		        trace_outfile<<"\n";
 		        num_bp++;
-		        /*for(auto it=next.begin(); it!=next.end(); it++){
-		            if(it->second.second.length() != 0) it->second.first = it->second.second;
-		        }*/
 		        propos.clear();
             }  
         }                                   
     }
-    trace_outfile<<"S 0; name = s1\n"<<"F 0 0 "<<1.0*num_bp<<" 1.0 0.0 0.0"<<endl;
+    //trace_outfile<<"S 0; name = s1\n"<<"F 0 0 "<<1.0*num_bp<<" 1.0 0.0 0.0"<<endl;
     trace_infile.close();
     trace_outfile.close();
     return;

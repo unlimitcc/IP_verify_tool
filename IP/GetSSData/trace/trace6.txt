@@ -1,0 +1,166 @@
+Breakpoint 1 at 0x1197: file gdb_debug_code.c, line 11.
+Breakpoint 2 at 0x11db: file gdb_debug_code.c, line 25.
+Breakpoint 3 at 0x1200: file gdb_debug_code.c, line 30.
+Breakpoint 4 at 0x1229: file gdb_debug_code.c, line 34.
+Breakpoint 5 at 0x1248: file gdb_debug_code.c, line 37.
+Breakpoint 6 at 0x129a: file gdb_debug_code.c, line 45.
+Breakpoint 7 at 0x12da: file gdb_debug_code.c, line 49.
+Breakpoint 8 at 0x1312: file gdb_debug_code.c, line 50.
+Breakpoint 9 at 0x139f: file gdb_debug_code.c, line 72.
+
+Breakpoint 1, GetSSDataFun (pIp=0x55555555540d <__libc_csu_init+77>) at gdb_debug_code.c:11
+11	{
+1: /u GetSSData1.ADDR_AD_START = 0
+2: /u GetSSData1.AD_SS_HI8 = 0
+3: /u GetSSData1.AD_SS_LO4 = 0
+4: /u GetSSData1.SP_ADDR = 0
+5: /u GetSSData1.SP_BIT = 0
+6: /u GetSSData1.chnl = {0, 0}
+7: /u GetSSData1.flgSp = 0
+8: /f GetSSData1.piyaw = 0
+9: /f GetSSData1.royaw = 0
+
+Breakpoint 2, GetSSDataFun (pIp=0x555555558020 <GetSSData1>) at gdb_debug_code.c:25
+25			Delay(45) ;									        /*500us*/
+1: /u GetSSData1.ADDR_AD_START = 0
+2: /u GetSSData1.AD_SS_HI8 = 0
+3: /u GetSSData1.AD_SS_LO4 = 0
+4: /u GetSSData1.SP_ADDR = 0
+5: /u GetSSData1.SP_BIT = 0
+6: /u GetSSData1.chnl = {0, 0}
+7: /u GetSSData1.flgSp = 0
+8: /f GetSSData1.piyaw = 0
+9: /f GetSSData1.royaw = 0
+
+Breakpoint 3, GetSSDataFun (pIp=0x555555558020 <GetSSData1>) at gdb_debug_code.c:30
+30			Delay(3) ;									        /*40us*/
+1: /u GetSSData1.ADDR_AD_START = 0
+2: /u GetSSData1.AD_SS_HI8 = 0
+3: /u GetSSData1.AD_SS_LO4 = 0
+4: /u GetSSData1.SP_ADDR = 0
+5: /u GetSSData1.SP_BIT = 0
+6: /u GetSSData1.chnl = {0, 0}
+7: /u GetSSData1.flgSp = 0
+8: /f GetSSData1.piyaw = 0
+9: /f GetSSData1.royaw = 0
+
+Breakpoint 4, GetSSDataFun (pIp=0x555555558020 <GetSSData1>) at gdb_debug_code.c:34
+34			tmp_hi8 = XBYTE[p->AD_SS_HI8] ;					/* 0xA001 高8位 */
+1: /u GetSSData1.ADDR_AD_START = 0
+2: /u GetSSData1.AD_SS_HI8 = 0
+3: /u GetSSData1.AD_SS_LO4 = 0
+4: /u GetSSData1.SP_ADDR = 0
+5: /u GetSSData1.SP_BIT = 0
+6: /u GetSSData1.chnl = {0, 0}
+7: /u GetSSData1.flgSp = 0
+8: /f GetSSData1.piyaw = 0
+9: /f GetSSData1.royaw = 0
+
+Breakpoint 5, GetSSDataFun (pIp=0x555555558020 <GetSSData1>) at gdb_debug_code.c:37
+37			wd = ((tmp_hi8 << 4) & 0x0FF0 ) | ((tmp_lo4 >> 4) & 0xF) ;									  
+1: /u GetSSData1.ADDR_AD_START = 0
+2: /u GetSSData1.AD_SS_HI8 = 0
+3: /u GetSSData1.AD_SS_LO4 = 0
+4: /u GetSSData1.SP_ADDR = 0
+5: /u GetSSData1.SP_BIT = 0
+6: /u GetSSData1.chnl = {0, 0}
+7: /u GetSSData1.flgSp = 0
+8: /f GetSSData1.piyaw = 0
+9: /f GetSSData1.royaw = 0
+
+Breakpoint 2, GetSSDataFun (pIp=0x555555558020 <GetSSData1>) at gdb_debug_code.c:25
+25			Delay(45) ;									        /*500us*/
+1: /u GetSSData1.ADDR_AD_START = 0
+2: /u GetSSData1.AD_SS_HI8 = 0
+3: /u GetSSData1.AD_SS_LO4 = 0
+4: /u GetSSData1.SP_ADDR = 0
+5: /u GetSSData1.SP_BIT = 0
+6: /u GetSSData1.chnl = {0, 0}
+7: /u GetSSData1.flgSp = 0
+8: /f GetSSData1.piyaw = 0
+9: /f GetSSData1.royaw = -5
+
+Breakpoint 3, GetSSDataFun (pIp=0x555555558020 <GetSSData1>) at gdb_debug_code.c:30
+30			Delay(3) ;									        /*40us*/
+1: /u GetSSData1.ADDR_AD_START = 0
+2: /u GetSSData1.AD_SS_HI8 = 0
+3: /u GetSSData1.AD_SS_LO4 = 0
+4: /u GetSSData1.SP_ADDR = 0
+5: /u GetSSData1.SP_BIT = 0
+6: /u GetSSData1.chnl = {0, 0}
+7: /u GetSSData1.flgSp = 0
+8: /f GetSSData1.piyaw = 0
+9: /f GetSSData1.royaw = -5
+
+Breakpoint 4, GetSSDataFun (pIp=0x555555558020 <GetSSData1>) at gdb_debug_code.c:34
+34			tmp_hi8 = XBYTE[p->AD_SS_HI8] ;					/* 0xA001 高8位 */
+1: /u GetSSData1.ADDR_AD_START = 0
+2: /u GetSSData1.AD_SS_HI8 = 0
+3: /u GetSSData1.AD_SS_LO4 = 0
+4: /u GetSSData1.SP_ADDR = 0
+5: /u GetSSData1.SP_BIT = 0
+6: /u GetSSData1.chnl = {0, 0}
+7: /u GetSSData1.flgSp = 0
+8: /f GetSSData1.piyaw = 0
+9: /f GetSSData1.royaw = -5
+
+Breakpoint 5, GetSSDataFun (pIp=0x555555558020 <GetSSData1>) at gdb_debug_code.c:37
+37			wd = ((tmp_hi8 << 4) & 0x0FF0 ) | ((tmp_lo4 >> 4) & 0xF) ;									  
+1: /u GetSSData1.ADDR_AD_START = 0
+2: /u GetSSData1.AD_SS_HI8 = 0
+3: /u GetSSData1.AD_SS_LO4 = 0
+4: /u GetSSData1.SP_ADDR = 0
+5: /u GetSSData1.SP_BIT = 0
+6: /u GetSSData1.chnl = {0, 0}
+7: /u GetSSData1.flgSp = 0
+8: /f GetSSData1.piyaw = 0
+9: /f GetSSData1.royaw = -5
+
+Breakpoint 6, GetSSDataFun (pIp=0x555555558020 <GetSSData1>) at gdb_debug_code.c:45
+45	            p->piyaw = DIVIATION_TO_FLOAT_DSS(wd);  /* SS 当量:  2.44140625e-3f */
+1: /u GetSSData1.ADDR_AD_START = 0
+2: /u GetSSData1.AD_SS_HI8 = 0
+3: /u GetSSData1.AD_SS_LO4 = 0
+4: /u GetSSData1.SP_ADDR = 0
+5: /u GetSSData1.SP_BIT = 0
+6: /u GetSSData1.chnl = {0, 0}
+7: /u GetSSData1.flgSp = 0
+8: /f GetSSData1.piyaw = 0
+9: /f GetSSData1.royaw = -5
+
+Breakpoint 7, GetSSDataFun (pIp=0x555555558020 <GetSSData1>) at gdb_debug_code.c:49
+49	    p->flgSp = ( XBYTE[p->SP_ADDR] >> p->SP_BIT ) & 0x01 ;	/* SP标志 */
+1: /u GetSSData1.ADDR_AD_START = 0
+2: /u GetSSData1.AD_SS_HI8 = 0
+3: /u GetSSData1.AD_SS_LO4 = 0
+4: /u GetSSData1.SP_ADDR = 0
+5: /u GetSSData1.SP_BIT = 0
+6: /u GetSSData1.chnl = {0, 0}
+7: /u GetSSData1.flgSp = 0
+8: /f GetSSData1.piyaw = -5
+9: /f GetSSData1.royaw = -5
+
+Breakpoint 8, GetSSDataFun (pIp=0x555555558020 <GetSSData1>) at gdb_debug_code.c:50
+50	    return;
+1: /u GetSSData1.ADDR_AD_START = 0
+2: /u GetSSData1.AD_SS_HI8 = 0
+3: /u GetSSData1.AD_SS_LO4 = 0
+4: /u GetSSData1.SP_ADDR = 0
+5: /u GetSSData1.SP_BIT = 0
+6: /u GetSSData1.chnl = {0, 0}
+7: /u GetSSData1.flgSp = 0
+8: /f GetSSData1.piyaw = -5
+9: /f GetSSData1.royaw = -5
+
+Breakpoint 9, main () at gdb_debug_code.c:72
+72	}
+1: /u GetSSData1.ADDR_AD_START = 0
+2: /u GetSSData1.AD_SS_HI8 = 0
+3: /u GetSSData1.AD_SS_LO4 = 0
+4: /u GetSSData1.SP_ADDR = 0
+5: /u GetSSData1.SP_BIT = 0
+6: /u GetSSData1.chnl = {0, 0}
+7: /u GetSSData1.flgSp = 0
+8: /f GetSSData1.piyaw = -5
+9: /f GetSSData1.royaw = -5
+[Inferior 1 (process) exited normally]

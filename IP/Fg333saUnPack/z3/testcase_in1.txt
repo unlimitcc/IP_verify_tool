@@ -1,0 +1,57 @@
+ktest file : 'klee-last/test000001.ktest'
+args       : ['klee_code.bc']
+num objects: 8
+object 0: name: '*pRecvbuf[17]'
+object 0: size: 17
+object 0: data: b'\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff\xff'
+object 0: hex : 0xffffffffffffffffffffffffffffffffff
+object 0: text: .................
+object 1: name: 'dlwd'
+object 1: size: 2
+object 1: data: b'\x00\x00'
+object 1: hex : 0x0000
+object 1: int : 0
+object 1: uint: 0
+object 1: text: ..
+object 2: name: 'dtime'
+object 2: size: 8
+object 2: data: b'\x00\x00\x00\x00\x00\x00\x00\x00'
+object 2: hex : 0x0000000000000000
+object 2: int : 0
+object 2: uint: 0
+object 2: text: ........
+object 3: name: 'gf'
+object 3: size: 8
+object 3: data: b'\x00\x00\x00\x00\x00\x00\x00\x00'
+object 3: hex : 0x0000000000000000
+object 3: int : 0
+object 3: uint: 0
+object 3: text: ........
+object 4: name: 'glwd1'
+object 4: size: 2
+object 4: data: b'\x00\x00'
+object 4: hex : 0x0000
+object 4: int : 0
+object 4: uint: 0
+object 4: text: ..
+object 5: name: 'glwd2'
+object 5: size: 2
+object 5: data: b'\x00\x00'
+object 5: hex : 0x0000
+object 5: int : 0
+object 5: uint: 0
+object 5: text: ..
+object 6: name: 'status'
+object 6: size: 1
+object 6: data: b'\x00'
+object 6: hex : 0x00
+object 6: int : 0
+object 6: uint: 0
+object 6: text: .
+object 7: name: 'wt0'
+object 7: size: 8
+object 7: data: b'\x00\x00\x00\x00\x00\x00\x00\x00'
+object 7: hex : 0x0000000000000000
+object 7: int : 0
+object 7: uint: 0
+object 7: text: ........

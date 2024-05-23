@@ -1,0 +1,2 @@
+klee_assume(AttiCal1.royaw>=-180 && AttiCal1.royaw<=180);
+klee_assume(AttiCal1.piyaw>=-180 && AttiCal1.piyaw<=180);

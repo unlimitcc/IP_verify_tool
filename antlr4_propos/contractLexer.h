@@ -14,8 +14,8 @@ public:
   enum {
     T__0 = 1, T__1 = 2, ASS = 3, GUA = 4, LOP = 5, TOP = 6, QUAN = 7, VALUE = 8, 
     VAR = 9, ADD = 10, SUB = 11, MUL = 12, DIV = 13, MOD = 14, POW = 15, 
-    RANGE = 16, COMP = 17, COLON = 18, COMMA = 19, POINT = 20, SKIP1 = 21, 
-    SKIP2 = 22, NEWLINE = 23
+    RANGE = 16, COMP = 17, COLON = 18, COMMA = 19, SKIP1 = 20, SKIP2 = 21, 
+    NEWLINE = 22
   };
 
   explicit contractLexer(antlr4::CharStream *input);

@@ -1,0 +1,24 @@
+for(int i=0; i<3; i++){
+	
+	klee_assume(W1[i]==0);
+
+}
+
+klee_assume(CalculateGyroDg1.JoinTotal<=5);
+
+for(int i=0; i<5; i++){
+
+	klee_assume(SignFlag[i]>=0 && SignFlag[i]<9);
+	
+}
+
+for(int i=0; i<9; i++){
+
+	klee_assume(wa[i]<=10 && wa[i]>=1);
+}
+
+for(int i=0; i<3; i++){
+	for(int j=0; j<5; j++){
+		klee_assume(Rtemp[i][j]<=10 && Rtemp[i][j]>1);
+	}
+}

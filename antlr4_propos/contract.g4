@@ -44,8 +44,8 @@ GUA: 'Guarantee' VALUE? COLON;
 LOP: '&' | '|' | '->'; 						//logical operator
 TOP: 'FINALLY' | 'GLOBALLY';				//temporal operator
 QUAN: 'EXIST' | 'FORALL';					//quantifier in contract
-VALUE: [0-9]+(POINT [0-9]+)? | SUB VALUE;	//digit value in contract 
-VAR: [a-zA-Z_0-9]+(INDEX | '[' VAR ']')*; 	//var name defined in contract
+VALUE: [0-9]+(POINT [0-9]+)? | SUB VALUE;		//digit value in contract 
+VAR: [a-zA-Z_0-9-.]+(INDEX | '[' VAR ']')*; 	//var name defined in contract
 fragment INDEX: ( '[' [0-9a-zA-Z]+ ']');	//index of var
 ADD: '+';
 SUB: '-';
@@ -59,7 +59,7 @@ RANGE: (EDGE TILDE EDGE);
 COMP: '!=' | '>' | '>=' | '<' | '<=' | '=';
 COLON: ':';
 COMMA: ',';
-POINT: '.';  
+fragment POINT: '.';  
 SKIP1: [ \t\r\n]+ -> skip;
 SKIP2: TOP -> skip;
 NEWLINE: 'r'?'\n';

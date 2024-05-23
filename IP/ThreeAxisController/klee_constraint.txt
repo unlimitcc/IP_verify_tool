@@ -1,0 +1,15 @@
+for(int i=0; i<3; i++){
+	klee_assume(u1[i]==0);
+}
+
+for(int i=0; i<3; i++){
+	for(int j=0; j<3; j++){
+		klee_assume(mController1[i][j]>-10000 && mController1[i][j]<10000);
+	}
+}
+
+for(int i=0; i<3; i++){
+	for(int j=0; j<2; j++){
+		klee_assume(CTRL_PARAM_SAM1[i][j]>-10000 && CTRL_PARAM_SAM1[i][j]<10000);
+	}
+}

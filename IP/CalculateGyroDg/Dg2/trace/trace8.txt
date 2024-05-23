@@ -1,0 +1,143 @@
+Breakpoint 1 at 0x16db: file gdb_debug_code.c, line 8.
+Breakpoint 2 at 0x1702: file gdb_debug_code.c, line 14.
+Breakpoint 3 at 0x1728: file gdb_debug_code.c, line 18.
+Breakpoint 4 at 0x1743: file gdb_debug_code.c, line 21.
+Breakpoint 5 at 0x177d: file gdb_debug_code.c, line 24.
+Breakpoint 6 at 0x17b6: file gdb_debug_code.c, line 28.
+Breakpoint 7 at 0x17e5: file gdb_debug_code.c, line 33.
+Breakpoint 8 at 0x17f2: file gdb_debug_code.c, line 34.
+Breakpoint 9 at 0x17ff: file gdb_debug_code.c, line 35.
+Breakpoint 10 at 0x180c: file gdb_debug_code.c, line 37.
+Breakpoint 11 at 0x1828: file gdb_debug_code.c, line 38.
+Breakpoint 12 at 0x18da: file gdb_debug_code.c, line 59.
+
+Breakpoint 1, CalculateGyroDgFun (pIp=0x0) at gdb_debug_code.c:8
+8	{
+1: /f Rtemp = {{4.00012302, 4.03222704, 4.03222704, 4.03222704, 4.03222704}, {4.03222704, 4.03222704, 4.03222704, 4.03222704, 4.03222704}, {4.03222704, 4.03222704, 4.03222704, 4.03222704, 4.03222704}}
+2: /u SignFlag = {0, 0, 0, 0, 0}
+3: /f wa = {1, 1, 1, 4.00012302, 4.03222704, 4.00012302, 4.03222704, 4.03222704, 4.03222704}
+4: /u CalculateGyroDg1.JoinTotal = 5
+5: /f CalculateGyroDg1.TEMP_W = {0, 0, 0}
+6: /f CalculateGyroDg1.TEMP_tmpwa = {0, 0, 0, 0, 0}
+7: /f CalculateGyroDg1.W = {-0, -0, -0}
+
+Breakpoint 2, CalculateGyroDgFun (pIp=0x5555555580a0 <CalculateGyroDg1>) at gdb_debug_code.c:14
+14		for (j = 0 ; j < 5 ; j++ )							/* 给临时数组赋值 */
+1: /f Rtemp = {{4.00012302, 4.03222704, 4.03222704, 4.03222704, 4.03222704}, {4.03222704, 4.03222704, 4.03222704, 4.03222704, 4.03222704}, {4.03222704, 4.03222704, 4.03222704, 4.03222704, 4.03222704}}
+2: /u SignFlag = {0, 0, 0, 0, 0}
+3: /f wa = {1, 1, 1, 4.00012302, 4.03222704, 4.00012302, 4.03222704, 4.03222704, 4.03222704}
+4: /u CalculateGyroDg1.JoinTotal = 5
+5: /f CalculateGyroDg1.TEMP_W = {0, 0, 0}
+6: /f CalculateGyroDg1.TEMP_tmpwa = {0, 0, 0, 0, 0}
+7: /f CalculateGyroDg1.W = {-0, -0, -0}
+
+Breakpoint 3, CalculateGyroDgFun (pIp=0x5555555580a0 <CalculateGyroDg1>) at gdb_debug_code.c:18
+18		for (j=0; j<p->JoinTotal; j++)
+1: /f Rtemp = {{4.00012302, 4.03222704, 4.03222704, 4.03222704, 4.03222704}, {4.03222704, 4.03222704, 4.03222704, 4.03222704, 4.03222704}, {4.03222704, 4.03222704, 4.03222704, 4.03222704, 4.03222704}}
+2: /u SignFlag = {0, 0, 0, 0, 0}
+3: /f wa = {1, 1, 1, 4.00012302, 4.03222704, 4.00012302, 4.03222704, 4.03222704, 4.03222704}
+4: /u CalculateGyroDg1.JoinTotal = 5
+5: /f CalculateGyroDg1.TEMP_W = {0, 0, 0}
+6: /f CalculateGyroDg1.TEMP_tmpwa = {0, 0, 0, 0, 0}
+7: /f CalculateGyroDg1.W = {-0, -0, -0}
+
+Breakpoint 4, CalculateGyroDgFun (pIp=0x5555555580a0 <CalculateGyroDg1>) at gdb_debug_code.c:21
+21			tmpwa[j] = p->wa[k];						/* 取对应序号的模拟量测量值 */				
+1: /f Rtemp = {{4.00012302, 4.03222704, 4.03222704, 4.03222704, 4.03222704}, {4.03222704, 4.03222704, 4.03222704, 4.03222704, 4.03222704}, {4.03222704, 4.03222704, 4.03222704, 4.03222704, 4.03222704}}
+2: /u SignFlag = {0, 0, 0, 0, 0}
+3: /f wa = {1, 1, 1, 4.00012302, 4.03222704, 4.00012302, 4.03222704, 4.03222704, 4.03222704}
+4: /u CalculateGyroDg1.JoinTotal = 5
+5: /f CalculateGyroDg1.TEMP_W = {0, 0, 0}
+6: /f CalculateGyroDg1.TEMP_tmpwa = {0, 0, 0, 0, 0}
+7: /f CalculateGyroDg1.W = {-0, -0, -0}
+
+Breakpoint 4, CalculateGyroDgFun (pIp=0x5555555580a0 <CalculateGyroDg1>) at gdb_debug_code.c:21
+21			tmpwa[j] = p->wa[k];						/* 取对应序号的模拟量测量值 */				
+1: /f Rtemp = {{4.00012302, 4.03222704, 4.03222704, 4.03222704, 4.03222704}, {4.03222704, 4.03222704, 4.03222704, 4.03222704, 4.03222704}, {4.03222704, 4.03222704, 4.03222704, 4.03222704, 4.03222704}}
+2: /u SignFlag = {0, 0, 0, 0, 0}
+3: /f wa = {1, 1, 1, 4.00012302, 4.03222704, 4.00012302, 4.03222704, 4.03222704, 4.03222704}
+4: /u CalculateGyroDg1.JoinTotal = 5
+5: /f CalculateGyroDg1.TEMP_W = {0, 0, 0}
+6: /f CalculateGyroDg1.TEMP_tmpwa = {0, 0, 0, 0, 0}
+7: /f CalculateGyroDg1.W = {-0, -0, -0}
+
+Breakpoint 4, CalculateGyroDgFun (pIp=0x5555555580a0 <CalculateGyroDg1>) at gdb_debug_code.c:21
+21			tmpwa[j] = p->wa[k];						/* 取对应序号的模拟量测量值 */				
+1: /f Rtemp = {{4.00012302, 4.03222704, 4.03222704, 4.03222704, 4.03222704}, {4.03222704, 4.03222704, 4.03222704, 4.03222704, 4.03222704}, {4.03222704, 4.03222704, 4.03222704, 4.03222704, 4.03222704}}
+2: /u SignFlag = {0, 0, 0, 0, 0}
+3: /f wa = {1, 1, 1, 4.00012302, 4.03222704, 4.00012302, 4.03222704, 4.03222704, 4.03222704}
+4: /u CalculateGyroDg1.JoinTotal = 5
+5: /f CalculateGyroDg1.TEMP_W = {0, 0, 0}
+6: /f CalculateGyroDg1.TEMP_tmpwa = {0, 0, 0, 0, 0}
+7: /f CalculateGyroDg1.W = {-0, -0, -0}
+
+Breakpoint 4, CalculateGyroDgFun (pIp=0x5555555580a0 <CalculateGyroDg1>) at gdb_debug_code.c:21
+21			tmpwa[j] = p->wa[k];						/* 取对应序号的模拟量测量值 */				
+1: /f Rtemp = {{4.00012302, 4.03222704, 4.03222704, 4.03222704, 4.03222704}, {4.03222704, 4.03222704, 4.03222704, 4.03222704, 4.03222704}, {4.03222704, 4.03222704, 4.03222704, 4.03222704, 4.03222704}}
+2: /u SignFlag = {0, 0, 0, 0, 0}
+3: /f wa = {1, 1, 1, 4.00012302, 4.03222704, 4.00012302, 4.03222704, 4.03222704, 4.03222704}
+4: /u CalculateGyroDg1.JoinTotal = 5
+5: /f CalculateGyroDg1.TEMP_W = {0, 0, 0}
+6: /f CalculateGyroDg1.TEMP_tmpwa = {0, 0, 0, 0, 0}
+7: /f CalculateGyroDg1.W = {-0, -0, -0}
+
+Breakpoint 4, CalculateGyroDgFun (pIp=0x5555555580a0 <CalculateGyroDg1>) at gdb_debug_code.c:21
+21			tmpwa[j] = p->wa[k];						/* 取对应序号的模拟量测量值 */				
+1: /f Rtemp = {{4.00012302, 4.03222704, 4.03222704, 4.03222704, 4.03222704}, {4.03222704, 4.03222704, 4.03222704, 4.03222704, 4.03222704}, {4.03222704, 4.03222704, 4.03222704, 4.03222704, 4.03222704}}
+2: /u SignFlag = {0, 0, 0, 0, 0}
+3: /f wa = {1, 1, 1, 4.00012302, 4.03222704, 4.00012302, 4.03222704, 4.03222704, 4.03222704}
+4: /u CalculateGyroDg1.JoinTotal = 5
+5: /f CalculateGyroDg1.TEMP_W = {0, 0, 0}
+6: /f CalculateGyroDg1.TEMP_tmpwa = {0, 0, 0, 0, 0}
+7: /f CalculateGyroDg1.W = {-0, -0, -0}
+
+Breakpoint 5, CalculateGyroDgFun (pIp=0x5555555580a0 <CalculateGyroDg1>) at gdb_debug_code.c:24
+24		if (p->JoinTotal >= 3)							/* 若大于三个陀螺工作可定姿 */
+1: /f Rtemp = {{4.00012302, 4.03222704, 4.03222704, 4.03222704, 4.03222704}, {4.03222704, 4.03222704, 4.03222704, 4.03222704, 4.03222704}, {4.03222704, 4.03222704, 4.03222704, 4.03222704, 4.03222704}}
+2: /u SignFlag = {0, 0, 0, 0, 0}
+3: /f wa = {1, 1, 1, 4.00012302, 4.03222704, 4.00012302, 4.03222704, 4.03222704, 4.03222704}
+4: /u CalculateGyroDg1.JoinTotal = 5
+5: /f CalculateGyroDg1.TEMP_W = {0, 0, 0}
+6: /f CalculateGyroDg1.TEMP_tmpwa = {0, 0, 0, 0, 0}
+7: /f CalculateGyroDg1.W = {-0, -0, -0}
+
+Breakpoint 6, CalculateGyroDgFun (pIp=0x5555555580a0 <CalculateGyroDg1>) at gdb_debug_code.c:28
+28			MatrixMulti(&p->TEMP_W[0], p->Rtemp, &tmpwa[0], 3, 5, 1);										
+1: /f Rtemp = {{4.00012302, 4.03222704, 4.03222704, 4.03222704, 4.03222704}, {4.03222704, 4.03222704, 4.03222704, 4.03222704, 4.03222704}, {4.03222704, 4.03222704, 4.03222704, 4.03222704, 4.03222704}}
+2: /u SignFlag = {0, 0, 0, 0, 0}
+3: /f wa = {1, 1, 1, 4.00012302, 4.03222704, 4.00012302, 4.03222704, 4.03222704, 4.03222704}
+4: /u CalculateGyroDg1.JoinTotal = 5
+5: /f CalculateGyroDg1.TEMP_W = {0, 0, 0}
+6: /f CalculateGyroDg1.TEMP_tmpwa = {0, 0, 0, 0, 0}
+7: /f CalculateGyroDg1.W = {20.1290302, 20.1611347, 20.1611347}
+
+Breakpoint 10, CalculateGyroDgFun (pIp=0x5555555580a0 <CalculateGyroDg1>) at gdb_debug_code.c:37
+37		memcpy(p->TEMP_tmpwa,tmpwa,sizeof(tmpwa));
+1: /f Rtemp = {{4.00012302, 4.03222704, 4.03222704, 4.03222704, 4.03222704}, {4.03222704, 4.03222704, 4.03222704, 4.03222704, 4.03222704}, {4.03222704, 4.03222704, 4.03222704, 4.03222704, 4.03222704}}
+2: /u SignFlag = {0, 0, 0, 0, 0}
+3: /f wa = {1, 1, 1, 4.00012302, 4.03222704, 4.00012302, 4.03222704, 4.03222704, 4.03222704}
+4: /u CalculateGyroDg1.JoinTotal = 5
+5: /f CalculateGyroDg1.TEMP_W = {20.1290302, 20.1611347, 20.1611347}
+6: /f CalculateGyroDg1.TEMP_tmpwa = {0, 0, 0, 0, 0}
+7: /f CalculateGyroDg1.W = {20.1290302, 20.1611347, 20.1611347}
+
+Breakpoint 11, CalculateGyroDgFun (pIp=0x5555555580a0 <CalculateGyroDg1>) at gdb_debug_code.c:38
+38	    return;
+1: /f Rtemp = {{4.00012302, 4.03222704, 4.03222704, 4.03222704, 4.03222704}, {4.03222704, 4.03222704, 4.03222704, 4.03222704, 4.03222704}, {4.03222704, 4.03222704, 4.03222704, 4.03222704, 4.03222704}}
+2: /u SignFlag = {0, 0, 0, 0, 0}
+3: /f wa = {1, 1, 1, 4.00012302, 4.03222704, 4.00012302, 4.03222704, 4.03222704, 4.03222704}
+4: /u CalculateGyroDg1.JoinTotal = 5
+5: /f CalculateGyroDg1.TEMP_W = {20.1290302, 20.1611347, 20.1611347}
+6: /f CalculateGyroDg1.TEMP_tmpwa = {1, 1, 1, 1, 1}
+7: /f CalculateGyroDg1.W = {20.1290302, 20.1611347, 20.1611347}
+
+Breakpoint 12, main () at gdb_debug_code.c:59
+59	}
+1: /f Rtemp = {{4.00012302, 4.03222704, 4.03222704, 4.03222704, 4.03222704}, {4.03222704, 4.03222704, 4.03222704, 4.03222704, 4.03222704}, {4.03222704, 4.03222704, 4.03222704, 4.03222704, 4.03222704}}
+2: /u SignFlag = {0, 0, 0, 0, 0}
+3: /f wa = {1, 1, 1, 4.00012302, 4.03222704, 4.00012302, 4.03222704, 4.03222704, 4.03222704}
+4: /u CalculateGyroDg1.JoinTotal = 5
+5: /f CalculateGyroDg1.TEMP_W = {20.1290302, 20.1611347, 20.1611347}
+6: /f CalculateGyroDg1.TEMP_tmpwa = {1, 1, 1, 1, 1}
+7: /f CalculateGyroDg1.W = {20.1290302, 20.1611347, 20.1611347}
+[Inferior 1 (process) exited normally]

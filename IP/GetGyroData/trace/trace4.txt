@@ -1,0 +1,405 @@
+Breakpoint 1 at 0x1197: file gdb_debug_code.c, line 11.
+Breakpoint 2 at 0x11dc: file gdb_debug_code.c, line 25.
+Breakpoint 3 at 0x1201: file gdb_debug_code.c, line 30.
+Breakpoint 4 at 0x122a: file gdb_debug_code.c, line 34.
+Breakpoint 5 at 0x1249: file gdb_debug_code.c, line 37.
+Breakpoint 6 at 0x12b0: file gdb_debug_code.c, line 45.
+Breakpoint 7 at 0x12f8: file gdb_debug_code.c, line 48.
+Breakpoint 8 at 0x13ed: file gdb_debug_code.c, line 69.
+
+Breakpoint 1, GetGyroDataFun (pIp=0x0) at gdb_debug_code.c:11
+11	{
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+
+Breakpoint 2, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:25
+25			Delay(45);											/*500us*/
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+
+Breakpoint 3, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:30
+30			Delay(3);											/*40us*/
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+
+Breakpoint 4, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:34
+34			tmp_hi8 = XBYTE[p->AD_GYRO_HI8];					/* 0xA001 高8位 */
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+
+Breakpoint 5, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:37
+37			wd = ((tmp_hi8 << 4) & 0x0FF0 ) | ((tmp_lo4 >> 4) & 0xF) ;									  
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+
+Breakpoint 6, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:45
+45	            p->wa[si] = DIVIATION_TO_FLOAT_FOG(wd) ;	/* FOG  当量：9.765625e-4f */ 
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+
+Breakpoint 2, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:25
+25			Delay(45);											/*500us*/
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, 0, 0, 0, 0, 0, 0, 0, 0}
+
+Breakpoint 3, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:30
+30			Delay(3);											/*40us*/
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, 0, 0, 0, 0, 0, 0, 0, 0}
+
+Breakpoint 4, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:34
+34			tmp_hi8 = XBYTE[p->AD_GYRO_HI8];					/* 0xA001 高8位 */
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, 0, 0, 0, 0, 0, 0, 0, 0}
+
+Breakpoint 5, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:37
+37			wd = ((tmp_hi8 << 4) & 0x0FF0 ) | ((tmp_lo4 >> 4) & 0xF) ;									  
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, 0, 0, 0, 0, 0, 0, 0, 0}
+
+Breakpoint 6, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:45
+45	            p->wa[si] = DIVIATION_TO_FLOAT_FOG(wd) ;	/* FOG  当量：9.765625e-4f */ 
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, 0, 0, 0, 0, 0, 0, 0, 0}
+
+Breakpoint 2, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:25
+25			Delay(45);											/*500us*/
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, -2, 0, 0, 0, 0, 0, 0, 0}
+
+Breakpoint 3, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:30
+30			Delay(3);											/*40us*/
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, -2, 0, 0, 0, 0, 0, 0, 0}
+
+Breakpoint 4, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:34
+34			tmp_hi8 = XBYTE[p->AD_GYRO_HI8];					/* 0xA001 高8位 */
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, -2, 0, 0, 0, 0, 0, 0, 0}
+
+Breakpoint 5, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:37
+37			wd = ((tmp_hi8 << 4) & 0x0FF0 ) | ((tmp_lo4 >> 4) & 0xF) ;									  
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, -2, 0, 0, 0, 0, 0, 0, 0}
+
+Breakpoint 6, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:45
+45	            p->wa[si] = DIVIATION_TO_FLOAT_FOG(wd) ;	/* FOG  当量：9.765625e-4f */ 
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, -2, 0, 0, 0, 0, 0, 0, 0}
+
+Breakpoint 2, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:25
+25			Delay(45);											/*500us*/
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, -2, -2, 0, 0, 0, 0, 0, 0}
+
+Breakpoint 3, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:30
+30			Delay(3);											/*40us*/
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, -2, -2, 0, 0, 0, 0, 0, 0}
+
+Breakpoint 4, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:34
+34			tmp_hi8 = XBYTE[p->AD_GYRO_HI8];					/* 0xA001 高8位 */
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, -2, -2, 0, 0, 0, 0, 0, 0}
+
+Breakpoint 5, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:37
+37			wd = ((tmp_hi8 << 4) & 0x0FF0 ) | ((tmp_lo4 >> 4) & 0xF) ;									  
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, -2, -2, 0, 0, 0, 0, 0, 0}
+
+Breakpoint 2, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:25
+25			Delay(45);											/*500us*/
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, -2, -2, -3.33333325, 0, 0, 0, 0, 0}
+
+Breakpoint 3, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:30
+30			Delay(3);											/*40us*/
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, -2, -2, -3.33333325, 0, 0, 0, 0, 0}
+
+Breakpoint 4, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:34
+34			tmp_hi8 = XBYTE[p->AD_GYRO_HI8];					/* 0xA001 高8位 */
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, -2, -2, -3.33333325, 0, 0, 0, 0, 0}
+
+Breakpoint 5, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:37
+37			wd = ((tmp_hi8 << 4) & 0x0FF0 ) | ((tmp_lo4 >> 4) & 0xF) ;									  
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, -2, -2, -3.33333325, 0, 0, 0, 0, 0}
+
+Breakpoint 2, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:25
+25			Delay(45);											/*500us*/
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, -2, -2, -3.33333325, -3.33333325, 0, 0, 0, 0}
+
+Breakpoint 3, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:30
+30			Delay(3);											/*40us*/
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, -2, -2, -3.33333325, -3.33333325, 0, 0, 0, 0}
+
+Breakpoint 4, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:34
+34			tmp_hi8 = XBYTE[p->AD_GYRO_HI8];					/* 0xA001 高8位 */
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, -2, -2, -3.33333325, -3.33333325, 0, 0, 0, 0}
+
+Breakpoint 5, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:37
+37			wd = ((tmp_hi8 << 4) & 0x0FF0 ) | ((tmp_lo4 >> 4) & 0xF) ;									  
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, -2, -2, -3.33333325, -3.33333325, 0, 0, 0, 0}
+
+Breakpoint 6, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:45
+45	            p->wa[si] = DIVIATION_TO_FLOAT_FOG(wd) ;	/* FOG  当量：9.765625e-4f */ 
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, -2, -2, -3.33333325, -3.33333325, 0, 0, 0, 0}
+
+Breakpoint 2, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:25
+25			Delay(45);											/*500us*/
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, -2, -2, -3.33333325, -3.33333325, -2, 0, 0, 0}
+
+Breakpoint 3, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:30
+30			Delay(3);											/*40us*/
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, -2, -2, -3.33333325, -3.33333325, -2, 0, 0, 0}
+
+Breakpoint 4, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:34
+34			tmp_hi8 = XBYTE[p->AD_GYRO_HI8];					/* 0xA001 高8位 */
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, -2, -2, -3.33333325, -3.33333325, -2, 0, 0, 0}
+
+Breakpoint 5, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:37
+37			wd = ((tmp_hi8 << 4) & 0x0FF0 ) | ((tmp_lo4 >> 4) & 0xF) ;									  
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, -2, -2, -3.33333325, -3.33333325, -2, 0, 0, 0}
+
+Breakpoint 2, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:25
+25			Delay(45);											/*500us*/
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, -2, -2, -3.33333325, -3.33333325, -2, -3.33333325, 0, 0}
+
+Breakpoint 3, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:30
+30			Delay(3);											/*40us*/
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, -2, -2, -3.33333325, -3.33333325, -2, -3.33333325, 0, 0}
+
+Breakpoint 4, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:34
+34			tmp_hi8 = XBYTE[p->AD_GYRO_HI8];					/* 0xA001 高8位 */
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, -2, -2, -3.33333325, -3.33333325, -2, -3.33333325, 0, 0}
+
+Breakpoint 5, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:37
+37			wd = ((tmp_hi8 << 4) & 0x0FF0 ) | ((tmp_lo4 >> 4) & 0xF) ;									  
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, -2, -2, -3.33333325, -3.33333325, -2, -3.33333325, 0, 0}
+
+Breakpoint 2, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:25
+25			Delay(45);											/*500us*/
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, -2, -2, -3.33333325, -3.33333325, -2, -3.33333325, -3.33333325, 0}
+
+Breakpoint 3, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:30
+30			Delay(3);											/*40us*/
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, -2, -2, -3.33333325, -3.33333325, -2, -3.33333325, -3.33333325, 0}
+
+Breakpoint 4, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:34
+34			tmp_hi8 = XBYTE[p->AD_GYRO_HI8];					/* 0xA001 高8位 */
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, -2, -2, -3.33333325, -3.33333325, -2, -3.33333325, -3.33333325, 0}
+
+Breakpoint 5, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:37
+37			wd = ((tmp_hi8 << 4) & 0x0FF0 ) | ((tmp_lo4 >> 4) & 0xF) ;									  
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, -2, -2, -3.33333325, -3.33333325, -2, -3.33333325, -3.33333325, 0}
+
+Breakpoint 6, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:45
+45	            p->wa[si] = DIVIATION_TO_FLOAT_FOG(wd) ;	/* FOG  当量：9.765625e-4f */ 
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, -2, -2, -3.33333325, -3.33333325, -2, -3.33333325, -3.33333325, 0}
+
+Breakpoint 7, GetGyroDataFun (pIp=0x555555558020 <GetGyroData1>) at gdb_debug_code.c:48
+48	    return;
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, -2, -2, -3.33333325, -3.33333325, -2, -3.33333325, -3.33333325, -2}
+
+Breakpoint 8, main () at gdb_debug_code.c:69
+69	}
+1: /u GetGyroData1.ADDR_AD_START = 0
+2: /u GetGyroData1.AD_GYRO_HI8 = 0
+3: /u GetGyroData1.AD_GYRO_LO4 = 0
+4: /u GetGyroData1.chnl = {0, 0, 0, 0, 0, 0, 0, 0, 0}
+5: /u GetGyroData1.type = {255, 255, 255, 0, 0, 255, 0, 0, 255}
+6: /f GetGyroData1.wa = {-2, -2, -2, -3.33333325, -3.33333325, -2, -3.33333325, -3.33333325, -2}
+[Inferior 1 (process) exited normally]

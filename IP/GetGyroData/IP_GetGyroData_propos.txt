@@ -1,0 +1,9 @@
+p1:FORALL(i:0~9)((type[i]=0)->(next(wa[i])=DiviationToFloat(wd,4095,2048,0.00162760417)))
+p2:FORALL(i:0~9)((type[i]!=0)->(next(wa[i])=DiviationToFloat(wd,4095,2048,0.0009765625)))
+p3:next(ADDR_AD_START)=ADDR_AD_START
+p4:next(AD_GYRO_LO4)=AD_GYRO_LO4
+p5:next(AD_GYRO_HI8)=AD_GYRO_HI8
+p6:FORALL(i:0~9)(next(chnl[i])=chnl[i])
+p7:FORALL(i:0~9)(next(type[i])=type[i])
+p8:IchnlI=9
+p9:ItypeI=9

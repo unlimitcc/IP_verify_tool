@@ -18,6 +18,7 @@ class demoListener: public contractBaseListener{
 		void enterPropos(contractParser::ProposContext* ctx){
 			if(std::find(propos.begin(),propos.end(),ctx->getText())==propos.end()){
 				propos.emplace_back(ctx->getText());
+				std::cout<<ctx->getText()<<std::endl;
 			}
 		}
 };

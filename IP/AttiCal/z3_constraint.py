@@ -1,0 +1,10 @@
+Assumptions = And(Array_length(Gi)==2, Array_length(W)==3)
+G1 = Implies(workmode==51, Implies(flgSP==235, And(angle_next[0]==royaw, angle_next[1]==piyaw, Gi_next[0]==royaw, Gi_next[1]==piyaw)))
+G2 = Implies(workmode==51, Implies(flgSP!=235, And(angle_next[0]==Gi[0], angle_next[1]==Gi[1], Gi_next[0]==Gi[0], Gi_next[1]==Gi[1])))
+G3 = Implies(workmode!=51, And(angle_next[0]==0, angle_next[1]==0, Gi_next[0]==Gi[0], Gi_next[1]==Gi[1]))
+G4 = And(rate_next[0]==W[0], rate_next[1]==W[1], rate_next[2]==W[2])
+G5 = And(Array_length(angle_next)==2, Array_length(Gi_next)==2, Array_length(rate_next)==3)
+Guarantees = And(G1,G2,G3,G4,G5)
+s.add(Implies(Assumptions, Guarantees))
+s.add(Assumptions)
+########

@@ -1,0 +1,46 @@
+ktest file : 'klee-last/test000001.ktest'
+args       : ['klee_code.bc']
+num objects: 7
+object 0: name: '*SignFlag[5]'
+object 0: size: 5
+object 0: data: b'\x00\x00\x00\x00\x00'
+object 0: hex : 0x0000000000
+object 0: text: .....
+object 1: name: 'JoinTotal'
+object 1: size: 1
+object 1: data: b'\x00'
+object 1: hex : 0x00
+object 1: int : 0
+object 1: uint: 0
+object 1: text: .
+object 2: name: 'Rtemp[3][5]'
+object 2: size: 60
+object 2: data: b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+object 2: hex : 0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+object 2: text: ............................................................
+object 3: name: 'VG[9][3]'
+object 3: size: 108
+object 3: data: b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+object 3: hex : 0x000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+object 3: text: ............................................................................................................
+object 4: name: 'flgGryoCalc'
+object 4: size: 1
+object 4: data: b'\x00'
+object 4: hex : 0x00
+object 4: int : 0
+object 4: uint: 0
+object 4: text: .
+object 5: name: 'gyroStatus0'
+object 5: size: 2
+object 5: data: b'\x00\x00'
+object 5: hex : 0x0000
+object 5: int : 0
+object 5: uint: 0
+object 5: text: ..
+object 6: name: 'gyroStatus1'
+object 6: size: 2
+object 6: data: b'\x00\x00'
+object 6: hex : 0x0000
+object 6: int : 0
+object 6: uint: 0
+object 6: text: ..

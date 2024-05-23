@@ -1,0 +1,39 @@
+ktest file : 'klee-last/test000004.ktest'
+args       : ['klee_code.bc']
+num objects: 6
+object 0: name: 'ADDR_AD_START'
+object 0: size: 2
+object 0: data: b'\x00\x00'
+object 0: hex : 0x0000
+object 0: int : 0
+object 0: uint: 0
+object 0: text: ..
+object 1: name: 'AD_GYRO_HI8'
+object 1: size: 2
+object 1: data: b'\x00\x00'
+object 1: hex : 0x0000
+object 1: int : 0
+object 1: uint: 0
+object 1: text: ..
+object 2: name: 'AD_GYRO_LO4'
+object 2: size: 2
+object 2: data: b'\x00\x00'
+object 2: hex : 0x0000
+object 2: int : 0
+object 2: uint: 0
+object 2: text: ..
+object 3: name: 'chnl[9]'
+object 3: size: 9
+object 3: data: b'\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+object 3: hex : 0x000000000000000000
+object 3: text: .........
+object 4: name: 'type[9]'
+object 4: size: 9
+object 4: data: b'\xff\xff\xff\x00\x00\xff\x00\x00\xff'
+object 4: hex : 0xffffff0000ff0000ff
+object 4: text: .........
+object 5: name: 'wa[9]'
+object 5: size: 36
+object 5: data: b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+object 5: hex : 0x000000000000000000000000000000000000000000000000000000000000000000000000
+object 5: text: ....................................

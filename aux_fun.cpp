@@ -9,6 +9,11 @@
 using namespace std;
 using namespace antlr4;
 
+bool containsNext(const std::string& s) {
+    return s.find("next") != std::string::npos;
+}
+
+
 bool isFileExists_ifstream(std::string& name) {
     
     std::ifstream f(name.c_str());
@@ -160,7 +165,6 @@ bool Z3_Prover_Propos(fstream& propos_file,
     		}
 			if(propos.find("next("+index)!=string::npos && find(cache.begin(),cache.end(),"next("+index)==cache.end()){
 				cache.emplace_back("next("+index);
-				cache.emplace_back(index);
 				//数组需要特殊处理,先提取数组名
 				if(it->second.second.length()!=0){
 					if(it->first.find('[')!=string::npos) \
@@ -178,27 +182,31 @@ bool Z3_Prover_Propos(fstream& propos_file,
 				if(it->first.find('[')!=string::npos){
 					z3_contract << "VER_"+array_name+"_next, constraints" << " = List2Array(" << array_name+"_next" << ",idx=())"<< endl;
 					z3_contract << array_name << "=" << it->second.first << endl;
-					z3_contract << "VER_"+array_name+", constraints" << " = List2Array(" << array_name+",idx=())"<< endl;
+					if(find(cache.begin(),cache.end(),index)==cache.end())
+						z3_contract << "VER_"+array_name+", constraints" << " = List2Array(" << array_name+",idx=())"<< endl;
 				}
-				else z3_contract << "s.add(" << it->first << "==" << it->second.first << ")" << endl;
+				else if(find(cache.begin(),cache.end(),index)==cache.end())
+					z3_contract << "s.add(" << it->first << "==" << it->second.first << ")" << endl;
+				cache.emplace_back(index);
 			}else if(propos.find(index)!=string::npos && find(cache.begin(),cache.end(),index)==cache.end()){//打印最新值
 				cache.emplace_back(index);
-				if(it->second.second.length()==0){
+				/*if(it->second.second.length()==0){
 					if(it->first.find('[')!=string::npos) \
 						z3_contract << array_name << "=" << it->second.first << endl;
 					else \
 						z3_contract << "s.add(" << it->first << "==" << it->second.first << ")" << endl;
-				}else{
-					if(it->first.find('[')!=string::npos) \
-						z3_contract << array_name << "=" << it->second.second << endl;
+				}else{	
+				}*/
+				if(it->first.find('[')!=string::npos) \
+						z3_contract << array_name << "=" << it->second.first << endl;
 					else \
-						z3_contract << "s.add(" << it->first << "==" << it->second.second << ")" << endl;
-				}
+						z3_contract << "s.add(" << it->first << "==" << it->second.first<< ")" << endl;
 				if(it->first.find('[')!=string::npos)
 					z3_contract << "VER_"+array_name << ", constraints = List2Array(" << array_name << ", idx=())" << endl;
 			}
 		}
     }
+    
     //输入使用z3的编写的contract约束，保存在constraint文件里
     z3_constraint.open("z3_constraint.py",ios::app | ios::out | ios::in);
     while(!z3_constraint.eof()){
@@ -222,8 +230,8 @@ bool Z3_Prover_Propos(fstream& propos_file,
         }
 	}
 	pclose(fp);
-	//z3_contract.seekp(0, ios::beg);
-   	//truncate(file_pos.c_str(),pos);
+	z3_contract.seekp(0, ios::beg);
+   	truncate(file_pos.c_str(),pos);
     z3_contract.close();
     propos_file.close();
     if(res.find("unsat")!=string::npos) return false;

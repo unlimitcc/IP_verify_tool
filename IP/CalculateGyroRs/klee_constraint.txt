@@ -1,0 +1,20 @@
+for(int i=0; i<5; i++){
+	
+	klee_assume(SignFlag[i]>=0 && SignFlag[i]<9);
+}
+
+for(int i=0; i<3; i++){
+	for(int j=0; j<5; j++){
+		klee_assume(Rtemp1[i][j]==0);
+	}
+}
+
+klee_assume(CalculateGyroRs1.JoinTotal>=0 && CalculateGyroRs1.JoinTotal<=9);
+
+for(int i=0; i<9; i++){
+	for(int j=0; j<3; j++){
+		klee_assume(VG1[i][j]>0 && VG1[i][j]<1);
+	}
+}
+
+

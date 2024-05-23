@@ -1,0 +1,8 @@
+Assumption = (Array_length(chnl)==2)
+Guarantee1 = ((royaw_next-If(((cal_wd(hi8,lo4) & mask)-offset)<0, -1*BV2Int(65536-((cal_wd(hi8,lo4) & mask)-offset))*0.00244140625, BV2Int((cal_wd(hi8,lo4) & mask)-offset)*0.00244140625))<1e-7)
+Guarantee2 = ((piyaw_next-If(((cal_wd(hi8,lo4) & mask)-offset)<0, -1*BV2Int(65536-((cal_wd(hi8,lo4) & mask)-offset))*0.00244140625, BV2Int((cal_wd(hi8,lo4) & mask)-offset)*0.00244140625))<1e-7)
+Guarantee3 = And(ADDR_AD_START_next==ADDR_AD_START, AD_SS_LO4_next==AD_SS_LO4, AD_SS_HI8_next==AD_SS_HI8, SP_ADDR_next==SP_ADDR, SP_BIT_next==SP_BIT)
+Guarantee4 = (chnl==chnl_next)
+Guarantee = And(Guarantee1, Guarantee2, Guarantee3, Guarantee4)
+s.add(mask==4095, offset==2048, pa1==4080, pa2==15)
+s.add(And(Assumption, Implies(Assumption, Guarantee)))

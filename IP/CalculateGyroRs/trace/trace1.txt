@@ -1,0 +1,55 @@
+Breakpoint 1 at 0x16db: file gdb_debug_code.c, line 11.
+Breakpoint 2 at 0x172d: file gdb_debug_code.c, line 23.
+Breakpoint 3 at 0x1757: file gdb_debug_code.c, line 27.
+Breakpoint 4 at 0x1781: file gdb_debug_code.c, line 31.
+Breakpoint 5 at 0x1821: file gdb_debug_code.c, line 37.
+Breakpoint 6 at 0x191a: file gdb_debug_code.c, line 52.
+Breakpoint 7 at 0x1945: file gdb_debug_code.c, line 53.
+Breakpoint 8 at 0x1977: file gdb_debug_code.c, line 55.
+Breakpoint 9 at 0x19ac: file gdb_debug_code.c, line 57.
+Breakpoint 10 at 0x19ce: file gdb_debug_code.c, line 58.
+Breakpoint 11 at 0x19e4: file gdb_debug_code.c, line 61.
+Breakpoint 12 at 0x1bd6: file gdb_debug_code.c, line 83.
+
+Breakpoint 1, CalculateGyroRsFun (pIp=0x0) at gdb_debug_code.c:11
+11	{
+1: /u SignFlag = {0, 0, 0, 0, 0}
+2: /u CalculateGyroRs1.JoinTotal = 0
+3: /f CalculateGyroRs1.Rtemp = {{0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}}
+4: /f CalculateGyroRs1.TEMP_Rgtemp = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+5: /f CalculateGyroRs1.TEMP_Rtemp = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+6: /u CalculateGyroRs1.TEMP_rank = 0
+7: /f CalculateGyroRs1.VG = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+8: /u CalculateGyroRs1.flgGryoCalc = 0
+9: /u CalculateGyroRs1.gyroStatus0 = 0
+10: /u CalculateGyroRs1.gyroStatus1 = 0
+
+Breakpoint 2, CalculateGyroRsFun (pIp=0x555555558020 <CalculateGyroRs1>) at gdb_debug_code.c:23
+23		if (p->gyroStatus0 != p->gyroStatus1)		/* 有陀螺切换 */
+1: /u SignFlag = {0, 0, 0, 0, 0}
+2: /u CalculateGyroRs1.JoinTotal = 0
+3: /f CalculateGyroRs1.Rtemp = {{0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}}
+4: /f CalculateGyroRs1.TEMP_Rgtemp = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+5: /f CalculateGyroRs1.TEMP_Rtemp = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+6: /u CalculateGyroRs1.TEMP_rank = 0
+7: /f CalculateGyroRs1.VG = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+8: /u CalculateGyroRs1.flgGryoCalc = 0
+9: /u CalculateGyroRs1.gyroStatus0 = 0
+10: /u CalculateGyroRs1.gyroStatus1 = 0
+
+Breakpoint 12, main () at gdb_debug_code.c:83
+83	}
+1: /u SignFlag = {0, 0, 0, 0, 0}
+2: /u CalculateGyroRs1.JoinTotal = 0
+3: /f CalculateGyroRs1.Rtemp = {{0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}, {0, 0, 0, 0, 0}}
+4: /f CalculateGyroRs1.TEMP_Rgtemp = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+5: /f CalculateGyroRs1.TEMP_Rtemp = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+6: /u CalculateGyroRs1.TEMP_rank = 0
+7: /f CalculateGyroRs1.VG = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+8: /u CalculateGyroRs1.flgGryoCalc = 0
+9: /u CalculateGyroRs1.gyroStatus0 = 0
+10: /u CalculateGyroRs1.gyroStatus1 = 0
+[Inferior 1 (process) exited normally]
+[Inferior 1 (process) exited normally]
+[Inferior 1 (process) exited normally]
+[Inferior 1 (process) exited normally]

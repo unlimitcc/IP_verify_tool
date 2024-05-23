@@ -1,0 +1,28 @@
+ktest file : 'klee-last/test000001.ktest'
+args       : ['klee_code.bc']
+num objects: 5
+object 0: name: '*pu[3]'
+object 0: size: 12
+object 0: data: b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+object 0: hex : 0x000000000000000000000000
+object 0: text: ............
+object 1: name: 'Yn[3]'
+object 1: size: 3
+object 1: data: b'\x00\x00\x00'
+object 1: hex : 0x000000
+object 1: text: ...
+object 2: name: 'Yp[3]'
+object 2: size: 3
+object 2: data: b'\x00\x00\x00'
+object 2: hex : 0x000000
+object 2: text: ...
+object 3: name: 'h1[3]'
+object 3: size: 12
+object 3: data: b'\x01\x00\x80\x80\x01\x00\x80\x80\x01\x00\x80\x80'
+object 3: hex : 0x010080800100808001008080
+object 3: text: ............
+object 4: name: 'r[3]'
+object 4: size: 12
+object 4: data: b'\x00\x00\x00\x80\x00\x00\x00\x80\x00\x00\x00\x80'
+object 4: hex : 0x000000800000008000000080
+object 4: text: ............

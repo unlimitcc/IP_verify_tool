@@ -1,0 +1,109 @@
+Breakpoint 1 at 0x1129: file gdb_debug_code.c, line 9.
+Breakpoint 2 at 0x1199: file gdb_debug_code.c, line 15.
+Breakpoint 3 at 0x11c9: file gdb_debug_code.c, line 17.
+Breakpoint 4 at 0x11fc: file gdb_debug_code.c, line 18.
+Breakpoint 5 at 0x122f: file gdb_debug_code.c, line 19.
+Breakpoint 6 at 0x1262: file gdb_debug_code.c, line 21.
+Breakpoint 7 at 0x1278: file gdb_debug_code.c, line 24.
+Breakpoint 8 at 0x1297: file gdb_debug_code.c, line 25.
+Breakpoint 9 at 0x130a: file gdb_debug_code.c, line 67.
+
+Breakpoint 1, Fg333saUnPackFun (pIp=0x555555555310 <__libc_csu_init>) at gdb_debug_code.c:9
+9	{
+1: /u pRecvbuf = {255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255}
+2: /u Fg333saUnPack1.dlwd = 0
+3: /f Fg333saUnPack1.dtime = 0
+4: /f Fg333saUnPack1.gf = 0
+5: /u Fg333saUnPack1.glwd1 = 0
+6: /u Fg333saUnPack1.glwd2 = 0
+7: /u Fg333saUnPack1.status = 0
+8: /f Fg333saUnPack1.wt0 = 0
+
+Breakpoint 2, Fg333saUnPackFun (pIp=0x555555558040 <Fg333saUnPack1>) at gdb_debug_code.c:15
+15		p->wt0 = ((float64)(siint32)temp_var) / 3.0e6 * DEG2RAD;
+1: /u pRecvbuf = {255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255}
+2: /u Fg333saUnPack1.dlwd = 0
+3: /f Fg333saUnPack1.dtime = 0
+4: /f Fg333saUnPack1.gf = 0
+5: /u Fg333saUnPack1.glwd1 = 0
+6: /u Fg333saUnPack1.glwd2 = 0
+7: /u Fg333saUnPack1.status = 0
+8: /f Fg333saUnPack1.wt0 = 0
+
+Breakpoint 3, Fg333saUnPackFun (pIp=0x555555558040 <Fg333saUnPack1>) at gdb_debug_code.c:17
+17		p->glwd1 = UI16_MAKE(p->pRecvbuf[6], p->pRecvbuf[7]);
+1: /u pRecvbuf = {255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255}
+2: /u Fg333saUnPack1.dlwd = 0
+3: /f Fg333saUnPack1.dtime = 0
+4: /f Fg333saUnPack1.gf = 0
+5: /u Fg333saUnPack1.glwd1 = 0
+6: /u Fg333saUnPack1.glwd2 = 0
+7: /u Fg333saUnPack1.status = 0
+8: /f Fg333saUnPack1.wt0 = -5.8177641733144335e-09
+
+Breakpoint 4, Fg333saUnPackFun (pIp=0x555555558040 <Fg333saUnPack1>) at gdb_debug_code.c:18
+18		p->glwd2 = UI16_MAKE(p->pRecvbuf[8], p->pRecvbuf[9]);
+1: /u pRecvbuf = {255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255}
+2: /u Fg333saUnPack1.dlwd = 0
+3: /f Fg333saUnPack1.dtime = 0
+4: /f Fg333saUnPack1.gf = 0
+5: /u Fg333saUnPack1.glwd1 = 65535
+6: /u Fg333saUnPack1.glwd2 = 0
+7: /u Fg333saUnPack1.status = 0
+8: /f Fg333saUnPack1.wt0 = -5.8177641733144335e-09
+
+Breakpoint 5, Fg333saUnPackFun (pIp=0x555555558040 <Fg333saUnPack1>) at gdb_debug_code.c:19
+19		p->dlwd  = UI16_MAKE(p->pRecvbuf[10], p->pRecvbuf[11]);
+1: /u pRecvbuf = {255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255}
+2: /u Fg333saUnPack1.dlwd = 0
+3: /f Fg333saUnPack1.dtime = 0
+4: /f Fg333saUnPack1.gf = 0
+5: /u Fg333saUnPack1.glwd1 = 65535
+6: /u Fg333saUnPack1.glwd2 = 65535
+7: /u Fg333saUnPack1.status = 0
+8: /f Fg333saUnPack1.wt0 = -5.8177641733144335e-09
+
+Breakpoint 6, Fg333saUnPackFun (pIp=0x555555558040 <Fg333saUnPack1>) at gdb_debug_code.c:21
+21		p->status = p->pRecvbuf[16];
+1: /u pRecvbuf = {255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255}
+2: /u Fg333saUnPack1.dlwd = 65535
+3: /f Fg333saUnPack1.dtime = 0
+4: /f Fg333saUnPack1.gf = 0
+5: /u Fg333saUnPack1.glwd1 = 65535
+6: /u Fg333saUnPack1.glwd2 = 65535
+7: /u Fg333saUnPack1.status = 0
+8: /f Fg333saUnPack1.wt0 = -5.8177641733144335e-09
+
+Breakpoint 7, Fg333saUnPackFun (pIp=0x555555558040 <Fg333saUnPack1>) at gdb_debug_code.c:24
+24		p->gf = p->wt0 * p->dtime;
+1: /u pRecvbuf = {255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255}
+2: /u Fg333saUnPack1.dlwd = 65535
+3: /f Fg333saUnPack1.dtime = 0
+4: /f Fg333saUnPack1.gf = 0
+5: /u Fg333saUnPack1.glwd1 = 65535
+6: /u Fg333saUnPack1.glwd2 = 65535
+7: /u Fg333saUnPack1.status = 255
+8: /f Fg333saUnPack1.wt0 = -5.8177641733144335e-09
+
+Breakpoint 8, Fg333saUnPackFun (pIp=0x555555558040 <Fg333saUnPack1>) at gdb_debug_code.c:25
+25		return;
+1: /u pRecvbuf = {255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255}
+2: /u Fg333saUnPack1.dlwd = 65535
+3: /f Fg333saUnPack1.dtime = 0
+4: /f Fg333saUnPack1.gf = -0
+5: /u Fg333saUnPack1.glwd1 = 65535
+6: /u Fg333saUnPack1.glwd2 = 65535
+7: /u Fg333saUnPack1.status = 255
+8: /f Fg333saUnPack1.wt0 = -5.8177641733144335e-09
+
+Breakpoint 9, main () at gdb_debug_code.c:67
+67	}
+1: /u pRecvbuf = {255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255, 255}
+2: /u Fg333saUnPack1.dlwd = 65535
+3: /f Fg333saUnPack1.dtime = 0
+4: /f Fg333saUnPack1.gf = -0
+5: /u Fg333saUnPack1.glwd1 = 65535
+6: /u Fg333saUnPack1.glwd2 = 65535
+7: /u Fg333saUnPack1.status = 255
+8: /f Fg333saUnPack1.wt0 = -5.8177641733144335e-09
+[Inferior 1 (process) exited normally]

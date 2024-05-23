@@ -1,5 +1,5 @@
 Assumptions: (rdLen=19 -> IpbuffI>=19)
-Guarantee1: bComSuc=0
+Guarantee1: (bComSuc=0)
 Guarantee2: ((rdLen=19 & cntLenRdS=0) | (rdLen!=19 & next(cntLenRdS)=cntLenRdS+1 & next(totalLenRdS)=totalLenRdS+1 & next(cntLenRdO)=cntLenRdO+1 & next(totalLenRdO)=totalLenRdO+1))
 Guarantee3: ((pbuff[17]!=frm & next(cntUpdataS)=0 & next(cntUpdataO)=0 & next(frm)=pbuff[17]) | (pbuff[17]=frm & next(cntUpdataS)=cntUpdataS+1 & next(totalUpdataS)=totalUpdataS+1 & next(cntUpdataO)=cntUpdataO+1 & next(totalUpdataO)=totalUpdataO+1))
 Guarantee4: ((pbuff[0]=235 & pbuff[1]=144 & next(cntHeadS)=0 & next(cntHeadO)=0) | (pbuff[0]!=235 | pbuff[1]!=144 & next(cntHeadS)=cntHeadS+1 & next(totalHeadS)=totalHeadS+1 & next(cntHeadO)=cntHeadO+1 & next(totalHeadO)=totalHeadO+1))
