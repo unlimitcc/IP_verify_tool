@@ -1,21 +1,6 @@
 /*本程序用于从KLEE生成的测试用例文件中提取具体的值，并依据测试用
 例生成执行日志，之后将执行日志转换为etf路径文件*/
-#include <iostream>
-#include <bits/stdc++.h>
-#include <stdlib.h>
-#include <map>
-#include <iomanip>
-#include <vector>
-#include <utility>
-#include <algorithm>
-#include <float.h>
-#include <sstream>
-#include <thread>
-#include <future>
-#include <chrono>
-#include <time.h>
-#include "aux_fun.h"
-
+#include"Header_File.h"
 using namespace std;
 
 struct vartype{
@@ -33,7 +18,6 @@ map<string, string> const_var;						   		   //记录变量中可能出现的常�
 
 ifstream property_infile;                                      //待验证性质文件，以规定的形式编写:extract_var()
 fstream propos_file;										   //存放从contract中提取中的所有命题
-fstream TRACE_property;                                        //TRACE工具性质文件
 ifstream test_case_infile;                                     //测试用例源文件:read_test_case()        
 fstream trace_infile;                                          //GDB生成的程序执行日志:read_trace()
 fstream trace_outfile;                                         //转换后的TRACE路径文件
@@ -46,7 +30,7 @@ fstream z3_contract;										   //contract相关的变量的z3定义文件
 fstream z3_constraint;										   //含有量词约束的contract的z3文件
 fstream klee_constraint;									   //在使用klee符号化对应数据前人为给出的约束
 
-string IP_name = "GetSSData";
+string IP_name = "GyroChoose";
 string IP_cpath = "/home/planet/Desktop/VeriHar-main/sources/" + IP_name + ".c";
 string IP_hpath = "/home/planet/Desktop/VeriHar-main/include/" + IP_name + ".h";
 string src_path = "/home/planet/Desktop/IP_verify_tool/";
@@ -55,38 +39,12 @@ string src_path = "/home/planet/Desktop/IP_verify_tool/";
 bool Z3_API = true;												//是否调用Z3求解器
 
 /*使用antlr4根据性质提取生成测试用例相关的变量表达式，用于为TRACE生成命题*/
+
+extract_propos e_p(Z3_API); //该类用于处理由contract改写的性质文件
+
 void extract_var(){
-    string infile = src_path+"IP_"+IP_name+"_property.txt";
-    propos_file.open(src_path+"IP_"+IP_name+"_propos.txt", ios::app|ios::out|ios::in);
-    int count = 0;
-    vector<string> assum;
-    var_exp = extractpropos(infile,assum);
-    //从assum中提取与初始化相关的信息
-    for(string s : assum){
-    	if(s[0]!='I') continue;
-    	if(s.find('=')!=string::npos){
-    		int op = s.find('=');
-    		string array_name;
-    		if(s.find('>')!=string::npos || s.find('<')!=string::npos) op--;
-    		op--;
-    		array_name = s.substr(1,op-1);
-    		if(s.find('(')!=string::npos){//二维数组
-    			s = s.substr(s.find('('),s.find(')')-s.find('(')+1);
-				int comma = s.find(',');
-				array_ass[array_name].emplace_back(stoi(s.substr(1,comma-1)));
-				array_ass[array_name].emplace_back(stoi(s.substr(comma+1,s.length()-comma-1)));
-    		}else{
-    			s = s.substr(s.find('=')+1,s.length()-s.find('=')-1);
-    			array_ass[array_name].emplace_back(stoi(s));	
-    		}
-    	}
-    }
-    //将包含next操作符的放到起始位置
-    stable_partition(var_exp.begin(), var_exp.end(), containsNext);
-   	for(string pro : var_exp){
-   		propos_file<<"p"<<++count<<":"<<pro<<endl;
-   	}
-   	propos_file.close();
+
+    e_p.get_propos(src_path, IP_name, array_ass, var_exp);
 }
 
 /*将变量符号化并调用KLEE生成测试用例*/
@@ -492,7 +450,7 @@ void generate_GDB_script(int index){
 }
 
 /*计算将命题中的变量替换为执行路径中的实际输出，用于后续判断命题的正误.*/
-void judge_proposition(map<string, pair<string, string>> &next,vector<bool> &propos){
+void judge_proposition(map<string, pair<string, string>> &next,vector<bool> &propos, const bool &first_time){
 	//存在量词或未定义函数的命题，调用Z3-Prover判断
 	if(Z3_API){
 		z3_contract.open(IP_name+".py", ios::app|ios::out|ios::in);
@@ -501,7 +459,7 @@ void judge_proposition(map<string, pair<string, string>> &next,vector<bool> &pro
 			return;
 		}
 		string propos_file_path = src_path+"IP_"+IP_name+"_propos.txt";
-		propos.push_back(Z3_Prover_Propos(propos_file,propos_file_path,next,z3_contract,IP_name+".py",z3_constraint));
+		Z3_Prover_Propos(propos_file,propos_file_path,next,z3_contract,IP_name+".py",z3_constraint,first_time,e_p.z3_propos, propos);
 	}
 	else{//仅涉及值判断不调用Z3
 		for(int i=0; i<var_exp.size(); i++){
@@ -553,6 +511,7 @@ void read_trace(int index){
     trace_outfile<<"TU MILLISECONDS\n"<<"R 0 100.0 false;\n";
     map<string, pair<string, string>> next;                                  //first存放当前变量值，second存放下个状态变量值，用于之后比较
     vector<bool> propos; 
+    bool first_time = true;
     while(!trace_infile.eof()){         
         getline(trace_infile, line);
         //定位断点的位置，以行开头为数字作为识别标识
@@ -591,7 +550,7 @@ void read_trace(int index){
                 getline(trace_infile, line);
             }
             if(line.find("exited") != string::npos){
-            	judge_proposition(next, propos);
+            	judge_proposition(next, propos,first_time);
                 trace_outfile<<"C "<<num_bp<<" ";
                 trace_outfile<<fixed<<setprecision(1)<<1.0*num_bp<<" "<<1.0*(num_bp+1)<<" 0 100.0;";//输出活动的定义 
                 for(int j=0; j<propos.size(); j++){
@@ -602,7 +561,7 @@ void read_trace(int index){
                 num_bp++;
             	break;
             }else{
-            	judge_proposition(next, propos);
+            	judge_proposition(next, propos,first_time);
 		        trace_outfile<<"C "<<num_bp<<" ";
 		        trace_outfile<<fixed<<setprecision(1)<<1.0*num_bp<<" "<<1.0*(num_bp+1)<<" 0 100.0;";//输出活动的定义  
 		        for(int j=0; j<propos.size(); j++){
@@ -612,21 +571,37 @@ void read_trace(int index){
 		        trace_outfile<<"\n";
 		        num_bp++;
 		        propos.clear();
-            }  
+            }
+            first_time = false; 
         }                                   
     }
-    //trace_outfile<<"S 0; name = s1\n"<<"F 0 0 "<<1.0*num_bp<<" 1.0 0.0 0.0"<<endl;
+    trace_outfile<<"S 0; name = s1\n"<<"F 0 0 "<<1.0*num_bp<<" 1.0 0.0 0.0"<<endl;
     trace_infile.close();
     trace_outfile.close();
     return;
 }
 
+bool Verify_TRACE(int index){
+
+	//tracp4cps jar文件位置
+	string jar = "trace4cps/temporallogic/org.eclipse.trace4cps.tl.cmd/target/eclipse-trace4cps-incubation-dev/lib/org.eclipse.trace4cps.tl.cmd-0.2.0-SNAPSHOT.jar";
+	string spec = "property.etl";
+	string TRACE = "TRACE/TRACE";
+	
+	call_trace4cps c_t(jar,spec,TRACE);
+	
+	c_t.verify(index);
+	
+	if(c_t.flag) return true;
+	else return false;
+}
 
 int main(int argc, char* argv[]){
     
 	clock_t start_time, end_time;
+	bool IP_res = true;
     extract_var();
-    start_time=clock();
+    //start_time=clock();
     int count = KLEE_generate_testcase();
     for(int i=1; i<=count; i++){
 		read_test_case(i);
@@ -635,10 +610,12 @@ int main(int argc, char* argv[]){
 		init_code.close();
 		read_trace(i);
 		var_last_val.clear();
-		remove("gdb.txt");		                       
+		remove("gdb.txt");
+		IP_res &= Verify_TRACE(i);                     
     }
     remove("gdb_script.gdb");
-    end_time=clock();
-    cout << "The run time is: " <<(double)(end_time - start_time)/CLOCKS_PER_SEC<< "s" << endl;
+    //end_time=clock();
+    cout << "IP验证结果:" << boolalpha << IP_res << endl;
+    //cout << "The run time is: " <<(double)(end_time - start_time)/CLOCKS_PER_SEC<< "s" << endl;
     return 0;
 }

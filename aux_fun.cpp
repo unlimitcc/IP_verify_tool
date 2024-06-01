@@ -1,4 +1,4 @@
-//¸ÃÎÄ¼ş¼ÇÂ¼main.cppÖĞµ÷ÓÃµÄ¸¨Öúº¯Êı£¬Æä¹¦ÄÜÓëÕû¸ö×Ô¶¯»¯¹ı³Ì²»Ö±½ÓÏà¹Ø
+//è¯¥æ–‡ä»¶è®°å½•main.cppä¸­è°ƒç”¨çš„è¾…åŠ©å‡½æ•°ï¼Œå…¶åŠŸèƒ½ä¸æ•´ä¸ªè‡ªåŠ¨åŒ–è¿‡ç¨‹ä¸ç›´æ¥ç›¸å…³
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -52,9 +52,9 @@ double Calcu(string expr){
     NCLexer lexer(&input);
     CommonTokenStream tokens(&lexer);
     NCParser parser(&tokens);
-    tree::ParseTree* tree = parser.prog(); 	//parser.grogÆäÖĞprog¾ÍÊÇÓï·¨ÎÄ¼şµÄÆğÊ¼¹æÔòÃû³Æ
-    EvalVisitor eval; 						//ÊµÀı»¯×Ô¶¨ÒåµÄ·ÃÎÊÆ÷Àà
-    eval.visit(tree); 						//Í¨¹ıvisit()º¯Êı¿ªÊ¼±éÀúÓï·¨Ê÷
+    tree::ParseTree* tree = parser.prog(); 	//parser.grogå…¶ä¸­progå°±æ˜¯è¯­æ³•æ–‡ä»¶çš„èµ·å§‹è§„åˆ™åç§°
+    EvalVisitor eval; 						//å®ä¾‹åŒ–è‡ªå®šä¹‰çš„è®¿é—®å™¨ç±»
+    eval.visit(tree); 						//é€šè¿‡visit()å‡½æ•°å¼€å§‹éå†è¯­æ³•æ ‘
     return eval.res;
 }
 
@@ -90,10 +90,10 @@ vector<string> extractpropos(string input_file, vector<string>& assum){
     return demo.propos;
 }
 
-//ÀıÈçÔÚÃüÌânext(countMode)=countMode+1ÖĞ,¼ÆËãnext(countMode)ºÍcountMode+1²¢±È½Ï
+//ä¾‹å¦‚åœ¨å‘½é¢˜next(countMode)=countMode+1ä¸­,è®¡ç®—next(countMode)å’ŒcountMode+1å¹¶æ¯”è¾ƒ
 bool cal_propos_val(string &s){
-    //´ËÊ±±í´ïÊ½ÖĞ¿ÉÄÜÒÀÈ»´æÔÚº¯Êı£¬ÀıÈçmin(0.12,0.19),ÕâĞ©ĞèÒªÔÚz3pyÖĞ´¦Àí£¬´Ë´¦¿¼ÂÇµÄ½öÎª±í´ïÊ½ÖĞÈ«²¿Êı×ÖµÄÇé¿ö
-    double val_left, val_right;//¼ÆËã³öµÄ×óÓÒ±í´ïÊ½µÄÖµ
+    //æ­¤æ—¶è¡¨è¾¾å¼ä¸­å¯èƒ½ä¾ç„¶å­˜åœ¨å‡½æ•°ï¼Œä¾‹å¦‚min(0.12,0.19),è¿™äº›éœ€è¦åœ¨z3pyä¸­å¤„ç†ï¼Œæ­¤å¤„è€ƒè™‘çš„ä»…ä¸ºè¡¨è¾¾å¼ä¸­å…¨éƒ¨æ•°å­—çš„æƒ…å†µ
+    double val_left, val_right;//è®¡ç®—å‡ºçš„å·¦å³è¡¨è¾¾å¼çš„å€¼
     if(s.find("=")!=string::npos){	//left>=/<=/!=/=right
     	int pos_op = s.find("=");
     	if(s[pos_op-1]=='!' || s[pos_op-1]=='>' || s[pos_op-1]=='<'){
@@ -112,7 +112,7 @@ bool cal_propos_val(string &s){
     		val_right = Calcu(s.substr(pos_op+1, s.length()-pos_op-1));
     		return val_left == val_right;
     	}
-    }else{//Ö»ÓĞ > or < Á½ÖÖ¿ÉÄÜ
+    }else{// '>' or '<' 
     	if(s.find(">")!=string::npos){
     		int pos_op = s.find(">");
     		val_left = Calcu(s.substr(0,pos_op));
@@ -128,24 +128,29 @@ bool cal_propos_val(string &s){
     return true;
 }
 
-bool Z3_Prover_Propos(fstream& propos_file, 
+void Z3_Prover_Propos(fstream& propos_file, 
 					  const string& propos_file_path,
 				 	  map<string, pair<string, string>>& next,
 					  fstream& z3_contract, 
 					  const string file_pos,
-					  fstream& z3_constraint)//nextÊı×éÀï°üº¬ËùÓĞµÄ±äÁ¿µÄ¾ßÌåÖµ
+					  fstream& z3_constraint,
+					  const bool &first_time,
+					  vector<string> &z3_propos,
+					  vector<bool> &propos)//nextæ•°ç»„é‡ŒåŒ…å«æ‰€æœ‰çš„å˜é‡çš„å…·ä½“å€¼
 {
-	z3_contract.seekp(0, ios::end);//Ğ´ÈëÎ»ÖÃÒÆ¶¯µ½contractÄ©Î²
-	streampos pos = z3_contract.tellg();//¶ÁÈ¡ÎÄ¼ş´óĞ¡
+	z3_contract.seekp(0, ios::end);//å†™å…¥ä½ç½®ç§»åŠ¨åˆ°contractæœ«å°¾
+	streampos pos = z3_contract.tellg();//è¯»å–æ–‡ä»¶å¤§å°
     z3_contract << "\n" << endl;
     propos_file.open(propos_file_path, ios::app | ios::in | ios::out);
-    if (!propos_file.is_open())		               	//ÅĞ¶ÏÎÄ¼şÊÇ·ñ³É¹¦´ò¿ª
+    if (!propos_file.is_open())		               	//åˆ¤æ–­æ–‡ä»¶æ˜¯å¦æˆåŠŸæ‰“å¼€
 	{
 		cout<<"Error opening file: IP_propos.txt"<<endl;
-		return false;
+		return;
 	}
-	//ÒÑ¾­Ìí¼Ó½øz3µÄÔ¼Êø²»ÓÃÖØ¸´Ìí¼Ó
+	//å·²ç»æ·»åŠ è¿›z3çš„çº¦æŸä¸ç”¨é‡å¤æ·»åŠ 
 	vector<string> cache;
+	//ç»Ÿè®¡æ•°ç»„ç±»å‹ä¸ªæ•°ï¼Œåœ¨z3è½¬æ¢ä¸­ä¼šç”¨åˆ°
+	int num_array = 0;
     while(!propos_file.eof()){
     	string line;
     	getline(propos_file,line);
@@ -154,7 +159,7 @@ bool Z3_Prover_Propos(fstream& propos_file,
     		string index = it->first.find('[')!=string::npos?it->first.substr(0,it->first.find('[')+1):it->first;
     		string array_name = it->first.find('[')!=string::npos?it->first.substr(0,it->first.find('[')):"";
     		//if(find(cache.begin(),cache.end(),"next("+index)!=cache.end() || find(cache.begin(),cache.end(),index)!=cache.end()) continue;
-    		//¸¡µãÊıÖĞµÄÎŞÇî´óinf£¬z3ÎŞ·¨½âÎö
+    		//æµ®ç‚¹æ•°ä¸­çš„æ— ç©·å¤§infï¼Œz3æ— æ³•è§£æ
     		while(it->second.first.find("inf")!=string::npos){
     			int st = it->second.first.find("inf");
     			it->second.first.replace(st,3,"3.4e+38");
@@ -165,7 +170,8 @@ bool Z3_Prover_Propos(fstream& propos_file,
     		}
 			if(propos.find("next("+index)!=string::npos && find(cache.begin(),cache.end(),"next("+index)==cache.end()){
 				cache.emplace_back("next("+index);
-				//Êı×éĞèÒªÌØÊâ´¦Àí,ÏÈÌáÈ¡Êı×éÃû
+
+				//æ•°ç»„éœ€è¦ç‰¹æ®Šå¤„ç†,å…ˆæå–æ•°ç»„å
 				if(it->second.second.length()!=0){
 					if(it->first.find('[')!=string::npos) \
 						z3_contract << array_name << "_next" << "=" << it->second.second << endl;
@@ -177,37 +183,54 @@ bool Z3_Prover_Propos(fstream& propos_file,
 					else \
 						z3_contract << "s.add(" << it->first << "_next==" << it->second.first << ")" << endl;
 				}
-				/*ÔÚz3ÖĞ½«listÀàĞÍ×ª»¯ÎªarrayÀàĞÍ£¬×ª»»º¯ÊıÔÚpythonÎÄ¼şÖĞ¶¨Òå
-				µ±¸Ã±äÁ¿varÔÚÃüÌâÖĞ´æÔÚnext(var)Ê±£¬Ô­ÃüÌâÖĞvar±í´ïÊ½¾ùÖ¸´ú³õÊ¼±äÁ¿ĞÅÏ¢*/
+
+				/*åœ¨z3ä¸­å°†listç±»å‹è½¬åŒ–ä¸ºarrayç±»å‹ï¼Œè½¬æ¢å‡½æ•°åœ¨pythonæ–‡ä»¶ä¸­å®šä¹‰
+				å½“è¯¥å˜é‡varåœ¨å‘½é¢˜ä¸­å­˜åœ¨next(var)æ—¶ï¼ŒåŸå‘½é¢˜ä¸­varè¡¨è¾¾å¼å‡æŒ‡ä»£åˆå§‹å˜é‡ä¿¡æ¯*/
 				if(it->first.find('[')!=string::npos){
-					z3_contract << "VER_"+array_name+"_next, constraints" << " = List2Array(" << array_name+"_next" << ",idx=())"<< endl;
+					z3_contract << "VER_"+array_name+"_next, constraints" << num_array <<" = List2Array(" << array_name+"_next" << ",idx=("<< num_array <<",))"<< endl;
+					z3_contract << "s.add(constraints" << num_array << ")" << endl;
 					z3_contract << array_name << "=" << it->second.first << endl;
-					if(find(cache.begin(),cache.end(),index)==cache.end())
-						z3_contract << "VER_"+array_name+", constraints" << " = List2Array(" << array_name+",idx=())"<< endl;
+					num_array++;
+					if(find(cache.begin(),cache.end(),index)==cache.end()){
+						z3_contract << "VER_"+array_name << ", constraints" << num_array << " = List2Array(" << array_name << ",idx=("<< num_array <<",))"<< endl;
+						z3_contract << "s.add(constraints" << num_array << ")" << endl;
+						num_array++;
+					}
 				}
 				else if(find(cache.begin(),cache.end(),index)==cache.end())
 					z3_contract << "s.add(" << it->first << "==" << it->second.first << ")" << endl;
 				cache.emplace_back(index);
-			}else if(propos.find(index)!=string::npos && find(cache.begin(),cache.end(),index)==cache.end()){//´òÓ¡×îĞÂÖµ
+			}else if(propos.find(index)!=string::npos && find(cache.begin(),cache.end(),index)==cache.end()){
 				cache.emplace_back(index);
-				/*if(it->second.second.length()==0){
-					if(it->first.find('[')!=string::npos) \
-						z3_contract << array_name << "=" << it->second.first << endl;
-					else \
-						z3_contract << "s.add(" << it->first << "==" << it->second.first << ")" << endl;
-				}else{	
-				}*/
-				if(it->first.find('[')!=string::npos) \
-						z3_contract << array_name << "=" << it->second.first << endl;
-					else \
-						z3_contract << "s.add(" << it->first << "==" << it->second.first<< ")" << endl;
-				if(it->first.find('[')!=string::npos)
-					z3_contract << "VER_"+array_name << ", constraints = List2Array(" << array_name << ", idx=())" << endl;
+				
+				//å¦‚æœæ€§è´¨ä¸­æ²¡æœ‰å‡ºç°next(var)ï¼Œåˆ™è®¤ä¸ºä½¿ç”¨åŸå§‹å€¼
+				if(it->first.find('[')!=string::npos){
+					z3_contract << array_name << "=" << it->second.first << endl;
+					z3_contract << "VER_"+array_name << ", constraints" << num_array << " = List2Array(" << array_name << ",idx=("<< num_array <<",))"<< endl;
+					z3_contract << "s.add(constraints" << num_array << ")" << endl;
+					num_array++;
+				}	
+				else
+					z3_contract << "s.add(" << it->first << "==" << it->second.first << ")" << endl;
+
+				// if(it->second.second.length()==0){
+				// 	if(it->first.find('[')!=string::npos) \
+				// 		z3_contract << array_name << "=" << it->second.first << endl;
+				// 	else \
+				// 		z3_contract << "s.add(" << it->first << "==" << it->second.first << ")" << endl;
+				// }else{
+				// 	if(it->first.find('[')!=string::npos) \
+				// 		z3_contract << array_name << "=" << it->second.second << endl;
+				// 	else \
+				// 		z3_contract << "s.add(" << it->first << "==" << it->second.second<< ")" << endl;
+				// 	if(it->first.find('[')!=string::npos)
+				// 		z3_contract << "VER_"+array_name << ", constraints = List2Array(" << array_name << ", idx=())" << endl;
+				// }	
 			}
 		}
     }
-    
-    //ÊäÈëÊ¹ÓÃz3µÄ±àĞ´µÄcontractÔ¼Êø£¬±£´æÔÚconstraintÎÄ¼şÀï
+
+    //è¾“å…¥ä½¿ç”¨z3çš„ç¼–å†™çš„contractçº¦æŸï¼Œä¿å­˜åœ¨constraintæ–‡ä»¶é‡Œ
     z3_constraint.open("z3_constraint.py",ios::app | ios::out | ios::in);
     while(!z3_constraint.eof()){
     	string line;
@@ -215,28 +238,64 @@ bool Z3_Prover_Propos(fstream& propos_file,
     	z3_contract << line << endl;
     }
     z3_constraint.close();
-    z3_contract << "print(s.check())" << endl;
-    char buffer[100];
-    string res;
-	FILE* fp;
-	string com = "python3 " + file_pos;
-	fp = popen(com.c_str(), "r");
-	if(fp == NULL){
-		cout << "z3-solver failed\n" << endl;
-		exit(1);
-	}else{
-        if(fread(buffer,1,sizeof(buffer)-1,fp) > 0) {
-            res = buffer;
-        }
+    
+	//ä¸´æ—¶å­˜æ”¾z3åœ¨æŸä¸ªç‚¹å¤„çš„å…¨éƒ¨å‘½é¢˜éªŒè¯ç»“æœ
+    fstream temp_z3_result;
+    temp_z3_result.open("all_z3_result.txt",ios::in | ios::out);
+    if(first_time){
+    	z3_contract << "s.push()" << endl;
+    	z3_contract << "s.add(Assumptions)" << endl;
+    	z3_contract << "print(s.check())" << endl;
+    	z3_contract << "s.pop()" << endl;
+    }
+	for(int i=1; i<z3_propos.size(); i++){
+		z3_contract << "s.push()" << endl;
+		z3_contract << "s.add(" << z3_propos[i] << ")" << endl;
+		z3_contract << "print(s.check())" << endl;
+    	z3_contract << "s.pop()" << endl;
 	}
-	pclose(fp);
+    //cout << "z3.propos.size() = " << z3_propos.size() << endl;
+	string com = "python3 " + file_pos + " > all_z3_result.txt";
+	system(com.c_str());
+	// char buffer[100];
+    // string res;
+	// FILE* fp;
+	// fp = popen(com.c_str(), "r");
+	// if(fp == NULL){
+	// 	cout << "z3-solver failed\n" << endl;
+	// 	exit(1);
+	// }else{
+    //     if(fread(buffer,1,sizeof(buffer)-1,fp) > 0) {
+    //         res = buffer;
+    //     }
+	// }
+	// pclose(fp);
+
+	//ä¸ä¿å­˜ä¹‹å‰æ·»åŠ çš„çº¦æŸ
 	z3_contract.seekp(0, ios::beg);
    	truncate(file_pos.c_str(),pos);
     z3_contract.close();
     propos_file.close();
-    if(res.find("unsat")!=string::npos) return false;
-    else if(res.find("sat")!=string::npos) return true;
-    else return false;
+    temp_z3_result.close();
+    temp_z3_result.open("all_z3_result.txt",ios::in | ios::out);
+    int count = 0;
+    while(!temp_z3_result.eof()){
+    	string line;
+    	getline(temp_z3_result, line);
+    	if(count==0 && first_time){
+    		if(line.find("unsat")!=string::npos) propos.emplace_back(false);
+    		else if(line.find("sat")!=string::npos) propos.emplace_back(true);
+    		count++;
+    	}else if(count>0 || !first_time){
+			//if not first step, make Assumptions true
+    		if(count == 0) propos.emplace_back(true);
+			if(line.find("unsat")!=string::npos) propos.emplace_back(false);
+			else if(line.find("sat")!=string::npos) propos.emplace_back(true);
+			count++;
+    	}
+    }
+	remove("all_z3_result.txt");
+    return;
 }
 
 float Hex32_10(unsigned char *Byte){
@@ -245,14 +304,14 @@ float Hex32_10(unsigned char *Byte){
 }
 
 void extract_float(const string& VAL, map<string,string>& test_case, const string & NAME){
-	unsigned char ch[4];//´æ´¢16½øÖÆ±íÊ¾µÄIEEE754±ê×¼32Î»¸¡µãÊı
+	unsigned char ch[4];//å­˜å‚¨16è¿›åˆ¶è¡¨ç¤ºçš„IEEE754æ ‡å‡†32ä½æµ®ç‚¹æ•°
 	for (size_t i = 0; i < VAL.length(); i+=2){
 		string byteString = VAL.substr(i, 2);
 		unsigned char byte = (unsigned char)strtol(byteString.c_str(), nullptr, 16);
 		ch[(i%8)/2] = byte;
 		if((i%8)/2==3){
 			string float_val = to_string(Hex32_10(ch));
-			if(float_val.find('n')!=string::npos || float_val.find('N')!=string::npos) float_val = "0.0";//³öÏÖNaN£¬·ÀÖ¹³ÌĞò±ÀÀ£½«ÖµĞŞ¸ÄÎª0
+			if(float_val.find('n')!=string::npos || float_val.find('N')!=string::npos) float_val = "0.0";//å‡ºç°NaNï¼Œé˜²æ­¢ç¨‹åºå´©æºƒå°†å€¼ä¿®æ”¹ä¸º0
 			test_case[NAME] += float_val;
 			if(i+2<VAL.length()) test_case[NAME] += ',';
 		}
@@ -263,11 +322,11 @@ void extract_float(const string& VAL, map<string,string>& test_case, const strin
 double Hex64_10(unsigned char *Byte) {
 	
     //char* pData = byteDate.data();
-    //·ûºÅÎ»  1Î»
+    //ç¬¦å·ä½  1ä½
     int sign = int(Byte[0] >> 7);
-    //Ö¸ÊıÎ»  11Î»
+    //æŒ‡æ•°ä½  11ä½
     int e = int(((Byte[0] & 0x7F) << 4) & 0x0FF0 | (Byte[1] & 0xF0) >> 4) - 1023;
-    //Ğ¡ÊıÎ»  52Î»
+    //å°æ•°ä½  52ä½
     double  m = pow(2, -52) * 
         (pow(256, 6) * double(Byte[1] & 0x0F) +
          pow(256, 5) * double(Byte[2]) +
@@ -281,14 +340,14 @@ double Hex64_10(unsigned char *Byte) {
 }
 
 void extract_double(const string& VAL, map<string,string>& test_case, const string & NAME){
-	unsigned char ch[8];//´æ´¢16½øÖÆ±íÊ¾µÄIEEE754±ê×¼64Î»¸¡µãÊı
+	unsigned char ch[8];//å­˜å‚¨16è¿›åˆ¶è¡¨ç¤ºçš„IEEE754æ ‡å‡†64ä½æµ®ç‚¹æ•°
 	for (size_t i = 0; i < VAL.length(); i+=2){
 		string byteString = VAL.substr(i, 2);
 		unsigned char byte = (unsigned char)strtol(byteString.c_str(), nullptr, 16);
 		ch[7-(i%16)/2] = byte;
 		if((7-(i%16)/2)==0){
 			string double_val = to_string(Hex64_10(ch));
-			if(double_val.find('n')!=string::npos || double_val.find('N')!=string::npos) double_val = "0.0";//³öÏÖNaN£¬·ÀÖ¹³ÌĞò±ÀÀ£½«ÖµĞŞ¸ÄÎª0
+			if(double_val.find('n')!=string::npos || double_val.find('N')!=string::npos) double_val = "0.0";//å‡ºç°NaNï¼Œé˜²æ­¢ç¨‹åºå´©æºƒå°†å€¼ä¿®æ”¹ä¸º0
 			test_case[NAME] += double_val;
 			if(i+2<VAL.length()) test_case[NAME] += ',';
 		}
