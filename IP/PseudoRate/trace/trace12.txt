@@ -1,0 +1,103 @@
+Breakpoint 1 at 0x1149: file gdb_debug_code.c, line 5.
+Breakpoint 2 at 0x1149: file gdb_debug_code.c, line 5.
+Breakpoint 3 at 0x1149: file gdb_debug_code.c, line 5.
+Breakpoint 4 at 0x11b6: file gdb_debug_code.c, line 13.
+Breakpoint 5 at 0x11c2: file gdb_debug_code.c, line 14.
+Breakpoint 6 at 0x1201: file gdb_debug_code.c, line 16.
+Breakpoint 7 at 0x125c: file gdb_debug_code.c, line 19.
+Breakpoint 8 at 0x1268: file gdb_debug_code.c, line 20.
+Breakpoint 9 at 0x12a4: file gdb_debug_code.c, line 24.
+Breakpoint 10 at 0x12b0: file gdb_debug_code.c, line 25.
+Breakpoint 11 at 0x12bc: file gdb_debug_code.c, line 26.
+Breakpoint 12 at 0x12f8: file gdb_debug_code.c, line 29.
+Breakpoint 13 at 0x12f9: file gdb_debug_code.c, line 30.
+Breakpoint 14 at 0x13e0: file gdb_debug_code.c, line 51.
+
+Breakpoint 1, PseudoRateFun (p=0xf0) at gdb_debug_code.c:5
+5	{
+1: /f pu = {-8.04699707, 663552.312, 38.0833282}
+2: /u PseudoRate1.Yn = {0, 0, 15}
+3: /u PseudoRate1.Yp = {15, 15, 0}
+4: /f PseudoRate1.h1 = {0, 0, 0}
+5: /f PseudoRate1.r = {-3.98449707, 245696.141, 1.8125}
+
+Breakpoint 6, PseudoRateFun (p=0x555555558020 <PseudoRate1>) at gdb_debug_code.c:16
+16	        else if ((pIp->pu[i] -pIp->r[i]) < -pIp->h1[i])				/* u(输入)-r（反馈信号）<h1 */		
+1: /f pu = {-8.04699707, 663552.312, 38.0833282}
+2: /u PseudoRate1.Yn = {0, 0, 15}
+3: /u PseudoRate1.Yp = {15, 15, 0}
+4: /f PseudoRate1.h1 = {0, 0, 0}
+5: /f PseudoRate1.r = {-3.98449707, 245696.141, 1.8125}
+
+Breakpoint 7, PseudoRateFun (p=0x555555558020 <PseudoRate1>) at gdb_debug_code.c:19
+19	           pIp->Yn[i] = 0x0 ;									
+1: /f pu = {-8.04699707, 663552.312, 38.0833282}
+2: /u PseudoRate1.Yn = {0, 0, 15}
+3: /u PseudoRate1.Yp = {15, 15, 0}
+4: /f PseudoRate1.h1 = {0, 0, 0}
+5: /f PseudoRate1.r = {-3.98449707, 245696.141, 1.8125}
+
+Breakpoint 8, PseudoRateFun (p=0x555555558020 <PseudoRate1>) at gdb_debug_code.c:20
+20	           pIp->r[i] = 0.9231f *pIp->r[i] - 0.07688f ;	/* Y=-1  */						
+1: /f pu = {-8.04699707, 663552.312, 38.0833282}
+2: /u PseudoRate1.Yn = {0, 0, 15}
+3: /u PseudoRate1.Yp = {15, 15, 0}
+4: /f PseudoRate1.h1 = {0, 0, 0}
+5: /f PseudoRate1.r = {-3.98449707, 245696.141, 1.8125}
+
+Breakpoint 4, PseudoRateFun (p=0x555555558020 <PseudoRate1>) at gdb_debug_code.c:13
+13	           pIp->Yn[i] = 0xF ;									
+1: /f pu = {-8.04699707, 663552.312, 38.0833282}
+2: /u PseudoRate1.Yn = {0, 0, 15}
+3: /u PseudoRate1.Yp = {15, 0, 0}
+4: /f PseudoRate1.h1 = {0, 0, 0}
+5: /f PseudoRate1.r = {-3.75496912, 245696.141, 1.8125}
+
+Breakpoint 5, PseudoRateFun (p=0x555555558020 <PseudoRate1>) at gdb_debug_code.c:14
+14	           pIp->r[i] = 0.9231f *pIp->r[i] + 0.07688f ;	/*  Y=1 */						
+1: /f pu = {-8.04699707, 663552.312, 38.0833282}
+2: /u PseudoRate1.Yn = {0, 15, 15}
+3: /u PseudoRate1.Yp = {15, 0, 0}
+4: /f PseudoRate1.h1 = {0, 0, 0}
+5: /f PseudoRate1.r = {-3.75496912, 245696.141, 1.8125}
+
+Breakpoint 4, PseudoRateFun (p=0x555555558020 <PseudoRate1>) at gdb_debug_code.c:13
+13	           pIp->Yn[i] = 0xF ;									
+1: /f pu = {-8.04699707, 663552.312, 38.0833282}
+2: /u PseudoRate1.Yn = {0, 15, 15}
+3: /u PseudoRate1.Yp = {15, 0, 0}
+4: /f PseudoRate1.h1 = {0, 0, 0}
+5: /f PseudoRate1.r = {-3.75496912, 226802.188, 1.8125}
+
+Breakpoint 5, PseudoRateFun (p=0x555555558020 <PseudoRate1>) at gdb_debug_code.c:14
+14	           pIp->r[i] = 0.9231f *pIp->r[i] + 0.07688f ;	/*  Y=1 */						
+1: /f pu = {-8.04699707, 663552.312, 38.0833282}
+2: /u PseudoRate1.Yn = {0, 15, 15}
+3: /u PseudoRate1.Yp = {15, 0, 0}
+4: /f PseudoRate1.h1 = {0, 0, 0}
+5: /f PseudoRate1.r = {-3.75496912, 226802.188, 1.8125}
+
+Breakpoint 12, PseudoRateFun (p=0x555555558020 <PseudoRate1>) at gdb_debug_code.c:29
+29	    return;
+1: /f pu = {-8.04699707, 663552.312, 38.0833282}
+2: /u PseudoRate1.Yn = {0, 15, 15}
+3: /u PseudoRate1.Yp = {15, 0, 0}
+4: /f PseudoRate1.h1 = {0, 0, 0}
+5: /f PseudoRate1.r = {-3.75496912, 226802.188, 1.74999869}
+
+Breakpoint 13, PseudoRateFun (p=0x555555558020 <PseudoRate1>) at gdb_debug_code.c:30
+30	}
+1: /f pu = {-8.04699707, 663552.312, 38.0833282}
+2: /u PseudoRate1.Yn = {0, 15, 15}
+3: /u PseudoRate1.Yp = {15, 0, 0}
+4: /f PseudoRate1.h1 = {0, 0, 0}
+5: /f PseudoRate1.r = {-3.75496912, 226802.188, 1.74999869}
+
+Breakpoint 14, main () at gdb_debug_code.c:51
+51	}
+1: /f pu = {-8.04699707, 663552.312, 38.0833282}
+2: /u PseudoRate1.Yn = {0, 15, 15}
+3: /u PseudoRate1.Yp = {15, 0, 0}
+4: /f PseudoRate1.h1 = {0, 0, 0}
+5: /f PseudoRate1.r = {-3.75496912, 226802.188, 1.74999869}
+[Inferior 1 (process) exited normally]

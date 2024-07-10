@@ -15,8 +15,8 @@ object 1: uint: 0
 object 1: text: ....
 object 2: name: 'powerState'
 object 2: size: 4
-object 2: data: b'\x04\x04\x04\x04'
-object 2: hex : 0x04040404
-object 2: int : 67372036
-object 2: uint: 67372036
+object 2: data: b'\xfe\x01\xfe\xfe'
+object 2: hex : 0xfe01fefe
+object 2: int : -16907778
+object 2: uint: 4278059518
 object 2: text: ....

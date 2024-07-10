@@ -1,0 +1,17 @@
+p1:IpGyroRateI>=3
+p2:m_workMode=0
+p3:m_countPublic>time_D2P
+p4:m_countMode>time_D2P_overtime
+p5:m_workMode=17
+p6:m_countMode>4500
+p7:m_workMode=34
+p8:m_countMode>5000
+p9:m_countPublic>12
+p10:m_workMode=51
+p11:Cnt_RASM>1
+p12:m_countPublic<=280
+p13:m_countMode<=800
+p14:m_countPublic<=12
+p15:m_countMode<=4500
+p16:m_countMode<=5000
+p17:Cnt_RASM<=1

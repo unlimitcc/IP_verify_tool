@@ -3,9 +3,9 @@ args       : ['klee_code.bc']
 num objects: 6
 object 0: name: '*wa[9]'
 object 0: size: 36
-object 0: data: b'\x00\x00\x00\x80\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
-object 0: hex : 0x000000800000000000000000000000000000000000000000000000000000000000000000
-object 0: text: ....................................
+object 0: data: b'\xfc\xff\xff\x03\x00\x00\xc0?\x01(\x80?\x81\x10\x7fQ\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+object 0: hex : 0xfcffff030000c03f0128803f81107f510000000000000000000000000000000000000000
+object 0: text: .......?.(.?...Q....................
 object 1: name: 'countPick[9]'
 object 1: size: 9
 object 1: data: b'\xff\xff\xff\xff\xff\xff\xff\xff\xff'
@@ -20,11 +20,11 @@ object 2: uint: 1
 object 2: text: .
 object 3: name: 'waThr'
 object 3: size: 4
-object 3: data: b'\x00\x00\x00\x00'
-object 3: hex : 0x00000000
-object 3: int : 0
-object 3: uint: 0
-object 3: text: ....
+object 3: data: b'\x07\x00\x00 '
+object 3: hex : 0x07000020
+object 3: int : 536870919
+object 3: uint: 536870919
+object 3: text: ... 
 object 4: name: 'wa_out[9]'
 object 4: size: 36
 object 4: data: b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
@@ -32,6 +32,6 @@ object 4: hex : 0x00000000000000000000000000000000000000000000000000000000000000
 object 4: text: ....................................
 object 5: name: 'wal[9]'
 object 5: size: 36
-object 5: data: b'\x04\x80\x81\xc0\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04\x04'
-object 5: hex : 0x048081c00404040404040404040404040404040404040404040404040404040404040404
-object 5: text: ....................................
+object 5: data: b'\x01\x01\x00\x80\x00\x01\x00\xbf\x00\x020;\x02 \xc0M\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'
+object 5: hex : 0x01010080000100bf0002303b0220c04d0000000000000000000000000000000000000000
+object 5: text: ..........0;. .M....................

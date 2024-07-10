@@ -1,16 +1,17 @@
 from z3 import *
+import numpy as np
 
 #variables
-IWI = Int('IWI')
-IGiI = Int('IGiI')
-IGiI_next = Int('IGiI_next')
-IGi_outI = Int('IGi_outI')
-IGi_outI_next = Int('IGi_outI_next')
-W = Array('W', IntSort(), RealSort())
-Gi = Array('Gi', IntSort(), RealSort())
-Gi_next = Array('Gi_next', IntSort(), RealSort())
-Gi_out = Array('Gi_out', IntSort(), RealSort())
-Gi_out_next = Array('Gi_out_next', IntSort(), RealSort())
+W = []
+Gi = []
+Gi_next = []
+Gi_out = []
+Gi_out_next = []
+VER_W = Array('VER_W', IntSort(), RealSort())
+VER_Gi = Array('VER_Gi', IntSort(), RealSort())
+VER_Gi_next = Array('VER_Gi_next', IntSort(), RealSort())
+VER_Gi_out = Array('VER_Gi_out', IntSort(), RealSort())
+VER_Gi_out_next = Array('VER_Gi_out_next', IntSort(), RealSort())
 ctlPeriod =Real('ctlPeriod')
 ctlPeriod_next =Real('ctlPeriod_next')
 def max(a, b):
@@ -22,15 +23,24 @@ def min(a, b):
 def abs(a):
     m = If(a>=0, a, -a)
     return m
+def Array_length(a):
+	temp = np.array(a)
+	return temp.size
+def List2Array(lst, idx=()):
+    if isinstance(lst[0], list):
+        size = len(lst)
+        z3_array = Array('array_' + '_'.join(map(str, idx)), IntSort(), ArraySort(IntSort(), RealSort()))
+        constraints = []
+        for i in range(size):
+            sub_array, sub_constraints = List2Array(lst[i], idx + (i,))
+            constraints.extend(sub_constraints)
+            constraints.append(z3_array[i] == sub_array)
+        return z3_array, constraints
+    else:
+        size = len(lst)
+        z3_array = Array('array_' + '_'.join(map(str, idx)), IntSort(), RealSort())
+        constraints = [z3_array[i] == lst[i] for i in range(size)]
+        return z3_array, constraints
 s = Solver()
 #contract
-Assumption = And(IWI>=IGiI, IGiI==3)
-Guarantee1 = And(IGiI==3)
-Guarantee2 = abs(Gi_next[0]-max(-180, min(180, Gi[0]+W[0]*ctlPeriod)))<0.0001
-Guarantee3 = abs(Gi_next[1]-max(-180, min(180, Gi[1]+W[1]*ctlPeriod)))<0.0001
-Guarantee4 = abs(Gi_next[2]-max(-90, min(90, Gi[2]+W[2]*ctlPeriod)))<0.0001
-Guarantee5 = And(ctlPeriod_next==ctlPeriod)
-Guarantee = And(Guarantee1, Guarantee2, Guarantee3, Guarantee4, Guarantee5)
-s.add(And(Assumption, Implies(Assumption, Guarantee)))
-#####
 

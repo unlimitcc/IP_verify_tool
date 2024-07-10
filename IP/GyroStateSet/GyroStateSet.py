@@ -1,40 +1,31 @@
 from z3 import *
+import numpy as np
 
 #variables
 powerState = Int('powerState')
 healthState = Int('healthState')
-StateFlag = Array('StateFlag', IntSort(), IntSort())
-StateFlag_next = Array('StateFlag_next', IntSort(), IntSort())
-IStateFlagI = Int('IStateFlagI')
+StateFlag = []
+VER_StateFlag = Array('VER_StateFlag', IntSort(), IntSort())
+VER_StateFlag_next = Array('VER_StateFlag_next', IntSort(), IntSort())
 i = Int('i')
+def Array_length(a):
+	temp = np.array(a)
+	return temp.size
+def List2Array(lst, idx=()):
+    if isinstance(lst[0], list):
+        size = len(lst)
+        z3_array = Array('array_' + '_'.join(map(str, idx)), IntSort(), ArraySort(IntSort(), RealSort()))
+        constraints = []
+        for i in range(size):
+            sub_array, sub_constraints = List2Array(lst[i], idx + (i,))
+            constraints.extend(sub_constraints)
+            constraints.append(z3_array[i] == sub_array)
+        return z3_array, constraints
+    else:
+        size = len(lst)
+        z3_array = Array('array_' + '_'.join(map(str, idx)), IntSort(), RealSort())
+        constraints = [z3_array[i] == lst[i] for i in range(size)]
+        return z3_array, constraints
 s = Solver()
-#contract
-Assumption = True
-# Guarantee1 = (ForAll(i, Implies(And(i>=0, i<9), Implies(And(powerState%ToInt(2**(i+1))>=ToInt(2**i), healthState%ToInt(2**(i+1))<ToInt(2**i)), StateFlag_next[i]==235))))
-# Guarantee2 = (ForAll(i, Implies(And(i>=0, i<9), Implies(Or(powerState%ToInt(2**(i+1))<ToInt(2**i), healthState%ToInt(2**(i+1))>=ToInt(2**i)), StateFlag_next[i]==0))))
-Guarantee1_0 = (Implies(And(powerState%(2**(0+1))>=(2**0), healthState%(2**(0+1))<(2**0)), StateFlag_next[0]==235))
-Guarantee2_0 = (Implies(Or(powerState%(2**(0+1))<(2**0), healthState%(2**(0+1))>=(2**0)), StateFlag_next[0]==0))
-Guarantee1_1 = (Implies(And(powerState%(2**(1+1))>=(2**1), healthState%(2**(1+1))<(2**1)), StateFlag_next[1]==235))
-Guarantee2_1 = (Implies(Or(powerState%(2**(1+1))<(2**1), healthState%(2**(1+1))>=(2**1)), StateFlag_next[1]==0))
-Guarantee1_2 = (Implies(And(powerState%(2**(2+1))>=(2**2), healthState%(2**(2+1))<(2**2)), StateFlag_next[2]==235))
-Guarantee2_2 = (Implies(Or(powerState%(2**(2+1))<(2**2), healthState%(2**(2+1))>=(2**2)), StateFlag_next[2]==0))
-#Guarantee1_3 = (Implies(And(powerState%(2**(3+1))>=(2**3), healthState%(2**(3+1))<(2**3)), StateFlag_next[3]==235))
-#Guarantee2_3 = (Implies(Or(powerState%(2**(3+1))<(2**3), healthState%(2**(3+1))>=(2**3)), StateFlag_next[3]==0))
-#Guarantee1_4 = (Implies(And(powerState%(2**(4+1))>=(2**4), healthState%(2**(4+1))<(2**4)), StateFlag_next[4]==235))
-#Guarantee2_4 = (Implies(Or(powerState%(2**(4+1))<(2**4), healthState%(2**(4+1))>=(2**4)), StateFlag_next[4]==0))
-#Guarantee1_5 = (Implies(And(powerState%(2**(5+1))>=(2**5), healthState%(2**(5+1))<(2**5)), StateFlag_next[5]==235))
-#Guarantee2_5 = (Implies(Or(powerState%(2**(5+1))<(2**5), healthState%(2**(5+1))>=(2**5)), StateFlag_next[5]==0))
-#Guarantee1_6 = (Implies(And(powerState%(2**(6+1))>=(2**6), healthState%(2**(6+1))<(2**6)), StateFlag_next[6]==235))
-#Guarantee2_6 = (Implies(Or(powerState%(2**(6+1))<(2**6), healthState%(2**(6+1))>=(2**6)), StateFlag_next[6]==0))
-#Guarantee1_7 = (Implies(And(powerState%(2**(7+1))>=(2**7), healthState%(2**(7+1))<(2**7)), StateFlag_next[7]==235))
-#Guarantee2_7 = (Implies(Or(powerState%(2**(7+1))<(2**7), healthState%(2**(7+1))>=(2**7)), StateFlag_next[7]==0))
-#Guarantee1_8 = (Implies(And(powerState%(2**(8+1))>=(2**8), healthState%(2**(8+1))<(2**8)), StateFlag_next[8]==235))
-#Guarantee2_8 = (Implies(Or(powerState%(2**(8+1))<(2**8), healthState%(2**(8+1))>=(2**8)), StateFlag_next[8]==0))
-Guarantee1 = And(Guarantee1_0, Guarantee1_1, Guarantee1_2)
-#,Guarantee1_3,Guarantee1_4,Guarantee1_5, Guarantee1_6, Guarantee1_7, Guarantee1_8)
-Guarantee2 = And(Guarantee2_0, Guarantee2_1, Guarantee2_2)
-#,Guarantee2_3,Guarantee2_4,Guarantee2_5, Guarantee2_6, Guarantee2_7, Guarantee2_8)
-Guarantee = And(Guarantee1, Guarantee2)
-s.add(And(Assumption, Implies(Assumption, Guarantee)))
-########
+
 

@@ -1,0 +1,2 @@
+//klee_assume(GyroPick1.waThr==0.08);
+//klee_assume(GyroPick1.pickThr==6);

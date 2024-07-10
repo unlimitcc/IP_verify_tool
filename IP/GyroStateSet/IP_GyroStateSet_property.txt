@@ -1,2 +1,4 @@
+Assumptions: (true)
+Guarantee0: (Guarantee1 & Guarantee2)
 Guarantee1: (FORALL(i:0~9)(powerState%(2^(i+1))>=(2^i) & healthState%(2^(i+1))<(2^i)) -> (next(StateFlag[i])=235))
 Guarantee2: (FORALL(i:0~9)(powerState%(2^(i+1))<(2^i) | healthState%(2^(i+1))>=(2^i)) -> (next(StateFlag[i])=0))

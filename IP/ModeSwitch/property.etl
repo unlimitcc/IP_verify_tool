@@ -1,0 +1,7 @@
+def p1: {'p1' = 'true'} //Assumptions
+def p2: {'p2' = 'true'} //Guarantee0
+
+signal s1 : {'name' = 's1'}
+
+check AG : if s1>=1.0 then if p1 then finally globally p2
+

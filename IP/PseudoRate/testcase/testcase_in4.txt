@@ -1,0 +1,28 @@
+ktest file : 'klee-last/test000004.ktest'
+args       : ['klee_code.bc']
+num objects: 5
+object 0: name: '*pu[3]'
+object 0: size: 12
+object 0: data: b'\x00d\xfe\x80\x05\x00"ITU\x18B'
+object 0: hex : 0x0064fe800500224954551842
+object 0: text: .d...."ITU.B
+object 1: name: 'Yn[3]'
+object 1: size: 3
+object 1: data: b'\x0f\x00\x00'
+object 1: hex : 0x0f0000
+object 1: text: ...
+object 2: name: 'Yp[3]'
+object 2: size: 3
+object 2: data: b'\x00\x00\x0f'
+object 2: hex : 0x00000f
+object 2: text: ...
+object 3: name: 'h1[3]'
+object 3: size: 12
+object 3: data: b'\x02\x00\x00\x00#\x01\x00\x08T\x95\x01\x01'
+object 3: hex : 0x020000002301000854950101
+object 3: text: ....#...T...
+object 4: name: 'r[3]'
+object 4: size: 12
+object 4: data: b'\x01\\\x00\x81\t\xf0oH\x00\x00\xe8?'
+object 4: hex : 0x015c008109f06f480000e83f
+object 4: text: .\....oH...?

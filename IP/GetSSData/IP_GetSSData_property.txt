@@ -1,4 +1,5 @@
 Assumptions: (IchnlI=2)
+Guarantee0: (Guarantee1 & Guarantee2 & Guarantee3 & Guarantee4)
 Guarantee1: (next(royaw)=DiviationToFloat(wd0,4095,2048,0.00244140625))
 Guarantee2: (next(piyaw)=DiviationToFloat(wd1,4095,2048,0.00244140625)) 
 Guarantee3: (next(ADDR_AD_START)=ADDR_AD_START & next(AD_GYRO_LO4)=AD_GYRO_LO4 & next(AD_GYRO_HI8)=AD_GYRO_HI8 & next(SP_ADDR)=SP_ADDR & next(SP_BIT)=SP_BIT)

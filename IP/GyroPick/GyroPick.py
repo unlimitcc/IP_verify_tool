@@ -1,42 +1,50 @@
 from z3 import *
+import numpy as np
+
 
 #variables
-IwaI = Int('IwaI')
-IwalI = Int('IwalI')
-IcountPickI = Int('IcountPickI')
-Iwa_outI = Int('Iwa_outI')
-IwaI_next = Int('IwaI_next')
-IwalI_next = Int('IwalI_next')
-IcountPickI_next = Int('IcountPickI_next')
-Iwa_outI_next = Int('Iwa_outI_next')
-wa = Array('wa', IntSort(), RealSort())
-wal = Array('wal', IntSort(), RealSort())
-wal_next = Array('wal_next', IntSort(), RealSort())
-wa_out = Array('wa_out', IntSort(), RealSort())
-wa_out_next = Array('wa_out_next', IntSort(), RealSort())
-countPick = Array('countPick', IntSort(), IntSort())
-countPick_next = Array('countPick_next', IntSort(), IntSort())
+wa = []
+wal = []
+wal_next = []
+wa_out = []
+wa_out_next = []
+countPick = []
+countPick_next = []
+VER_wa = Array('VER_wa', IntSort(), RealSort())
+VER_wal = Array('VER_wal', IntSort(), RealSort())
+VER_wal_next = Array('VER_wal_next', IntSort(), RealSort())
+VER_wa_out = Array('VER_wa_out', IntSort(), RealSort())
+VER_wa_out_next = Array('VER_wa_out_next', IntSort(), RealSort())
+VER_countPick = Array('VER_countPick', IntSort(), IntSort())
+VER_countPick_next = Array('VER_countPick_next', IntSort(), IntSort())
 waThr = Real('waThr')
 pickThr = Int('pickThr')
 waThr_next = Real('waThr_next')
 pickThr_next = Int('pickThr_next')
-abs = Function('abs', RealSort(), RealSort())
 i = Int('i')
 j = Ints('j')
-x = Real('x')
-
+def abs(a):
+    return If(a>=0, a, -1*a)
+def Array_length(a):
+	temp = np.array(a)
+	return temp.size
+def List2Array(lst, idx=()):
+    if isinstance(lst[0], list):
+        size = len(lst)
+        z3_array = Array('array_' + '_'.join(map(str, idx)), IntSort(), ArraySort(IntSort(), RealSort()))
+        constraints = []
+        for i in range(size):
+            sub_array, sub_constraints = List2Array(lst[i], idx + (i,))
+            constraints.extend(sub_constraints)
+            constraints.append(z3_array[i] == sub_array)
+        return z3_array, constraints
+    else:
+        size = len(lst)
+        z3_array = Array('array_' + '_'.join(map(str, idx)), IntSort(), RealSort())
+        constraints = [z3_array[i] == lst[i] for i in range(size)]
+        return z3_array, constraints
 s = Solver()
-#s.add(waThr == 0.08)
-#s.add(pickThr == 6)
-s.add(Implies(x<0, abs(x)==-1*x))
-s.add(Implies(x>=0, abs(x)==x))
-#Contract
-Assumptions = And(IwaI>=9, IwalI==9, IcountPickI==9)
-G1 = And(Iwa_outI_next>=9, IwalI_next==9, IcountPickI_next==9)
-G2 = (ForAll(i, Implies(And(i>=0, i<1), Implies(And(abs(wa[i]-wal[i])>waThr, countPick[i]+1<pickThr), And(wa_out_next[i]==wal[i], wal_next[i]==wal[i], countPick_next[i]==countPick[i]+1)))))
-G3 = (ForAll(i, Implies(And(i>=0, i<1), Implies(Or(abs(wa[i]-wal[i])<=waThr, countPick[i]+1>=pickThr), And(wa_out_next[i]==wa[i], wal_next[i]==wa[i], countPick_next[i]==0)))))
-G4 = And(waThr_next==waThr, pickThr_next==pickThr)
-Guarantees = And(G1, G2, G3, G4)
-s.add(Implies(Assumptions, Guarantees))
-s.add(Assumptions)
 #######
+
+
+

@@ -3,21 +3,21 @@ args       : ['klee_code.bc']
 num objects: 7
 object 0: name: '*pAngle[2]'
 object 0: size: 8
-object 0: data: b'\x04\x01\x88C\x04\x01\x88C'
-object 0: hex : 0x0401884304018843
-object 0: int : 4866140515198304516
-object 0: uint: 4866140515198304516
-object 0: text: ...C...C
+object 0: data: b'\x04\x01\x88C\xa3?\xdd\xbf'
+object 0: hex : 0x04018843a33fddbf
+object 0: int : -4621467672167055100
+object 0: uint: 13825276401542496516
+object 0: text: ...C.?..
 object 1: name: '*pRate[3]'
 object 1: size: 12
-object 1: data: b'\x00\x00\x00@\x00\x00\x00@\x9b\x999@'
-object 1: hex : 0x00000040000000409b993940
+object 1: data: b'\x00\x00\x00@\x01\x00\x08@\x9b\x999@'
+object 1: hex : 0x00000040010008409b993940
 object 1: text: ...@...@..9@
 object 2: name: 'CTRL_PARAM_SAM[3][2]'
 object 2: size: 24
-object 2: data: b'\x04#\n\x001R\xd6?\x00\x00\x00\x00\x80!\xe3A\x00\x00\x00\x00\x00)\xc3?'
-object 2: hex : 0x04230a003152d63f000000008021e341000000000029c33f
-object 2: text: .#..1R.?.....!.A.....).?
+object 2: data: b' \x03\xb1O\xbd\xa0r\x7f\xa0\x03\x92\xf7\xf0\xaa\x83?\x83\x83\x83\x83\x89\x04\x8d?'
+object 2: hex : 0x2003b14fbda0727fa00392f7f0aa833f8383838389048d3f
+object 2: text:  ..O..r........?.......?
 object 3: name: 'destRate[3]'
 object 3: size: 12
 object 3: data: b'\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00'

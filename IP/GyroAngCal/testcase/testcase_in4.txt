@@ -3,18 +3,18 @@ args       : ['klee_code.bc']
 num objects: 3
 object 0: name: '*W[3]'
 object 0: size: 12
-object 0: data: b'\xc0B_\x00\x93>\x84\xff\x00\x00\x00\x00'
-object 0: hex : 0xc0425f00933e84ff00000000
-object 0: text: .B_..>......
+object 0: data: b'\xe9\xc0\x0e@\x00\x08\x04\x00\x02\n\x80\x7f'
+object 0: hex : 0xe9c00e4000080400020a807f
+object 0: text: ...@........
 object 1: name: 'Gi[3]'
 object 1: size: 12
-object 1: data: b'\xc0\x01\x04c\x01\x00\x00\x00\x00\x04\x01d'
-object 1: hex : 0xc00104630100000000040164
-object 1: text: ...c.......d
+object 1: data: b'\x00\x00\x00\x00\x00\x00\x00\x00\x82 \x81?'
+object 1: hex : 0x00000000000000008220813f
+object 1: text: ......... .?
 object 2: name: 'ctlPeriod'
 object 2: size: 4
-object 2: data: b'\xc2\x08\x05\x00'
-object 2: hex : 0xc2080500
-object 2: int : 329922
-object 2: uint: 329922
+object 2: data: b'\x00\x00\x80\x7f'
+object 2: hex : 0x0000807f
+object 2: int : 2139095040
+object 2: uint: 2139095040
 object 2: text: ....

@@ -1,4 +1,5 @@
 Assumptions: (IchnlI=9 & ItypeI=9)
+Guarantee0 = (Guarantee1 & Guarantee2 & Guarantee3 & Guarantee4 & Guarantee5)
 Guarantee1: (FORALL(i:0~9)((type[i]=0) -> (next(wa[i])=DiviationToFloat(wd,4095,2048,0.00162760417))))
 Guarantee2: (FORALL(i:0~9)((type[i]!=0) -> (next(wa[i])=DiviationToFloat(wd,4095,2048,0.0009765625))))
 Guarantee3: (next(ADDR_AD_START)=ADDR_AD_START & next(AD_GYRO_LO4)=AD_GYRO_LO4 & next(AD_GYRO_HI8)=AD_GYRO_HI8)

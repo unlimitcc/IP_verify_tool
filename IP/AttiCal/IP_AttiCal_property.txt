@@ -1,4 +1,5 @@
 Assumptions: (IGiI=2 & IWI=3)
+Guarantee0: (Guarantee1 & Guarantee2 & Guarantee3 & Guarantee4)
 Guarantee1: (next(IangleI)=3 & next(IGiI)=2 & next(IrateI)=3)
 Guarantee2: (((workmode=51 & flgSP=235) -> (next(angle[0])=royaw & next(angle[1])=piyaw & next(Gi[0])=royaw & next(Gi[1])=piyaw)) | ((workmode=51 & flgSP!=235) -> (next(angle[0])=Gi[0] & next(angle[1])=Gi[1] & next(Gi[0])=Gi[0] & next(Gi[1])=Gi[1])))
 Guarantee3: ((workmode!=51) -> (next(angle[0])=0 & next(angle[1])=0 & next(Gi[0])=Gi[0] & next(Gi[1])=Gi[1]))

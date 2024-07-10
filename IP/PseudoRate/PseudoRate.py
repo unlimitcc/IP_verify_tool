@@ -20,13 +20,15 @@ VER_r = Array('VER_r', IntSort(), RealSort())
 VER_r_next = Array('VER_r_next', IntSort(), RealSort())
 VER_h1 = Array('VER_h1', IntSort(), RealSort())
 VER_h1_next = Array('VER_h1_next', IntSort(), RealSort())
+def abs(a):
+    return If(a>=0, a, -1*a) 
 def Array_length(a):
 	temp = np.array(a)
 	return temp.size
 def List2Array(lst, idx=()):
     if isinstance(lst[0], list):
         size = len(lst)
-        z3_array = Array('array_' + '_'.join(map(str, idx)), IntSort(), ArraySort(IntSort(), IntSort()))
+        z3_array = Array('array_' + '_'.join(map(str, idx)), IntSort(), ArraySort(IntSort(), RealSort()))
         constraints = []
         for i in range(size):
             sub_array, sub_constraints = List2Array(lst[i], idx + (i,))
@@ -35,7 +37,7 @@ def List2Array(lst, idx=()):
         return z3_array, constraints
     else:
         size = len(lst)
-        z3_array = Array('array_' + '_'.join(map(str, idx)), IntSort(), IntSort())
+        z3_array = Array('array_' + '_'.join(map(str, idx)), IntSort(), RealSort())
         constraints = [z3_array[i] == lst[i] for i in range(size)]
         return z3_array, constraints
 s = Solver()

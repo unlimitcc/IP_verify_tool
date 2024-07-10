@@ -1,4 +1,5 @@
 Assumptions: (IpAngleI>=2 & IpRateI>=3 & IdestRateI=3 & ImControllerI=3 & ICTRL_PARAM_SAMI=3)
+Guarantee0: (Guarantee1 & Guarantee2 & Guarantee3 & Guarantee4 & Guarantee5 & Guarantee6 & Guarantee7 & Guarantee8 & Guarantee9 & Guarantee10)
 Guarantee1: (next(IuI)=3 & next(ImControllerI)=3)
 Guarantee2: ((workMode=0 | workMode=51) -> (next(destRate[0])=0 & next(destRate[1])=0 & next(destRate[2])=destRate[2]))
 Guarantee3: ((workMode=17) -> (next(destRate[0])=0 & next(destRate[1])=-0.5 & next(destRate[2])=destRate[2]))

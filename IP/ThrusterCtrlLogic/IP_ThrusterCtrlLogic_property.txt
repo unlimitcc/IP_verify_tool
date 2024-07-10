@@ -1,4 +1,5 @@
 Assumptions: (IYpI>=3 & IYnI>=3)
+Guarantee0: (Guarantee1 & Guarantee2 & Guarantee3 & Guarantee4 & Guarantee5 & Guarantee6 & Guarantee7)
 Guarantee1: (EXIST(x2)((Yp[0]=0 -> x2=1) | (Yp[0]!=0 -> x2=0)))
 Guarantee2: (EXIST(x3)((Yn[0]=0 -> x3=1) | (Yn[0]!=0 -> x3=0)))
 Guarantee3: (EXIST(x4)((Yp[1]=0 -> x4=1) | (Yp[1]!=0 -> x4=0)))

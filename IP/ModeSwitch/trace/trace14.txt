@@ -1,0 +1,112 @@
+Breakpoint 1 at 0x1129: file gdb_debug_code.c, line 10.
+Breakpoint 2 at 0x1167: file gdb_debug_code.c, line 17.
+Breakpoint 3 at 0x1450: file gdb_debug_code.c, line 39.
+Breakpoint 4 at 0x146f: file gdb_debug_code.c, line 45.
+Breakpoint 5 at 0x149e: file gdb_debug_code.c, line 49.
+Breakpoint 6 at 0x14a9: file gdb_debug_code.c, line 50.
+Breakpoint 7 at 0x14b4: file gdb_debug_code.c, line 52.
+Breakpoint 8 at 0x150c: file gdb_debug_code.c, line 62.
+Breakpoint 9 at 0x152b: file gdb_debug_code.c, line 66.
+Breakpoint 10 at 0x1542: file gdb_debug_code.c, line 70.
+Breakpoint 11 at 0x154d: file gdb_debug_code.c, line 71.
+Breakpoint 12 at 0x155a: file gdb_debug_code.c, line 77.
+Breakpoint 13 at 0x1565: file gdb_debug_code.c, line 80.
+Breakpoint 14 at 0x157e: file gdb_debug_code.c, line 83.
+Breakpoint 15 at 0x1589: file gdb_debug_code.c, line 84.
+Breakpoint 16 at 0x1594: file gdb_debug_code.c, line 86.
+Breakpoint 17 at 0x15a4: file gdb_debug_code.c, line 93.
+Breakpoint 18 at 0x15ec: file gdb_debug_code.c, line 97.
+Breakpoint 19 at 0x160f: file gdb_debug_code.c, line 101.
+Breakpoint 20 at 0x1626: file gdb_debug_code.c, line 104.
+Breakpoint 21 at 0x1631: file gdb_debug_code.c, line 105.
+Breakpoint 22 at 0x163e: file gdb_debug_code.c, line 111.
+Breakpoint 23 at 0x1649: file gdb_debug_code.c, line 115.
+Breakpoint 24 at 0x1662: file gdb_debug_code.c, line 118.
+Breakpoint 25 at 0x166d: file gdb_debug_code.c, line 119.
+Breakpoint 26 at 0x1678: file gdb_debug_code.c, line 121.
+Breakpoint 27 at 0x170d: file gdb_debug_code.c, line 149.
+
+Breakpoint 1, ModeSwitchFun (pIp=0x555555555710 <__libc_csu_init>) at gdb_debug_code.c:10
+10	{
+1: /f pGyroRate = {0, 0, 0}
+2: /u ModeSwitch1.flgSP = 235
+3: /u ModeSwitch1.m_countMode = 0
+4: /u ModeSwitch1.m_countPublic = 12
+5: /u ModeSwitch1.m_workMode = 17
+6: /f ModeSwitch1.piyaw = -1.12597799
+7: /f ModeSwitch1.royaw = 0
+8: /u ModeSwitch1.time_D2P = 0
+9: /u ModeSwitch1.time_D2P_overtime = 0
+
+Breakpoint 8, SAMSubModePitch (this=0x555555558020 <ModeSwitch1>) at gdb_debug_code.c:62
+62	       if (pirawtmp > 0.25f)								/* 太敏俯仰测量角 > 0.25度 */
+1: /f pGyroRate = {0, 0, 0}
+2: /u ModeSwitch1.flgSP = 235
+3: /u ModeSwitch1.m_countMode = 0
+4: /u ModeSwitch1.m_countPublic = 12
+5: /u ModeSwitch1.m_workMode = 17
+6: /f ModeSwitch1.piyaw = -1.12597799
+7: /f ModeSwitch1.royaw = 0
+8: /u ModeSwitch1.time_D2P = 0
+9: /u ModeSwitch1.time_D2P_overtime = 0
+
+Breakpoint 9, SAMSubModePitch (this=0x555555558020 <ModeSwitch1>) at gdb_debug_code.c:66
+66	           if (this->m_countPublic > 12)    				/* 持续12TS,则太阳搜索完成,转巡航 */
+1: /f pGyroRate = {0, 0, 0}
+2: /u ModeSwitch1.flgSP = 235
+3: /u ModeSwitch1.m_countMode = 0
+4: /u ModeSwitch1.m_countPublic = 13
+5: /u ModeSwitch1.m_workMode = 17
+6: /f ModeSwitch1.piyaw = -1.12597799
+7: /f ModeSwitch1.royaw = 0
+8: /u ModeSwitch1.time_D2P = 0
+9: /u ModeSwitch1.time_D2P_overtime = 0
+
+Breakpoint 10, SAMSubModePitch (this=0x555555558020 <ModeSwitch1>) at gdb_debug_code.c:70
+70	               this->m_countMode = 0;						/* 清控制周期计数 */
+1: /f pGyroRate = {0, 0, 0}
+2: /u ModeSwitch1.flgSP = 235
+3: /u ModeSwitch1.m_countMode = 0
+4: /u ModeSwitch1.m_countPublic = 13
+5: /u ModeSwitch1.m_workMode = 51
+6: /f ModeSwitch1.piyaw = -1.12597799
+7: /f ModeSwitch1.royaw = 0
+8: /u ModeSwitch1.time_D2P = 0
+9: /u ModeSwitch1.time_D2P_overtime = 0
+
+Breakpoint 11, SAMSubModePitch (this=0x555555558020 <ModeSwitch1>) at gdb_debug_code.c:71
+71	               this->m_countPublic = 0;					/* 方式计数器 */
+1: /f pGyroRate = {0, 0, 0}
+2: /u ModeSwitch1.flgSP = 235
+3: /u ModeSwitch1.m_countMode = 0
+4: /u ModeSwitch1.m_countPublic = 13
+5: /u ModeSwitch1.m_workMode = 51
+6: /f ModeSwitch1.piyaw = -1.12597799
+7: /f ModeSwitch1.royaw = 0
+8: /u ModeSwitch1.time_D2P = 0
+9: /u ModeSwitch1.time_D2P_overtime = 0
+
+Breakpoint 13, SAMSubModePitch (this=0x555555558020 <ModeSwitch1>) at gdb_debug_code.c:80
+80	    if (this->m_countMode > 4500)							/* 若720秒太阳仍不出现,置ωx=0.5度/秒,ωy=0度/秒,转滚动搜索 */
+1: /f pGyroRate = {0, 0, 0}
+2: /u ModeSwitch1.flgSP = 235
+3: /u ModeSwitch1.m_countMode = 0
+4: /u ModeSwitch1.m_countPublic = 0
+5: /u ModeSwitch1.m_workMode = 51
+6: /f ModeSwitch1.piyaw = -1.12597799
+7: /f ModeSwitch1.royaw = 0
+8: /u ModeSwitch1.time_D2P = 0
+9: /u ModeSwitch1.time_D2P_overtime = 0
+
+Breakpoint 27, main () at gdb_debug_code.c:149
+149	}
+1: /f pGyroRate = {0, 0, 0}
+2: /u ModeSwitch1.flgSP = 235
+3: /u ModeSwitch1.m_countMode = 0
+4: /u ModeSwitch1.m_countPublic = 0
+5: /u ModeSwitch1.m_workMode = 51
+6: /f ModeSwitch1.piyaw = -1.12597799
+7: /f ModeSwitch1.royaw = 0
+8: /u ModeSwitch1.time_D2P = 0
+9: /u ModeSwitch1.time_D2P_overtime = 0
+[Inferior 1 (process) exited normally]

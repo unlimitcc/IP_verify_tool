@@ -1,0 +1,7 @@
+def p1 : {'p1' = 'true'}
+def p2 : {'p2' = 'true'}
+
+signal s1 : {'name' = 's1'}
+
+check AG : if s1>=1.0 then finally globally
+

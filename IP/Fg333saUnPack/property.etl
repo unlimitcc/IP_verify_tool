@@ -1,0 +1,12 @@
+def p1 : {'p1' = 'true'}
+def p2 : {'p2' = 'true'}
+def p3 : {'p3' = 'true'}
+def p4 : {'p4' = 'true'}
+def p5 : {'p5' = 'true'}
+def p6 : {'p6' = 'true'}
+def p7 : {'p7' = 'true'}
+
+signal s1 : {'name' = 's1'}
+
+check AG : if s1>=1.0 then if p1 then (p2 and finally (p3 and finally (p4 and finally (p5 and finally (p6 and finally p7)))))
+

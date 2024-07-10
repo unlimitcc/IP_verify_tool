@@ -1,0 +1,30 @@
+def p1: {'p1' = 'true'} //p1:IpGyroRateI>=3
+def p2: {'p2' = 'true'} //p2:m_workMode=0
+def p3: {'p3' = 'true'} //p3:m_countPublic>280
+def p4: {'p4' = 'true'} //p4:m_countMode>800
+def p5: {'p5' = 'true'} //p5:m_workMode=17
+def p6: {'p6' = 'true'} //p6:m_countMode>4500
+def p7: {'p7' = 'true'} //p7:m_workMode=34
+def p8: {'p8' = 'true'} //p8:m_countMode>5000
+def p9: {'p9' = 'true'} //p9:m_countPublic>12
+def p10: {'p10' = 'true'} //p10:m_workMode=51
+def p11: {'p11' = 'true'} //p11:Cnt_RASM>1
+def p12: {'p12' = 'true'} //p12:m_countPublic<=280
+def p13: {'p13' = 'true'} //p13:m_countMode<=800
+def p14: {'p14' = 'true'} //p14:m_countPublic<=12
+def p15: {'p15' = 'true'} //p15:m_countMode<=4500
+def p16: {'p16' = 'true'} //p16:m_countMode<=5000
+def p17: {'p17' = 'true'} //p17:Cnt_RASM<=1
+
+check Guarantee1 : globally if (p2 and (p3 or p4)) then finally globally p5
+check Guarantee2 : globally if (p5 and p6) then finally globally p7
+check Guarantee3 : globally if (p7 and p8) then finally globally p5
+check Guarantee4 : globally if (p5 and p9) then finally globally p10
+check Guarantee5 : globally if (p7 and p9) then finally globally p10
+check Guarantee6 : globally if (p7 and p11) then finally globally p2
+check Guarantee7 : globally if (p2 and (p12 and p13)) then finally globally p2
+check Guarantee8 : globally if (p5 and (p14 and p15)) then finally globally p5
+check Guarantee9 : globally if (p7 and (p14 and (p16 and p17))) then finally globally p7
+check Guarantee10 : globally if p10 then finally globally p10
+                        
+

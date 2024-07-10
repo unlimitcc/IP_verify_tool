@@ -1,10 +1,22 @@
-Guarantee1: ((m_workMode=0 & m_countPublic>time_D2P | m_countMode>time_D2P_overtime) -> (m_workMode=17))
-Guarantee2: ((m_workMode=17 & m_countMode>4500) -> (m_workMode=34))
-Guarantee3: ((m_workMode=34 & m_countMode>5000) -> (m_workMode=17))
-Guarantee4: ((m_workMode=17 & m_countPublic>12) -> (m_workMode=51))
-Guarantee5: ((m_workMode=34 & m_countPublic>12) -> (m_workMode=51))
-Guarantee6: ((m_workMode=34 & Cnt_RASM>1) -> (m_workMode=0))
-Guarantee7: ((m_workMode=0 & m_countPublic<=280 & m_countMode<=800) -> (m_workMode=0))
-Guarantee8: ((m_workMode=17 & m_countPublic<=12 & m_countMode<=4500) -> (m_workMode=17))
-Guarantee9: ((m_workMode=34 & m_countPublic<=12 & m_countMode<=5000 & Cnt_RASM<=1) -> (m_workMode=34))
-Guarantee10: ((m_workMode=51) -> (m_workMode=51))
+Assumptions: (IpGyroRateI>=3)
+Guarantee0: (Guarantee1 | Guarantee2 | Guarantee3 | Guarantee4)
+Guarantee1: (m_workMode=0 & 
+            ((Max(pGyroRate[0],pGyroRate[1],pGyroRate[2])<0.15 & (m_countPublic+1>time_D2P | countMode>time_D2P_overtime)) -> (next(m_workMode)=17 & next(m_countMode)=0 & next(m_countPublic)=0)) & 
+            ((Max(pGyroRate[0],pGyroRate[1],pGyroRate[2])<0.15 & m_countPublic+1<=time_D2P & countMode<=time_D2P_overtime) -> (next(m_countMode)=m_countMode & next(m_workMode)=m_workMode & next(m_countPublic)=m_countPublic+1)) & 
+            ((Max(pGyroRate[0],pGyroRate[1],pGyroRate[2])>=0.15 & (m_countPublic>time_D2P | countMode>time_D2P_overtime)) -> (next(m_workMode)=17 & next(m_countMode)=0 & next(m_countPublic)=0)) & 
+            ((Max(pGyroRate[0],pGyroRate[1],pGyroRate[2])>=0.15 & m_countPublic<=time_D2P & countMode<=time_D2P_overtime) -> (next(m_countMode)=m_countMode & next(m_workMode)=m_workMode & next(m_countPublic)=m_countPublic)))
+Guarantee2: (m_workMode=17 & 
+            ((flgSP=235 & abs(piyaw)>0.25 & abs(m_countPublic)>11) -> (workMode_temp=51 & countMode_temp=0 & countPublic_temp=0)) & 
+            ((flgSP=235 & abs(piyaw)>0.25 & abs(m_countPublic)<=11) -> (workMode_temp=m_workMode & countMode_temp=m_countMode & countPublic_temp=m_countPublic+1)) & 
+            ((flgSP=235 & abs(piyaw)<=0.25) -> (workMode_temp=m_workMode & countMode_temp=m_countMode & countPublic_temp=m_countPublic)) & 
+            (flgSP!=235 -> (workMode_temp=m_workMode & countMode_temp=m_countMode & countPublic_temp=0)) & 
+            (countMode_temp>4500 -> (next(m_workMode)=34 & next(m_countPublic)=0 & next(m_countMode)=0)) &
+            (countMode_temp<=4500 -> (next(m_workMode)=workMode_temp & next(m_countMode)=countMode_temp & next(m_countPublic)=countPublic_temp)))
+Guarantee3: (m_workMode=34 & 
+            ((flgSP=235 & abs(royaw)>1 & abs(m_countPublic)>11) -> (workMode_temp=51 & countMode_temp=0 & countPublic_temp=0)) & 
+            ((flgSP=235 & abs(piyaw)>1 & abs(m_countPublic)<=11) -> (workMode_temp=m_workMode & countMode_temp=m_countMode & countPublic_temp=m_countPublic+1)) &
+            ((flgSP=235 & abs(piyaw)<=1) -> (workMode_temp=m_workMode & countMode_temp=m_countMode & countPublic_temp=m_countPublic)) & 
+            (flgSP!=235 -> (workMode_temp=m_workMode & countMode_temp=m_countMode & countPublic_temp=0)) & 
+            (countMode_temp>5000 -> (next(m_workMode)=34 & next(m_countPublic)=0 & next(m_countMode)=0)) &
+            (countMode_temp<=5000 -> (next(m_workMode)=workMode_temp & next(m_countMode)=countMode_temp & next(m_countPublic)=countPublic_temp)))
+Guarantee4: (m_workMode!=0 & m_workMode!=17 & m_workMode!=34 & next(m_workMode)=m_workMode & next(m_countMode)=m_countMode & next(m_countPublic)=m_countPublic)

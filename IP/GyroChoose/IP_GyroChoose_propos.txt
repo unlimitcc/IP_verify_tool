@@ -1,10 +1,10 @@
 p1:IStateFlagI>=9
 p2:next(ISignFlagI)=9
 p3:ItempFlagI=9
-p4:FORALL(i:0~9)((StateFlag[i]=1)->(tempFlag[i]=0))
-p5:FORALL(i:0~9)((StateFlag[i]!=1)->(tempFlag[i]=1))
-p6:next(JoinTotal)=(ADDSUM(i:0~8)(tempFlag[i]))
+p4:FORALL(i:0~9)((StateFlag[i]=1)->(next(tempFlag[i])=0))
+p5:FORALL(i:0~9)((StateFlag[i]!=1)->(next(tempFlag[i])=1))
+p6:next(JoinTotal)=(ADDSUM(i:0~8)(next(tempFlag[i])))
 p7:FORALL(i:0~next(JoinTotal))(next(SignFlag[i])=min(k))
-p8:i=ADDSUM(j:0~k)(tempFlag[j])
+p8:i=ADDSUM(j:0~k)(next(tempFlag[i]))
 p9:FORALL(i:next(JoinTotal)~9)(next(SignFlag[i])=0)
-p10:next(gyroStatus0)=(ADDSUM(i:0~8)(tempFlag[i]*(2^i)))
+p10:next(gyroStatus0)=(ADDSUM(i:0~8)(next(tempFlag[i])*(2^i)))

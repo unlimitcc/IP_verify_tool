@@ -1,0 +1,4 @@
+klee_assume(Gi1[0]>=-180 && Gi1[0]<=180);
+klee_assume(Gi1[1]>=-180 && Gi1[1]<=180);
+klee_assume(Gi1[2]>=-90 && Gi1[2]<=90);
+klee_assume(GyroAngCal1.ctlPeriod>0);

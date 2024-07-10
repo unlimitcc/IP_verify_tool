@@ -1,0 +1,22 @@
+def p1: {'p1' = 'true'} //Assumptions
+def p2: {'p2' = 'true'}
+def p3: {'p3' = 'true'} 
+def p4: {'p4' = 'true'} 
+def p5: {'p5' = 'true'}
+def p6: {'p6' = 'true'} 
+def p7: {'p7' = 'true'} 
+def p8: {'p8' = 'true'} 
+def p9: {'p9' = 'true'} 
+def p10: {'p10' = 'true'} 
+def p11: {'p11' = 'true'} 
+def p12: {'p12' = 'true'}
+def p13: {'p13' = 'true'}
+def p14: {'p14' = 'true'}  
+
+signal s1 : {'name' = 's1'}
+
+def Check4 : (if p12 then p13 and if not p12 then p14)
+def Check3 : (if p9 then (p10 and finally Check4) and if not p9 then p11)
+def Check2 : (if not p6 then (p7 and finally Check3) and if p6 then p8)
+def Check1 : (if p3 then (p4 and finally Check2) and if not p3 then p5)
+check AG : if s1>=1.0 then if p1 then (p2 and finally Check1)

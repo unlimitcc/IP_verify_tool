@@ -3,13 +3,13 @@ args       : ['klee_code.bc']
 num objects: 3
 object 0: name: '*Yn[3]'
 object 0: size: 3
-object 0: data: b'\xff\x00\x00'
-object 0: hex : 0xff0000
+object 0: data: b'\x00\x00\xff'
+object 0: hex : 0x0000ff
 object 0: text: ...
 object 1: name: '*Yp[3]'
 object 1: size: 3
-object 1: data: b'\x00\x00\x00'
-object 1: hex : 0x000000
+object 1: data: b'\x00\x00\xff'
+object 1: hex : 0x0000ff
 object 1: text: ...
 object 2: name: 'wPulse'
 object 2: size: 1

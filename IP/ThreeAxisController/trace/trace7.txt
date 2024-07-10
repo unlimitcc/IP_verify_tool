@@ -38,505 +38,517 @@ Breakpoint 37 at 0x147d: file gdb_debug_code.c, line 78.
 Breakpoint 38 at 0x14a0: file gdb_debug_code.c, line 79.
 Breakpoint 39 at 0x14c3: file gdb_debug_code.c, line 80.
 Breakpoint 40 at 0x14c4: file gdb_debug_code.c, line 81.
-Breakpoint 41 at 0x1641: file gdb_debug_code.c, line 106.
+Breakpoint 41 at 0x1649: file gdb_debug_code.c, line 106.
 
 Breakpoint 1, ThreeAxisControllerFun (p=0x0) at gdb_debug_code.c:20
 20	{
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
 4: /f ThreeAxisController1.destRate = {0, 0, 0}
 5: /f ThreeAxisController1.mController = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
 6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
-Breakpoint 15, ThreeAxisControllerFun (p=0x555555558040 <ThreeAxisController1>) at gdb_debug_code.c:38
-38	        pIp->destRate[1] = 0.0f;   /* 俯仰角目标角速度0 */
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
+Breakpoint 10, ThreeAxisControllerFun (p=0x555555558040 <ThreeAxisController1>) at gdb_debug_code.c:27
+27	        pIp->destRate[0] = 0.0f;   /* 滚动角目标角速度0 */
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
 5: /f ThreeAxisController1.mController = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
 6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
-Breakpoint 16, ThreeAxisControllerFun (p=0x555555558040 <ThreeAxisController1>) at gdb_debug_code.c:39
-39	        break;
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
+Breakpoint 11, ThreeAxisControllerFun (p=0x555555558040 <ThreeAxisController1>) at gdb_debug_code.c:28
+28	        pIp->destRate[1] = 0.0f;   /* 俯仰角目标角速度0 */
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
 5: /f ThreeAxisController1.mController = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
 6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
+
+Breakpoint 12, ThreeAxisControllerFun (p=0x555555558040 <ThreeAxisController1>) at gdb_debug_code.c:29
+29	        break;
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+6: /f ThreeAxisController1.u = {-0, -0, -0}
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 28, LimitControllerInput (this=0x100) at gdb_debug_code.c:64
 64	{
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
 5: /f ThreeAxisController1.mController = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
 6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 29, LimitControllerInput (this=0x555555558040 <ThreeAxisController1>) at gdb_debug_code.c:67
 67	    this->mController[1][0] = this->pAngle[1]; /* 角度减偏置量，偏置量为0  */
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{272.007935, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}}
 6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 30, LimitControllerInput (this=0x555555558040 <ThreeAxisController1>) at gdb_debug_code.c:68
 68	    this->mController[2][0] = 0.0f;                 /* Z轴角度清零 */
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{272.007935, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 0, 0}, {272.007874, 0, 0}, {0, 0, 0}}
 6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 31, LimitControllerInput (this=0x555555558040 <ThreeAxisController1>) at gdb_debug_code.c:70
 70	    this->mController[0][1] = this->pRate[0] - this->destRate[0];   /* 角速度减偏置量 */
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{272.007935, 0, 0}, {0, 0, 0}, {0, 0, 0}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 0, 0}, {272.007874, 0, 0}, {0, 0, 0}}
 6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 32, LimitControllerInput (this=0x555555558040 <ThreeAxisController1>) at gdb_debug_code.c:71
 71	    this->mController[1][1] = this->pRate[1] - this->destRate[1];   /* 角速度减偏置量 */
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{272.007935, 32767.75, 0}, {0, 0, 0}, {0, 0, 0}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 2, 0}, {272.007874, 0, 0}, {0, 0, 0}}
 6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 33, LimitControllerInput (this=0x555555558040 <ThreeAxisController1>) at gdb_debug_code.c:72
 72	    this->mController[2][1] = this->pRate[2];                       /* Z轴角速度无偏置 */
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{272.007935, 32767.75, 0}, {0, 2, 0}, {0, 0, 0}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 2, 0}, {272.007874, 2.125, 0}, {0, 0, 0}}
 6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 34, LimitControllerInput (this=0x555555558040 <ThreeAxisController1>) at gdb_debug_code.c:74
 74	    this->mController[0][0] = LimitFloat32(this->mController[0][0], 8.0f); /* 角度限幅8° */
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{272.007935, 32767.75, 0}, {0, 2, 0}, {0, 2.9000001, 0}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 2, 0}, {272.007874, 2.125, 0}, {0, 2.9000001, 0}}
 6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 2, LimitFloat32 (value=3.40795787e-42, limit=3.40795787e-42) at gdb_debug_code.c:7
 7	{
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{272.007935, 32767.75, 0}, {0, 2, 0}, {0, 2.9000001, 0}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 2, 0}, {272.007874, 2.125, 0}, {0, 2.9000001, 0}}
 6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
-
-Breakpoint 7, LimitFloat32 (value=8, limit=8) at gdb_debug_code.c:16
-16	    return value;
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{272.007935, 32767.75, 0}, {0, 2, 0}, {0, 2.9000001, 0}}
-6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
-
-Breakpoint 8, LimitFloat32 (value=8, limit=8) at gdb_debug_code.c:17
-17	}
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{272.007935, 32767.75, 0}, {0, 2, 0}, {0, 2.9000001, 0}}
-6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
-
-Breakpoint 35, LimitControllerInput (this=0x555555558040 <ThreeAxisController1>) at gdb_debug_code.c:75
-75	    this->mController[1][0] = LimitFloat32(this->mController[1][0], 8.0f);
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 32767.75, 0}, {0, 2, 0}, {0, 2.9000001, 0}}
-6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
-
-Breakpoint 2, LimitFloat32 (value=8, limit=8) at gdb_debug_code.c:7
-7	{
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 32767.75, 0}, {0, 2, 0}, {0, 2.9000001, 0}}
-6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 6, LimitFloat32 (value=0, limit=8) at gdb_debug_code.c:12
 12	    else if (value < -limit)
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 32767.75, 0}, {0, 2, 0}, {0, 2.9000001, 0}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 2, 0}, {272.007874, 2.125, 0}, {0, 2.9000001, 0}}
 6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 7, LimitFloat32 (value=0, limit=8) at gdb_debug_code.c:16
 16	    return value;
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 32767.75, 0}, {0, 2, 0}, {0, 2.9000001, 0}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 2, 0}, {272.007874, 2.125, 0}, {0, 2.9000001, 0}}
 6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 8, LimitFloat32 (value=0, limit=8) at gdb_debug_code.c:17
 17	}
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 32767.75, 0}, {0, 2, 0}, {0, 2.9000001, 0}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 2, 0}, {272.007874, 2.125, 0}, {0, 2.9000001, 0}}
 6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
-Breakpoint 36, LimitControllerInput (this=0x555555558040 <ThreeAxisController1>) at gdb_debug_code.c:77
-77	    this->mController[0][1] = LimitFloat32(this->mController[0][1], 1.2f); /* 角速度限幅1.2° */
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 32767.75, 0}, {0, 2, 0}, {0, 2.9000001, 0}}
+Breakpoint 35, LimitControllerInput (this=0x555555558040 <ThreeAxisController1>) at gdb_debug_code.c:75
+75	    this->mController[1][0] = LimitFloat32(this->mController[1][0], 8.0f);
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 2, 0}, {272.007874, 2.125, 0}, {0, 2.9000001, 0}}
 6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 2, LimitFloat32 (value=0, limit=8) at gdb_debug_code.c:7
 7	{
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 32767.75, 0}, {0, 2, 0}, {0, 2.9000001, 0}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 2, 0}, {272.007874, 2.125, 0}, {0, 2.9000001, 0}}
 6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
+
+Breakpoint 7, LimitFloat32 (value=8, limit=8) at gdb_debug_code.c:16
+16	    return value;
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 2, 0}, {272.007874, 2.125, 0}, {0, 2.9000001, 0}}
+6: /f ThreeAxisController1.u = {-0, -0, -0}
+7: /u ThreeAxisController1.workMode = 0
+
+Breakpoint 8, LimitFloat32 (value=8, limit=8) at gdb_debug_code.c:17
+17	}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 2, 0}, {272.007874, 2.125, 0}, {0, 2.9000001, 0}}
+6: /f ThreeAxisController1.u = {-0, -0, -0}
+7: /u ThreeAxisController1.workMode = 0
+
+Breakpoint 36, LimitControllerInput (this=0x555555558040 <ThreeAxisController1>) at gdb_debug_code.c:77
+77	    this->mController[0][1] = LimitFloat32(this->mController[0][1], 1.2f); /* 角速度限幅1.2° */
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 2, 0}, {8, 2.125, 0}, {0, 2.9000001, 0}}
+6: /f ThreeAxisController1.u = {-0, -0, -0}
+7: /u ThreeAxisController1.workMode = 0
+
+Breakpoint 2, LimitFloat32 (value=8, limit=8) at gdb_debug_code.c:7
+7	{
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 2, 0}, {8, 2.125, 0}, {0, 2.9000001, 0}}
+6: /f ThreeAxisController1.u = {-0, -0, -0}
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 7, LimitFloat32 (value=1.20000005, limit=1.20000005) at gdb_debug_code.c:16
 16	    return value;
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 32767.75, 0}, {0, 2, 0}, {0, 2.9000001, 0}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 2, 0}, {8, 2.125, 0}, {0, 2.9000001, 0}}
 6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 8, LimitFloat32 (value=1.20000005, limit=1.20000005) at gdb_debug_code.c:17
 17	}
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 32767.75, 0}, {0, 2, 0}, {0, 2.9000001, 0}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 2, 0}, {8, 2.125, 0}, {0, 2.9000001, 0}}
 6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 37, LimitControllerInput (this=0x555555558040 <ThreeAxisController1>) at gdb_debug_code.c:78
 78	    this->mController[1][1] = LimitFloat32(this->mController[1][1], 1.2f);
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 1.20000005, 0}, {0, 2, 0}, {0, 2.9000001, 0}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 1.20000005, 0}, {8, 2.125, 0}, {0, 2.9000001, 0}}
 6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 2, LimitFloat32 (value=1.20000005, limit=1.20000005) at gdb_debug_code.c:7
 7	{
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 1.20000005, 0}, {0, 2, 0}, {0, 2.9000001, 0}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 1.20000005, 0}, {8, 2.125, 0}, {0, 2.9000001, 0}}
 6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 7, LimitFloat32 (value=1.20000005, limit=1.20000005) at gdb_debug_code.c:16
 16	    return value;
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 1.20000005, 0}, {0, 2, 0}, {0, 2.9000001, 0}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 1.20000005, 0}, {8, 2.125, 0}, {0, 2.9000001, 0}}
 6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 8, LimitFloat32 (value=1.20000005, limit=1.20000005) at gdb_debug_code.c:17
 17	}
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 1.20000005, 0}, {0, 2, 0}, {0, 2.9000001, 0}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 1.20000005, 0}, {8, 2.125, 0}, {0, 2.9000001, 0}}
 6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 38, LimitControllerInput (this=0x555555558040 <ThreeAxisController1>) at gdb_debug_code.c:79
 79	    this->mController[2][1] = LimitFloat32(this->mController[2][1], 1.2f);
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 1.20000005, 0}, {0, 1.20000005, 0}, {0, 2.9000001, 0}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 1.20000005, 0}, {8, 1.20000005, 0}, {0, 2.9000001, 0}}
 6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 2, LimitFloat32 (value=1.20000005, limit=1.20000005) at gdb_debug_code.c:7
 7	{
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 1.20000005, 0}, {0, 1.20000005, 0}, {0, 2.9000001, 0}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 1.20000005, 0}, {8, 1.20000005, 0}, {0, 2.9000001, 0}}
 6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 7, LimitFloat32 (value=1.20000005, limit=1.20000005) at gdb_debug_code.c:16
 16	    return value;
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 1.20000005, 0}, {0, 1.20000005, 0}, {0, 2.9000001, 0}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 1.20000005, 0}, {8, 1.20000005, 0}, {0, 2.9000001, 0}}
 6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 8, LimitFloat32 (value=1.20000005, limit=1.20000005) at gdb_debug_code.c:17
 17	}
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 1.20000005, 0}, {0, 1.20000005, 0}, {0, 2.9000001, 0}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 1.20000005, 0}, {8, 1.20000005, 0}, {0, 2.9000001, 0}}
 6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 39, LimitControllerInput (this=0x555555558040 <ThreeAxisController1>) at gdb_debug_code.c:80
 80	    return;
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 1.20000005, 0}, {0, 1.20000005, 0}, {0, 1.20000005, 0}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 1.20000005, 0}, {8, 1.20000005, 0}, {0, 1.20000005, 0}}
 6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 40, LimitControllerInput (this=0x555555558040 <ThreeAxisController1>) at gdb_debug_code.c:81
 81	}
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 1.20000005, 0}, {0, 1.20000005, 0}, {0, 1.20000005, 0}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 1.20000005, 0}, {8, 1.20000005, 0}, {0, 1.20000005, 0}}
 6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 20, ThreeAxisControllerFun (p=0x555555558040 <ThreeAxisController1>) at gdb_debug_code.c:51
 51	    pIp->mController[0][2] = pIp->mController[0][0] * pIp->CTRL_PARAM_SAM[0][0] + pIp->mController[0][1] * pIp->CTRL_PARAM_SAM[0][1];
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 1.20000005, 0}, {0, 1.20000005, 0}, {0, 1.20000005, 0}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 1.20000005, 0}, {8, 1.20000005, 0}, {0, 1.20000005, 0}}
 6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 21, ThreeAxisControllerFun (p=0x555555558040 <ThreeAxisController1>) at gdb_debug_code.c:52
 52	    pIp->mController[1][2] = pIp->mController[1][0] * pIp->CTRL_PARAM_SAM[1][0] + pIp->mController[1][1] * pIp->CTRL_PARAM_SAM[1][1];
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 1.20000005, 2.0092597}, {0, 1.20000005, 0}, {0, 1.20000005, 0}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 1.20000005, 7.77136947e+09}, {8, 1.20000005, 0}, {0, 1.20000005, 0}}
 6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 22, ThreeAxisControllerFun (p=0x555555558040 <ThreeAxisController1>) at gdb_debug_code.c:53
 53	    pIp->mController[2][2] = pIp->mController[2][1] * pIp->CTRL_PARAM_SAM[2][1];
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 1.20000005, 2.0092597}, {0, 1.20000005, 2.6704309}, {0, 1.20000005, 0}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 1.20000005, 7.77136947e+09}, {8, 1.20000005, inf}, {0, 1.20000005, 0}}
 6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 23, ThreeAxisControllerFun (p=0x555555558040 <ThreeAxisController1>) at gdb_debug_code.c:56
 56	    pIp->u[0] = LimitFloat32(pIp->mController[0][2], 1.3f); /* 伪速率状态量 */
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 1.20000005, 2.0092597}, {0, 1.20000005, 2.6704309}, {0, 1.20000005, 1.8296268}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 1.20000005, 7.77136947e+09}, {8, 1.20000005, inf}, {0, 1.20000005, 1.32204127}}
 6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 2, LimitFloat32 (value=3.0611365e-41, limit=1.46716754e+13) at gdb_debug_code.c:7
 7	{
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 1.20000005, 2.0092597}, {0, 1.20000005, 2.6704309}, {0, 1.20000005, 1.8296268}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 1.20000005, 7.77136947e+09}, {8, 1.20000005, inf}, {0, 1.20000005, 1.32204127}}
 6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 7, LimitFloat32 (value=1.29999995, limit=1.29999995) at gdb_debug_code.c:16
 16	    return value;
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 1.20000005, 2.0092597}, {0, 1.20000005, 2.6704309}, {0, 1.20000005, 1.8296268}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 1.20000005, 7.77136947e+09}, {8, 1.20000005, inf}, {0, 1.20000005, 1.32204127}}
 6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 8, LimitFloat32 (value=1.29999995, limit=1.29999995) at gdb_debug_code.c:17
 17	}
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 1.20000005, 2.0092597}, {0, 1.20000005, 2.6704309}, {0, 1.20000005, 1.8296268}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 1.20000005, 7.77136947e+09}, {8, 1.20000005, inf}, {0, 1.20000005, 1.32204127}}
 6: /f ThreeAxisController1.u = {-0, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 24, ThreeAxisControllerFun (p=0x555555558040 <ThreeAxisController1>) at gdb_debug_code.c:57
 57	    pIp->u[1] = LimitFloat32(pIp->mController[1][2], 1.3f); /* 伪速率状态量 */
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 1.20000005, 2.0092597}, {0, 1.20000005, 2.6704309}, {0, 1.20000005, 1.8296268}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 1.20000005, 7.77136947e+09}, {8, 1.20000005, inf}, {0, 1.20000005, 1.32204127}}
 6: /f ThreeAxisController1.u = {1.29999995, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 2, LimitFloat32 (value=1.29999995, limit=1.29999995) at gdb_debug_code.c:7
 7	{
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 1.20000005, 2.0092597}, {0, 1.20000005, 2.6704309}, {0, 1.20000005, 1.8296268}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 1.20000005, 7.77136947e+09}, {8, 1.20000005, inf}, {0, 1.20000005, 1.32204127}}
 6: /f ThreeAxisController1.u = {1.29999995, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 7, LimitFloat32 (value=1.29999995, limit=1.29999995) at gdb_debug_code.c:16
 16	    return value;
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 1.20000005, 2.0092597}, {0, 1.20000005, 2.6704309}, {0, 1.20000005, 1.8296268}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 1.20000005, 7.77136947e+09}, {8, 1.20000005, inf}, {0, 1.20000005, 1.32204127}}
 6: /f ThreeAxisController1.u = {1.29999995, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 8, LimitFloat32 (value=1.29999995, limit=1.29999995) at gdb_debug_code.c:17
 17	}
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 1.20000005, 2.0092597}, {0, 1.20000005, 2.6704309}, {0, 1.20000005, 1.8296268}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 1.20000005, 7.77136947e+09}, {8, 1.20000005, inf}, {0, 1.20000005, 1.32204127}}
 6: /f ThreeAxisController1.u = {1.29999995, -0, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 25, ThreeAxisControllerFun (p=0x555555558040 <ThreeAxisController1>) at gdb_debug_code.c:58
 58	    pIp->u[2] = LimitFloat32(pIp->mController[2][2], 1.3f); /* 伪速率状态量 */
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 1.20000005, 2.0092597}, {0, 1.20000005, 2.6704309}, {0, 1.20000005, 1.8296268}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 1.20000005, 7.77136947e+09}, {8, 1.20000005, inf}, {0, 1.20000005, 1.32204127}}
 6: /f ThreeAxisController1.u = {1.29999995, 1.29999995, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 2, LimitFloat32 (value=1.29999995, limit=1.29999995) at gdb_debug_code.c:7
 7	{
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 1.20000005, 2.0092597}, {0, 1.20000005, 2.6704309}, {0, 1.20000005, 1.8296268}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 1.20000005, 7.77136947e+09}, {8, 1.20000005, inf}, {0, 1.20000005, 1.32204127}}
 6: /f ThreeAxisController1.u = {1.29999995, 1.29999995, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 7, LimitFloat32 (value=1.29999995, limit=1.29999995) at gdb_debug_code.c:16
 16	    return value;
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 1.20000005, 2.0092597}, {0, 1.20000005, 2.6704309}, {0, 1.20000005, 1.8296268}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 1.20000005, 7.77136947e+09}, {8, 1.20000005, inf}, {0, 1.20000005, 1.32204127}}
 6: /f ThreeAxisController1.u = {1.29999995, 1.29999995, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 8, LimitFloat32 (value=1.29999995, limit=1.29999995) at gdb_debug_code.c:17
 17	}
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 1.20000005, 2.0092597}, {0, 1.20000005, 2.6704309}, {0, 1.20000005, 1.8296268}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 1.20000005, 7.77136947e+09}, {8, 1.20000005, inf}, {0, 1.20000005, 1.32204127}}
 6: /f ThreeAxisController1.u = {1.29999995, 1.29999995, -0}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 26, ThreeAxisControllerFun (p=0x555555558040 <ThreeAxisController1>) at gdb_debug_code.c:60
 60	    return;
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 1.20000005, 2.0092597}, {0, 1.20000005, 2.6704309}, {0, 1.20000005, 1.8296268}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 1.20000005, 7.77136947e+09}, {8, 1.20000005, inf}, {0, 1.20000005, 1.32204127}}
 6: /f ThreeAxisController1.u = {1.29999995, 1.29999995, 1.29999995}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 27, ThreeAxisControllerFun (p=0x555555558040 <ThreeAxisController1>) at gdb_debug_code.c:61
 61	}
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 1.20000005, 2.0092597}, {0, 1.20000005, 2.6704309}, {0, 1.20000005, 1.8296268}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 1.20000005, 7.77136947e+09}, {8, 1.20000005, inf}, {0, 1.20000005, 1.32204127}}
 6: /f ThreeAxisController1.u = {1.29999995, 1.29999995, 1.29999995}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
 
 Breakpoint 41, main () at gdb_debug_code.c:106
 106	}
-1: /f pAngle = {272.007935, 0}
-2: /f pRate = {32768.25, 2, 2.9000001}
-3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{0, 1.67438304}, {0, 2.22535896}, {0, 1.52468896}}
-4: /f ThreeAxisController1.destRate = {0.5, 0, 0}
-5: /f ThreeAxisController1.mController = {{8, 1.20000005, 2.0092597}, {0, 1.20000005, 2.6704309}, {0, 1.20000005, 1.8296268}}
+1: /f pAngle = {0, 272.007874}
+2: /f pRate = {2, 2.125, 2.9000001}
+3: /f ThreeAxisController1.CTRL_PARAM_SAM = {{5.23127699, 6.47614106e+09}, {4.40517711e+37, 0}, {3.47808128e+09, 1.10170102}}
+4: /f ThreeAxisController1.destRate = {0, 0, 0}
+5: /f ThreeAxisController1.mController = {{0, 1.20000005, 7.77136947e+09}, {8, 1.20000005, inf}, {0, 1.20000005, 1.32204127}}
 6: /f ThreeAxisController1.u = {1.29999995, 1.29999995, 1.29999995}
-7: /u ThreeAxisController1.workMode = 34
+7: /u ThreeAxisController1.workMode = 0
+[Inferior 1 (process) exited normally]
+[Inferior 1 (process) exited normally]
 [Inferior 1 (process) exited normally]

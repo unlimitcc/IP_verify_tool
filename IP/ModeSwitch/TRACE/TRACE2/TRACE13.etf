@@ -1,9 +1,0 @@
-TU MILLISECONDS
-R 0 100.0 false;
-C 0 0.0 1.0 0 100.0;p1=false,p2=false,p3=false,p4=false,p5=false,p6=true,p7=false,p8=false,p9=false,p10=false,p11=true,p12=true,p13=true,p14=true,p15=true,p16=false
-C 1 1.0 2.0 0 100.0;p1=false,p2=false,p3=false,p4=false,p5=false,p6=true,p7=false,p8=false,p9=false,p10=false,p11=true,p12=true,p13=true,p14=true,p15=true,p16=false
-C 2 2.0 3.0 0 100.0;p1=false,p2=false,p3=false,p4=false,p5=false,p6=false,p7=false,p8=true,p9=true,p10=false,p11=true,p12=true,p13=false,p14=true,p15=true,p16=false
-C 3 3.0 4.0 0 100.0;p1=false,p2=false,p3=false,p4=false,p5=false,p6=false,p7=false,p8=true,p9=true,p10=false,p11=true,p12=true,p13=false,p14=true,p15=true,p16=false
-C 4 4.0 5.0 0 100.0;p1=false,p2=false,p3=false,p4=false,p5=false,p6=false,p7=false,p8=false,p9=true,p10=false,p11=true,p12=true,p13=true,p14=true,p15=true,p16=false
-S 0; name = s1
-F 0 0 5.0 1.0 0.0 0.0

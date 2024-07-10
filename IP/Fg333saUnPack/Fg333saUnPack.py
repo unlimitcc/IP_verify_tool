@@ -15,9 +15,6 @@ VER_pRecvbuf = Array('VER_pRecvbuf',IntSort(),IntSort())
 def Array_length(a):
 	temp = np.array(a)
 	return temp.size
-def Array_Size(a): 
-	temp = np.array(a)
-	return temp.shape
 def List2Array(lst, idx=()):
     if isinstance(lst[0], list):
         size = len(lst)
