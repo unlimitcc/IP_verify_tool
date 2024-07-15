@@ -30,21 +30,39 @@ fstream z3_contract;										   //contract相关的变量的z3定义文件
 fstream z3_constraint;										   //含有量词约束的contract的z3文件
 fstream klee_constraint;									   //在使用klee符号化对应数据前人为给出的约束
 
-string IP_name = "GyroChoose";
-string IP_cpath = "/home/planet/Desktop/VeriHar-main/sources/" + IP_name + ".c";
-string IP_hpath = "/home/planet/Desktop/VeriHar-main/include/" + IP_name + ".h";
-string src_path = "/home/planet/Desktop/IP_verify_tool/";
+ 
+string IP_name = "coolant_basis_1_unsafe_sfty";
+//IP代码实现位置
+string IP_cpath = "VeriHar-main/sources/" + IP_name + ".c";
+//IP头文件位置
+string IP_hpath = "VeriHar-main/include/" + IP_name + ".h";
+string klee_h_path = "klee-tool-chain/klee/include/klee/klee.h";
 
+string src_path = "";//暂时未使用，指定待验证文件的绝对路径
 
-bool Z3_API = true;												//是否调用Z3求解器
+//是否调用Z3求解器
+bool Z3_API = false;												
+
+extract_propos e_p(Z3_API); //该对象用于处理由contract改写的性质文件
 
 /*使用antlr4根据性质提取生成测试用例相关的变量表达式，用于为TRACE生成命题*/
-
-extract_propos e_p(Z3_API); //该类用于处理由contract改写的性质文件
-
 void extract_var(){
 
-    e_p.get_propos(src_path, IP_name, array_ass, var_exp);
+	if(IP_name.length() == 0){
+		try {
+			throw "未指定验证IP名称!";
+		}catch (const char* msg) {
+			cout << msg << endl;
+		}
+	}else{
+
+		e_p.get_propos(src_path, IP_name, array_ass, var_exp);
+		cout << "---contract文本解析完成---" << endl;
+		/*for(int i=0; i<var_exp.size(); ++i){
+			cout << var_exp[i] << endl;
+		}*/
+		
+	}
 }
 
 /*将变量符号化并调用KLEE生成测试用例*/
@@ -57,13 +75,22 @@ int KLEE_generate_testcase(){
         //该行为变量声明代码
         if((line.find("int")!=string::npos || line.find("oat")!=string::npos) && line.find(";")!=string::npos){
             int type_s, type_e;                //定位变量类型的起止位置
+            if(line.find("int")!=string::npos || line.find("oat")!=string::npos){
+           
+            	type_s = type_e = line.find("int")!=string::npos ? line.find("int") : line.find("oat");
+            	while(!isspace(line[type_s])) type_s--;
+            	type_s++;
+            	while(!isspace(line[type_e])) type_e++;
+            	type_e--;
+            }
+            /*旧功能
             if(line.find("int")!=string::npos){//siint等int型变量
                 type_s = line.find("int") - 2; //定位变量类型
                 type_e = line.find("int") + 4;
             }else{//float型变量
                 type_s = line.find("oat") - 2;
                 type_e = line.find("oat") + 4;
-            }
+            }*/
             int var_s = type_e+2;//定位变量名
             while(line[var_s]==' ' || line[var_s]=='\t') var_s++;
             int var_e = line.find(";") - 1;
@@ -96,7 +123,6 @@ int KLEE_generate_testcase(){
     */
     klee_code.open(src_path+"klee_code.c", ios::app|ios::out|ios::in);
     src_code_c.open(IP_cpath);
-    string klee_h_path = "/home/planet/Desktop/klee-tool-chain/klee/include/klee/klee.h";
     klee_code<<"#include \""<<klee_h_path<<"\"\n"<<"#include <string.h>"<<endl;
     while(!src_code_c.eof()){
         string line;
@@ -176,10 +202,11 @@ int KLEE_generate_testcase(){
     klee_code<<"}"<<endl;
     src_code_c.close();
     src_code_h.close();
-    system("clang-9 -I ../klee/include -emit-llvm -c -g klee_code.c");//注意klee/klee.h头文件的存放位置
+	cout << "---生成测试用例---" <<endl;
+    system("clang-9 -I klee-tool-chain/klee/include -emit-llvm -c -g klee_code.c");//注意klee/klee.h头文件的存放位置
     system("klee --max-time=60s --only-output-states-covering-new klee_code.bc");//最长运算时间不超过60s
     int num = get_testcasenum(src_path+"klee-last");
-    if(num>100) num = 100;
+    //if(num>100) num = 100;
     //将所有的测试用例保存
     for(int i=1; i<=num; i++){
     	    string num_i = to_string(i);
@@ -194,6 +221,7 @@ int KLEE_generate_testcase(){
     remove("klee_code.bc");
     return num; 
 }
+
 /*提取测试用例实际值的函数*/
 void read_test_case(int index){                               
 
@@ -201,7 +229,7 @@ void read_test_case(int index){
     int begin_name = 0, end_name = 0;                      	//定位变量名
     int begin_val = 0;                         				//定位变量值起始位置
     string line;                                            //文件中的一行
-    string icom = src_path+"/testcase/testcase_in" + to_string(index) + ".txt";
+    string icom = src_path+"testcase/testcase_in" + to_string(index) + ".txt";
     test_case_infile.open(icom.c_str());
     if (!test_case_infile.is_open())		               	//判断文件是否成功打开
 	{
@@ -313,7 +341,7 @@ void generate_execu_log(){
      		init_code<<var_type[it->first.substr(0,it->first.find('['))].type<<" "<<it->first.substr(1,it->first.length()-1)<<"={"<<it->second<<"};"<<endl;
      	}
     }
-    init_code<<"int main(){"<<endl; 
+    init_code << "int main(){" << endl; 
     //初始化生成测试用例的变量
     for(auto it=test_case.begin(); it!=test_case.end(); it++){
     	//测试用例中有指针数组，先打印数组，再将头指针赋给结构体中的对应元素
@@ -350,7 +378,7 @@ void generate_execu_log(){
     init_code.close();
 }
 
-/*根据提取出的变量值，编写GDB自动化脚本*/
+/*根据提取出的变量值，编写GDB自动化脚本，实现运行时监听器*/
 void generate_GDB_script(int index){
     string filename = IP_name;//提取文件名(无后缀)
     init_code.open(src_path+"gdb_debug_code.c");
@@ -358,12 +386,13 @@ void generate_GDB_script(int index){
         cout<<"Error opening file:"<<filename<<endl;
     }
     if(index==1){
+		cout << "---生成路径监视器---" << endl;
 		GDB_script.open(src_path+"gdb_script.gdb",ios::app|ios::out|ios::in);
 		int count_line = 0, count_bp = 0;                         //记录程序读入的行数,设置的断点数
 		//string t_com = "set logging file GDB_trace/trace" + to_string(index) +".txt";
-		GDB_script<<"set logging on"<<endl;
-		GDB_script<<"set print repeats 1000"<<endl; //当有大量元素重复时，依然全部显示
-		GDB_script<<"b "<<"gdb_debug_code.c:"<<IP_name<<"Fun"<<endl;
+		GDB_script << "set logging on" << endl;
+		GDB_script << "set print repeats 1000" << endl; //当有大量元素重复时，依然全部显示
+		GDB_script << "b "<<"gdb_debug_code.c:" << IP_name << "Fun" <<endl;
 		for(auto it=var_type.begin(); it!=var_type.end(); it++){//在IP初始结构体中出现的变量使用display关键字即可，未在IP中定义，但在命题中出现的需要单独打印
 		    if(it->first.find("*")!=string::npos){//指针或数组类型变量。该类型的变量(指针一般为数组首地址)，可以根据Contract的Assumption初始化
 		        string array_name = it->first.substr(1,it->first.length()-1);
@@ -492,13 +521,13 @@ void judge_proposition(map<string, pair<string, string>> &next,vector<bool> &pro
 	return;
 }
 
-
 /*提取执行日志,并转换为etf路径文件*/
 void read_trace(int index){
 
     string line;
     int num_bp = 0;                                   //通过记录执行日志打印的断点数记录生成的路径长度
-    bool last_line = false;                           //用于记录是否读到文件末尾，与next操作符关联          
+    bool last_line = false;                           //用于记录是否读到文件末尾，与next操作符关联
+	if(index==1) cout << "---验证TRACE路径模型---" << endl;          
     trace_infile.open(src_path+"GDB_trace/trace" + to_string(index) + ".txt", ios::app|ios::out|ios::in);
     trace_infile<<"[Inferior 1 (process) exited normally]"<<endl;//防止读取时找不到文件末尾
     trace_infile.close();
