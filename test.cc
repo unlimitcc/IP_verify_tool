@@ -31,7 +31,7 @@ fstream z3_constraint;										   //含有量词约束的contract的z3文件
 fstream klee_constraint;									   //在使用klee符号化对应数据前人为给出的约束
 
  
-string IP_name = "coolant_basis_5_neg";
+string IP_name = "Problem9";
 //IP代码实现位置
 string IP_cpath = "VeriHar-main/sources/" + IP_name + ".c";
 //IP头文件位置
@@ -74,7 +74,13 @@ void generate_execu_log(){
     while(!src_code_c.eof()){//将IP实现部分拷贝到用于生成执行日志的文件中
         string line;
         getline(src_code_c, line);
-        init_code<<line<<endl;    
+        init_code<<line<<endl;
+        if(line.find("while(1)")!=string::npos || line.find("while(true)")!=string::npos){
+        	getline(src_code_c, line);
+        	init_code << line << endl;
+        	//为了定位while(1)循环的开始，防止将断点重定位到其他位置，无法正确终止
+			init_code << "int BREAKPOINT = 0;" << endl;
+        } 
     }
     //标识源代码的结束，用于后续gdb判断断点位置界限
     init_code<<"//src code end"<<endl;
@@ -146,40 +152,46 @@ void generate_execu_log(){
 void generate_GDB_script(int index){
 	
     string filename = IP_name;//提取文件名(无后缀)
+	//生成GDB执行脚本
     if(index==1){
-    	init_code.open(src_path+"gdb_debug_code.c");
+    	init_code.open(src_path+"gdb_debug_code.c",ios::out|ios::in);
 		cout << "---生成路径监视器---" << endl;
 		GDB_script.open(src_path+"gdb_script.gdb",ios::app|ios::out|ios::in);
-		int count_line = 0, count_bp = 0;                         //记录程序读入的行数,设置的断点数
+		//记录程序读入的行数,设置的断点数
+		int count_line = 0, count_bp = 0;                         
 		//string t_com = "set logging file GDB_trace/trace" + to_string(index) +".txt";
 		GDB_script << "set logging on" << endl;
 		GDB_script << "set print repeats 1000" << endl; //当有大量重复元素时，依然全部显示
-		GDB_script << "set $counter = 0" << endl; //设置终止条件变量，counter > 1000 则准备停止, 并设flag = 1
-		GDB_script << "set $flag = 0" << endl; //设置终止条件变量，flag = 1 则立刻停止
+		GDB_script << "set $counter = 0" << endl; 		//设置终止条件变量，counter > 1000 则准备停止, 并设flag = 1
+		GDB_script << "set $flag = 0" << endl; 			//设置终止条件变量，flag = 1 则立刻停止
 		GDB_script << "b "<<"gdb_debug_code.c:" << IP_name << "Fun" <<endl;
-		for(auto it=var_type.begin(); it!=var_type.end(); it++){//在IP初始结构体中出现的变量使用display关键字即可，未在IP中定义，但在命题中出现的需要单独打印
-		    if(it->first.find("*")!=string::npos){//指针或数组类型变量。该类型的变量(指针一般为数组首地址)，可以根据Contract的Assumption初始化
+		//在IP初始结构体中出现的变量使用全局变量的打印方式：display关键字即可;未在IP中定义，但在命题中出现的需要单独打印
+		for(auto it=var_type.begin(); it!=var_type.end(); it++){
+			//指针或数组类型变量。该类型的变量(指针一般为数组首地址)，可以根据Contract的Assumption初始化
+		    if(it->first.find("*")!=string::npos){
 		        string array_name = it->first.substr(1,it->first.length()-1);
 		        //不管是几维数组，都使用(display 数组名)的方式打印数组的值
-		        if(it->second.type.find("siint")!=string::npos) 	 GDB_script<<"\tdisplay/d "<<array_name<<endl;
-		        else if(it->second.type.find("unint")!=string::npos) GDB_script<<"\tdisplay/u "<<array_name<<endl;
-		        else if(it->second.type.find("float")!=string::npos) GDB_script<<"\tdisplay/f "<<array_name<<endl;   
+		        if(it->second.type.find("siint")!=string::npos) 	 GDB_script << "\tdisplay/d " << array_name << endl;
+		        else if(it->second.type.find("unint")!=string::npos) GDB_script << "\tdisplay/u " << array_name << endl;
+		        else if(it->second.type.find("float")!=string::npos) GDB_script << "\tdisplay/f " << array_name << endl;   
 		    }else if(it->first.find("[")!=string::npos){//数组型变量
 		    	string array_name = it->first.substr(0,it->first.find('['));
-		    	if(it->second.type.find("siint")!=string::npos) 	 GDB_script<<"\tdisplay/d "<<filename<<"1."<<array_name<<endl;
-		        else if(it->second.type.find("unint")!=string::npos) GDB_script<<"\tdisplay/u "<<filename<<"1."<<array_name<<endl;
-		        else if(it->second.type.find("float")!=string::npos) GDB_script<<"\tdisplay/f "<<filename<<"1."<<array_name<<endl;   
-		    }else{//
+		    	if(it->second.type.find("siint")!=string::npos) 	 GDB_script << "\tdisplay/d "<< filename <<"1." << array_name << endl;
+		        else if(it->second.type.find("unint")!=string::npos) GDB_script << "\tdisplay/u "<< filename <<"1." << array_name << endl;
+		        else if(it->second.type.find("float")!=string::npos) GDB_script << "\tdisplay/f "<< filename <<"1." << array_name << endl;   
+		    }else{
 		        if(it->second.type.find("siint")!=string::npos){
-		            GDB_script<<"\tdisplay/d "<<it->first<<endl;
+		            GDB_script << "\tdisplay/d " << it->first << endl;
 		        }else if(it->second.type.find("float")!=string::npos){
-		            GDB_script<<"\tdisplay/f "<<it->first<<endl;
+		            GDB_script << "\tdisplay/f " << it->first << endl;
 		        }else if(it->second.type.find("unint")!=string::npos){
-		        	GDB_script<<"\tdisplay/u "<<it->first<<endl;
+		        	GDB_script << "\tdisplay/u " << it->first << endl;
 		        }  
 		    }
 		}
+
 		vector<string> array;//待打印大小的数组名
+
 		while(!init_code.eof()){
 		    string code;
 		    getline(init_code, code);
@@ -189,19 +201,45 @@ void generate_GDB_script(int index){
 		    		getline(init_code, code);
 		    		count_line++;
 		    	}
-		    	GDB_script<<"b "<<"gdb_debug_code.c"<<":"<<count_line<<"\n"<<"\tcommands "<<count_bp+1<<endl;
-		    	GDB_script<<"\tset $counter = $counter + 1\n" 
-							  << "\tif $counter > 1000\n" << "\t\tquit\n" << "\tend" << endl;
-				GDB_script<<"\tcontinue"<<"\n"<<"end"<<endl;
+
+		    	GDB_script << "b " << "gdb_debug_code.c" << ":" << count_line << "\n" 
+		    			   << "\tcommands " << count_bp+1 << endl;
+		    	GDB_script << "\tset $counter = $counter + 1\n" 
+						   << "\tif $counter > 1000\n"
+						   //<< "\t\tset $flag= 1\n"
+						   << "\tquit\n"
+						   << "\tend" << endl;
+				GDB_script << "\tcontinue\n"
+						   << "end"<<endl;
 		    	break;
 		    }
 		    count_line++;
+
+			//用于benchmark验证，当程序执行路径达到1000次时，需要结束执行
+			//在无限循环的起始位置添加bool类型flag变量，当flag为真
+			//不用再继续执行脚本，flag的值通过计数器counter控制，counter记录
+			//在断点处打印的次数。
+			if(code.find("while(1)")!=string::npos || code.find("while(true)")!=string::npos){
+				GDB_script << "b " << "gdb_debug_code.c" << ":" << count_line+1 << "\n"
+						   << "\tcommands "<<count_bp+1<<endl;
+		    	GDB_script << "\tset $counter = $counter + 1\n" 
+		    			   << "\tif $counter > 1000 || $flag == 1\n"
+		    			   << "\t\tquit\n"
+		    			   << "\tend" << endl;
+		    	GDB_script << "\tcontinue\n"
+		    			   << "end"<<endl;
+				count_bp++;
+				continue;
+			}
+
 		    //该行不需要打断点
-		    if(code.find("if")!=string::npos || code.find("else")!=string::npos || code.find("for")!=string::npos || code.length()<5) continue;
+		    if(code.find("if")!=string::npos || code.find("else")!=string::npos 
+											 || code.find("for")!=string::npos || code.length()<5) continue;
 		    //该行没有具体操作  
 		    if(code.find(" { ")!=string::npos || code.find(" } ")!=string::npos) continue;		
 		    //某些结构体变量初始化的过程
-		    if(code.find("\t.")!= string::npos || code.find(" .")!= string::npos) continue;      
+		    if(code.find("\t.")!= string::npos || code.find(" .")!= string::npos) continue;	
+
 		    for(auto it=var_type.begin(); it!=var_type.end(); it++){
 		    	string var_name;
 		    	if(it->first.find('*')!=string::npos) {
@@ -215,35 +253,43 @@ void generate_GDB_script(int index){
 		    	} 
 		    	else var_name = it->first;
 		    	//如果该行代码中存在结构体中定义的变量
-		        if(code.find(var_name)!=string::npos){
-		        	//修改：需要定义一个程序keyword，如果搜索到则跳过
+		        if(code.find(" " + var_name + " ")!=string::npos){
 		            string temp;
 		            count_bp++;
-		    		GDB_script<<"b "<<"gdb_debug_code.c"<<":"<<count_line<<"\n"<<"\tcommands "<<count_bp<<endl;
-					GDB_script<<"\tset $counter = $counter + 1\n" 
-							  << "\tif $counter > 1000\n" << "\t\tquit\n" << "\tend" << endl;
-					GDB_script<<"\tcontinue"<<"\n"<<"end"<<endl;
+		    		GDB_script << "b " << "gdb_debug_code.c" << ":" << count_line << "\n" 
+							   << "\tcommands " << count_bp << endl;
+					GDB_script << "\tset $counter = $counter + 1\n" 
+							   << "\tif $counter > 1000\n"
+							   //<< "\t\tset $flag= 1\n"
+							   << "\tquit\n"
+							   << "\tend" << endl;
+					GDB_script << "\tcontinue\n"
+							   << "end"<<endl;
 		            break;    
 		        }   
 		    }
 		    string flag = filename+"Fun(&"+filename+"1);";
 		    if(code.find(flag)!=string::npos && count_bp>0){			//main函数中IP调用为整个测试代码的最后一步
-		    	GDB_script<<"b "<<"gdb_debug_code.c"<<":"<<count_line<<"\n"<<"\tcommands "<<count_bp+1<<endl;
-		    	GDB_script<<"\tset $counter = $counter + 1\n" 
-		    			  << "\tif $counter > 1000\n" << "\t\tquit\n" << "\tend" << endl;
-		    	GDB_script<<"\tcontinue"<<"\n"<<"end"<<endl;
+		    	GDB_script << "b " << "gdb_debug_code.c" << ":" << count_line << "\n" 
+						   << "\tcommands " << count_bp+1 << endl;
+				GDB_script << "\tset $counter = $counter + 1\n" 
+						   << "\tif $counter > 1000\n"
+						   //<< "\t\tset $flag= 1\n"
+						   << "\tquit\n"
+						   << "\tend" << endl;
+				GDB_script << "\tcontinue\n"
+						   << "end"<<endl;
 		    	break;
 		    }
 		}
-		GDB_script<<"run"<<endl;
+
+		//断点记录结束
+		GDB_script << "run"<<endl;
 		GDB_script.close();
-		system("gcc -g gdb_debug_code.c -o gdb_debug_code");
+		system("gcc -w -g -O0 gdb_debug_code.c -o gdb_debug_code");
 		init_code.close();
     }
-    //src_code_c.close();
-    
     //以下用于调用GDB去调试上述生成的初始化后的IP，并生成程序执行日志
-    
     string t_com = "gdb gdb_debug_code -batch -x gdb_script.gdb > GDB_trace/trace" + to_string(index) +".txt";
     system((t_com).c_str());
     //remove("gdb_debug_code.c");
@@ -378,7 +424,7 @@ void read_trace(int index){
             }
             trace_outfile<<"\n";
             num_bp++;
-            if(line.find("debugging session") != string::npos) break;
+            if(line.find("returned") != string::npos || line.find("exited") != string::npos || line.find("debug") != string::npos) break;
             else propos.clear();   
             first_time = false; 
         }                                   
