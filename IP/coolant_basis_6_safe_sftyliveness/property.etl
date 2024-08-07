@@ -1,0 +1,9 @@
+def p1 : {'p1'='true'}//True
+def p2 : {'p2'='true'}//limit>-273
+def p3 : {'p3'='true'}//limit<10
+def p4 : {'p4'='true'}//tempIn<0
+def p5 : {'p5'='true'}//warnLED == 1
+
+signal s1 : {'name' = 's1'}
+def c1 : if p4 then finally p5
+check AG : if s1>=1.0 then not globally if (p2 or p3) then c1

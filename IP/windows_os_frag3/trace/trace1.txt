@@ -1,0 +1,25 @@
+Breakpoint 1 at 0x113f: file gdb_debug_code.c, line 11.
+Breakpoint 2 at 0x1129: file gdb_debug_code.c, line 9.
+Breakpoint 3 at 0x1159: file gdb_debug_code.c, line 16.
+Breakpoint 4 at 0x1192: file gdb_debug_code.c, line 26.
+Breakpoint 5 at 0x11cf: file gdb_debug_code.c, line 36.
+Breakpoint 6 at 0x120c: file gdb_debug_code.c, line 50.
+
+Breakpoint 1, windows_os_frag3Fun (pIp=0x555555555210 <__libc_csu_init>) at gdb_debug_code.c:11
+11	void windows_os_frag3Fun(void *pIp) {
+1: /d windows_os_frag31.Stored = 0
+2: /u windows_os_frag31.input1 = 0
+3: /u windows_os_frag31.input2 = 0
+
+Breakpoint 5, windows_os_frag3Fun (pIp=0x555555558010 <windows_os_frag31>) at gdb_debug_code.c:36
+36	}
+1: /d windows_os_frag31.Stored = 0
+2: /u windows_os_frag31.input1 = 0
+3: /u windows_os_frag31.input2 = 0
+
+Breakpoint 6, main () at gdb_debug_code.c:50
+50	}
+1: /d windows_os_frag31.Stored = 0
+2: /u windows_os_frag31.input1 = 0
+3: /u windows_os_frag31.input2 = 0
+[Inferior 1 (process) exited normally]

@@ -1,0 +1,10 @@
+def p1: {'p1' = 'true'} //p1:true
+def p2: {'p2' = 'true'} //p2:output = 25
+
+
+signal s1 : {'name' = 's1'}
+
+def sub1 : (globally p2 or until globally not p2 we have that p2) 
+def sub2 : (globally not p2 or until sub1 we have that not p2)
+def sub3 : (globally p2 or until sub2 we have that p2)
+check AG : if s1>=1.0 then not (globally not p2 or until sub3 we have that not p2)

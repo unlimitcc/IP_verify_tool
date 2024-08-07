@@ -1,0 +1,9 @@
+def p1: {'p1' = 'true'} //p1:true
+def p2: {'p2' = 'true'} //p2:output = 26
+def p3: {'p3' = 'true'} //p3:output = 24
+def p4: {'p4' = 'true'} //p4:input = 6
+
+signal s1 : {'name' = 's1'}
+
+
+check AG1 : if s1>= 1.0 then not (not finally p2 or until (p4 or p2) we have that not p3)

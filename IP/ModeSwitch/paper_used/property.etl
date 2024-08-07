@@ -16,15 +16,17 @@ def p15: {'p15' = 'true'} //p15:m_countMode<=4500
 def p16: {'p16' = 'true'} //p16:m_countMode<=5000
 def p17: {'p17' = 'true'} //p17:Cnt_RASM<=1
 
-check Guarantee1 : globally if (p2 and (p3 or p4)) then finally globally p5
-check Guarantee2 : globally if (p5 and p6) then finally globally p7
-check Guarantee3 : globally if (p7 and p8) then finally globally p5
-check Guarantee4 : globally if (p5 and p9) then finally globally p10
-check Guarantee5 : globally if (p7 and p9) then finally globally p10
-check Guarantee6 : globally if (p7 and p11) then finally globally p2
-check Guarantee7 : globally if (p2 and (p12 and p13)) then finally globally p2
-check Guarantee8 : globally if (p5 and (p14 and p15)) then finally globally p5
-check Guarantee9 : globally if (p7 and (p14 and (p16 and p17))) then finally globally p7
-check Guarantee10 : globally if p10 then finally globally p10
+signal s1 : {'name' = 's1'}
+
+check Guarantee1 : if s1>= 1.0 then not globally if (p2 and (p3 or p4)) then finally globally p5
+check Guarantee2 : if s1>= 1.0 then not globally if (p5 and p6) then finally globally p7
+check Guarantee3 : if s1>= 1.0 then not globally if (p7 and p8) then finally globally p5
+check Guarantee4 : if s1>= 1.0 then not globally if (p5 and p9) then finally globally p10
+check Guarantee5 : if s1>= 1.0 then not globally if (p7 and p9) then finally globally p10
+check Guarantee6 : if s1>= 1.0 then not globally if (p7 and p11) then finally globally p2
+check Guarantee7 : if s1>= 1.0 then not globally if (p2 and (p12 and p13)) then finally globally p2
+check Guarantee8 : if s1>= 1.0 then not globally if (p5 and (p14 and p15)) then finally globally p5
+check Guarantee9 : if s1>= 1.0 then not globally if (p7 and (p14 and (p16 and p17))) then finally globally p7
+check Guarantee10 : if s1>= 1.0 then not globally if p10 then finally globally p10
                         
 

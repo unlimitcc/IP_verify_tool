@@ -1,0 +1,9 @@
+def p1: {'p1' = 'true'} //p1:true
+def p2: {'p2' = 'true'} //p2:input = 10,iJ
+def p3: {'p3' = 'true'} //p3:input = 2,iB
+def p4: {'p4' = 'true'} //p4:output = 22,oV
+def p5: {'p5' = 'true'} //p5:output = 25,oY
+
+signal s1 : {'name' = 's1'}
+
+check AG6 : if s1>= 1.0 then not globally (p2 and (p3 or (globally not p4 or until (p5 or p3) we have that not p4)))

@@ -1,0 +1,1 @@
+klee_assume(windows_os_frag31.Stored == 0);

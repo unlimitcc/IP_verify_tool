@@ -1,0 +1,2 @@
+Assumptions: (1=1)
+Guarantee1: (input = 11 | output = 26 | input = 4)

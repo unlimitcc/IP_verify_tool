@@ -1,0 +1,3 @@
+Assumptions: (1=1)
+Guarantee1: (output=25 | output=21)
+

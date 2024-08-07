@@ -1,0 +1,12 @@
+def p1: {'p1' = 'true'} //p1:true
+def p2: {'p2' = 'true'} //p2:input = 18,iR
+def p3: {'p3' = 'true'} //p3:input = 1,iA
+def p4: {'p4' = 'true'} //p4:output = 24,oX
+def p5: {'p5' = 'true'} //p5:output = 26,oZ
+
+signal s1 : {'name' = 's1'}
+def c1 : (p4 and not p2)
+def c2 : until p5 we have that not p2
+def c3 : until (c1 and c2) we have that not p2
+def c4 : (not p2 or c3)
+check AG3 : if s1>= 1.0 then not (not finally p2 or until p2 we have that c4) 

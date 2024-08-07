@@ -1,0 +1,10 @@
+def p1 : {'p1'='true'}//True
+def p2 : {'p2'='true'}//init = 0
+def p3 : {'p3'='true'}//init = 1
+def p4 : {'p4'='true'}//init = 3
+
+signal s1 : {'name' = 's1'}
+def check1 : until globally p4 we have that p3
+def check2 : globally p3
+def check3 : (check1 or check2)
+check AG : if s1>=1.0 then until check3 we have that p2

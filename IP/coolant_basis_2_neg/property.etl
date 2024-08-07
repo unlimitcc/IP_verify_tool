@@ -1,0 +1,6 @@
+def p1 : {'p1'='true'}//True
+def p2 : {'p2'='true'}//otime < time1
+
+signal s1 : {'name' = 's1'}
+
+check AG : if s1>=1.0 then not globally finally p2 

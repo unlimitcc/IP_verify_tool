@@ -1,0 +1,10 @@
+def p1: {'p1' = 'true'} //p1:true
+def p2: {'p2' = 'true'} //p2:m_workMode=34
+def p3: {'p3' = 'true'} //p3:m_countMode>5000
+def p4: {'p4' = 'true'} //p4:flgSP=0
+def p5: {'p5' = 'true'} //p5:next(m_workMode)=17
+
+signal s1 : {'name' = 's1'}
+
+check AG : if s1>= 1.0 then not globally if (p2 and (p3 and p4)) then finally globally p5
+

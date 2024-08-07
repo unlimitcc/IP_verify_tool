@@ -1,0 +1,2 @@
+Assumptions: (IpGyroRateI>=3)
+Guarantee1: ((m_workMode=34 & m_countMode>5000 & flgSP=0) -> (next(m_workMode)=17))

@@ -1,0 +1,1 @@
+G(( current_mode = rolling_search_mode & m_countMode > 5000 & flgSP == false ) → X( state = SAM_PITCH ))
