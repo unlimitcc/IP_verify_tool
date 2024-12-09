@@ -86,7 +86,11 @@
     $ make  
     $ sudo make install
     ```
-4. 运行  
+4. 安装trace-4cps工具
+   java版本需要更换为java11
+   工具源码网站: https://gitlab.eclipse.org/eclipse/trace4cps/trace4cps/-/tree/develop
+   直接下载tar.gz压缩文件到IP_verify_tool目录下即可，解压后运行其build.sh脚本即可安装 
+5. 运行  
     ```
     $ cd build  
     $ cmake ..
