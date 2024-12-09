@@ -31,7 +31,7 @@ fstream z3_constraint;										   //含有量词约束的contract的z3文件
 fstream klee_constraint;									   //在使用klee符号化对应数据前人为给出的约束
 
  
-string IP_name = "Problem9";
+string IP_name = "Problem19_prop_000";
 //IP代码实现位置
 string IP_cpath = "VeriHar-main/sources/" + IP_name + ".c";
 //IP头文件位置
@@ -41,7 +41,10 @@ string klee_h_path = "klee-tool-chain/klee/include/klee/klee.h";
 string src_path = "";//暂时未使用，指定待验证文件的绝对路径
 
 //是否调用Z3求解器
-bool Z3_API = false;												
+bool Z3_API = false;
+
+std::chrono::high_resolution_clock::time_point s1;
+std::chrono::high_resolution_clock::time_point e1;										
 
 extract_propos e_p(Z3_API); //该对象用于处理由contract改写的性质文件
 
@@ -290,10 +293,14 @@ void generate_GDB_script(int index){
 		init_code.close();
     }
     //以下用于调用GDB去调试上述生成的初始化后的IP，并生成程序执行日志
+    //s1 = std::chrono::high_resolution_clock::now();
     string t_com = "gdb gdb_debug_code -batch -x gdb_script.gdb > GDB_trace/trace" + to_string(index) +".txt";
     system((t_com).c_str());
+    //e1 = std::chrono::high_resolution_clock::now();
+    //cout << "单条执行路径生成的CPU时间为: " << std::chrono::duration_cast<std::chrono::milliseconds>(e1 - s1).count() << "ms" << endl; 
     //remove("gdb_debug_code.c");
     //remove("gdb_debug_code");
+
 }
 
 /*计算将命题中的变量替换为执行路径中的实际输出，用于后续判断命题的正误.*/
@@ -444,7 +451,7 @@ bool Verify_TRACE(int index){
 	
 	call_trace4cps c_t(jar,spec,TRACE);
 	
-	c_t.verify(index);
+	c_t.verify(index,Z3_API);
 	
 	if(c_t.flag) return true;
 	else return false;
@@ -452,29 +459,18 @@ bool Verify_TRACE(int index){
 
 int main(int argc, char* argv[]){
     
-    std::chrono::high_resolution_clock::time_point s1;
-    std::chrono::high_resolution_clock::time_point e1;
-    std::chrono::high_resolution_clock::time_point s2;
-    std::chrono::high_resolution_clock::time_point e2;
-    
 	clock_t start_time, end_time;
 	bool IP_res = true;
     extract_var();
     generate_execu_log();
     for(int i=1; i<=100; ++i){
-//s1 = std::chrono::high_resolution_clock::now();
 		generate_GDB_script(i);
 		init_code.close();
-//e1 = std::chrono::high_resolution_clock::now();
-//cout << "单条执行路径生成的CPU时间为: " << std::chrono::duration_cast<std::chrono::milliseconds>(e1 - s1).count() << "ms" << endl; 
 		read_trace(i);
 		var_last_val.clear();
 		remove("gdb.txt");
-//s2 = std::chrono::high_resolution_clock::now();
 		IP_res &= Verify_TRACE(i);
-		if(!IP_res) break; 
-//e2 = std::chrono::high_resolution_clock::now();
-//cout << "单条执行路径验证CPU时间为: " << std::chrono::duration_cast<std::chrono::milliseconds>(e2 - s2).count() << "ms" << endl;                  
+		if(!IP_res) break;                
     }
     remove("gdb_script.gdb");
     cout << "IP验证结果:" << boolalpha << IP_res << endl;

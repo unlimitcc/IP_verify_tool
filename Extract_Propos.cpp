@@ -66,7 +66,7 @@ void extract_propos::get_propos(const string &src_path,
 		while(!property_infile.eof()){
 			string line;
 			getline(property_infile,line);
-			if(line.find("Assumptions")!=string::npos) z3_propos.emplace_back("Assumptions");
+			/*if(line.find("Assumptions")!=string::npos) z3_propos.emplace_back("Assumptions");
 			if(line.find("Guarantee0")!=string::npos){
 				z3_propos.emplace_back("Guarantee0");
 				break;
@@ -77,7 +77,10 @@ void extract_propos::get_propos(const string &src_path,
 				}
 				string guar = line.substr(st,ed-st);
 				z3_propos.emplace_back(guar);
-			} 
+			}*/
+			if(line.find("Z3_SMT")!=string::npos) {
+				z3_propos.emplace_back("Assumptions");
+			}
 		}
 		property_infile.close();
 	}
@@ -242,35 +245,6 @@ void extract_propos::trans_TRACE_property(const string &src_path, const string &
 		if(line.length() == 0) break;
 		//去掉空格
 		line.erase(std::remove_if(line.begin(), line.end(), ::isspace), line.end());
-		/*
-		if(line.find("Assumptions")!=string::npos) continue;
-		if(line.find("Guarantee0")!=string::npos) continue;
-		//原始Assumpton Guarantee格式解析
-		if(line.find("Guarantee")!=string::npos){
-			int st = line.find("Guarantee"), ed = st + 9;
-			while(line[ed]>='0' && line[ed]<='9'){
-				ed++;
-			}
-			//guar可以作为性质名称
-			string guar = line.substr(st,ed-st);
-			for(auto str : trace_propos){
-				while(line.find(str.first) != string::npos){
-					int temp = line.find(str.first);
-					line.replace(temp, str.first.length(), str.second);
-					//cout << "first = " << str.first << endl;
-					//cout << "line = " << line << endl;
-				}
-			}
-			//cout << "propos result : " << line << endl;
-			auto tokens = tokenize(line);
-			auto postfix = infixToPostfix(tokens);
-			Node* root = buildSyntaxTree(postfix);
-			string result = convertToReadable(root);
-			
-			trace_property = "check " + guar + " : " + "if s1 >= 1.0 then not " + result;
-			TRACE_property_file << trace_property << endl;
-			//cout << "trans result : " << trace_property << endl;
-		}*/
 		string check = "ltl" + to_string(++count); 
 		for(auto str : trace_propos){
 			while(line.find(str.first) != string::npos){

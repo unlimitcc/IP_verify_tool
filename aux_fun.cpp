@@ -38,6 +38,7 @@ int get_testcasenum(const string &path){
 }
 
 bool exist_alpha(const string str){
+
 	for(char c : str){
 		if(isalpha(c)){
 			return true;
@@ -64,15 +65,16 @@ public:
 	vector<string> propos;
 	vector<string> ass;	
 public:
-	void enterPropos(contractParser::ProposContext* ctx){
+	void enterAtomic_propos(contractParser::Atomic_proposContext* ctx){
 		if(find(propos.begin(),propos.end(),ctx->getText())==propos.end()){
 			propos.emplace_back(ctx->getText());
 		}
 	}
-	void enterCond(contractParser::CondContext* ctx){
+	
+	/*void enterCond(contractParser::CondContext* ctx){
 		propos.emplace_back(ctx->getText());
 		ass.emplace_back(ctx->getText());
-	}
+	}*/
 };
 
 vector<string> extractpropos(string input_file, vector<string>& assum){
@@ -86,7 +88,7 @@ vector<string> extractpropos(string input_file, vector<string>& assum){
    	demoListener demo;
    	tree::ParseTreeWalker::DEFAULT.walk(&demo, tree);
    	property_file.close();
-   	assum = demo.ass;
+   	//assum = demo.ass;
     return demo.propos;
 }
 
@@ -174,12 +176,12 @@ void Z3_Prover_Propos(fstream& propos_file,
 				//数组需要特殊处理,先提取数组名
 				if(it->second.second.length()!=0){
 					if(it->first.find('[')!=string::npos) \
-						z3_contract << array_name << "_next" << "=" << it->second.second << endl;
+						z3_contract << "VER_"+array_name << "_next" << "=" << it->second.second << endl;
 					else \
 						z3_contract << "s.add(" << it->first << "_next==" << it->second.second << ")" << endl;
 				}else{
 					if(it->first.find('[')!=string::npos) \
-						z3_contract << array_name << "_next" << "=" << it->second.first << endl;
+						z3_contract << "VER_"+array_name << "_next" << "=" << it->second.first << endl;
 					else \
 						z3_contract << "s.add(" << it->first << "_next==" << it->second.first << ")" << endl;
 				}
@@ -187,12 +189,12 @@ void Z3_Prover_Propos(fstream& propos_file,
 				/*在z3中将list类型转化为array类型，转换函数在python文件中定义
 				当该变量var在命题中存在next(var)时，原命题中var表达式均指代初始变量信息*/
 				if(it->first.find('[')!=string::npos){
-					z3_contract << "VER_"+array_name+"_next, constraints" << num_array <<" = List2Array(" << array_name+"_next" << ",idx=("<< num_array <<",))"<< endl;
+					z3_contract << array_name+"_next, constraints" << num_array <<" = List2Array(" << "VER_"+array_name+"_next" << ",idx=("<< num_array <<",))"<< endl;
 					z3_contract << "s.add(constraints" << num_array << ")" << endl;
 					z3_contract << array_name << "=" << it->second.first << endl;
 					num_array++;
 					if(find(cache.begin(),cache.end(),index)==cache.end()){
-						z3_contract << "VER_"+array_name << ", constraints" << num_array << " = List2Array(" << array_name << ",idx=("<< num_array <<",))"<< endl;
+						z3_contract << array_name << ", constraints" << num_array << " = List2Array(" << "VER_"+array_name << ",idx=("<< num_array <<",))"<< endl;
 						z3_contract << "s.add(constraints" << num_array << ")" << endl;
 						num_array++;
 					}
@@ -206,7 +208,7 @@ void Z3_Prover_Propos(fstream& propos_file,
 				//如果性质中没有出现next(var)，则认为使用原始值
 				if(it->first.find('[')!=string::npos){
 					z3_contract << array_name << "=" << it->second.first << endl;
-					z3_contract << "VER_"+array_name << ", constraints" << num_array << " = List2Array(" << array_name << ",idx=("<< num_array <<",))"<< endl;
+					z3_contract << array_name << ", constraints" << num_array << " = List2Array(" << "VER_"+array_name << ",idx=("<< num_array <<",))"<< endl;
 					z3_contract << "s.add(constraints" << num_array << ")" << endl;
 					num_array++;
 				}	
@@ -256,7 +258,13 @@ void Z3_Prover_Propos(fstream& propos_file,
 	}
     //cout << "z3.propos.size() = " << z3_propos.size() << endl;
 	string com = "python3 " + file_pos + " > all_z3_result.txt";
-	system(com.c_str());
+
+	int rt = system(com.c_str());
+	if(rt){
+    	cerr << "Z3Prover错误，查看对应文件定义" << std::endl;
+    	exit(EXIT_FAILURE);
+    }
+	
 	// char buffer[100];
     // string res;
 	// FILE* fp;
@@ -270,7 +278,6 @@ void Z3_Prover_Propos(fstream& propos_file,
     //     }
 	// }
 	// pclose(fp);
-
 	//不保存之前添加的约束
 	z3_contract.seekp(0, ios::beg);
    	truncate(file_pos.c_str(),pos);
@@ -311,7 +318,7 @@ void extract_float(const string& VAL, map<string,string>& test_case, const strin
 		ch[(i%8)/2] = byte;
 		if((i%8)/2==3){
 			string float_val = to_string(Hex32_10(ch));
-			if(float_val.find('n')!=string::npos || float_val.find('N')!=string::npos) float_val = "0.0";//出现NaN，防止程序崩溃将值修改为0
+			if(float_val.find('n')!=string::npos || float_val.find('N')!=string::npos) float_val = "0";//出现NaN，防止程序崩溃将值修改为0
 			test_case[NAME] += float_val;
 			if(i+2<VAL.length()) test_case[NAME] += ',';
 		}
@@ -347,7 +354,7 @@ void extract_double(const string& VAL, map<string,string>& test_case, const stri
 		ch[7-(i%16)/2] = byte;
 		if((7-(i%16)/2)==0){
 			string double_val = to_string(Hex64_10(ch));
-			if(double_val.find('n')!=string::npos || double_val.find('N')!=string::npos) double_val = "0.0";//出现NaN，防止程序崩溃将值修改为0
+			if(double_val.find('n')!=string::npos || double_val.find('N')!=string::npos) double_val = "0";//出现NaN，防止程序崩溃将值修改为0
 			test_case[NAME] += double_val;
 			if(i+2<VAL.length()) test_case[NAME] += ',';
 		}

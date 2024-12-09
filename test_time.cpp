@@ -31,19 +31,25 @@ fstream z3_constraint;										   //含有量词约束的contract的z3文件
 fstream klee_constraint;									   //在使用klee符号化对应数据前人为给出的约束
 
  
-//待验证程序名称
 string IP_name = "ModeSwitch";
-//是否调用Z3求解器
-bool Z3_API = false;	
 //IP代码实现位置
 string IP_cpath = "VeriHar-main/sources/" + IP_name + ".c";
 //IP头文件位置
 string IP_hpath = "VeriHar-main/include/" + IP_name + ".h";
-//KLEE工具位置
 string klee_h_path = "klee-tool-chain/klee/include/klee/klee.h";
 
 string src_path = "";//暂时未使用，指定待验证文件的绝对路径
-										
+
+//是否调用Z3求解器
+bool Z3_API = false;		
+
+//生成监视器的时间
+std::chrono::high_resolution_clock::time_point s2;
+std::chrono::high_resolution_clock::time_point e2;
+//生成执行路径的时间
+std::chrono::high_resolution_clock::time_point s3;
+std::chrono::high_resolution_clock::time_point e3;										
+
 extract_propos e_p(Z3_API); //该对象用于处理由contract改写的性质文件
 
 /*使用antlr4根据性质提取生成测试用例相关的变量表达式，用于为TRACE生成命题*/
@@ -59,7 +65,6 @@ void extract_var(){
 	}
 
 	e_p.get_propos(src_path, IP_name, array_ass, var_exp);
-	e_p.trans_TRACE_property(src_path, IP_name);
 	cout << "---contract文本解析完成---" << endl;
 	/*for(int i=0; i<var_exp.size(); ++i){
 		cout << var_exp[i] << endl;
@@ -226,7 +231,7 @@ int KLEE_generate_testcase(){
 	    string com = "ktest-tool klee-last/test"+num_s+".ktest > "+src_path+"testcase/testcase_in" + num_i + ".txt";
 	    system(com.c_str());
     }
-    //remove("klee_code.c");
+    remove("klee_code.c");
     remove("klee_code.bc");
     return num; 
 }
@@ -398,6 +403,8 @@ void generate_GDB_script(int index){
     						 用于生成执行路径的初始化代码 [gdb_debug_code.c] 不存在或错误");
     }
     if(index==1){
+    	//生成执行监视器的时间
+		s2 = std::chrono::high_resolution_clock::now();
 		cout << "---生成路径监视器---" << endl;
 		GDB_script.open(src_path+"gdb_script.gdb",ios::app|ios::out|ios::in);
 		int count_line = 0, count_bp = 0;                       //记录程序读入的行数,设置的断点数
@@ -479,16 +486,24 @@ void generate_GDB_script(int index){
 		}
 		GDB_script<<"run"<<endl;
 		GDB_script.close();
+		e2 = std::chrono::high_resolution_clock::now();
+		cout << "路径监视器生成时间为: " << std::chrono::duration_cast<std::chrono::milliseconds>(e2 - s2).count() << "ms\n";
     }
     //src_code_c.close();
     init_code.close();
-    //以下用于调用GDB去调试上述生成的初始化后的IP，并生成程序执行日志
+    //生成执行路径的时间
+    if(index == 1) s3 = std::chrono::high_resolution_clock::now();
     
+    //以下用于调用GDB去调试上述生成的初始化后的IP，并生成程序执行日志
     system("gcc -g gdb_debug_code.c -o gdb_debug_code");
     string t_com = "gdb gdb_debug_code -batch -x gdb_script.gdb > GDB_trace/trace" + to_string(index) +".txt";
     system((t_com).c_str());
-    remove("gdb_debug_code.c");
+    //remove("gdb_debug_code.c");
     remove("gdb_debug_code");
+    if(index == 40){
+    	e3 = std::chrono::high_resolution_clock::now();
+    	cout << "执行路径生成时间为: " << std::chrono::duration_cast<std::chrono::milliseconds>(e3 - s3).count() << "ms\n";
+    }
 }
 
 /*计算将命题中的变量替换为执行路径中的实际输出，用于后续判断命题的正误.*/
@@ -626,31 +641,41 @@ bool Verify_TRACE(int index){
 	else return false;
 }
 
-
 int main(int argc, char* argv[]){
     
-	//验证结果
+    //生成测试用例的时间
+	std::chrono::high_resolution_clock::time_point s1;
+    std::chrono::high_resolution_clock::time_point e1;
+    //转换为TRACE模型的时间
+    std::chrono::high_resolution_clock::time_point s4;
+    std::chrono::high_resolution_clock::time_point e4;
 	bool IP_res = true;
     extract_var();
-    
-    //st = std::chrono::high_resolution_clock::now();
+    s1 = std::chrono::high_resolution_clock::now();
     int count = KLEE_generate_testcase();
-    //e3 = std::chrono::high_resolution_clock::now();
-    //cout << "测试用例生成时间为: " << std::chrono::duration_cast<std::chrono::milliseconds>(e3 - st).count() << "ms\n";
+    e1 = std::chrono::high_resolution_clock::now();
+    cout << "测试用例生成时间为: " << std::chrono::duration_cast<std::chrono::milliseconds>(e1 - s1).count() << "ms\n";
     for(int i=1; i<=count; i++){
 		read_test_case(i);
 		generate_execu_log();
 		generate_GDB_script(i);
 		init_code.close();
-		read_trace(i);
+		//read_trace(i);
 		var_last_val.clear();
 		remove("gdb.txt");
-		IP_res &= Verify_TRACE(i);
-		if(!IP_res) break;         
+		//IP_res &= Verify_TRACE(i);
+		//if(!IP_res) break;                    
     }
+    //测试
+    s4 = std::chrono::high_resolution_clock::now();
+    for(int i=1; i<count; ++i){
+    	read_trace(i);
+    }
+    e4 = std::chrono::high_resolution_clock::now();
     remove("gdb_script.gdb");
+    std::cout << "转换为TRACE模型的时间为:" << std::chrono::duration_cast<std::chrono::milliseconds>(e4 - s4).count() << "ms\n";
     //ed = std::chrono::high_resolution_clock::now();
-    cout << "性质验证结果:" << boolalpha << IP_res << endl;
-    
+    //cout << "性质验证结果:" << boolalpha << IP_res << endl;
+    //std::cout << "耗时为:" << std::chrono::duration_cast<std::chrono::milliseconds>(ed - st).count() << "ms\n";
     return 0;
 }

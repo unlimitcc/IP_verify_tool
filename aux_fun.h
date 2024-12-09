@@ -3,9 +3,9 @@
 #include "Database.h"
 #include <string>
 #include <map>
+#include <fstream>
 #include <regex>
 #include <dirent.h>
-#include "/usr/include/python3.10/Python.h"
 #include "antlr4-runtime.h"
 #include "antlr4_cal/NCLexer.h"
 #include "antlr4_cal/NCParser.h"
@@ -17,24 +17,11 @@
 using namespace std;
 #include <unistd.h>
 
+/*判断字符串中是否存在next运算符，存在即返回true*/
+bool containsNext(const std::string& s);
+
 /*判断某文件是否存在，存在即返回true*/
 bool isFileExists_ifstream(string &name);
-
-/*处理累加操作，目前只用于sacheck中属性的检查*/
-string ADDSUM(string s, std::map<string, string> mp);
-
-/*从文件路径中提取文件名(无扩展名)*/ 
-string get_filename(string path);
-
-/*从数组字符串中提取出下标，例字符串pbuff[14]中提取14*/ 
-int extract_index(string s);
-
-/*从一个表达式中提取数字:|pbuff|>17中提取17*/
-int extract_len(string s);
-
-/*从条件分支语句中提取出涉及到的变量，包括变量名和变量类型
-string s表示读入的条件分支语句，vector<string> var表示从待验证属性中提取出的变量*/ 
-void find_symbolic_var(string s, map<string, string>var_type, map<string, string> &symbolic_var, map<string, unint32> &array);
 
 /*读取生成的测试用例数量*/
 int get_testcasenum(const string &path); 
@@ -48,6 +35,29 @@ double Calcu(string expr);
 /*contract文件语法分析并提取命题*/
 vector<string> extractpropos(string infile, vector<string>& assum);
 
+/*例如在命题next(countMode)=countMode+1中,计算next(countMode)和countMode+1并比较*/
+bool cal_propos_val(string &s);
+
 /*判断含有量词约束的命题的正确性*/
-bool Quantifierpropos(string propos, map<string, pair<string, string>>& next, fstream& z3_contract, const string file_pos);
+void Z3_Prover_Propos(fstream& propos_file, 
+					  const string& propos_file_path,
+				 	  map<string, pair<string, string>>& next,
+					  fstream& z3_contract, 
+					  const string file_pos,
+					  fstream& z3_constraint,
+					  const bool &first_time,
+					  vector<string> &z3_propos,
+					  vector<bool> &propos);
+
+/*单精度浮点数预处理*/
+void extract_float(const string& VAL, map<string,string>& test_case, const string & NAME);
+
+/*32位十六进制到浮点数*/
+float Hex32_10(unsigned char *Byte);
+
+/*双精度浮点数预处理*/
+void extract_double(const string& VAL, map<string,string>& test_case, const string & NAME);
+
+/*64位十六进制到浮点数*/
+double Hex64_10(unsigned char *Byte);
 #endif

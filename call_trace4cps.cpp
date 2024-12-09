@@ -10,26 +10,49 @@ call_trace4cps::call_trace4cps(const string &jar_path, const string &spec, const
 }
 
 
-void call_trace4cps::verify(const int index){
+void call_trace4cps::verify(const int index, const bool Z3_API){
 
-	string com = "java -jar " + java_API + " " + path_spec + " " + path_trace + to_string(index) + ".etf"+ " > IP_verify_result/TRACE" + to_string(index) + "_result.txt";
-	system(com.c_str());
-	fstream res;
-	res.open("IP_verify_result/TRACE" + to_string(index) + "_result.txt", ios::app | ios::out | ios::in);
-	string line;
-	while(!res.eof()){
-		getline(res,line);
-		if(line.find("#UNSAT = 0")!=string::npos){
-			flag = true;
-			break;
-		} 
-		else if(line.find("#UNSAT =")!=string::npos){
-			cout << "Please check trace" << index <<endl;
-			flag = false;
-			break; 
-		} 
+	string com = "java -jar " + java_API + " " + path_spec + " " + path_trace + to_string(index) + ".etf";//+ " > IP_verify_result/TRACE" + to_string(index) + "_result.txt";
+	const char* cmd = com.c_str();
+	// 使用 popen 来执行命令并读取输出
+	vector<char> buffer(256);
+	unique_ptr<FILE, decltype(&pclose)> pipe(popen(cmd, "r"), pclose);
+	if (!pipe) {
+	    throw runtime_error("popen() failed!");
 	}
-	res.close();
+	string result;
+	//旧IP待验证性质未取反，TRACE判断逻辑与其他部分相反
+	if(Z3_API){
+		while (fgets(buffer.data(), buffer.size(), pipe.get()) != nullptr) {
+			result = buffer.data();
+			if(result.find("#UNSAT = 0")!=string::npos){
+				flag = true;
+				break;
+			} 
+			else if(result.find(": BAD")!=string::npos || result.find("#UNSAT = ")!=string::npos){
+				cout << "Please check trace" << index <<endl;
+				flag = false;
+				break; 
+			} 
+		}
+	}else{
+		// 读取命令的输出到 result 字符串中
+		while (fgets(buffer.data(), buffer.size(), pipe.get()) != nullptr) {
+		    result = buffer.data();
+		    //cout << "result = " << result << endl;
+		    if(result.find("#UNSAT = 0")!=string::npos){
+		    	cout << "Please check trace" << index <<endl;
+				flag = false; //找到了反例路径
+				break;
+			}
+			if(result.find(": BAD")!=string::npos || result.find("#UNSAT = ")!=string::npos){
+				flag = true; //不满足，即该路径不满足not P，即为成立
+				break; 
+			} else {
+				throw std::runtime_error("TRACE工具待验证性质输入错误, 当前输出结果:" + result);
+		 	} 
+		}
+	}
 	return;
 }
 
