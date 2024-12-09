@@ -39,8 +39,8 @@
     `$ pip install z3-solver`  
     (6):下载谷歌测试集(可选)
     ```  
-    $ curl -OL https://github.com/google/googletest/archive/release-1.11.0.zip
-    $ unzip release-1.11.0.zip  
+    $ curl -OL https://github.com/google/googletest/archive/release-1.7.0.zip
+    $ unzip release-1.7.0.zip  
     ```  
     (7):klee内置库uclibc安装
     ```  
@@ -59,7 +59,7 @@
     ```  
     其中<LIBCXX_DIR>是klee-uclibc的绝对路径  
     (10):构建klee  
-    其中对应的文件夹需修改为用户安装对应依赖的文件夹
+    其中<***-***>命令的文件夹需修改为用户平台所安装对应依赖的文件夹的绝对路径
     ```  
     $ mkdir build
       cd build
