@@ -139,4 +139,3 @@
     (3)程序执行路径生成在 GDB_trace/ 文件夹下  
     (4)TRACE模型生成在 TRACE/ 文件夹下  
     (5)验证结果位于IP_verify_result/ 文件夹下  
-
