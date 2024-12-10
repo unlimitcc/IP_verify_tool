@@ -21,7 +21,10 @@
     $ export CLASSPATH=".:/usr/local/lib/antlr-4.13.1-complete.jar:$CLASSPATH"
     $ alias antlr4='java -jar /usr/local/lib/antlr-4.13.1-complete.jar'
     $ alias grun='java org.antlr.v4.gui.TestRig'
-    ```
+    ```  
+    ```  
+    参考该指南进行 https://blog.csdn.net/drutgdh/article/details/122816033
+    ```  
 3. KLEE  
     1.KLEE版本：2.3  
     2.安装KLEE依赖：  
@@ -59,7 +62,7 @@
     ```  
     其中<LIBCXX_DIR>是klee-uclibc的绝对路径  
     (10):构建klee  
-    其中<***-***>命令的文件夹需修改为用户平台所安装对应依赖的文件夹的绝对路径
+    其中包含"<>"对应的文件夹需修改为用户安装对应工具的文件夹的绝对路径
     ```  
     $ mkdir build
       cd build
@@ -69,7 +72,7 @@
         -DENABLE_SOLVER_Z3=ON \
         -DENABLE_KLEE_UCLIBC=ON \
         -DENABLE_KLEE_LIBCXX=ON \
-        -DKLEE_LIBCXX_DIR=<LIBCXX_SRC_DIR> \
+        -DKLEE_LIBCXX_DIR=<LIBCXX_DIR> \
         -DKLEE_LIBCXX_INCLUDE_DIR=<LIBCXX_INCLUDE_DIR> \
         -DENABLE_KLEE_EH_CXX=ON \
         -DKLEE_LIBCXXABI_SRC_DIR=<LIBCXXABI_SRC_DIR> \
@@ -86,7 +89,44 @@
     $ make  
     $ sudo make install
     ```
-4. 运行  
+   cmake命令安装示例:  
+   ```  
+   cmake \
+    -DENABLE_POSIX_RUNTIME=ON \
+    -DENABLE_SOLVER_STP=OFF \
+    -DENABLE_SOLVER_Z3=ON \
+    -DENABLE_KLEE_UCLIBC=ON \
+    -DENABLE_KLEE_LIBCXX=ON \
+    -DKLEE_LIBCXX_DIR=/home/planet/Desktop/IP_verify/klee-uclibc/libc++-install-90/ \
+    -DKLEE_LIBCXX_INCLUDE_DIR=/home/planet/Desktop/IP_verify/klee-uclibc/libc++-install-90/include/c++/v1/ \
+    -DENABLE_KLEE_EH_CXX=ON \
+    -DKLEE_LIBCXXABI_SRC_DIR=/home/planet/Desktop/IP_verify/klee-uclibc/llvm-90/libcxxabi/ \
+    -DKLEE_UCLIBC_PATH=/home/planet/Desktop/IP_verify/klee-uclibc/ \
+    -DENABLE_UNIT_TESTS=ON \
+    -DENABLE_SYSTEM_TESTS=ON \
+    -DGTEST_SRC_DIR=/home/planet/Desktop/IP_verify/googletest-release-1.7.0 \
+    -DLLVM_CONFIG_BINARY=/usr/bin/llvm-config-9 \
+    -DLLVMCC=/usr/bin/clang-9 \
+    -DLLVMCXX=/usr/bin/clang++-9 \
+    -DCMAKE_C_COMPILER=clang-9  \
+    -DCMAKE_CXX_COMPILER=clang++-9  \
+    ..
+    ```  
+4. trace4cps  
+    安装java-1.11
+    $ sudo apt install openjdk-11-jdk
+    切换到java11版本再进行trace4cps的编译
+    java多版本切换参考
+    $ https://blog.csdn.net/huanglu0314/article/details/109099746
+    克隆trace4cps源码，建议在IP_verify_tool目录下操作  
+    ```  
+    $ git clone https://gitlab.eclipse.org/eclipse/trace4cps/trace4cps.git  
+    $ cd tracp4cps  
+    $ ./build.sh  
+    ```  
+    编译源码完成后，即可使用命令行工具测试调用，该接口位于以下位置:  
+    `trace4cps/temporallogic/org.eclipse.trace4cps.tl.cmd/target/eclipse-trace4cps-incubation-dev/lib/org.eclipse.trace4cps.tl.cmd-0.2.0-SNAPSHOT.jar`  
+5. 运行  
     ```
     $ cd build  
     $ cmake ..
@@ -97,8 +137,6 @@
     (1)命题提取结果显示在主文件夹  
     (2)测试用例txt文件生成在 testcase/ 以及 klee-out-n/ 文件夹下  
     (3)程序执行路径生成在 GDB_trace/ 文件夹下  
-    (4)TRACE模型生成在 TRACE/ 文件夹下
-
- 
-
+    (4)TRACE模型生成在 TRACE/ 文件夹下  
+    (5)验证结果位于IP_verify_result/ 文件夹下  
 
