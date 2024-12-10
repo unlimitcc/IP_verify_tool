@@ -113,11 +113,11 @@
     ..
     ```  
 4. trace4cps  
-    安装java-1.11
-    $ sudo apt install openjdk-11-jdk
-    切换到java11版本再进行trace4cps的编译
-    java多版本切换参考
-    $ https://blog.csdn.net/huanglu0314/article/details/109099746
+    安装java-1.11  
+    $ sudo apt install openjdk-11-jdk  
+    切换到java11版本再进行trace4cps的编译  
+    java多版本切换参考:  
+    $ https://blog.csdn.net/huanglu0314/article/details/109099746  
     克隆trace4cps源码，建议在IP_verify_tool目录下操作  
     ```  
     $ git clone https://gitlab.eclipse.org/eclipse/trace4cps/trace4cps.git  
