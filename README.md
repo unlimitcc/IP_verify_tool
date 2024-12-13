@@ -128,7 +128,7 @@
     `trace4cps/temporallogic/org.eclipse.trace4cps.tl.cmd/target/eclipse-trace4cps-incubation-dev/lib/org.eclipse.trace4cps.tl.cmd-0.2.0-SNAPSHOT.jar`  
 5. 运行  
     ```
-    $ cd build  
+    $ mkdir build  
     $ cmake ..
     $ make
     $ cd ..
