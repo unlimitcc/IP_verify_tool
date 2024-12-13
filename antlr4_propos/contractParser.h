@@ -12,15 +12,16 @@
 class  contractParser : public antlr4::Parser {
 public:
   enum {
-    T__0 = 1, T__1 = 2, ASS = 3, GUA = 4, LOP = 5, TOP = 6, QUAN = 7, VALUE = 8, 
-    VAR = 9, ADD = 10, SUB = 11, MUL = 12, DIV = 13, MOD = 14, POW = 15, 
-    RANGE = 16, COMP = 17, COLON = 18, COMMA = 19, SKIP1 = 20, SKIP2 = 21, 
-    NEWLINE = 22
+    T__0 = 1, T__1 = 2, T__2 = 3, T__3 = 4, T__4 = 5, T__5 = 6, T__6 = 7, 
+    T__7 = 8, T__8 = 9, T__9 = 10, T__10 = 11, LOP = 12, QUAN = 13, VALUE = 14, 
+    VAR = 15, ARRAY = 16, ADD = 17, SUB = 18, MUL = 19, DIV = 20, MOD = 21, 
+    POW = 22, RANGE = 23, COMP = 24, COLON = 25, COMMA = 26, SKIP1 = 27, 
+    NEWLINE = 28
   };
 
   enum {
-    RuleFile = 0, RuleInit = 1, RuleStat = 2, RuleCond = 3, RulePropos = 4, 
-    RuleCom = 5, RuleQuan = 6, RuleExpr = 7
+    RuleFile = 0, RuleLtl = 1, RulePropos = 2, RuleAtomic_propos = 3, RuleQuan = 4, 
+    RuleExpr = 5
   };
 
   explicit contractParser(antlr4::TokenStream *input);
@@ -41,11 +42,9 @@ public:
 
 
   class FileContext;
-  class InitContext;
-  class StatContext;
-  class CondContext;
+  class LtlContext;
   class ProposContext;
-  class ComContext;
+  class Atomic_proposContext;
   class QuanContext;
   class ExprContext; 
 
@@ -54,12 +53,10 @@ public:
     FileContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     antlr4::tree::TerminalNode *EOF();
-    antlr4::tree::TerminalNode *ASS();
-    InitContext *init();
-    std::vector<antlr4::tree::TerminalNode *> GUA();
-    antlr4::tree::TerminalNode* GUA(size_t i);
-    std::vector<StatContext *> stat();
-    StatContext* stat(size_t i);
+    std::vector<LtlContext *> ltl();
+    LtlContext* ltl(size_t i);
+    std::vector<antlr4::tree::TerminalNode *> NEWLINE();
+    antlr4::tree::TerminalNode* NEWLINE(size_t i);
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -68,32 +65,28 @@ public:
 
   FileContext* file();
 
-  class  InitContext : public antlr4::ParserRuleContext {
+  class  LtlContext : public antlr4::ParserRuleContext {
   public:
-    InitContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    LtlContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    std::vector<InitContext *> init();
-    InitContext* init(size_t i);
-    std::vector<antlr4::tree::TerminalNode *> LOP();
-    antlr4::tree::TerminalNode* LOP(size_t i);
-    std::vector<CondContext *> cond();
-    CondContext* cond(size_t i);
+    ProposContext *propos();
+    std::vector<LtlContext *> ltl();
+    LtlContext* ltl(size_t i);
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
    
   };
 
-  InitContext* init();
-
-  class  StatContext : public antlr4::ParserRuleContext {
+  LtlContext* ltl();
+  LtlContext* ltl(int precedence);
+  class  ProposContext : public antlr4::ParserRuleContext {
   public:
-    StatContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    ProposContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    std::vector<StatContext *> stat();
-    StatContext* stat(size_t i);
-    std::vector<antlr4::tree::TerminalNode *> LOP();
-    antlr4::tree::TerminalNode* LOP(size_t i);
+    Atomic_proposContext *atomic_propos();
+    QuanContext *quan();
+    antlr4::tree::TerminalNode *COLON();
     std::vector<ProposContext *> propos();
     ProposContext* propos(size_t i);
 
@@ -102,71 +95,41 @@ public:
    
   };
 
-  StatContext* stat();
-
-  class  CondContext : public antlr4::ParserRuleContext {
-  public:
-    CondContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    std::vector<ComContext *> com();
-    ComContext* com(size_t i);
-    std::vector<QuanContext *> quan();
-    QuanContext* quan(size_t i);
-    std::vector<antlr4::tree::TerminalNode *> LOP();
-    antlr4::tree::TerminalNode* LOP(size_t i);
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
-  CondContext* cond();
-
-  class  ProposContext : public antlr4::ParserRuleContext {
-  public:
-    ProposContext(antlr4::ParserRuleContext *parent, size_t invokingState);
-    virtual size_t getRuleIndex() const override;
-    std::vector<ComContext *> com();
-    ComContext* com(size_t i);
-    std::vector<QuanContext *> quan();
-    QuanContext* quan(size_t i);
-    std::vector<antlr4::tree::TerminalNode *> LOP();
-    antlr4::tree::TerminalNode* LOP(size_t i);
-
-    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
-    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
-   
-  };
-
   ProposContext* propos();
-
-  class  ComContext : public antlr4::ParserRuleContext {
+  ProposContext* propos(int precedence);
+  class  Atomic_proposContext : public antlr4::ParserRuleContext {
   public:
     antlr4::Token *op = nullptr;
-    ComContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+    Atomic_proposContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
     std::vector<ExprContext *> expr();
     ExprContext* expr(size_t i);
     antlr4::tree::TerminalNode *COMP();
+    QuanContext *quan();
+    antlr4::tree::TerminalNode *COLON();
+    std::vector<Atomic_proposContext *> atomic_propos();
+    Atomic_proposContext* atomic_propos(size_t i);
+    std::vector<antlr4::tree::TerminalNode *> LOP();
+    antlr4::tree::TerminalNode* LOP(size_t i);
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
    
   };
 
-  ComContext* com();
+  Atomic_proposContext* atomic_propos();
 
   class  QuanContext : public antlr4::ParserRuleContext {
   public:
     QuanContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *QUAN();
+    std::vector<antlr4::tree::TerminalNode *> QUAN();
+    antlr4::tree::TerminalNode* QUAN(size_t i);
     std::vector<antlr4::tree::TerminalNode *> VAR();
     antlr4::tree::TerminalNode* VAR(size_t i);
-    antlr4::tree::TerminalNode *COLON();
-    antlr4::tree::TerminalNode *RANGE();
     std::vector<antlr4::tree::TerminalNode *> COMMA();
     antlr4::tree::TerminalNode* COMMA(size_t i);
+    QuanContext *quan();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -183,20 +146,16 @@ public:
     std::vector<ExprContext *> expr();
     ExprContext* expr(size_t i);
     antlr4::tree::TerminalNode *POW();
-    std::vector<antlr4::tree::TerminalNode *> VAR();
-    antlr4::tree::TerminalNode* VAR(size_t i);
-    std::vector<antlr4::tree::TerminalNode *> COLON();
-    antlr4::tree::TerminalNode* COLON(size_t i);
-    std::vector<antlr4::tree::TerminalNode *> RANGE();
-    antlr4::tree::TerminalNode* RANGE(size_t i);
+    antlr4::tree::TerminalNode *VAR();
     std::vector<antlr4::tree::TerminalNode *> COMMA();
     antlr4::tree::TerminalNode* COMMA(size_t i);
+    antlr4::tree::TerminalNode *SUB();
     antlr4::tree::TerminalNode *VALUE();
+    antlr4::tree::TerminalNode *ARRAY();
     antlr4::tree::TerminalNode *MUL();
     antlr4::tree::TerminalNode *DIV();
     antlr4::tree::TerminalNode *MOD();
     antlr4::tree::TerminalNode *ADD();
-    antlr4::tree::TerminalNode *SUB();
 
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
@@ -208,6 +167,8 @@ public:
 
   bool sempred(antlr4::RuleContext *_localctx, size_t ruleIndex, size_t predicateIndex) override;
 
+  bool ltlSempred(LtlContext *_localctx, size_t predicateIndex);
+  bool proposSempred(ProposContext *_localctx, size_t predicateIndex);
   bool exprSempred(ExprContext *_localctx, size_t predicateIndex);
 
   // By default the static state used to implement the parser is lazily initialized during the first

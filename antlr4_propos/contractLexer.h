@@ -12,10 +12,11 @@
 class  contractLexer : public antlr4::Lexer {
 public:
   enum {
-    T__0 = 1, T__1 = 2, ASS = 3, GUA = 4, LOP = 5, TOP = 6, QUAN = 7, VALUE = 8, 
-    VAR = 9, ADD = 10, SUB = 11, MUL = 12, DIV = 13, MOD = 14, POW = 15, 
-    RANGE = 16, COMP = 17, COLON = 18, COMMA = 19, SKIP1 = 20, SKIP2 = 21, 
-    NEWLINE = 22
+    T__0 = 1, T__1 = 2, T__2 = 3, T__3 = 4, T__4 = 5, T__5 = 6, T__6 = 7, 
+    T__7 = 8, T__8 = 9, T__9 = 10, T__10 = 11, LOP = 12, QUAN = 13, VALUE = 14, 
+    VAR = 15, ARRAY = 16, ADD = 17, SUB = 18, MUL = 19, DIV = 20, MOD = 21, 
+    POW = 22, RANGE = 23, COMP = 24, COLON = 25, COMMA = 26, SKIP1 = 27, 
+    NEWLINE = 28
   };
 
   explicit contractLexer(antlr4::CharStream *input);

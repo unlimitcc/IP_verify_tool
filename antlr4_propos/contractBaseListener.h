@@ -19,20 +19,14 @@ public:
   virtual void enterFile(contractParser::FileContext * /*ctx*/) override { }
   virtual void exitFile(contractParser::FileContext * /*ctx*/) override { }
 
-  virtual void enterInit(contractParser::InitContext * /*ctx*/) override { }
-  virtual void exitInit(contractParser::InitContext * /*ctx*/) override { }
-
-  virtual void enterStat(contractParser::StatContext * /*ctx*/) override { }
-  virtual void exitStat(contractParser::StatContext * /*ctx*/) override { }
-
-  virtual void enterCond(contractParser::CondContext * /*ctx*/) override { }
-  virtual void exitCond(contractParser::CondContext * /*ctx*/) override { }
+  virtual void enterLtl(contractParser::LtlContext * /*ctx*/) override { }
+  virtual void exitLtl(contractParser::LtlContext * /*ctx*/) override { }
 
   virtual void enterPropos(contractParser::ProposContext * /*ctx*/) override { }
   virtual void exitPropos(contractParser::ProposContext * /*ctx*/) override { }
 
-  virtual void enterCom(contractParser::ComContext * /*ctx*/) override { }
-  virtual void exitCom(contractParser::ComContext * /*ctx*/) override { }
+  virtual void enterAtomic_propos(contractParser::Atomic_proposContext * /*ctx*/) override { }
+  virtual void exitAtomic_propos(contractParser::Atomic_proposContext * /*ctx*/) override { }
 
   virtual void enterQuan(contractParser::QuanContext * /*ctx*/) override { }
   virtual void exitQuan(contractParser::QuanContext * /*ctx*/) override { }

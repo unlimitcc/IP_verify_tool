@@ -1,6 +1,7 @@
 #include <iostream>
 #include <bits/stdc++.h>
 #include <stdlib.h>
+#include <stdint.h>
 #include <map>
 #include <iomanip>
 #include <vector>
@@ -12,6 +13,7 @@
 #include <future>
 #include <chrono>
 #include <time.h>
+#include <math.h>
 #include "aux_fun.h"
 #include "call_trace4cps.h"
 #include "Extract_Propos.h"

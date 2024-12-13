@@ -15,10 +15,15 @@ class demoListener: public contractBaseListener{
 	public:
 		std::vector<std::string> propos;
 	public:
-		void enterPropos(contractParser::ProposContext* ctx){
+		/*void enterPropos(contractParser::ProposContext* ctx){
 			if(std::find(propos.begin(),propos.end(),ctx->getText())==propos.end()){
 				propos.emplace_back(ctx->getText());
 				std::cout<<ctx->getText()<<std::endl;
+			}
+		}*/
+		void enterPropos(contractParser::ProposContext* ctx){
+			if(find(propos.begin(),propos.end(),ctx->getText())==propos.end()){
+				std::cout << ctx->getText() << std::endl;
 			}
 		}
 };
@@ -40,14 +45,19 @@ std::vector<std::string> extractpropos(std::string input_file) {
 int main(int argc, const char* argv[]) {
 	//std::ifstream property_file;
 	//property_file.open(input_file,std::ios::app | std::ios::out | std::ios::in);
-    ANTLRInputStream input(std::cin);
-    contractLexer lexer(&input);
-    CommonTokenStream tokens(&lexer);
-   	contractParser parser(&tokens);
-   	tree::ParseTree* tree = parser.file();
-   	demoListener demo;
-   	tree::ParseTreeWalker::DEFAULT.walk(&demo, tree);
+	try{
+		std::fstream property_file;
+		property_file.open("test.ltl",std::ios::app | std::ios::out | std::ios::in);
+    	ANTLRInputStream input(property_file);
+		contractLexer lexer(&input);
+		CommonTokenStream tokens(&lexer);
+	   	contractParser parser(&tokens);
+	   	tree::ParseTree* tree = parser.file();
+	   	demoListener demo;
+	   	tree::ParseTreeWalker::DEFAULT.walk(&demo, tree);
+   	}catch (const std::system_error& e) {
+    	std::cerr << "System error: " << e.what() << std::endl;
+    	std::cerr << "Error code: " << e.code() << std::endl;
+	}
     return 0;
 }
-
-

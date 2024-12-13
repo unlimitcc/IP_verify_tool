@@ -9,7 +9,7 @@ expr:	'(' expr op=POW expr ')'   		# Pow
 	|	expr op=(MUL | DIV | MOD) expr  # MulDivMod
     |   expr op=(ADD | SUB) expr        # AddSub
     |   NUM                             # Num
-    |	'(' SUB NUM ')'					# MinusVal
+    |	'('SUB NUM ')'					# MinusVal
     |   ID                              # id
     |   '(' expr ')'                    # parens
     ;

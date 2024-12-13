@@ -1,0 +1,1 @@
+G (FORALL(i:0~9)((abs(wa[i]-wal[i])<=waThr & countPick[i]+1>=pickThr) -> (next(wa_out[i])=wal[i] & next(wal[i])=wal[i] & next(countPick[i])=0)))

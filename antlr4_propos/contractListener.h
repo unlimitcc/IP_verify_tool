@@ -17,20 +17,14 @@ public:
   virtual void enterFile(contractParser::FileContext *ctx) = 0;
   virtual void exitFile(contractParser::FileContext *ctx) = 0;
 
-  virtual void enterInit(contractParser::InitContext *ctx) = 0;
-  virtual void exitInit(contractParser::InitContext *ctx) = 0;
-
-  virtual void enterStat(contractParser::StatContext *ctx) = 0;
-  virtual void exitStat(contractParser::StatContext *ctx) = 0;
-
-  virtual void enterCond(contractParser::CondContext *ctx) = 0;
-  virtual void exitCond(contractParser::CondContext *ctx) = 0;
+  virtual void enterLtl(contractParser::LtlContext *ctx) = 0;
+  virtual void exitLtl(contractParser::LtlContext *ctx) = 0;
 
   virtual void enterPropos(contractParser::ProposContext *ctx) = 0;
   virtual void exitPropos(contractParser::ProposContext *ctx) = 0;
 
-  virtual void enterCom(contractParser::ComContext *ctx) = 0;
-  virtual void exitCom(contractParser::ComContext *ctx) = 0;
+  virtual void enterAtomic_propos(contractParser::Atomic_proposContext *ctx) = 0;
+  virtual void exitAtomic_propos(contractParser::Atomic_proposContext *ctx) = 0;
 
   virtual void enterQuan(contractParser::QuanContext *ctx) = 0;
   virtual void exitQuan(contractParser::QuanContext *ctx) = 0;

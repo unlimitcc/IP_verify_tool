@@ -2,41 +2,28 @@ grammar contract;               	//parser and lexer
 
 file: (ltl NEWLINE)+ EOF //contract Assumptions
 	;
-	
-ltl: propos
-	| ltl '&' ltl
-	| ltl '|' ltl
-	| ltl '->' ltl
-	| ltl '<->' ltl
-	| '!' ltl
-	| 'X' ltl
-	| 'G' ltl
-	| 'F' ltl
-	| ltl 'U' ltl
-	| '(' ltl ')'
-	; 
-	
-propos: atomic_propos
-	| propos '&' propos
-	| propos '|' propos
-	| propos '->' propos
-	| propos '<->' propos
-	| quan ':' propos	
-	| '(' propos ')'
-	;
 
-atomic_propos: expr op=COMP expr
-	| '(' quan ':' '(' atomic_propos (LOP atomic_propos)* ')' ')'
+ltl: TOP? '('? '(' ltl (LOP ltl)* ')' ')'?			//ltl property
+	| TOP? '('? '(' propos (LOP propos)+ ')' ')'?
+	| TOP? '('? propos ')'?
+	;	
+	
+propos: quan+ '('? '(' com (LOP com)* ')' (LOP '(' com* (LOP com)* ')')? ')'?
+	| '('? com ')'?		
 	;	
 
-quan: (QUAN '(' VAR (COMMA VAR)* ')')+  //example: FORALL(x,y,z)
-	| '(' quan ')'
-	;
+com: expr op=COMP expr
+	;	
+
+quan: QUAN '(' VAR COLON RANGE ')'   	// QUANTIFIER
+	| QUAN '(' VAR (COMMA VAR)* ')'
+	; 
 
 expr: '(' expr op=POW expr ')'					
 	| expr op=(MUL | DIV | MOD) expr	
 	| expr op=(ADD | SUB) expr		
-	| VAR ('(' expr (COMMA expr)* ')')+	//function
+	| VAR ('(' VAR COLON RANGE')')+ '(' expr ')'
+	| VAR expr (COMMA expr)*	
 	| '(' expr (COMMA expr)* ')'
 	| '-' VALUE    	
 	| VALUE
@@ -45,7 +32,8 @@ expr: '(' expr op=POW expr ')'
 	| '(' expr ')'								
 	;
 
-LOP: '&' | '|' | '->' | '<->';
+LOP: '&' | '|' | '->' | 'U'; 				//logical operator
+TOP: 'G' | 'F' | 'X';						//temporal operator
 QUAN: 'EXIST' | 'FORALL';					//quantifier in contract
 fragment INT: [1-9][0-9]* | '0';			//integer
 VALUE: INT | INT POINT INT;					//value 

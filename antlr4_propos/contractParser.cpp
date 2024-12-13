@@ -52,97 +52,81 @@ void contractParserInitialize() {
 #endif
   auto staticData = std::make_unique<ContractParserStaticData>(
     std::vector<std::string>{
-      "file", "init", "stat", "cond", "propos", "com", "quan", "expr"
+      "file", "ltl", "propos", "atomic_propos", "quan", "expr"
     },
     std::vector<std::string>{
-      "", "'('", "')'", "", "", "", "", "", "", "", "'+'", "'-'", "'*'", 
-      "'/'", "'%'", "'^'", "", "", "':'", "','"
+      "", "'&'", "'|'", "'->'", "'<->'", "'!'", "'X'", "'G'", "'F'", "'U'", 
+      "'('", "')'", "", "", "", "", "", "'+'", "'-'", "'*'", "'/'", "'%'", 
+      "'^'", "", "", "':'", "','"
     },
     std::vector<std::string>{
-      "", "", "", "ASS", "GUA", "LOP", "TOP", "QUAN", "VALUE", "VAR", "ADD", 
-      "SUB", "MUL", "DIV", "MOD", "POW", "RANGE", "COMP", "COLON", "COMMA", 
-      "SKIP1", "SKIP2", "NEWLINE"
+      "", "", "", "", "", "", "", "", "", "", "", "", "LOP", "QUAN", "VALUE", 
+      "VAR", "ARRAY", "ADD", "SUB", "MUL", "DIV", "MOD", "POW", "RANGE", 
+      "COMP", "COLON", "COMMA", "SKIP1", "NEWLINE"
     }
   );
   static const int32_t serializedATNSegment[] = {
-  	4,1,22,237,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,2,
-  	7,7,7,1,0,1,0,3,0,19,8,0,1,0,1,0,4,0,23,8,0,11,0,12,0,24,1,0,1,0,1,1,
-  	1,1,1,1,1,1,5,1,33,8,1,10,1,12,1,36,9,1,1,1,1,1,1,1,1,1,1,1,1,1,4,1,44,
-  	8,1,11,1,12,1,45,1,1,1,1,1,1,3,1,51,8,1,1,2,1,2,1,2,1,2,5,2,57,8,2,10,
-  	2,12,2,60,9,2,1,2,1,2,1,2,1,2,1,2,1,2,4,2,68,8,2,11,2,12,2,69,1,2,1,2,
-  	1,2,3,2,75,8,2,1,3,4,3,78,8,3,11,3,12,3,79,1,3,3,3,83,8,3,1,3,1,3,1,3,
-  	1,3,5,3,89,8,3,10,3,12,3,92,9,3,1,3,1,3,1,3,1,3,5,3,98,8,3,10,3,12,3,
-  	101,9,3,1,3,1,3,5,3,105,8,3,10,3,12,3,108,9,3,1,3,3,3,111,8,3,1,3,3,3,
-  	114,8,3,1,3,3,3,117,8,3,1,4,4,4,120,8,4,11,4,12,4,121,1,4,3,4,125,8,4,
-  	1,4,1,4,1,4,1,4,5,4,131,8,4,10,4,12,4,134,9,4,1,4,1,4,1,4,1,4,5,4,140,
-  	8,4,10,4,12,4,143,9,4,1,4,1,4,5,4,147,8,4,10,4,12,4,150,9,4,1,4,3,4,153,
-  	8,4,1,4,3,4,156,8,4,1,4,3,4,159,8,4,1,5,1,5,1,5,1,5,1,6,1,6,1,6,1,6,1,
-  	6,1,6,1,6,1,6,1,6,1,6,1,6,5,6,176,8,6,10,6,12,6,179,9,6,1,6,3,6,182,8,
-  	6,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,4,7,197,8,7,11,
-  	7,12,7,198,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,5,7,211,8,7,10,7,12,
-  	7,214,9,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,7,3,7,224,8,7,1,7,1,7,1,7,1,7,
-  	1,7,1,7,5,7,232,8,7,10,7,12,7,235,9,7,1,7,0,1,14,8,0,2,4,6,8,10,12,14,
-  	0,2,1,0,12,14,1,0,10,11,266,0,18,1,0,0,0,2,50,1,0,0,0,4,74,1,0,0,0,6,
-  	116,1,0,0,0,8,158,1,0,0,0,10,160,1,0,0,0,12,181,1,0,0,0,14,223,1,0,0,
-  	0,16,17,5,3,0,0,17,19,3,2,1,0,18,16,1,0,0,0,18,19,1,0,0,0,19,22,1,0,0,
-  	0,20,21,5,4,0,0,21,23,3,4,2,0,22,20,1,0,0,0,23,24,1,0,0,0,24,22,1,0,0,
-  	0,24,25,1,0,0,0,25,26,1,0,0,0,26,27,5,0,0,1,27,1,1,0,0,0,28,29,5,1,0,
-  	0,29,34,3,2,1,0,30,31,5,5,0,0,31,33,3,2,1,0,32,30,1,0,0,0,33,36,1,0,0,
-  	0,34,32,1,0,0,0,34,35,1,0,0,0,35,37,1,0,0,0,36,34,1,0,0,0,37,38,5,2,0,
-  	0,38,51,1,0,0,0,39,40,5,1,0,0,40,43,3,6,3,0,41,42,5,5,0,0,42,44,3,6,3,
-  	0,43,41,1,0,0,0,44,45,1,0,0,0,45,43,1,0,0,0,45,46,1,0,0,0,46,47,1,0,0,
-  	0,47,48,5,2,0,0,48,51,1,0,0,0,49,51,3,6,3,0,50,28,1,0,0,0,50,39,1,0,0,
-  	0,50,49,1,0,0,0,51,3,1,0,0,0,52,53,5,1,0,0,53,58,3,4,2,0,54,55,5,5,0,
-  	0,55,57,3,4,2,0,56,54,1,0,0,0,57,60,1,0,0,0,58,56,1,0,0,0,58,59,1,0,0,
-  	0,59,61,1,0,0,0,60,58,1,0,0,0,61,62,5,2,0,0,62,75,1,0,0,0,63,64,5,1,0,
-  	0,64,67,3,8,4,0,65,66,5,5,0,0,66,68,3,8,4,0,67,65,1,0,0,0,68,69,1,0,0,
-  	0,69,67,1,0,0,0,69,70,1,0,0,0,70,71,1,0,0,0,71,72,5,2,0,0,72,75,1,0,0,
-  	0,73,75,3,8,4,0,74,52,1,0,0,0,74,63,1,0,0,0,74,73,1,0,0,0,75,5,1,0,0,
-  	0,76,78,3,12,6,0,77,76,1,0,0,0,78,79,1,0,0,0,79,77,1,0,0,0,79,80,1,0,
-  	0,0,80,82,1,0,0,0,81,83,5,1,0,0,82,81,1,0,0,0,82,83,1,0,0,0,83,84,1,0,
-  	0,0,84,85,5,1,0,0,85,90,3,10,5,0,86,87,5,5,0,0,87,89,3,10,5,0,88,86,1,
-  	0,0,0,89,92,1,0,0,0,90,88,1,0,0,0,90,91,1,0,0,0,91,93,1,0,0,0,92,90,1,
-  	0,0,0,93,110,5,2,0,0,94,95,5,5,0,0,95,99,5,1,0,0,96,98,3,10,5,0,97,96,
-  	1,0,0,0,98,101,1,0,0,0,99,97,1,0,0,0,99,100,1,0,0,0,100,106,1,0,0,0,101,
-  	99,1,0,0,0,102,103,5,5,0,0,103,105,3,10,5,0,104,102,1,0,0,0,105,108,1,
-  	0,0,0,106,104,1,0,0,0,106,107,1,0,0,0,107,109,1,0,0,0,108,106,1,0,0,0,
-  	109,111,5,2,0,0,110,94,1,0,0,0,110,111,1,0,0,0,111,113,1,0,0,0,112,114,
-  	5,2,0,0,113,112,1,0,0,0,113,114,1,0,0,0,114,117,1,0,0,0,115,117,3,10,
-  	5,0,116,77,1,0,0,0,116,115,1,0,0,0,117,7,1,0,0,0,118,120,3,12,6,0,119,
-  	118,1,0,0,0,120,121,1,0,0,0,121,119,1,0,0,0,121,122,1,0,0,0,122,124,1,
-  	0,0,0,123,125,5,1,0,0,124,123,1,0,0,0,124,125,1,0,0,0,125,126,1,0,0,0,
-  	126,127,5,1,0,0,127,132,3,10,5,0,128,129,5,5,0,0,129,131,3,10,5,0,130,
-  	128,1,0,0,0,131,134,1,0,0,0,132,130,1,0,0,0,132,133,1,0,0,0,133,135,1,
-  	0,0,0,134,132,1,0,0,0,135,152,5,2,0,0,136,137,5,5,0,0,137,141,5,1,0,0,
-  	138,140,3,10,5,0,139,138,1,0,0,0,140,143,1,0,0,0,141,139,1,0,0,0,141,
-  	142,1,0,0,0,142,148,1,0,0,0,143,141,1,0,0,0,144,145,5,5,0,0,145,147,3,
-  	10,5,0,146,144,1,0,0,0,147,150,1,0,0,0,148,146,1,0,0,0,148,149,1,0,0,
-  	0,149,151,1,0,0,0,150,148,1,0,0,0,151,153,5,2,0,0,152,136,1,0,0,0,152,
-  	153,1,0,0,0,153,155,1,0,0,0,154,156,5,2,0,0,155,154,1,0,0,0,155,156,1,
-  	0,0,0,156,159,1,0,0,0,157,159,3,10,5,0,158,119,1,0,0,0,158,157,1,0,0,
-  	0,159,9,1,0,0,0,160,161,3,14,7,0,161,162,5,17,0,0,162,163,3,14,7,0,163,
-  	11,1,0,0,0,164,165,5,7,0,0,165,166,5,1,0,0,166,167,5,9,0,0,167,168,5,
-  	18,0,0,168,169,5,16,0,0,169,182,5,2,0,0,170,171,5,7,0,0,171,172,5,1,0,
-  	0,172,177,5,9,0,0,173,174,5,19,0,0,174,176,5,9,0,0,175,173,1,0,0,0,176,
-  	179,1,0,0,0,177,175,1,0,0,0,177,178,1,0,0,0,178,180,1,0,0,0,179,177,1,
-  	0,0,0,180,182,5,2,0,0,181,164,1,0,0,0,181,170,1,0,0,0,182,13,1,0,0,0,
-  	183,184,6,7,-1,0,184,185,5,1,0,0,185,186,3,14,7,0,186,187,5,15,0,0,187,
-  	188,3,14,7,0,188,189,5,2,0,0,189,224,1,0,0,0,190,196,5,9,0,0,191,192,
-  	5,1,0,0,192,193,5,9,0,0,193,194,5,18,0,0,194,195,5,16,0,0,195,197,5,2,
-  	0,0,196,191,1,0,0,0,197,198,1,0,0,0,198,196,1,0,0,0,198,199,1,0,0,0,199,
-  	200,1,0,0,0,200,201,5,1,0,0,201,202,3,14,7,0,202,203,5,2,0,0,203,224,
-  	1,0,0,0,204,205,5,9,0,0,205,224,3,14,7,0,206,207,5,1,0,0,207,212,3,14,
-  	7,0,208,209,5,19,0,0,209,211,3,14,7,0,210,208,1,0,0,0,211,214,1,0,0,0,
-  	212,210,1,0,0,0,212,213,1,0,0,0,213,215,1,0,0,0,214,212,1,0,0,0,215,216,
-  	5,2,0,0,216,224,1,0,0,0,217,224,5,8,0,0,218,224,5,9,0,0,219,220,5,1,0,
-  	0,220,221,3,14,7,0,221,222,5,2,0,0,222,224,1,0,0,0,223,183,1,0,0,0,223,
-  	190,1,0,0,0,223,204,1,0,0,0,223,206,1,0,0,0,223,217,1,0,0,0,223,218,1,
-  	0,0,0,223,219,1,0,0,0,224,233,1,0,0,0,225,226,10,8,0,0,226,227,7,0,0,
-  	0,227,232,3,14,7,9,228,229,10,7,0,0,229,230,7,1,0,0,230,232,3,14,7,8,
-  	231,225,1,0,0,0,231,228,1,0,0,0,232,235,1,0,0,0,233,231,1,0,0,0,233,234,
-  	1,0,0,0,234,15,1,0,0,0,235,233,1,0,0,0,31,18,24,34,45,50,58,69,74,79,
-  	82,90,99,106,110,113,116,121,124,132,141,148,152,155,158,177,181,198,
-  	212,223,231,233
+  	4,1,28,185,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,1,0,1,0,1,
+  	0,4,0,16,8,0,11,0,12,0,17,1,0,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+  	1,1,1,1,1,1,1,1,1,1,3,1,36,8,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+  	1,1,1,1,1,1,1,1,1,1,1,5,1,53,8,1,10,1,12,1,56,9,1,1,2,1,2,1,2,1,2,1,2,
+  	1,2,1,2,1,2,1,2,1,2,3,2,68,8,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,
+  	2,1,2,1,2,5,2,82,8,2,10,2,12,2,85,9,2,1,3,1,3,1,3,1,3,1,3,1,3,1,3,1,3,
+  	1,3,1,3,1,3,5,3,98,8,3,10,3,12,3,101,9,3,1,3,1,3,1,3,3,3,106,8,3,1,4,
+  	1,4,1,4,1,4,1,4,5,4,113,8,4,10,4,12,4,116,9,4,1,4,4,4,119,8,4,11,4,12,
+  	4,120,1,4,1,4,1,4,1,4,3,4,127,8,4,1,5,1,5,1,5,1,5,1,5,1,5,1,5,1,5,1,5,
+  	1,5,1,5,1,5,5,5,141,8,5,10,5,12,5,144,9,5,1,5,1,5,4,5,148,8,5,11,5,12,
+  	5,149,1,5,1,5,1,5,1,5,5,5,156,8,5,10,5,12,5,159,9,5,1,5,1,5,1,5,1,5,1,
+  	5,1,5,1,5,1,5,1,5,1,5,1,5,3,5,172,8,5,1,5,1,5,1,5,1,5,1,5,1,5,5,5,180,
+  	8,5,10,5,12,5,183,9,5,1,5,0,3,2,4,10,6,0,2,4,6,8,10,0,2,1,0,19,21,1,0,
+  	17,18,212,0,15,1,0,0,0,2,35,1,0,0,0,4,67,1,0,0,0,6,105,1,0,0,0,8,126,
+  	1,0,0,0,10,171,1,0,0,0,12,13,3,2,1,0,13,14,5,28,0,0,14,16,1,0,0,0,15,
+  	12,1,0,0,0,16,17,1,0,0,0,17,15,1,0,0,0,17,18,1,0,0,0,18,19,1,0,0,0,19,
+  	20,5,0,0,1,20,1,1,0,0,0,21,22,6,1,-1,0,22,36,3,4,2,0,23,24,5,5,0,0,24,
+  	36,3,2,1,6,25,26,5,6,0,0,26,36,3,2,1,5,27,28,5,7,0,0,28,36,3,2,1,4,29,
+  	30,5,8,0,0,30,36,3,2,1,3,31,32,5,10,0,0,32,33,3,2,1,0,33,34,5,11,0,0,
+  	34,36,1,0,0,0,35,21,1,0,0,0,35,23,1,0,0,0,35,25,1,0,0,0,35,27,1,0,0,0,
+  	35,29,1,0,0,0,35,31,1,0,0,0,36,54,1,0,0,0,37,38,10,10,0,0,38,39,5,1,0,
+  	0,39,53,3,2,1,11,40,41,10,9,0,0,41,42,5,2,0,0,42,53,3,2,1,10,43,44,10,
+  	8,0,0,44,45,5,3,0,0,45,53,3,2,1,9,46,47,10,7,0,0,47,48,5,4,0,0,48,53,
+  	3,2,1,8,49,50,10,2,0,0,50,51,5,9,0,0,51,53,3,2,1,3,52,37,1,0,0,0,52,40,
+  	1,0,0,0,52,43,1,0,0,0,52,46,1,0,0,0,52,49,1,0,0,0,53,56,1,0,0,0,54,52,
+  	1,0,0,0,54,55,1,0,0,0,55,3,1,0,0,0,56,54,1,0,0,0,57,58,6,2,-1,0,58,68,
+  	3,6,3,0,59,60,3,8,4,0,60,61,5,25,0,0,61,62,3,4,2,2,62,68,1,0,0,0,63,64,
+  	5,10,0,0,64,65,3,4,2,0,65,66,5,11,0,0,66,68,1,0,0,0,67,57,1,0,0,0,67,
+  	59,1,0,0,0,67,63,1,0,0,0,68,83,1,0,0,0,69,70,10,6,0,0,70,71,5,1,0,0,71,
+  	82,3,4,2,7,72,73,10,5,0,0,73,74,5,2,0,0,74,82,3,4,2,6,75,76,10,4,0,0,
+  	76,77,5,3,0,0,77,82,3,4,2,5,78,79,10,3,0,0,79,80,5,4,0,0,80,82,3,4,2,
+  	4,81,69,1,0,0,0,81,72,1,0,0,0,81,75,1,0,0,0,81,78,1,0,0,0,82,85,1,0,0,
+  	0,83,81,1,0,0,0,83,84,1,0,0,0,84,5,1,0,0,0,85,83,1,0,0,0,86,87,3,10,5,
+  	0,87,88,5,24,0,0,88,89,3,10,5,0,89,106,1,0,0,0,90,91,5,10,0,0,91,92,3,
+  	8,4,0,92,93,5,25,0,0,93,94,5,10,0,0,94,99,3,6,3,0,95,96,5,12,0,0,96,98,
+  	3,6,3,0,97,95,1,0,0,0,98,101,1,0,0,0,99,97,1,0,0,0,99,100,1,0,0,0,100,
+  	102,1,0,0,0,101,99,1,0,0,0,102,103,5,11,0,0,103,104,5,11,0,0,104,106,
+  	1,0,0,0,105,86,1,0,0,0,105,90,1,0,0,0,106,7,1,0,0,0,107,108,5,13,0,0,
+  	108,109,5,10,0,0,109,114,5,15,0,0,110,111,5,26,0,0,111,113,5,15,0,0,112,
+  	110,1,0,0,0,113,116,1,0,0,0,114,112,1,0,0,0,114,115,1,0,0,0,115,117,1,
+  	0,0,0,116,114,1,0,0,0,117,119,5,11,0,0,118,107,1,0,0,0,119,120,1,0,0,
+  	0,120,118,1,0,0,0,120,121,1,0,0,0,121,127,1,0,0,0,122,123,5,10,0,0,123,
+  	124,3,8,4,0,124,125,5,11,0,0,125,127,1,0,0,0,126,118,1,0,0,0,126,122,
+  	1,0,0,0,127,9,1,0,0,0,128,129,6,5,-1,0,129,130,5,10,0,0,130,131,3,10,
+  	5,0,131,132,5,22,0,0,132,133,3,10,5,0,133,134,5,11,0,0,134,172,1,0,0,
+  	0,135,147,5,15,0,0,136,137,5,10,0,0,137,142,3,10,5,0,138,139,5,26,0,0,
+  	139,141,3,10,5,0,140,138,1,0,0,0,141,144,1,0,0,0,142,140,1,0,0,0,142,
+  	143,1,0,0,0,143,145,1,0,0,0,144,142,1,0,0,0,145,146,5,11,0,0,146,148,
+  	1,0,0,0,147,136,1,0,0,0,148,149,1,0,0,0,149,147,1,0,0,0,149,150,1,0,0,
+  	0,150,172,1,0,0,0,151,152,5,10,0,0,152,157,3,10,5,0,153,154,5,26,0,0,
+  	154,156,3,10,5,0,155,153,1,0,0,0,156,159,1,0,0,0,157,155,1,0,0,0,157,
+  	158,1,0,0,0,158,160,1,0,0,0,159,157,1,0,0,0,160,161,5,11,0,0,161,172,
+  	1,0,0,0,162,163,5,18,0,0,163,172,5,14,0,0,164,172,5,14,0,0,165,172,5,
+  	16,0,0,166,172,5,15,0,0,167,168,5,10,0,0,168,169,3,10,5,0,169,170,5,11,
+  	0,0,170,172,1,0,0,0,171,128,1,0,0,0,171,135,1,0,0,0,171,151,1,0,0,0,171,
+  	162,1,0,0,0,171,164,1,0,0,0,171,165,1,0,0,0,171,166,1,0,0,0,171,167,1,
+  	0,0,0,172,181,1,0,0,0,173,174,10,9,0,0,174,175,7,0,0,0,175,180,3,10,5,
+  	10,176,177,10,8,0,0,177,178,7,1,0,0,178,180,3,10,5,9,179,173,1,0,0,0,
+  	179,176,1,0,0,0,180,183,1,0,0,0,181,179,1,0,0,0,181,182,1,0,0,0,182,11,
+  	1,0,0,0,183,181,1,0,0,0,18,17,35,52,54,67,81,83,99,105,114,120,126,142,
+  	149,157,171,179,181
   };
   staticData->serializedATN = antlr4::atn::SerializedATNView(serializedATNSegment, sizeof(serializedATNSegment) / sizeof(serializedATNSegment[0]));
 
@@ -201,28 +185,20 @@ tree::TerminalNode* contractParser::FileContext::EOF() {
   return getToken(contractParser::EOF, 0);
 }
 
-tree::TerminalNode* contractParser::FileContext::ASS() {
-  return getToken(contractParser::ASS, 0);
+std::vector<contractParser::LtlContext *> contractParser::FileContext::ltl() {
+  return getRuleContexts<contractParser::LtlContext>();
 }
 
-contractParser::InitContext* contractParser::FileContext::init() {
-  return getRuleContext<contractParser::InitContext>(0);
+contractParser::LtlContext* contractParser::FileContext::ltl(size_t i) {
+  return getRuleContext<contractParser::LtlContext>(i);
 }
 
-std::vector<tree::TerminalNode *> contractParser::FileContext::GUA() {
-  return getTokens(contractParser::GUA);
+std::vector<tree::TerminalNode *> contractParser::FileContext::NEWLINE() {
+  return getTokens(contractParser::NEWLINE);
 }
 
-tree::TerminalNode* contractParser::FileContext::GUA(size_t i) {
-  return getToken(contractParser::GUA, i);
-}
-
-std::vector<contractParser::StatContext *> contractParser::FileContext::stat() {
-  return getRuleContexts<contractParser::StatContext>();
-}
-
-contractParser::StatContext* contractParser::FileContext::stat(size_t i) {
-  return getRuleContext<contractParser::StatContext>(i);
+tree::TerminalNode* contractParser::FileContext::NEWLINE(size_t i) {
+  return getToken(contractParser::NEWLINE, i);
 }
 
 
@@ -256,29 +232,20 @@ contractParser::FileContext* contractParser::file() {
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(18);
-    _errHandler->sync(this);
-
-    _la = _input->LA(1);
-    if (_la == contractParser::ASS) {
-      setState(16);
-      match(contractParser::ASS);
-      setState(17);
-      init();
-    }
-    setState(22); 
+    setState(15); 
     _errHandler->sync(this);
     _la = _input->LA(1);
     do {
-      setState(20);
-      match(contractParser::GUA);
-      setState(21);
-      stat();
-      setState(24); 
+      setState(12);
+      ltl(0);
+      setState(13);
+      match(contractParser::NEWLINE);
+      setState(17); 
       _errHandler->sync(this);
       _la = _input->LA(1);
-    } while (_la == contractParser::GUA);
-    setState(26);
+    } while ((((_la & ~ 0x3fULL) == 0) &&
+      ((1ULL << _la) & 386528) != 0));
+    setState(19);
     match(contractParser::EOF);
    
   }
@@ -291,448 +258,212 @@ contractParser::FileContext* contractParser::file() {
   return _localctx;
 }
 
-//----------------- InitContext ------------------------------------------------------------------
+//----------------- LtlContext ------------------------------------------------------------------
 
-contractParser::InitContext::InitContext(ParserRuleContext *parent, size_t invokingState)
+contractParser::LtlContext::LtlContext(ParserRuleContext *parent, size_t invokingState)
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<contractParser::InitContext *> contractParser::InitContext::init() {
-  return getRuleContexts<contractParser::InitContext>();
+contractParser::ProposContext* contractParser::LtlContext::propos() {
+  return getRuleContext<contractParser::ProposContext>(0);
 }
 
-contractParser::InitContext* contractParser::InitContext::init(size_t i) {
-  return getRuleContext<contractParser::InitContext>(i);
+std::vector<contractParser::LtlContext *> contractParser::LtlContext::ltl() {
+  return getRuleContexts<contractParser::LtlContext>();
 }
 
-std::vector<tree::TerminalNode *> contractParser::InitContext::LOP() {
-  return getTokens(contractParser::LOP);
-}
-
-tree::TerminalNode* contractParser::InitContext::LOP(size_t i) {
-  return getToken(contractParser::LOP, i);
-}
-
-std::vector<contractParser::CondContext *> contractParser::InitContext::cond() {
-  return getRuleContexts<contractParser::CondContext>();
-}
-
-contractParser::CondContext* contractParser::InitContext::cond(size_t i) {
-  return getRuleContext<contractParser::CondContext>(i);
+contractParser::LtlContext* contractParser::LtlContext::ltl(size_t i) {
+  return getRuleContext<contractParser::LtlContext>(i);
 }
 
 
-size_t contractParser::InitContext::getRuleIndex() const {
-  return contractParser::RuleInit;
+size_t contractParser::LtlContext::getRuleIndex() const {
+  return contractParser::RuleLtl;
 }
 
-void contractParser::InitContext::enterRule(tree::ParseTreeListener *listener) {
+void contractParser::LtlContext::enterRule(tree::ParseTreeListener *listener) {
   auto parserListener = dynamic_cast<contractListener *>(listener);
   if (parserListener != nullptr)
-    parserListener->enterInit(this);
+    parserListener->enterLtl(this);
 }
 
-void contractParser::InitContext::exitRule(tree::ParseTreeListener *listener) {
+void contractParser::LtlContext::exitRule(tree::ParseTreeListener *listener) {
   auto parserListener = dynamic_cast<contractListener *>(listener);
   if (parserListener != nullptr)
-    parserListener->exitInit(this);
+    parserListener->exitLtl(this);
 }
 
-contractParser::InitContext* contractParser::init() {
-  InitContext *_localctx = _tracker.createInstance<InitContext>(_ctx, getState());
-  enterRule(_localctx, 2, contractParser::RuleInit);
-  size_t _la = 0;
+
+contractParser::LtlContext* contractParser::ltl() {
+   return ltl(0);
+}
+
+contractParser::LtlContext* contractParser::ltl(int precedence) {
+  ParserRuleContext *parentContext = _ctx;
+  size_t parentState = getState();
+  contractParser::LtlContext *_localctx = _tracker.createInstance<LtlContext>(_ctx, parentState);
+  contractParser::LtlContext *previousContext = _localctx;
+  (void)previousContext; // Silence compiler, in case the context is not used by generated code.
+  size_t startState = 2;
+  enterRecursionRule(_localctx, 2, contractParser::RuleLtl, precedence);
+
+    
 
 #if __cplusplus > 201703L
   auto onExit = finally([=, this] {
 #else
   auto onExit = finally([=] {
 #endif
-    exitRule();
+    unrollRecursionContexts(parentContext);
   });
   try {
-    setState(50);
+    size_t alt;
+    enterOuterAlt(_localctx, 1);
+    setState(35);
     _errHandler->sync(this);
-    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 4, _ctx)) {
+    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 1, _ctx)) {
     case 1: {
-      enterOuterAlt(_localctx, 1);
+      setState(22);
+      propos(0);
+      break;
+    }
+
+    case 2: {
+      setState(23);
+      match(contractParser::T__4);
+      setState(24);
+      ltl(6);
+      break;
+    }
+
+    case 3: {
+      setState(25);
+      match(contractParser::T__5);
+      setState(26);
+      ltl(5);
+      break;
+    }
+
+    case 4: {
+      setState(27);
+      match(contractParser::T__6);
       setState(28);
-      match(contractParser::T__0);
+      ltl(4);
+      break;
+    }
+
+    case 5: {
       setState(29);
-      init();
-      setState(34);
-      _errHandler->sync(this);
-      _la = _input->LA(1);
-      while (_la == contractParser::LOP) {
-        setState(30);
-        match(contractParser::LOP);
-        setState(31);
-        init();
-        setState(36);
-        _errHandler->sync(this);
-        _la = _input->LA(1);
-      }
-      setState(37);
-      match(contractParser::T__1);
+      match(contractParser::T__7);
+      setState(30);
+      ltl(3);
       break;
     }
 
-    case 2: {
-      enterOuterAlt(_localctx, 2);
-      setState(39);
-      match(contractParser::T__0);
-      setState(40);
-      cond();
-      setState(43); 
-      _errHandler->sync(this);
-      _la = _input->LA(1);
-      do {
-        setState(41);
-        match(contractParser::LOP);
-        setState(42);
-        cond();
-        setState(45); 
-        _errHandler->sync(this);
-        _la = _input->LA(1);
-      } while (_la == contractParser::LOP);
-      setState(47);
-      match(contractParser::T__1);
-      break;
-    }
-
-    case 3: {
-      enterOuterAlt(_localctx, 3);
-      setState(49);
-      cond();
+    case 6: {
+      setState(31);
+      match(contractParser::T__9);
+      setState(32);
+      ltl(0);
+      setState(33);
+      match(contractParser::T__10);
       break;
     }
 
     default:
       break;
     }
-   
-  }
-  catch (RecognitionException &e) {
-    _errHandler->reportError(this, e);
-    _localctx->exception = std::current_exception();
-    _errHandler->recover(this, _localctx->exception);
-  }
-
-  return _localctx;
-}
-
-//----------------- StatContext ------------------------------------------------------------------
-
-contractParser::StatContext::StatContext(ParserRuleContext *parent, size_t invokingState)
-  : ParserRuleContext(parent, invokingState) {
-}
-
-std::vector<contractParser::StatContext *> contractParser::StatContext::stat() {
-  return getRuleContexts<contractParser::StatContext>();
-}
-
-contractParser::StatContext* contractParser::StatContext::stat(size_t i) {
-  return getRuleContext<contractParser::StatContext>(i);
-}
-
-std::vector<tree::TerminalNode *> contractParser::StatContext::LOP() {
-  return getTokens(contractParser::LOP);
-}
-
-tree::TerminalNode* contractParser::StatContext::LOP(size_t i) {
-  return getToken(contractParser::LOP, i);
-}
-
-std::vector<contractParser::ProposContext *> contractParser::StatContext::propos() {
-  return getRuleContexts<contractParser::ProposContext>();
-}
-
-contractParser::ProposContext* contractParser::StatContext::propos(size_t i) {
-  return getRuleContext<contractParser::ProposContext>(i);
-}
-
-
-size_t contractParser::StatContext::getRuleIndex() const {
-  return contractParser::RuleStat;
-}
-
-void contractParser::StatContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<contractListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterStat(this);
-}
-
-void contractParser::StatContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<contractListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitStat(this);
-}
-
-contractParser::StatContext* contractParser::stat() {
-  StatContext *_localctx = _tracker.createInstance<StatContext>(_ctx, getState());
-  enterRule(_localctx, 4, contractParser::RuleStat);
-  size_t _la = 0;
-
-#if __cplusplus > 201703L
-  auto onExit = finally([=, this] {
-#else
-  auto onExit = finally([=] {
-#endif
-    exitRule();
-  });
-  try {
-    setState(74);
+    _ctx->stop = _input->LT(-1);
+    setState(54);
     _errHandler->sync(this);
-    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 7, _ctx)) {
-    case 1: {
-      enterOuterAlt(_localctx, 1);
-      setState(52);
-      match(contractParser::T__0);
-      setState(53);
-      stat();
-      setState(58);
-      _errHandler->sync(this);
-      _la = _input->LA(1);
-      while (_la == contractParser::LOP) {
-        setState(54);
-        match(contractParser::LOP);
-        setState(55);
-        stat();
-        setState(60);
+    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 3, _ctx);
+    while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
+      if (alt == 1) {
+        if (!_parseListeners.empty())
+          triggerExitRuleEvent();
+        previousContext = _localctx;
+        setState(52);
         _errHandler->sync(this);
-        _la = _input->LA(1);
+        switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 2, _ctx)) {
+        case 1: {
+          _localctx = _tracker.createInstance<LtlContext>(parentContext, parentState);
+          pushNewRecursionContext(_localctx, startState, RuleLtl);
+          setState(37);
+
+          if (!(precpred(_ctx, 10))) throw FailedPredicateException(this, "precpred(_ctx, 10)");
+          setState(38);
+          match(contractParser::T__0);
+          setState(39);
+          ltl(11);
+          break;
+        }
+
+        case 2: {
+          _localctx = _tracker.createInstance<LtlContext>(parentContext, parentState);
+          pushNewRecursionContext(_localctx, startState, RuleLtl);
+          setState(40);
+
+          if (!(precpred(_ctx, 9))) throw FailedPredicateException(this, "precpred(_ctx, 9)");
+          setState(41);
+          match(contractParser::T__1);
+          setState(42);
+          ltl(10);
+          break;
+        }
+
+        case 3: {
+          _localctx = _tracker.createInstance<LtlContext>(parentContext, parentState);
+          pushNewRecursionContext(_localctx, startState, RuleLtl);
+          setState(43);
+
+          if (!(precpred(_ctx, 8))) throw FailedPredicateException(this, "precpred(_ctx, 8)");
+          setState(44);
+          match(contractParser::T__2);
+          setState(45);
+          ltl(9);
+          break;
+        }
+
+        case 4: {
+          _localctx = _tracker.createInstance<LtlContext>(parentContext, parentState);
+          pushNewRecursionContext(_localctx, startState, RuleLtl);
+          setState(46);
+
+          if (!(precpred(_ctx, 7))) throw FailedPredicateException(this, "precpred(_ctx, 7)");
+          setState(47);
+          match(contractParser::T__3);
+          setState(48);
+          ltl(8);
+          break;
+        }
+
+        case 5: {
+          _localctx = _tracker.createInstance<LtlContext>(parentContext, parentState);
+          pushNewRecursionContext(_localctx, startState, RuleLtl);
+          setState(49);
+
+          if (!(precpred(_ctx, 2))) throw FailedPredicateException(this, "precpred(_ctx, 2)");
+          setState(50);
+          match(contractParser::T__8);
+          setState(51);
+          ltl(3);
+          break;
+        }
+
+        default:
+          break;
+        } 
       }
-      setState(61);
-      match(contractParser::T__1);
-      break;
-    }
-
-    case 2: {
-      enterOuterAlt(_localctx, 2);
-      setState(63);
-      match(contractParser::T__0);
-      setState(64);
-      propos();
-      setState(67); 
+      setState(56);
       _errHandler->sync(this);
-      _la = _input->LA(1);
-      do {
-        setState(65);
-        match(contractParser::LOP);
-        setState(66);
-        propos();
-        setState(69); 
-        _errHandler->sync(this);
-        _la = _input->LA(1);
-      } while (_la == contractParser::LOP);
-      setState(71);
-      match(contractParser::T__1);
-      break;
+      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 3, _ctx);
     }
-
-    case 3: {
-      enterOuterAlt(_localctx, 3);
-      setState(73);
-      propos();
-      break;
-    }
-
-    default:
-      break;
-    }
-   
   }
   catch (RecognitionException &e) {
     _errHandler->reportError(this, e);
     _localctx->exception = std::current_exception();
     _errHandler->recover(this, _localctx->exception);
   }
-
-  return _localctx;
-}
-
-//----------------- CondContext ------------------------------------------------------------------
-
-contractParser::CondContext::CondContext(ParserRuleContext *parent, size_t invokingState)
-  : ParserRuleContext(parent, invokingState) {
-}
-
-std::vector<contractParser::ComContext *> contractParser::CondContext::com() {
-  return getRuleContexts<contractParser::ComContext>();
-}
-
-contractParser::ComContext* contractParser::CondContext::com(size_t i) {
-  return getRuleContext<contractParser::ComContext>(i);
-}
-
-std::vector<contractParser::QuanContext *> contractParser::CondContext::quan() {
-  return getRuleContexts<contractParser::QuanContext>();
-}
-
-contractParser::QuanContext* contractParser::CondContext::quan(size_t i) {
-  return getRuleContext<contractParser::QuanContext>(i);
-}
-
-std::vector<tree::TerminalNode *> contractParser::CondContext::LOP() {
-  return getTokens(contractParser::LOP);
-}
-
-tree::TerminalNode* contractParser::CondContext::LOP(size_t i) {
-  return getToken(contractParser::LOP, i);
-}
-
-
-size_t contractParser::CondContext::getRuleIndex() const {
-  return contractParser::RuleCond;
-}
-
-void contractParser::CondContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<contractListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterCond(this);
-}
-
-void contractParser::CondContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<contractListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitCond(this);
-}
-
-contractParser::CondContext* contractParser::cond() {
-  CondContext *_localctx = _tracker.createInstance<CondContext>(_ctx, getState());
-  enterRule(_localctx, 6, contractParser::RuleCond);
-  size_t _la = 0;
-
-#if __cplusplus > 201703L
-  auto onExit = finally([=, this] {
-#else
-  auto onExit = finally([=] {
-#endif
-    exitRule();
-  });
-  try {
-    setState(116);
-    _errHandler->sync(this);
-    switch (_input->LA(1)) {
-      case contractParser::QUAN: {
-        enterOuterAlt(_localctx, 1);
-        setState(77); 
-        _errHandler->sync(this);
-        _la = _input->LA(1);
-        do {
-          setState(76);
-          quan();
-          setState(79); 
-          _errHandler->sync(this);
-          _la = _input->LA(1);
-        } while (_la == contractParser::QUAN);
-        setState(82);
-        _errHandler->sync(this);
-
-        switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 9, _ctx)) {
-        case 1: {
-          setState(81);
-          match(contractParser::T__0);
-          break;
-        }
-
-        default:
-          break;
-        }
-        setState(84);
-        match(contractParser::T__0);
-        setState(85);
-        com();
-        setState(90);
-        _errHandler->sync(this);
-        _la = _input->LA(1);
-        while (_la == contractParser::LOP) {
-          setState(86);
-          match(contractParser::LOP);
-          setState(87);
-          com();
-          setState(92);
-          _errHandler->sync(this);
-          _la = _input->LA(1);
-        }
-        setState(93);
-        match(contractParser::T__1);
-        setState(110);
-        _errHandler->sync(this);
-
-        switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 13, _ctx)) {
-        case 1: {
-          setState(94);
-          match(contractParser::LOP);
-          setState(95);
-          match(contractParser::T__0);
-          setState(99);
-          _errHandler->sync(this);
-          _la = _input->LA(1);
-          while ((((_la & ~ 0x3fULL) == 0) &&
-            ((1ULL << _la) & 770) != 0)) {
-            setState(96);
-            com();
-            setState(101);
-            _errHandler->sync(this);
-            _la = _input->LA(1);
-          }
-          setState(106);
-          _errHandler->sync(this);
-          _la = _input->LA(1);
-          while (_la == contractParser::LOP) {
-            setState(102);
-            match(contractParser::LOP);
-            setState(103);
-            com();
-            setState(108);
-            _errHandler->sync(this);
-            _la = _input->LA(1);
-          }
-          setState(109);
-          match(contractParser::T__1);
-          break;
-        }
-
-        default:
-          break;
-        }
-        setState(113);
-        _errHandler->sync(this);
-
-        switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 14, _ctx)) {
-        case 1: {
-          setState(112);
-          match(contractParser::T__1);
-          break;
-        }
-
-        default:
-          break;
-        }
-        break;
-      }
-
-      case contractParser::T__0:
-      case contractParser::VALUE:
-      case contractParser::VAR: {
-        enterOuterAlt(_localctx, 2);
-        setState(115);
-        com();
-        break;
-      }
-
-    default:
-      throw NoViableAltException(this);
-    }
-   
-  }
-  catch (RecognitionException &e) {
-    _errHandler->reportError(this, e);
-    _localctx->exception = std::current_exception();
-    _errHandler->recover(this, _localctx->exception);
-  }
-
   return _localctx;
 }
 
@@ -742,28 +473,24 @@ contractParser::ProposContext::ProposContext(ParserRuleContext *parent, size_t i
   : ParserRuleContext(parent, invokingState) {
 }
 
-std::vector<contractParser::ComContext *> contractParser::ProposContext::com() {
-  return getRuleContexts<contractParser::ComContext>();
+contractParser::Atomic_proposContext* contractParser::ProposContext::atomic_propos() {
+  return getRuleContext<contractParser::Atomic_proposContext>(0);
 }
 
-contractParser::ComContext* contractParser::ProposContext::com(size_t i) {
-  return getRuleContext<contractParser::ComContext>(i);
+contractParser::QuanContext* contractParser::ProposContext::quan() {
+  return getRuleContext<contractParser::QuanContext>(0);
 }
 
-std::vector<contractParser::QuanContext *> contractParser::ProposContext::quan() {
-  return getRuleContexts<contractParser::QuanContext>();
+tree::TerminalNode* contractParser::ProposContext::COLON() {
+  return getToken(contractParser::COLON, 0);
 }
 
-contractParser::QuanContext* contractParser::ProposContext::quan(size_t i) {
-  return getRuleContext<contractParser::QuanContext>(i);
+std::vector<contractParser::ProposContext *> contractParser::ProposContext::propos() {
+  return getRuleContexts<contractParser::ProposContext>();
 }
 
-std::vector<tree::TerminalNode *> contractParser::ProposContext::LOP() {
-  return getTokens(contractParser::LOP);
-}
-
-tree::TerminalNode* contractParser::ProposContext::LOP(size_t i) {
-  return getToken(contractParser::LOP, i);
+contractParser::ProposContext* contractParser::ProposContext::propos(size_t i) {
+  return getRuleContext<contractParser::ProposContext>(i);
 }
 
 
@@ -783,9 +510,207 @@ void contractParser::ProposContext::exitRule(tree::ParseTreeListener *listener) 
     parserListener->exitPropos(this);
 }
 
+
 contractParser::ProposContext* contractParser::propos() {
-  ProposContext *_localctx = _tracker.createInstance<ProposContext>(_ctx, getState());
-  enterRule(_localctx, 8, contractParser::RulePropos);
+   return propos(0);
+}
+
+contractParser::ProposContext* contractParser::propos(int precedence) {
+  ParserRuleContext *parentContext = _ctx;
+  size_t parentState = getState();
+  contractParser::ProposContext *_localctx = _tracker.createInstance<ProposContext>(_ctx, parentState);
+  contractParser::ProposContext *previousContext = _localctx;
+  (void)previousContext; // Silence compiler, in case the context is not used by generated code.
+  size_t startState = 4;
+  enterRecursionRule(_localctx, 4, contractParser::RulePropos, precedence);
+
+    
+
+#if __cplusplus > 201703L
+  auto onExit = finally([=, this] {
+#else
+  auto onExit = finally([=] {
+#endif
+    unrollRecursionContexts(parentContext);
+  });
+  try {
+    size_t alt;
+    enterOuterAlt(_localctx, 1);
+    setState(67);
+    _errHandler->sync(this);
+    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 4, _ctx)) {
+    case 1: {
+      setState(58);
+      atomic_propos();
+      break;
+    }
+
+    case 2: {
+      setState(59);
+      quan();
+      setState(60);
+      match(contractParser::COLON);
+      setState(61);
+      propos(2);
+      break;
+    }
+
+    case 3: {
+      setState(63);
+      match(contractParser::T__9);
+      setState(64);
+      propos(0);
+      setState(65);
+      match(contractParser::T__10);
+      break;
+    }
+
+    default:
+      break;
+    }
+    _ctx->stop = _input->LT(-1);
+    setState(83);
+    _errHandler->sync(this);
+    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 6, _ctx);
+    while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
+      if (alt == 1) {
+        if (!_parseListeners.empty())
+          triggerExitRuleEvent();
+        previousContext = _localctx;
+        setState(81);
+        _errHandler->sync(this);
+        switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 5, _ctx)) {
+        case 1: {
+          _localctx = _tracker.createInstance<ProposContext>(parentContext, parentState);
+          pushNewRecursionContext(_localctx, startState, RulePropos);
+          setState(69);
+
+          if (!(precpred(_ctx, 6))) throw FailedPredicateException(this, "precpred(_ctx, 6)");
+          setState(70);
+          match(contractParser::T__0);
+          setState(71);
+          propos(7);
+          break;
+        }
+
+        case 2: {
+          _localctx = _tracker.createInstance<ProposContext>(parentContext, parentState);
+          pushNewRecursionContext(_localctx, startState, RulePropos);
+          setState(72);
+
+          if (!(precpred(_ctx, 5))) throw FailedPredicateException(this, "precpred(_ctx, 5)");
+          setState(73);
+          match(contractParser::T__1);
+          setState(74);
+          propos(6);
+          break;
+        }
+
+        case 3: {
+          _localctx = _tracker.createInstance<ProposContext>(parentContext, parentState);
+          pushNewRecursionContext(_localctx, startState, RulePropos);
+          setState(75);
+
+          if (!(precpred(_ctx, 4))) throw FailedPredicateException(this, "precpred(_ctx, 4)");
+          setState(76);
+          match(contractParser::T__2);
+          setState(77);
+          propos(5);
+          break;
+        }
+
+        case 4: {
+          _localctx = _tracker.createInstance<ProposContext>(parentContext, parentState);
+          pushNewRecursionContext(_localctx, startState, RulePropos);
+          setState(78);
+
+          if (!(precpred(_ctx, 3))) throw FailedPredicateException(this, "precpred(_ctx, 3)");
+          setState(79);
+          match(contractParser::T__3);
+          setState(80);
+          propos(4);
+          break;
+        }
+
+        default:
+          break;
+        } 
+      }
+      setState(85);
+      _errHandler->sync(this);
+      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 6, _ctx);
+    }
+  }
+  catch (RecognitionException &e) {
+    _errHandler->reportError(this, e);
+    _localctx->exception = std::current_exception();
+    _errHandler->recover(this, _localctx->exception);
+  }
+  return _localctx;
+}
+
+//----------------- Atomic_proposContext ------------------------------------------------------------------
+
+contractParser::Atomic_proposContext::Atomic_proposContext(ParserRuleContext *parent, size_t invokingState)
+  : ParserRuleContext(parent, invokingState) {
+}
+
+std::vector<contractParser::ExprContext *> contractParser::Atomic_proposContext::expr() {
+  return getRuleContexts<contractParser::ExprContext>();
+}
+
+contractParser::ExprContext* contractParser::Atomic_proposContext::expr(size_t i) {
+  return getRuleContext<contractParser::ExprContext>(i);
+}
+
+tree::TerminalNode* contractParser::Atomic_proposContext::COMP() {
+  return getToken(contractParser::COMP, 0);
+}
+
+contractParser::QuanContext* contractParser::Atomic_proposContext::quan() {
+  return getRuleContext<contractParser::QuanContext>(0);
+}
+
+tree::TerminalNode* contractParser::Atomic_proposContext::COLON() {
+  return getToken(contractParser::COLON, 0);
+}
+
+std::vector<contractParser::Atomic_proposContext *> contractParser::Atomic_proposContext::atomic_propos() {
+  return getRuleContexts<contractParser::Atomic_proposContext>();
+}
+
+contractParser::Atomic_proposContext* contractParser::Atomic_proposContext::atomic_propos(size_t i) {
+  return getRuleContext<contractParser::Atomic_proposContext>(i);
+}
+
+std::vector<tree::TerminalNode *> contractParser::Atomic_proposContext::LOP() {
+  return getTokens(contractParser::LOP);
+}
+
+tree::TerminalNode* contractParser::Atomic_proposContext::LOP(size_t i) {
+  return getToken(contractParser::LOP, i);
+}
+
+
+size_t contractParser::Atomic_proposContext::getRuleIndex() const {
+  return contractParser::RuleAtomic_propos;
+}
+
+void contractParser::Atomic_proposContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<contractListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterAtomic_propos(this);
+}
+
+void contractParser::Atomic_proposContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<contractListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitAtomic_propos(this);
+}
+
+contractParser::Atomic_proposContext* contractParser::atomic_propos() {
+  Atomic_proposContext *_localctx = _tracker.createInstance<Atomic_proposContext>(_ctx, getState());
+  enterRule(_localctx, 6, contractParser::RuleAtomic_propos);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -796,185 +721,54 @@ contractParser::ProposContext* contractParser::propos() {
     exitRule();
   });
   try {
-    setState(158);
+    setState(105);
     _errHandler->sync(this);
-    switch (_input->LA(1)) {
-      case contractParser::QUAN: {
-        enterOuterAlt(_localctx, 1);
-        setState(119); 
+    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 8, _ctx)) {
+    case 1: {
+      enterOuterAlt(_localctx, 1);
+      setState(86);
+      expr(0);
+      setState(87);
+      antlrcpp::downCast<Atomic_proposContext *>(_localctx)->op = match(contractParser::COMP);
+      setState(88);
+      expr(0);
+      break;
+    }
+
+    case 2: {
+      enterOuterAlt(_localctx, 2);
+      setState(90);
+      match(contractParser::T__9);
+      setState(91);
+      quan();
+      setState(92);
+      match(contractParser::COLON);
+      setState(93);
+      match(contractParser::T__9);
+      setState(94);
+      atomic_propos();
+      setState(99);
+      _errHandler->sync(this);
+      _la = _input->LA(1);
+      while (_la == contractParser::LOP) {
+        setState(95);
+        match(contractParser::LOP);
+        setState(96);
+        atomic_propos();
+        setState(101);
         _errHandler->sync(this);
         _la = _input->LA(1);
-        do {
-          setState(118);
-          quan();
-          setState(121); 
-          _errHandler->sync(this);
-          _la = _input->LA(1);
-        } while (_la == contractParser::QUAN);
-        setState(124);
-        _errHandler->sync(this);
-
-        switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 17, _ctx)) {
-        case 1: {
-          setState(123);
-          match(contractParser::T__0);
-          break;
-        }
-
-        default:
-          break;
-        }
-        setState(126);
-        match(contractParser::T__0);
-        setState(127);
-        com();
-        setState(132);
-        _errHandler->sync(this);
-        _la = _input->LA(1);
-        while (_la == contractParser::LOP) {
-          setState(128);
-          match(contractParser::LOP);
-          setState(129);
-          com();
-          setState(134);
-          _errHandler->sync(this);
-          _la = _input->LA(1);
-        }
-        setState(135);
-        match(contractParser::T__1);
-        setState(152);
-        _errHandler->sync(this);
-
-        switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 21, _ctx)) {
-        case 1: {
-          setState(136);
-          match(contractParser::LOP);
-          setState(137);
-          match(contractParser::T__0);
-          setState(141);
-          _errHandler->sync(this);
-          _la = _input->LA(1);
-          while ((((_la & ~ 0x3fULL) == 0) &&
-            ((1ULL << _la) & 770) != 0)) {
-            setState(138);
-            com();
-            setState(143);
-            _errHandler->sync(this);
-            _la = _input->LA(1);
-          }
-          setState(148);
-          _errHandler->sync(this);
-          _la = _input->LA(1);
-          while (_la == contractParser::LOP) {
-            setState(144);
-            match(contractParser::LOP);
-            setState(145);
-            com();
-            setState(150);
-            _errHandler->sync(this);
-            _la = _input->LA(1);
-          }
-          setState(151);
-          match(contractParser::T__1);
-          break;
-        }
-
-        default:
-          break;
-        }
-        setState(155);
-        _errHandler->sync(this);
-
-        switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 22, _ctx)) {
-        case 1: {
-          setState(154);
-          match(contractParser::T__1);
-          break;
-        }
-
-        default:
-          break;
-        }
-        break;
       }
-
-      case contractParser::T__0:
-      case contractParser::VALUE:
-      case contractParser::VAR: {
-        enterOuterAlt(_localctx, 2);
-        setState(157);
-        com();
-        break;
-      }
+      setState(102);
+      match(contractParser::T__10);
+      setState(103);
+      match(contractParser::T__10);
+      break;
+    }
 
     default:
-      throw NoViableAltException(this);
+      break;
     }
-   
-  }
-  catch (RecognitionException &e) {
-    _errHandler->reportError(this, e);
-    _localctx->exception = std::current_exception();
-    _errHandler->recover(this, _localctx->exception);
-  }
-
-  return _localctx;
-}
-
-//----------------- ComContext ------------------------------------------------------------------
-
-contractParser::ComContext::ComContext(ParserRuleContext *parent, size_t invokingState)
-  : ParserRuleContext(parent, invokingState) {
-}
-
-std::vector<contractParser::ExprContext *> contractParser::ComContext::expr() {
-  return getRuleContexts<contractParser::ExprContext>();
-}
-
-contractParser::ExprContext* contractParser::ComContext::expr(size_t i) {
-  return getRuleContext<contractParser::ExprContext>(i);
-}
-
-tree::TerminalNode* contractParser::ComContext::COMP() {
-  return getToken(contractParser::COMP, 0);
-}
-
-
-size_t contractParser::ComContext::getRuleIndex() const {
-  return contractParser::RuleCom;
-}
-
-void contractParser::ComContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<contractListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterCom(this);
-}
-
-void contractParser::ComContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<contractListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitCom(this);
-}
-
-contractParser::ComContext* contractParser::com() {
-  ComContext *_localctx = _tracker.createInstance<ComContext>(_ctx, getState());
-  enterRule(_localctx, 10, contractParser::RuleCom);
-
-#if __cplusplus > 201703L
-  auto onExit = finally([=, this] {
-#else
-  auto onExit = finally([=] {
-#endif
-    exitRule();
-  });
-  try {
-    enterOuterAlt(_localctx, 1);
-    setState(160);
-    expr(0);
-    setState(161);
-    antlrcpp::downCast<ComContext *>(_localctx)->op = match(contractParser::COMP);
-    setState(162);
-    expr(0);
    
   }
   catch (RecognitionException &e) {
@@ -992,8 +786,12 @@ contractParser::QuanContext::QuanContext(ParserRuleContext *parent, size_t invok
   : ParserRuleContext(parent, invokingState) {
 }
 
-tree::TerminalNode* contractParser::QuanContext::QUAN() {
-  return getToken(contractParser::QUAN, 0);
+std::vector<tree::TerminalNode *> contractParser::QuanContext::QUAN() {
+  return getTokens(contractParser::QUAN);
+}
+
+tree::TerminalNode* contractParser::QuanContext::QUAN(size_t i) {
+  return getToken(contractParser::QUAN, i);
 }
 
 std::vector<tree::TerminalNode *> contractParser::QuanContext::VAR() {
@@ -1004,20 +802,16 @@ tree::TerminalNode* contractParser::QuanContext::VAR(size_t i) {
   return getToken(contractParser::VAR, i);
 }
 
-tree::TerminalNode* contractParser::QuanContext::COLON() {
-  return getToken(contractParser::COLON, 0);
-}
-
-tree::TerminalNode* contractParser::QuanContext::RANGE() {
-  return getToken(contractParser::RANGE, 0);
-}
-
 std::vector<tree::TerminalNode *> contractParser::QuanContext::COMMA() {
   return getTokens(contractParser::COMMA);
 }
 
 tree::TerminalNode* contractParser::QuanContext::COMMA(size_t i) {
   return getToken(contractParser::COMMA, i);
+}
+
+contractParser::QuanContext* contractParser::QuanContext::quan() {
+  return getRuleContext<contractParser::QuanContext>(0);
 }
 
 
@@ -1039,7 +833,7 @@ void contractParser::QuanContext::exitRule(tree::ParseTreeListener *listener) {
 
 contractParser::QuanContext* contractParser::quan() {
   QuanContext *_localctx = _tracker.createInstance<QuanContext>(_ctx, getState());
-  enterRule(_localctx, 12, contractParser::RuleQuan);
+  enterRule(_localctx, 8, contractParser::RuleQuan);
   size_t _la = 0;
 
 #if __cplusplus > 201703L
@@ -1050,53 +844,55 @@ contractParser::QuanContext* contractParser::quan() {
     exitRule();
   });
   try {
-    setState(181);
+    setState(126);
     _errHandler->sync(this);
-    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 25, _ctx)) {
-    case 1: {
-      enterOuterAlt(_localctx, 1);
-      setState(164);
-      match(contractParser::QUAN);
-      setState(165);
-      match(contractParser::T__0);
-      setState(166);
-      match(contractParser::VAR);
-      setState(167);
-      match(contractParser::COLON);
-      setState(168);
-      match(contractParser::RANGE);
-      setState(169);
-      match(contractParser::T__1);
-      break;
-    }
-
-    case 2: {
-      enterOuterAlt(_localctx, 2);
-      setState(170);
-      match(contractParser::QUAN);
-      setState(171);
-      match(contractParser::T__0);
-      setState(172);
-      match(contractParser::VAR);
-      setState(177);
-      _errHandler->sync(this);
-      _la = _input->LA(1);
-      while (_la == contractParser::COMMA) {
-        setState(173);
-        match(contractParser::COMMA);
-        setState(174);
-        match(contractParser::VAR);
-        setState(179);
+    switch (_input->LA(1)) {
+      case contractParser::QUAN: {
+        enterOuterAlt(_localctx, 1);
+        setState(118); 
         _errHandler->sync(this);
         _la = _input->LA(1);
+        do {
+          setState(107);
+          match(contractParser::QUAN);
+          setState(108);
+          match(contractParser::T__9);
+          setState(109);
+          match(contractParser::VAR);
+          setState(114);
+          _errHandler->sync(this);
+          _la = _input->LA(1);
+          while (_la == contractParser::COMMA) {
+            setState(110);
+            match(contractParser::COMMA);
+            setState(111);
+            match(contractParser::VAR);
+            setState(116);
+            _errHandler->sync(this);
+            _la = _input->LA(1);
+          }
+          setState(117);
+          match(contractParser::T__10);
+          setState(120); 
+          _errHandler->sync(this);
+          _la = _input->LA(1);
+        } while (_la == contractParser::QUAN);
+        break;
       }
-      setState(180);
-      match(contractParser::T__1);
-      break;
-    }
+
+      case contractParser::T__9: {
+        enterOuterAlt(_localctx, 2);
+        setState(122);
+        match(contractParser::T__9);
+        setState(123);
+        quan();
+        setState(124);
+        match(contractParser::T__10);
+        break;
+      }
 
     default:
-      break;
+      throw NoViableAltException(this);
     }
    
   }
@@ -1127,28 +923,8 @@ tree::TerminalNode* contractParser::ExprContext::POW() {
   return getToken(contractParser::POW, 0);
 }
 
-std::vector<tree::TerminalNode *> contractParser::ExprContext::VAR() {
-  return getTokens(contractParser::VAR);
-}
-
-tree::TerminalNode* contractParser::ExprContext::VAR(size_t i) {
-  return getToken(contractParser::VAR, i);
-}
-
-std::vector<tree::TerminalNode *> contractParser::ExprContext::COLON() {
-  return getTokens(contractParser::COLON);
-}
-
-tree::TerminalNode* contractParser::ExprContext::COLON(size_t i) {
-  return getToken(contractParser::COLON, i);
-}
-
-std::vector<tree::TerminalNode *> contractParser::ExprContext::RANGE() {
-  return getTokens(contractParser::RANGE);
-}
-
-tree::TerminalNode* contractParser::ExprContext::RANGE(size_t i) {
-  return getToken(contractParser::RANGE, i);
+tree::TerminalNode* contractParser::ExprContext::VAR() {
+  return getToken(contractParser::VAR, 0);
 }
 
 std::vector<tree::TerminalNode *> contractParser::ExprContext::COMMA() {
@@ -1159,8 +935,16 @@ tree::TerminalNode* contractParser::ExprContext::COMMA(size_t i) {
   return getToken(contractParser::COMMA, i);
 }
 
+tree::TerminalNode* contractParser::ExprContext::SUB() {
+  return getToken(contractParser::SUB, 0);
+}
+
 tree::TerminalNode* contractParser::ExprContext::VALUE() {
   return getToken(contractParser::VALUE, 0);
+}
+
+tree::TerminalNode* contractParser::ExprContext::ARRAY() {
+  return getToken(contractParser::ARRAY, 0);
 }
 
 tree::TerminalNode* contractParser::ExprContext::MUL() {
@@ -1177,10 +961,6 @@ tree::TerminalNode* contractParser::ExprContext::MOD() {
 
 tree::TerminalNode* contractParser::ExprContext::ADD() {
   return getToken(contractParser::ADD, 0);
-}
-
-tree::TerminalNode* contractParser::ExprContext::SUB() {
-  return getToken(contractParser::SUB, 0);
 }
 
 
@@ -1211,8 +991,8 @@ contractParser::ExprContext* contractParser::expr(int precedence) {
   contractParser::ExprContext *_localctx = _tracker.createInstance<ExprContext>(_ctx, parentState);
   contractParser::ExprContext *previousContext = _localctx;
   (void)previousContext; // Silence compiler, in case the context is not used by generated code.
-  size_t startState = 14;
-  enterRecursionRule(_localctx, 14, contractParser::RuleExpr, precedence);
+  size_t startState = 10;
+  enterRecursionRule(_localctx, 10, contractParser::RuleExpr, precedence);
 
     size_t _la = 0;
 
@@ -1226,110 +1006,118 @@ contractParser::ExprContext* contractParser::expr(int precedence) {
   try {
     size_t alt;
     enterOuterAlt(_localctx, 1);
-    setState(223);
+    setState(171);
     _errHandler->sync(this);
-    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 28, _ctx)) {
+    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 15, _ctx)) {
     case 1: {
-      setState(184);
-      match(contractParser::T__0);
-      setState(185);
+      setState(129);
+      match(contractParser::T__9);
+      setState(130);
       expr(0);
-      setState(186);
+      setState(131);
       antlrcpp::downCast<ExprContext *>(_localctx)->op = match(contractParser::POW);
-      setState(187);
+      setState(132);
       expr(0);
-      setState(188);
-      match(contractParser::T__1);
+      setState(133);
+      match(contractParser::T__10);
       break;
     }
 
     case 2: {
-      setState(190);
+      setState(135);
       match(contractParser::VAR);
-      setState(196); 
+      setState(147); 
       _errHandler->sync(this);
       alt = 1;
       do {
         switch (alt) {
           case 1: {
-                setState(191);
-                match(contractParser::T__0);
-                setState(192);
-                match(contractParser::VAR);
-                setState(193);
-                match(contractParser::COLON);
-                setState(194);
-                match(contractParser::RANGE);
-                setState(195);
-                match(contractParser::T__1);
+                setState(136);
+                match(contractParser::T__9);
+                setState(137);
+                expr(0);
+                setState(142);
+                _errHandler->sync(this);
+                _la = _input->LA(1);
+                while (_la == contractParser::COMMA) {
+                  setState(138);
+                  match(contractParser::COMMA);
+                  setState(139);
+                  expr(0);
+                  setState(144);
+                  _errHandler->sync(this);
+                  _la = _input->LA(1);
+                }
+                setState(145);
+                match(contractParser::T__10);
                 break;
               }
 
         default:
           throw NoViableAltException(this);
         }
-        setState(198); 
+        setState(149); 
         _errHandler->sync(this);
-        alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 26, _ctx);
+        alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 13, _ctx);
       } while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER);
-      setState(200);
-      match(contractParser::T__0);
-      setState(201);
-      expr(0);
-      setState(202);
-      match(contractParser::T__1);
       break;
     }
 
     case 3: {
-      setState(204);
-      match(contractParser::VAR);
-      setState(205);
+      setState(151);
+      match(contractParser::T__9);
+      setState(152);
       expr(0);
+      setState(157);
+      _errHandler->sync(this);
+      _la = _input->LA(1);
+      while (_la == contractParser::COMMA) {
+        setState(153);
+        match(contractParser::COMMA);
+        setState(154);
+        expr(0);
+        setState(159);
+        _errHandler->sync(this);
+        _la = _input->LA(1);
+      }
+      setState(160);
+      match(contractParser::T__10);
       break;
     }
 
     case 4: {
-      setState(206);
-      match(contractParser::T__0);
-      setState(207);
-      expr(0);
-      setState(212);
-      _errHandler->sync(this);
-      _la = _input->LA(1);
-      while (_la == contractParser::COMMA) {
-        setState(208);
-        match(contractParser::COMMA);
-        setState(209);
-        expr(0);
-        setState(214);
-        _errHandler->sync(this);
-        _la = _input->LA(1);
-      }
-      setState(215);
-      match(contractParser::T__1);
+      setState(162);
+      match(contractParser::SUB);
+      setState(163);
+      match(contractParser::VALUE);
       break;
     }
 
     case 5: {
-      setState(217);
+      setState(164);
       match(contractParser::VALUE);
       break;
     }
 
     case 6: {
-      setState(218);
-      match(contractParser::VAR);
+      setState(165);
+      match(contractParser::ARRAY);
       break;
     }
 
     case 7: {
-      setState(219);
-      match(contractParser::T__0);
-      setState(220);
+      setState(166);
+      match(contractParser::VAR);
+      break;
+    }
+
+    case 8: {
+      setState(167);
+      match(contractParser::T__9);
+      setState(168);
       expr(0);
-      setState(221);
-      match(contractParser::T__1);
+      setState(169);
+      match(contractParser::T__10);
       break;
     }
 
@@ -1337,46 +1125,46 @@ contractParser::ExprContext* contractParser::expr(int precedence) {
       break;
     }
     _ctx->stop = _input->LT(-1);
-    setState(233);
+    setState(181);
     _errHandler->sync(this);
-    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 30, _ctx);
+    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 17, _ctx);
     while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
       if (alt == 1) {
         if (!_parseListeners.empty())
           triggerExitRuleEvent();
         previousContext = _localctx;
-        setState(231);
+        setState(179);
         _errHandler->sync(this);
-        switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 29, _ctx)) {
+        switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 16, _ctx)) {
         case 1: {
           _localctx = _tracker.createInstance<ExprContext>(parentContext, parentState);
           pushNewRecursionContext(_localctx, startState, RuleExpr);
-          setState(225);
+          setState(173);
 
-          if (!(precpred(_ctx, 8))) throw FailedPredicateException(this, "precpred(_ctx, 8)");
-          setState(226);
+          if (!(precpred(_ctx, 9))) throw FailedPredicateException(this, "precpred(_ctx, 9)");
+          setState(174);
           antlrcpp::downCast<ExprContext *>(_localctx)->op = _input->LT(1);
           _la = _input->LA(1);
           if (!((((_la & ~ 0x3fULL) == 0) &&
-            ((1ULL << _la) & 28672) != 0))) {
+            ((1ULL << _la) & 3670016) != 0))) {
             antlrcpp::downCast<ExprContext *>(_localctx)->op = _errHandler->recoverInline(this);
           }
           else {
             _errHandler->reportMatch(this);
             consume();
           }
-          setState(227);
-          expr(9);
+          setState(175);
+          expr(10);
           break;
         }
 
         case 2: {
           _localctx = _tracker.createInstance<ExprContext>(parentContext, parentState);
           pushNewRecursionContext(_localctx, startState, RuleExpr);
-          setState(228);
+          setState(176);
 
-          if (!(precpred(_ctx, 7))) throw FailedPredicateException(this, "precpred(_ctx, 7)");
-          setState(229);
+          if (!(precpred(_ctx, 8))) throw FailedPredicateException(this, "precpred(_ctx, 8)");
+          setState(177);
           antlrcpp::downCast<ExprContext *>(_localctx)->op = _input->LT(1);
           _la = _input->LA(1);
           if (!(_la == contractParser::ADD
@@ -1388,8 +1176,8 @@ contractParser::ExprContext* contractParser::expr(int precedence) {
             _errHandler->reportMatch(this);
             consume();
           }
-          setState(230);
-          expr(8);
+          setState(178);
+          expr(9);
           break;
         }
 
@@ -1397,9 +1185,9 @@ contractParser::ExprContext* contractParser::expr(int precedence) {
           break;
         } 
       }
-      setState(235);
+      setState(183);
       _errHandler->sync(this);
-      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 30, _ctx);
+      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 17, _ctx);
     }
   }
   catch (RecognitionException &e) {
@@ -1412,7 +1200,36 @@ contractParser::ExprContext* contractParser::expr(int precedence) {
 
 bool contractParser::sempred(RuleContext *context, size_t ruleIndex, size_t predicateIndex) {
   switch (ruleIndex) {
-    case 7: return exprSempred(antlrcpp::downCast<ExprContext *>(context), predicateIndex);
+    case 1: return ltlSempred(antlrcpp::downCast<LtlContext *>(context), predicateIndex);
+    case 2: return proposSempred(antlrcpp::downCast<ProposContext *>(context), predicateIndex);
+    case 5: return exprSempred(antlrcpp::downCast<ExprContext *>(context), predicateIndex);
+
+  default:
+    break;
+  }
+  return true;
+}
+
+bool contractParser::ltlSempred(LtlContext *_localctx, size_t predicateIndex) {
+  switch (predicateIndex) {
+    case 0: return precpred(_ctx, 10);
+    case 1: return precpred(_ctx, 9);
+    case 2: return precpred(_ctx, 8);
+    case 3: return precpred(_ctx, 7);
+    case 4: return precpred(_ctx, 2);
+
+  default:
+    break;
+  }
+  return true;
+}
+
+bool contractParser::proposSempred(ProposContext *_localctx, size_t predicateIndex) {
+  switch (predicateIndex) {
+    case 5: return precpred(_ctx, 6);
+    case 6: return precpred(_ctx, 5);
+    case 7: return precpred(_ctx, 4);
+    case 8: return precpred(_ctx, 3);
 
   default:
     break;
@@ -1422,8 +1239,8 @@ bool contractParser::sempred(RuleContext *context, size_t ruleIndex, size_t pred
 
 bool contractParser::exprSempred(ExprContext *_localctx, size_t predicateIndex) {
   switch (predicateIndex) {
-    case 0: return precpred(_ctx, 8);
-    case 1: return precpred(_ctx, 7);
+    case 9: return precpred(_ctx, 9);
+    case 10: return precpred(_ctx, 8);
 
   default:
     break;
