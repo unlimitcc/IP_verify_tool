@@ -1,3 +1,0 @@
-/home/rotatecc/desktop/IP_verify/build/CMakeFiles/main.dir
-/home/rotatecc/desktop/IP_verify/build/CMakeFiles/edit_cache.dir
-/home/rotatecc/desktop/IP_verify/build/CMakeFiles/rebuild_cache.dir
