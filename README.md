@@ -129,6 +129,7 @@
 5. 运行  
     ```
     $ mkdir build  
+    $ cd build
     $ cmake ..
     $ make
     $ cd ..
