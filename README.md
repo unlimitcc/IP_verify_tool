@@ -22,10 +22,11 @@
     $ alias antlr4='java -jar /usr/local/lib/antlr-4.13.1-complete.jar'
     $ alias grun='java org.antlr.v4.gui.TestRig'
     ```  
+    (4):antlr4的运行时库配置 参考该指南进行
     ```  
-    (4):antlr4的运行时库配置 参考该指南进行 https://blog.csdn.net/drutgdh/article/details/122816033
+    https://blog.csdn.net/drutgdh/article/details/122816033
     ```  
-3. KLEE  
+4. KLEE  
     1.KLEE版本：2.3  
     2.安装KLEE依赖：  
     (1):基本库安装：  
@@ -112,7 +113,7 @@
     -DCMAKE_CXX_COMPILER=clang++-9  \
     ..
     ```  
-4. trace4cps  
+5. trace4cps  
     安装java-1.11  
     `$ sudo apt install openjdk-11-jdk`  
     切换到java11版本再进行trace4cps的编译  
@@ -126,7 +127,7 @@
     ```  
     编译源码完成后，即可使用命令行工具测试调用，该接口位于以下位置:  
     `trace4cps/temporallogic/org.eclipse.trace4cps.tl.cmd/target/eclipse-trace4cps-incubation-dev/lib/org.eclipse.trace4cps.tl.cmd-0.2.0-SNAPSHOT.jar`  
-5. 运行  
+6. 运行  
     ```
     $ mkdir build  
     $ cd build
