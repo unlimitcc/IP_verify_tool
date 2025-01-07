@@ -114,9 +114,9 @@
     ..
     ```  
 5. trace4cps  
-    安装java-1.11  
-    `$ sudo apt install openjdk-11-jdk`  
-    切换到java11版本再进行trace4cps的编译  
+    安装java-1.8,安装过程参考    
+    `https://blog.csdn.net/LogosTR_/article/details/125102576`
+    切换到java1.8版本再进行trace4cps的编译  
     java多版本切换参考:  
     `$ https://blog.csdn.net/huanglu0314/article/details/109099746`  
     克隆trace4cps源码，建议在IP_verify_tool目录下操作  
@@ -127,7 +127,7 @@
     ```  
     编译源码完成后，即可使用命令行工具测试调用，该接口位于以下位置:  
     `trace4cps/temporallogic/org.eclipse.trace4cps.tl.cmd/target/eclipse-trace4cps-incubation-dev/lib/org.eclipse.trace4cps.tl.cmd-0.2.0-SNAPSHOT.jar`  
-6. 运行  
+7. 运行  
     ```
     $ mkdir build  
     $ cd build
